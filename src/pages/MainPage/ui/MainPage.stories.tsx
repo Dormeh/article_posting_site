@@ -13,6 +13,7 @@ export default {
 } as ComponentMeta<typeof MainPage>;
 
 // @ts-ignore
+// TODO убрать ts-ignore когда найду причину ошибки для ...args
 const Template: ComponentStory<typeof MainPage> = (args) => <MainPage {...args} />;
 
 export const Light = Template.bind({});

@@ -12,8 +12,9 @@ export default {
     },
 } as ComponentMeta<typeof AboutPage>;
 
-// @ts-ignore
-const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage {...args} />;
+// TODO убрать ts-ignore когда найду причину ошибки для ...args
+// eslint-disable-next-line prefer-object-spread
+const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage {...Object.assign({}, args)} />;
 
 export const Light = Template.bind({});
 Light.args = {};

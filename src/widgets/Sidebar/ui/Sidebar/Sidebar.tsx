@@ -29,8 +29,10 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 type="button"
                 onClick={onToggle}
             >
+                {/* eslint-disable-next-line i18next/no-literal-string */}
                 {/* {t('скрыть')} */}
                 toggle
+                {/* TODO убрать текс пофиксить когда в storybook будет видна кнопка */}
             </Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
