@@ -20,6 +20,6 @@ export const parameters = {
     },
 };
 
-addDecorator(StyleDecorator);
-addDecorator(ThemeDecorator(Theme.LIGHT));
-addDecorator(RouterDecorator);
+addDecorator(StyleDecorator); // импортируем стили для компонента storybook
+addDecorator(ThemeDecorator(Theme.LIGHT)); // определяем тему на корневом компоненте
+addDecorator(RouterDecorator); // оборачиваем в  роутер компонент storybook

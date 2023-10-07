@@ -3,6 +3,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18nForTests from 'shared/config/i18n/i18nForTests';
 import { render } from '@testing-library/react';
 
+// чтобы jest не ругался на i18n оборачиваем в провайдер компонент который тестируем
 export function renderWithTranslation(component: ReactNode) {
     return render(
         <I18nextProvider i18n={i18nForTests}>

@@ -13,6 +13,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
     config.resolve.modules.push(paths.src);
     config.resolve.extensions.push('.ts', '.tsx');
 
+    // Правим конфиг storybook/webpack под нашу сборку и при нахождении в правиле svg исключаем его
+    // а ниже добавляем для него свой лоадер
     // eslint-disable-next-line no-param-reassign
     config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {
