@@ -7,11 +7,11 @@ import './shared/config/i18n/i18n';
 
 render(
     <BrowserRouter>
-        <ErrorBoundary>
-            <ThemeProvider>
+        <ThemeProvider>
+            <ErrorBoundary>
                 <App />
-            </ThemeProvider>
-        </ErrorBoundary>
+            </ErrorBoundary>
+        </ThemeProvider>
 
     </BrowserRouter>,
     document.getElementById('root'),
