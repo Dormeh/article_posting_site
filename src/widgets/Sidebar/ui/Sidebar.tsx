@@ -60,7 +60,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 onClick={onToggle}
                 className={cls.collapseBtn}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
-                size={ButtonSize.XL}
+                size={ButtonSize.L}
             >
                 {collapsed ? <RotateArrow /> : <Arrow />}
             </Button>
