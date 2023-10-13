@@ -16,11 +16,6 @@
   overflow: initial;
 }
 
-.Modal.dark { // TODO (решение Тимура для смены темы в модалке) нужно переделать
-  --bg-color: #090949;
-  --primary-color: #04ff04;
-}
-
 .content {
   display: flex;
   flex-direction: column;

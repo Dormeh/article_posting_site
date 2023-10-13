@@ -70,7 +70,7 @@ export const Modal = (props: ModalProps) => {
         <Portal>
             <div
                 onClick={closeHandler}
-                className={classNames(cls.Modal, mods, [className, cls[theme]])}
+                className={classNames(cls.Modal, mods, [className, theme])}
             >
                 <div
                     onClick={contentClick}
