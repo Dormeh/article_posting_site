@@ -1,0 +1,66 @@
+.label {
+  display: flex;
+  height: 40px;
+}
+
+.placeholder {
+  margin-right: 5px;
+}
+
+.caretWrapper {
+  height: 55%;
+  flex-grow: 1;
+  position: relative;
+}
+
+.caret {
+  display: none;
+  position: absolute;
+  width: 9px;
+  height: 3px;
+  background: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  animation: blink 0.8s forwards infinite;
+}
+
+.input {
+  flex-grow: 1;
+  min-width: 250px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: transparent;
+  text-shadow: 0 0 0 var(--primary-color);
+
+  &:focus {
+    outline: none;
+
+    & + .caret {
+      display: initial;
+    }
+  }
+}
+
+.error {
+  color: red;
+  font-size: 9px;
+  line-height: 11px;
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
