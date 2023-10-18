@@ -1,4 +1,4 @@
-import { ValidationType } from 'shared/constants/validation';
+import { ValidationType } from 'shared/config/validation/validation';
 
 const authFormFields = [
     {

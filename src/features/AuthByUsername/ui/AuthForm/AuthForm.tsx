@@ -7,23 +7,24 @@ import cls from './AuthForm.module.scss';
 import { authFormConfig } from './config';
 
 interface AuthFormProps {
-    authConfig: typeof authFormConfig
-    formClose: () => void;
+    formClose?: () => void;
     className?: string;
     focus?: boolean;
 }
 export const AuthForm = (props: AuthFormProps) => {
     const {
-        authConfig: {
-            formTitle,
-            fields,
-        },
         className,
         formClose,
         focus,
     } = props;
+
+    const {
+        formTitle,
+        fields,
+    } = authFormConfig;
+
     const handleLogin = (data: FieldValues): void => {
-        formClose();// TODO нужно добавить экшен авторизации и если удачно закрыть форму
+        formClose?.();// TODO нужно добавить экшен авторизации и если удачно закрыть форму
         console.log(data);
     };
 

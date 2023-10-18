@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from 'shared/ui/Input/Input';
-import { ValidationType } from 'shared/constants/validation';
+import { ValidationType } from 'shared/config/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Form.module.scss';
 
@@ -54,17 +54,17 @@ export const Form: FC<IFormPros> = (props) => {
         reset,
         setFocus,
         clearErrors,
-    } = useForm<IFormInputs<IFormValue>>({
-        mode: 'onChange',
+    } = useForm<FieldValues>({
+        mode: 'onBlur',
     });
 
     const onSubmitReset: SubmitHandler<FieldValues> = (data) => {
-        onSubmit(data);
+        onSubmit?.(data);
         reset();
     };
 
     useEffect(() => {
-        setFocus(fields[0].name);
+        if (focus) setFocus(fields[0].name);
         clearErrors();
     }, [clearErrors, fields, focus, setFocus]);
 

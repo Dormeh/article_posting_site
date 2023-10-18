@@ -4,13 +4,14 @@ import React, {
 } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { IFormInputs, IFormValue } from 'shared/ui/Form/Form';
-import { ValidationPattern, ValidationType } from 'shared/constants/validation';
+import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
 import { useTranslation } from 'react-i18next';
+import { FieldValues } from 'react-hook-form/dist/types/fields';
 import cls from './Input.module.scss';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
-    register?: UseFormRegister<IFormInputs<IFormValue>>;
+    register?: UseFormRegister<FieldValues>;
     label?: string;
     error?: boolean;
     errorMessage?: string;
