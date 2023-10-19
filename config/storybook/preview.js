@@ -24,4 +24,4 @@ export const parameters = {
 addDecorator(StyleDecorator); // импортируем стили для компонента storybook
 addDecorator(ThemeDecorator(Theme.LIGHT)); // определяем тему на корневом компоненте
 addDecorator(RouterDecorator); // оборачиваем в  роутер компонент storybook
-addDecorator(StoreDecorator({ counter: { value: 0 } }));
+addDecorator(StoreDecorator());
