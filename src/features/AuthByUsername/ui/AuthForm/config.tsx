@@ -2,7 +2,7 @@ import { ValidationType } from 'shared/config/validation/validation';
 
 const authFormFields = [
     {
-        name: 'login',
+        name: 'username',
         label: 'Логин',
         pattern: ValidationType.Login,
         required: true,

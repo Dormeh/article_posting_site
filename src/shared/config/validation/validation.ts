@@ -1,5 +1,5 @@
 export enum ValidationType {
-    Login = 'login',
+    Login = 'username',
     Password = 'password',
     Email = 'email',
     Phone = 'phone',
@@ -7,13 +7,14 @@ export enum ValidationType {
 }
 // TODO добавить переводы для валидации
 export const ValidationPattern = {
-    login: {
+    username: {
         value: /^(?=.*[\D])[\w-]{3,20}$/g,
         message:
             '3-20 символов, допустимые символы: латин. буквы, цифры, дефис, подчеркивание _',
     },
     password: {
-        value: /^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z!@#-$%^_&*]{8,40}$/g,
+        // value: /^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z!@#-$%^_&*]{8,40}$/g,
+        value: /^.{3,40}$/g,
         message: '8-40 символов, обязательно хотя бы одна заглавная буква и цифра',
     },
     email: {

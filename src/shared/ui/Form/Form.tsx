@@ -36,6 +36,7 @@ interface IFormPros {
     footer?: ReactNode
     onSubmit?: (data: FieldValues) => void
     focus?: boolean
+    formError?: string;
 }
 
 export const Form: FC<IFormPros> = (props) => {
@@ -46,22 +47,18 @@ export const Form: FC<IFormPros> = (props) => {
         onSubmit,
         focus,
         className,
+        formError,
     } = props;
     const {
         register,
         handleSubmit,
         formState: { errors },
-        reset,
         setFocus,
         clearErrors,
+
     } = useForm<FieldValues>({
         mode: 'onBlur',
     });
-
-    const onSubmitReset: SubmitHandler<FieldValues> = (data) => {
-        onSubmit?.(data);
-        reset();
-    };
 
     useEffect(() => {
         if (focus) setFocus(fields[0].name);
@@ -73,7 +70,7 @@ export const Form: FC<IFormPros> = (props) => {
             <h3 className={cls.title}>{formTitle}</h3>
             <form
                 className={cls.form}
-                onSubmit={handleSubmit(onSubmitReset)}
+                onSubmit={handleSubmit(onSubmit)}
             >
                 {fields && fields
                     .map(
@@ -90,6 +87,7 @@ export const Form: FC<IFormPros> = (props) => {
                     )}
                 {footer}
             </form>
+            {formError && <p>{formError}</p>}
         </div>
     );
 };

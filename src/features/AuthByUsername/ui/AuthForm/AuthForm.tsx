@@ -1,16 +1,22 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Form } from 'shared/ui/Form/Form';
-import { FieldValues } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import cls from './AuthForm.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginByUsername } from 'features/AuthByUsername/model/setvices/loginByUsername/loginByUsername';
+import { LoginAuthData } from 'features/AuthByUsername';
+import { getLoginFormState } from 'features/AuthByUsername/model/selectors/getLoginFormState';
+import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
+import { useEffect } from 'react';
 import { authFormConfig } from './config';
+import cls from './AuthForm.module.scss';
 
 interface AuthFormProps {
     formClose?: () => void;
     className?: string;
     focus?: boolean;
 }
+
 export const AuthForm = (props: AuthFormProps) => {
     const {
         className,
@@ -23,12 +29,21 @@ export const AuthForm = (props: AuthFormProps) => {
         fields,
     } = authFormConfig;
 
-    const handleLogin = (data: FieldValues): void => {
-        formClose?.();// TODO нужно добавить экшен авторизации и если удачно закрыть форму
-        console.log(data);
-    };
+    const dispatch = useDispatch();
+    const { isLoading, error } = useSelector(getLoginFormState);
 
-    const errorCancel = () => { // TODO для сброса состояния
+    useEffect(() => {
+        if (!focus && error) {
+            dispatch(loginActions.errorReset());
+        }
+    }, [dispatch, error, focus]);
+    const handleLogin = async (data: LoginAuthData): Promise<void> => {
+        const { error }: Record<string, any > = await dispatch(loginByUsername(data)); // TODO нужно типпизировать диспатч
+        if (!error) {
+            dispatch(loginActions.setAuthData(data));
+            formClose?.();
+            if (__IS_DEV__) console.log(data);
+        }
     };
 
     const [t] = useTranslation();
@@ -36,7 +51,8 @@ export const AuthForm = (props: AuthFormProps) => {
         <Button
             className={cls.authBtn}
             type="submit"
-            theme={ButtonTheme.BACKGROUND_INVERTED}
+            theme={ButtonTheme.OUTLINE}
+            disabled={isLoading}
         >
             {t('Войти')}
         </Button>
@@ -49,6 +65,7 @@ export const AuthForm = (props: AuthFormProps) => {
             footer={footer}
             onSubmit={handleLogin}
             focus={focus}
+            formError={error}
         />
     );
 };
