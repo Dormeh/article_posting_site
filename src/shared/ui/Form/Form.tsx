@@ -1,10 +1,13 @@
-import {
-    FC, ReactNode, useEffect,
+import React, {
+    FC, ReactNode,
 } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import {
+    FieldValues, UseFormRegister,
+} from 'react-hook-form';
 import { Input } from 'shared/ui/Input/Input';
 import { ValidationType } from 'shared/config/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import cls from './Form.module.scss';
 
 export interface IFormValue { // TODO протестировать
@@ -35,8 +38,10 @@ interface IFormPros {
     fields: FormConfigType[]
     footer?: ReactNode
     onSubmit?: (data: FieldValues) => void
-    focus?: boolean
     formError?: string;
+    register?: UseFormRegister<FieldValues>;
+    errors?: FieldErrors
+
 }
 
 export const Form: FC<IFormPros> = (props) => {
@@ -45,32 +50,23 @@ export const Form: FC<IFormPros> = (props) => {
         fields,
         footer,
         onSubmit,
-        focus,
         className,
         formError,
-    } = props;
-    const {
         register,
-        handleSubmit,
-        formState: { errors },
-        setFocus,
-        clearErrors,
+        errors,
+    } = props;
 
-    } = useForm<FieldValues>({
-        mode: 'onBlur',
-    });
-
-    useEffect(() => {
-        if (focus) setFocus(fields[0].name);
-        clearErrors();
-    }, [clearErrors, fields, focus, setFocus]);
+    const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault(); // для тестирования в сторибуке и использования без react hook form
+        onSubmit?.(event);
+    };
 
     return (
         <div className={classNames(cls.formWrapper, {}, [className])}>
             <h3 className={cls.title}>{formTitle}</h3>
             <form
                 className={cls.form}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit}
             >
                 {fields && fields
                     .map(
@@ -78,8 +74,8 @@ export const Form: FC<IFormPros> = (props) => {
                             <Input
                                 key={`input-${name}`}
                                 register={register}
-                                error={!!errors[name]?.message}
-                                errorMessage={errors[name]?.message?.toString()}
+                                error={!!errors?.[name]?.message}
+                                errorMessage={errors?.[name]?.message?.toString()}
                                 name={name}
                                 {...otherProps}
                             />

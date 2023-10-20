@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
 import { loginByUsername } from '../../model/setvices/loginByUsername/loginByUsername';
 import { getLoginFormState } from '../../model/selectors/getLoginFormState';
 import { loginActions } from '../../model/slice/loginSlice';
@@ -30,7 +31,22 @@ export const AuthForm = (props: AuthFormProps) => {
     } = authFormConfig;
 
     const dispatch = useDispatch();
-    const { isLoading, error } = useSelector(getLoginFormState);
+    const { isLoading, error, authData } = useSelector(getLoginFormState);
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setFocus,
+        clearErrors,
+    } = useForm<FieldValues>({
+        mode: 'onBlur',
+        defaultValues: authData,
+    });
+    useEffect(() => {
+        if (focus) setFocus('username');
+        clearErrors();
+    }, [clearErrors, fields, focus, setFocus]);
 
     useEffect(() => {
         if (!focus && error) {
@@ -63,9 +79,10 @@ export const AuthForm = (props: AuthFormProps) => {
             formTitle={t(formTitle)}
             fields={fields}
             footer={footer}
-            onSubmit={handleLogin}
-            focus={focus}
+            onSubmit={handleSubmit(handleLogin)}
             formError={error}
+            register={register}
+            errors={errors}
         />
     );
 };

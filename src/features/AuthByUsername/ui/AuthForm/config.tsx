@@ -1,6 +1,6 @@
 import { ValidationType } from 'shared/config/validation/validation';
 
-const authFormFields = [
+export const authFormFields = [
     {
         name: 'username',
         label: 'Логин',
