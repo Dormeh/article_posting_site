@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { AuthForm } from 'features/AuthByUsername';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { AuthForm } from './AuthForm';
 
 export default {
     title: 'features/AuthForm',
@@ -25,3 +26,11 @@ Dark.args = {
 };
 
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const PrimaryError = Template.bind({});
+PrimaryError.args = {
+    focus: true,
+};
+PrimaryError.decorators = [StoreDecorator({
+    loginForm: { error: 'ERROR' },
+})];

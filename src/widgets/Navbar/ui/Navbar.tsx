@@ -5,7 +5,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { AuthForm } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData';
+import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
 import { userActions } from 'entities/User';
 import cls from './Navbar.module.scss';
 

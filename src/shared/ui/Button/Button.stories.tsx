@@ -22,16 +22,34 @@ Primary.args = {
     children: 'Text',
 };
 
+export const PrimaryDisable = Template.bind({});
+PrimaryDisable.args = {
+    children: 'Text',
+    disabled: true,
+};
+
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
     theme: ButtonTheme.CLEAR,
+};
+export const ClearDisable = Template.bind({});
+ClearDisable.args = {
+    children: 'Text',
+    theme: ButtonTheme.CLEAR,
+    disabled: true,
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
     children: 'Text',
     theme: ButtonTheme.OUTLINE,
+};
+export const OutlineDisable = Template.bind({});
+OutlineDisable.args = {
+    children: 'Text',
+    theme: ButtonTheme.OUTLINE,
+    disabled: true,
 };
 
 export const OutlineSizeL = Template.bind({});

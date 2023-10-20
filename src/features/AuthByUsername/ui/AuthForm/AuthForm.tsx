@@ -3,11 +3,11 @@ import { Form } from 'shared/ui/Form/Form';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginByUsername } from 'features/AuthByUsername/model/setvices/loginByUsername/loginByUsername';
-import { LoginAuthData } from 'features/AuthByUsername';
-import { getLoginFormState } from 'features/AuthByUsername/model/selectors/getLoginFormState';
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import { useEffect } from 'react';
+import { loginByUsername } from '../../model/setvices/loginByUsername/loginByUsername';
+import { getLoginFormState } from '../../model/selectors/getLoginFormState';
+import { loginActions } from '../../model/slice/loginSlice';
+import { LoginAuthData } from '../../model/types/loginSchema';
 import { authFormConfig } from './config';
 import cls from './AuthForm.module.scss';
 
