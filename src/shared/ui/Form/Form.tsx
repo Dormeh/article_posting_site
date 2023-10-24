@@ -1,13 +1,10 @@
-import React, {
-    FC, ReactNode,
-} from 'react';
-import {
-    FieldValues, UseFormRegister,
-} from 'react-hook-form';
+import React, { FC, ReactNode } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 import { Input } from 'shared/ui/Input/Input';
 import { ValidationType } from 'shared/config/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import cls from './Form.module.scss';
 
 export interface IFormValue { // TODO протестировать
@@ -63,7 +60,7 @@ export const Form: FC<IFormPros> = (props) => {
 
     return (
         <div className={classNames(cls.formWrapper, {}, [className])}>
-            <h3 className={cls.title}>{formTitle}</h3>
+            <Text title={formTitle} className={cls.title} />
             <form
                 className={cls.form}
                 onSubmit={handleSubmit}
@@ -83,7 +80,7 @@ export const Form: FC<IFormPros> = (props) => {
                     )}
                 {footer}
             </form>
-            {formError && <p>{formError}</p>}
+            {formError && <Text text={formError} theme={TextTheme.ERROR} />}
         </div>
     );
 };

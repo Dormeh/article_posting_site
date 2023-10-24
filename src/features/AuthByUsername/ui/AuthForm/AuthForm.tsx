@@ -54,7 +54,7 @@ export const AuthForm = (props: AuthFormProps) => {
         }
     }, [dispatch, error, focus]);
     const handleLogin = async (data: LoginAuthData): Promise<void> => {
-        const { error }: Record<string, any > = await dispatch(loginByUsername(data)); // TODO нужно типпизировать диспатч
+        const { error }: Record<string, any > = await dispatch(loginByUsername(data)); // TODO нужно типизировать диспатч
         if (!error) {
             dispatch(loginActions.setAuthData(data));
             formClose?.();
