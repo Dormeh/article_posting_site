@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { AuthForm } from './AuthForm';
+import AuthForm from './AuthForm';
 
 export default {
     title: 'features/AuthForm',
@@ -32,5 +32,24 @@ PrimaryError.args = {
     focus: true,
 };
 PrimaryError.decorators = [StoreDecorator({
-    loginForm: { error: 'ERROR' },
+    loginForm: {
+        error: 'ERROR',
+        authData: {
+            username: 'test',
+            password: 'test',
+        },
+    },
+
+})];
+
+export const PrimaryLoading = Template.bind({});
+PrimaryLoading.args = {};
+PrimaryLoading.decorators = [StoreDecorator({
+    loginForm: {
+        isLoading: true,
+        authData: {
+            username: 'test',
+            password: 'test',
+        },
+    },
 })];

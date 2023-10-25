@@ -5,20 +5,30 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { loginByUsername } from '../../model/setvices/loginByUsername/loginByUsername';
-import { getLoginFormState } from '../../model/selectors/getLoginFormState';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { LoginAuthData } from '../../model/types/loginSchema';
 import { authFormConfig } from './config';
 import cls from './AuthForm.module.scss';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading';
+import { getLoginError } from '../../model/selectors/getLoginError';
+import { getLoginAuthData } from '../../model/selectors/getLoginAuthData';
 
-interface AuthFormProps {
+export interface AuthFormProps {
     formClose?: () => void;
     className?: string;
     focus?: boolean;
 }
 
-export const AuthForm = (props: AuthFormProps) => {
+const initialReducers: ReducersList = {
+    loginForm: loginReducer,
+};
+
+const AuthForm = (props: AuthFormProps) => {
     const {
         className,
         formClose,
@@ -31,7 +41,9 @@ export const AuthForm = (props: AuthFormProps) => {
     } = authFormConfig;
 
     const dispatch = useDispatch();
-    const { isLoading, error, authData } = useSelector(getLoginFormState);
+    const authData = useSelector(getLoginAuthData);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
 
     const {
         register,
@@ -74,15 +86,23 @@ export const AuthForm = (props: AuthFormProps) => {
         </Button>
     );
     return (
-        <Form
-            className={classNames(cls.AuthForm, {}, [className])}
-            formTitle={t(formTitle)}
-            fields={fields}
-            footer={footer}
-            onSubmit={handleSubmit(handleLogin)}
-            formError={error}
-            register={register}
-            errors={errors}
-        />
+        <DynamicModuleLoader
+            reducers={initialReducers}
+            removeAfterUnmount
+        >
+            <Form
+                className={classNames(cls.AuthForm, {}, [className])}
+                formTitle={t(formTitle)}
+                fields={fields}
+                footer={footer}
+                onSubmit={handleSubmit(handleLogin)}
+                formError={error}
+                register={register}
+                errors={errors}
+            />
+        </DynamicModuleLoader>
+
     );
 };
+
+export default AuthForm;
