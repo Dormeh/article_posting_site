@@ -9,14 +9,16 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { loginByUsername } from '../../model/setvices/loginByUsername/loginByUsername';
+import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { LoginAuthData } from '../../model/types/loginSchema';
 import { authFormConfig } from './config';
 import cls from './AuthForm.module.scss';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading';
-import { getLoginError } from '../../model/selectors/getLoginError';
-import { getLoginAuthData } from '../../model/selectors/getLoginAuthData';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import {
+    getLoginAuthData,
+} from '../../model/selectors/getLoginAuthData/getLoginAuthData.test/getLoginAuthData';
 
 export interface AuthFormProps {
     formClose?: () => void;

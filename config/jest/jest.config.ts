@@ -6,6 +6,9 @@
 import path from 'path';
 
 export default {
+    globals: {
+        __IS_DEV__: true,
+    },
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: [
@@ -31,9 +34,6 @@ export default {
     ],
     rootDir: '../../',
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTest.ts'],
-    globals: {
-        __IS_DEV__: true,
-    },
 
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
