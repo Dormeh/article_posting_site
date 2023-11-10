@@ -1,9 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import React, {
-    InputHTMLAttributes, memo, useState,
-} from 'react';
+import React, { InputHTMLAttributes, memo, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { IFormInputs, IFormValue } from 'shared/ui/Form/Form';
 import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
 import { useTranslation } from 'react-i18next';
 import { FieldValues } from 'react-hook-form/dist/types/fields';

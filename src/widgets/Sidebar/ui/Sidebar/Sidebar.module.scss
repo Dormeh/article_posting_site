@@ -12,26 +12,6 @@
   flex-direction: column;
 }
 
-.link {
-  &:not(:first-child) {
-    margin-top: 10px;
-  }
-
-  display: flex;
-  align-items: center;
-  height: 25px; // TODO проверить необходимость!
-}
-
-.link-text {
-  padding-left: 30px;
-  opacity: 1;
-  transition: opacity 0.2s;
-}
-
-.icon {
-  position: absolute;
-}
-
 .switchers {
   display: flex;
   position: absolute;
@@ -45,10 +25,6 @@
 
   .switchers {
     flex-direction: column;
-  }
-
-  .link-text {
-    opacity: 0;
   }
 }
 

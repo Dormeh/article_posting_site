@@ -1,0 +1,23 @@
+.link {
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
+
+  display: flex;
+  align-items: center;
+  height: 25px; // TODO проверить необходимость!
+}
+
+.link-text {
+  padding-left: 30px;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.collapsed.link-text {
+  opacity: 0;
+}
+
+.icon {
+  position: absolute;
+}

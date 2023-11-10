@@ -1,4 +1,5 @@
 {
+  "PROFILE PAGE": "PROFILE PAGE",
   "throw error": "throw error",
   "Авторизация": "Authorization",
   "Войти": "Login",
@@ -12,6 +13,7 @@
   "Пароль": "Password",
   "Перевод": "Translate",
   "Произошла непредвиденная ошибка": "An unexpected error occurred",
+  "Профиль": "Профиль",
   "Свернуть": "Collapse",
   "Страница не найдена": "Page not found",
   "Тестовый перевод": "Test translation",
