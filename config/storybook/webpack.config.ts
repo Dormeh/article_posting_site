@@ -10,7 +10,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
-    // установить приоретет поиска модуля, ставим путь до компонентов в начало
+    // установить приоритет поиска модуля, ставим путь до компонентов в начало
     config.resolve.modules.unshift(paths.src);
     config.resolve.extensions.push('.ts', '.tsx');
 
@@ -33,7 +33,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
     config.plugins.push(
         new DefinePlugin({
-            __IS_DEV__: true,
+            __IS_DEV__: JSON.stringify(true),
+            __API__: JSON.stringify('http://localhost:8000'),
         }),
     );
 
