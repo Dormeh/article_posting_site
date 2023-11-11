@@ -19,13 +19,24 @@ export const Primary = Template.bind({});
 Primary.args = {
     focus: true,
 };
+Primary.decorators = [StoreDecorator({
+    loginForm: {
+        authData: {},
+    },
 
+})];
 export const Dark = Template.bind({});
+
 Dark.args = {
     focus: true,
 };
-
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        loginForm: {
+            authData: {},
+        },
+    })];
 
 export const PrimaryError = Template.bind({});
 PrimaryError.args = {
