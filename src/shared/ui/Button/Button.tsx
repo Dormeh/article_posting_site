@@ -40,9 +40,9 @@ export const Button = memo((props: ButtonProps) => {
 
     const additionalClasses = [
         className,
-        cls[theme],
+        theme && cls[theme],
         cls[size],
-        cls[design],
+        design && cls[design],
     ];
 
     return (

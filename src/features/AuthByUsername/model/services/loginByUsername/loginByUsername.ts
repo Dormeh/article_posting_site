@@ -16,12 +16,12 @@ export const loginByUsername = createAsyncThunk<User, LoginAuthData, ThunkConfig
 
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(response.data));
             dispatch(userActions.setAuthData(response.data));
-            extra.navigate(RouterPath.profile);
+            extra.navigate?.(RouterPath.profile);
 
             return response.data;
         } catch (e) {
             if (__IS_DEV__) console.log(e);
-            return rejectWithValue(e.message || 'Ошибка авторизации');
+            return rejectWithValue(e instanceof Error ? e.message : 'Ошибка авторизации');
         }
     },
 );

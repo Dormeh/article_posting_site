@@ -34,11 +34,11 @@ interface IFormPros {
     formTitle?: string
     fields: FormConfigType[]
     footer?: ReactNode
-    onSubmit?: (data: FieldValues) => void
+    onSubmit?: (e?: React.BaseSyntheticEvent) => Promise<void>
     formError?: string;
     register?: UseFormRegister<FieldValues>;
     errors?: FieldErrors
-
+    focus?: boolean;
 }
 
 export const Form: FC<IFormPros> = (props) => {

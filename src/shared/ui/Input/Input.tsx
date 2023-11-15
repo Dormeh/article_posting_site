@@ -56,7 +56,7 @@ export const Input = memo((props: InputProps) => {
             className={classNames(cls.label, {}, [className])}
             htmlFor={name}
         >
-            <span className={cls.placeholder}>{`${t(label)}> `}</span>
+            <span className={cls.placeholder}>{label && `${t(label)}> `}</span>
 
             <div className={cls.caretWrapper}>
                 <input

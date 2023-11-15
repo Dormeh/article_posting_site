@@ -13,8 +13,6 @@ export default {
     },
 } as ComponentMeta<typeof ProfilePage>;
 
-// @ts-ignore
-// TODO убрать ts-ignore когда найду причину ошибки для ...args
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
 
 export const Light = Template.bind({});

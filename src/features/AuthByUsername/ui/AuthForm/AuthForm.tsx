@@ -29,6 +29,8 @@ const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 
+type IAuthFormValues = LoginAuthData | FieldValues
+
 const AuthForm = memo((props: AuthFormProps) => {
     const {
         className,
@@ -52,7 +54,7 @@ const AuthForm = memo((props: AuthFormProps) => {
         formState: { errors },
         setFocus,
         clearErrors,
-    } = useForm<FieldValues>({
+    } = useForm<IAuthFormValues>({
         mode: 'onBlur',
         defaultValues: authData,
     });
@@ -66,8 +68,8 @@ const AuthForm = memo((props: AuthFormProps) => {
             dispatch(loginActions.errorReset());
         }
     }, [dispatch, error, focus]);
-    const handleLogin = useCallback(async (data: LoginAuthData): Promise<void> => {
-        const result = await dispatch(loginByUsername(data)).catch((error) => error);
+    const handleLogin = useCallback(async (data: IAuthFormValues): Promise<void> => {
+        const result = await dispatch(loginByUsername(data as LoginAuthData)).catch((error) => error);
 
         if (result.meta.requestStatus === 'fulfilled') {
             dispatch(loginActions.setAuthData(data));
