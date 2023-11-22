@@ -1,4 +1,5 @@
-import { ValidationType } from 'shared/config/validation/validation';
+import { ValidationType } from 'shared/ui/Form/validation/validation';
+import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
 
 export const authFormFields = [
     {
@@ -7,6 +8,7 @@ export const authFormFields = [
         pattern: ValidationType.Login,
         required: true,
         type: 'text',
+        Component: formChildNodes.Input,
     },
     {
         name: 'password',
@@ -14,6 +16,7 @@ export const authFormFields = [
         pattern: ValidationType.Password,
         required: true,
         type: 'password',
+        Component: formChildNodes.Input,
     },
 ];
 

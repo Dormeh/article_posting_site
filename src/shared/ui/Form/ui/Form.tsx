@@ -1,7 +1,6 @@
-import React, { FC, ReactNode } from 'react';
+import { ElementType, FC, ReactNode } from 'react';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
-import { Input } from 'shared/ui/Input/Input';
-import { ValidationType } from 'shared/config/validation/validation';
+import { ValidationType } from 'shared/ui/Form/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
@@ -18,10 +17,11 @@ export interface FormConfigType {
     name: string;
     label: string;
     pattern?: ValidationType;
-    required: boolean;
+    required?: boolean;
     value?: string;
-    type: string;
+    type?: string;
     placeholder?: string;
+    Component: ElementType
 }
 
 export interface LoginFormParams extends FieldValues {
@@ -67,13 +67,13 @@ export const Form: FC<IFormPros> = (props) => {
             >
                 {fields && fields
                     .map(
-                        ({ name, ...otherProps }) => (
-                            <Input
-                                key={`input-${name}`}
-                                register={register}
+                        ({ Component, name, ...otherProps }) => (
+                            <Component
+                                key={name}
                                 error={!!errors?.[name]?.message}
                                 errorMessage={errors?.[name]?.message?.toString()}
                                 name={name}
+                                register={register}
                                 {...otherProps}
                             />
                         ),

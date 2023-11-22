@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Form } from 'shared/ui/Form/Form';
+import { Form } from 'shared/ui/Form/ui/Form';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { ValidationType } from 'shared/config/validation/validation';
+import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
 
 export default {
     title: 'shared/Form',
@@ -34,12 +34,14 @@ Primary.args = {
             label: 'test',
             required: true,
             type: 'text',
+            Component: formChildNodes.Input,
         },
         {
             name: 'password',
             label: 'test',
             required: true,
             type: 'password',
+            Component: formChildNodes.Input,
         },
     ],
 };

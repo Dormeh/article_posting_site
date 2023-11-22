@@ -4,6 +4,7 @@ export enum ValidationType {
     Email = 'email',
     Phone = 'phone',
     Name = 'name',
+    Age = 'age',
 }
 // TODO добавить переводы для валидации
 export const ValidationPattern = {
@@ -29,5 +30,9 @@ export const ValidationPattern = {
     phone: {
         value: /^[\d|+][\d]{10,15}$/i,
         message: '10-15 цифр, может начинаться с плюса',
+    },
+    age: {
+        value: /^\d{1,110}$/i,
+        message: 'только цифры, не больше 110',
     },
 };

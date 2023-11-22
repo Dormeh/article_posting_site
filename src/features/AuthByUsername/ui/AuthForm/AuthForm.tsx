@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Form } from 'shared/ui/Form/Form';
+import { Form } from 'shared/ui/Form/ui/Form';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ import { loginByUsername } from 'features/AuthByUsername/model/services/loginByU
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { LoginAuthData } from '../../model/types/loginSchema';
-import { authFormConfig } from './config';
+import { authFormConfig } from '../../model/config';
 import cls from './AuthForm.module.scss';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
