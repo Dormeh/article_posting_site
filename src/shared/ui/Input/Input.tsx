@@ -45,7 +45,9 @@ export const Input = (props: InputProps) => {
     const [caretPosition, setCaretPosition] = useState(0);
 
     const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setCaretPosition(e.target.selectionStart || 0);
+        if (type === 'number') {
+            setCaretPosition(e.target.selectionStart || e.target.value.length);
+        } else setCaretPosition(e.target.selectionStart || 0);
     };
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCaretPosition(e.target.value.length);

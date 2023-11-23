@@ -45,6 +45,12 @@ Outline.args = {
     children: 'Text',
     theme: ButtonTheme.OUTLINE,
 };
+
+export const OutlineWarn = Template.bind({});
+Outline.args = {
+    children: 'Text',
+    theme: ButtonTheme.OUTLINE_RED,
+};
 export const OutlineDisable = Template.bind({});
 OutlineDisable.args = {
     children: 'Text',

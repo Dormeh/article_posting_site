@@ -1,3 +1,36 @@
 .ProfileCard {
+  padding: 20px;
+  border: 2px solid var(--inverted-bg-color);
+}
+
+.loading,
+.error {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 300px;
+}
+
+.readOnly {
+  pointer-events: none;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.buttonBox {
+  display: flex;
+  gap: 20px;
+}
+
+.avatarWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.editing {
+  border: 2px solid var(--inverted-primary-color);
 }

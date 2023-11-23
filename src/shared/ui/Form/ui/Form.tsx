@@ -1,5 +1,5 @@
 import { ElementType, FC, ReactNode } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { Control, FieldValues, UseFormRegister } from 'react-hook-form';
 import { ValidationType } from 'shared/ui/Form/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
@@ -39,6 +39,7 @@ interface IFormPros {
     register?: UseFormRegister<FieldValues>;
     errors?: FieldErrors
     focus?: boolean;
+    control?: Control;
 }
 
 export const Form: FC<IFormPros> = (props) => {
@@ -51,6 +52,7 @@ export const Form: FC<IFormPros> = (props) => {
         formError,
         register,
         errors,
+        control,
     } = props;
 
     const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -67,16 +69,20 @@ export const Form: FC<IFormPros> = (props) => {
             >
                 {fields && fields
                     .map(
-                        ({ Component, name, ...otherProps }) => (
-                            <Component
-                                key={name}
-                                error={!!errors?.[name]?.message}
-                                errorMessage={errors?.[name]?.message?.toString()}
-                                name={name}
-                                register={register}
-                                {...otherProps}
-                            />
-                        ),
+                        ({ Component, name, ...rest }) => {
+                            console.log('control', control);
+                            return (
+                                <Component
+                                    key={name}
+                                    error={!!errors?.[name]?.message}
+                                    errorMessage={errors?.[name]?.message?.toString()}
+                                    name={name}
+                                    register={register}
+                                    control={control}
+                                    {...rest}
+                                />
+                            );
+                        },
                     )}
                 {footer}
             </form>

@@ -6,7 +6,7 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 interface ProfilePageProps {
     className?: string;
@@ -23,10 +23,14 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         dispatch(fetchProfileData());
     }, [dispatch]);
 
+    const resetProfile = useCallback((fn: VoidFunction) => {
+        fn();
+    }, []);
+
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
-                <ProfileCard />
+                <ProfileCard customFunc={resetProfile} />
             </div>
         </DynamicModuleLoader>
 

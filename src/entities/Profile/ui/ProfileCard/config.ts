@@ -1,5 +1,7 @@
 import { ValidationType } from 'shared/ui/Form/validation/validation';
 import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
+import { CurrencySelect } from 'entities/Currency/ui/CurrencySelect';
+import { CountrySelect } from 'entities/Country/ui/CountrySelect';
 
 export const profileConfig = [
     {
@@ -45,12 +47,12 @@ export const profileConfig = [
     {
         name: 'currency',
         label: 'Валюта',
-        Component: formChildNodes.Select,
+        Component: CurrencySelect,
     },
     {
         name: 'country',
         label: 'Страна',
-        Component: formChildNodes.Select,
+        Component: CountrySelect,
     },
     {
         name: 'city',
