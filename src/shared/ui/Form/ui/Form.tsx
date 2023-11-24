@@ -1,9 +1,13 @@
 import { ElementType, FC, ReactNode } from 'react';
-import { Control, FieldValues, UseFormRegister } from 'react-hook-form';
+import {
+    Control, FieldValues, UseFormHandleSubmit, UseFormRegister,
+} from 'react-hook-form';
 import { ValidationType } from 'shared/ui/Form/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Profile } from 'entities/Profile';
+import { User } from 'entities/User';
 import cls from './Form.module.scss';
 
 export interface IFormValue { // TODO протестировать
@@ -36,7 +40,6 @@ interface IFormPros {
     footer?: ReactNode
     onSubmit?: (e?: React.BaseSyntheticEvent) => Promise<void>
     formError?: string;
-    register?: UseFormRegister<FieldValues>;
     errors?: FieldErrors
     focus?: boolean;
     control?: Control;
@@ -51,14 +54,13 @@ export const Form: FC<IFormPros> = (props) => {
         onSubmit,
         className,
         formError,
-        register,
         errors,
         control,
         readonly,
     } = props;
 
     const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
-        event.preventDefault(); // для тестирования в сторибуке и использования без react hook form
+        event.preventDefault();// для тестирования в сторибуке и использования без react hook form
         onSubmit?.(event);
     };
 
@@ -77,7 +79,7 @@ export const Form: FC<IFormPros> = (props) => {
                                 error={!!errors?.[name]?.message}
                                 errorMessage={errors?.[name]?.message?.toString()}
                                 name={name}
-                                register={register}
+                                register={control?.register}
                                 control={control}
                                 readonly={readonly}
                                 {...rest}

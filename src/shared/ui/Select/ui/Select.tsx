@@ -60,11 +60,9 @@ export const Select = (props: SelectProps) => {
                         control={control}
                         name={name}
                         rules={ruleOptions}
-                        render={({ field: { name, value, onChange }, fieldState: { error } }) => (
+                        render={({ field }) => (
                             <ReactSelect
-                                name={name}
-                                value={getValue(value)}
-                                onChange={onChange}
+                                {...field}
                                 classNamePrefix="Select"
                                 options={options}
                                 isDisabled={readonly}

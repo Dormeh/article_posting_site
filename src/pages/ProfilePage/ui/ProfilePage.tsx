@@ -1,12 +1,12 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useCallback, useEffect } from 'react';
+import { ProfileForm, fetchProfileData, profileReducer } from 'features/ProfileFormEdit';
 
 interface ProfilePageProps {
     className?: string;
@@ -23,14 +23,10 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         dispatch(fetchProfileData());
     }, [dispatch]);
 
-    const resetProfile = useCallback((fn: VoidFunction) => {
-        fn();
-    }, []);
-
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
-                <ProfileCard customFunc={resetProfile} />
+                <ProfileForm />
             </div>
         </DynamicModuleLoader>
 

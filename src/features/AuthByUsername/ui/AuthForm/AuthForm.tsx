@@ -49,7 +49,7 @@ const AuthForm = memo((props: AuthFormProps) => {
     const error = useSelector(getLoginError);
 
     const {
-        register,
+        control,
         handleSubmit,
         formState: { errors },
         setFocus,
@@ -101,7 +101,7 @@ const AuthForm = memo((props: AuthFormProps) => {
                 footer={footer}
                 onSubmit={handleSubmit(handleLogin)}
                 formError={error}
-                register={register}
+                control={control}
                 errors={errors}
             />
         </DynamicModuleLoader>

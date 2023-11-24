@@ -1,13 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Profile } from '../types/profile';
+import { Profile } from 'entities/Profile';
+import { LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
 
 export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
-    'profile/fetchProfileData',
+    'profileFormEdit/fetchProfileData',
     async (_, thunkAPI) => {
         const { rejectWithValue, extra, dispatch } = thunkAPI;
         try {
-            const response = await extra.api.get<Profile>('/profile');
+            const response = await extra.api.get<Profile>('/profile', {
+                headers: { authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '' },
+            });
 
             if (!response.data) throw new Error('Ошибка получения данных');
 

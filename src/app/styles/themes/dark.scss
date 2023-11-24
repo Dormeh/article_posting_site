@@ -6,12 +6,9 @@
   --bg-color: #090949;
   --inverted-bg-color: #eae8ea;
   --primary-color: #04ff04;
-  --secondary-color: #009c00;
+  --secondary-color: #02c002;
   --inverted-primary-color: #0452ff;
   --inverted-secondary-color: #0234d4;
   --primary-color-rgb: #{hex-to-rgb(#04ff04)};
-  --secondary-color-rgb: #{hex-to-rgb(#009c00)};
-  --l: 50%;
-  --primary-lighter: hsl(var(--primary-color), 0.5);
-  --primary-lightest: hsl(var(--primary-color), calc(var(--l) + 30%));
+  --secondary-color-rgb: #{hex-to-rgb(#02b902)};
 }
