@@ -30,8 +30,8 @@
     "lastname": "Ульби",
     "age": "20",
     "currency": {
-      "value": "EUR",
-      "label": "EUR"
+      "value": "RUB",
+      "label": "RUB"
     },
     "country": {
       "value": "Russia",

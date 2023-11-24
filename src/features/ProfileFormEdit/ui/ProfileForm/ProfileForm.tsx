@@ -27,11 +27,9 @@ export const ProfileForm = () => {
         formState: { errors, isDirty },
         setFocus,
         clearErrors,
-        setValue,
         reset,
         control,
         getValues,
-        getFieldState,
     } = useForm<FieldValues>({
         values: data,
         mode: 'onChange',
@@ -46,13 +44,12 @@ export const ProfileForm = () => {
     }, []);
     const errorState = !!Object.entries(errors).length;
     const updateProfile = useCallback(async (data: FieldValues):Promise<void> => {
-        if (errorState) return;
         const result = await dispatch(updateProfileData(getValues() as Profile))
             .catch((error) => error);
         if (result.meta.requestStatus === 'fulfilled') {
             setReadonly(true);
         } else if (__IS_DEV__) console.log('ОШИБКА ОБНОВЛЕНИЯ', result.error);
-    }, [dispatch, errorState, getValues]);
+    }, [dispatch, getValues]);
 
     return (
         <>
@@ -78,7 +75,7 @@ export const ProfileForm = () => {
                                 </Button>
                                 <Button
                                     theme={ButtonTheme.OUTLINE}
-                                    onClick={updateProfile}
+                                    onClick={handleSubmit(updateProfile)}
                                     disabled={errorState}
                                 >
                                     {t('Сохранить')}

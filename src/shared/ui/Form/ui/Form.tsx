@@ -38,7 +38,6 @@ interface IFormPros {
     formTitle?: string
     fields: FormConfigType[]
     footer?: ReactNode
-    onSubmit?: (e?: React.BaseSyntheticEvent) => Promise<void>
     formError?: string;
     errors?: FieldErrors
     focus?: boolean;
@@ -51,7 +50,6 @@ export const Form: FC<IFormPros> = (props) => {
         formTitle,
         fields,
         footer,
-        onSubmit,
         className,
         formError,
         errors,
@@ -60,8 +58,7 @@ export const Form: FC<IFormPros> = (props) => {
     } = props;
 
     const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
-        event.preventDefault();// для тестирования в сторибуке и использования без react hook form
-        onSubmit?.(event);
+        event.preventDefault();// для тестирования в Storybook и использования без react hook form
     };
 
     return (

@@ -58,6 +58,8 @@ const AuthForm = memo((props: AuthFormProps) => {
         mode: 'onBlur',
         defaultValues: authData,
     });
+    const errorState = !!Object.entries(errors).length;
+
     useEffect(() => {
         if (focus) setFocus('username');
         clearErrors();
@@ -84,7 +86,8 @@ const AuthForm = memo((props: AuthFormProps) => {
             className={cls.authBtn}
             type="submit"
             theme={ButtonTheme.OUTLINE}
-            disabled={isLoading}
+            disabled={isLoading || errorState}
+            onClick={handleSubmit(handleLogin)}
         >
             {t('Войти')}
         </Button>
@@ -99,7 +102,6 @@ const AuthForm = memo((props: AuthFormProps) => {
                 formTitle={t(formTitle)}
                 fields={fields}
                 footer={footer}
-                onSubmit={handleSubmit(handleLogin)}
                 formError={error}
                 control={control}
                 errors={errors}
