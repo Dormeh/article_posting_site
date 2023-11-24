@@ -15,7 +15,7 @@ import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/g
 export const ProfileForm = () => {
     const [readonly, setReadonly] = useState<boolean>(true);
     const dispatch = useAppDispatch();
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
 
     const data = useSelector(getProfileData);
     const error = useSelector(getProfileError);

@@ -16,7 +16,7 @@ const initialReducers: ReducersList = {
     profile: profileReducer,
 };
 const ProfilePage = ({ className }: ProfilePageProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
 
     const dispatch = useAppDispatch();
     useEffect(() => {

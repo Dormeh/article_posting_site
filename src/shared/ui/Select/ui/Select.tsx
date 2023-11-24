@@ -51,7 +51,7 @@ export const Select = (props: SelectProps) => {
                         htmlFor={name}
                         className="Select__label"
                     >
-                        <Text text={label} size={TextSize.S} />
+                        <Text text={t(label)} size={TextSize.S} />
                     </label>
                 )}
             { control

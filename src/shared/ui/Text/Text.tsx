@@ -28,12 +28,10 @@ export const Text = (props: TextProps) => {
 
     } = props;
 
-    const { t } = useTranslation();
-
     return (
         <div className={classNames(cls.Text, {}, [className, cls[theme]])}>
-            {title && <h3 className={cls.title}>{t(title)}</h3>}
-            {text && <p className={classNames(cls.text, {}, [cls[size]])}>{t(text)}</p>}
+            {title && <h3 className={cls.title}>{title}</h3>}
+            {text && <p className={classNames(cls.text, {}, [cls[size]])}>{text}</p>}
         </div>
     );
 };
