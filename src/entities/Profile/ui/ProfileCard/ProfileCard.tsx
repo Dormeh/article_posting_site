@@ -7,7 +7,8 @@ import { profileConfig } from 'entities/Profile/ui/ProfileCard/config';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Form } from 'shared/ui/Form/ui/Form';
 import { Loader } from 'shared/ui/Loader/Loader';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import cls from './ProfileCard.module.scss';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
@@ -36,9 +37,18 @@ export const ProfileCard = ({ className, customFunc }: ProfileCardProps) => {
     } = useForm<FieldValues>({
         values: data,
         mode: 'onBlur',
+
     });
 
-    const [readOnly, setReadOnly] = useState<boolean>(true);
+    const [readonly, setReadonly] = useState<boolean>(true);
+
+    const onEdit = useCallback(() => {
+        setReadonly(true);
+        customFunc?.(reset);
+    }, [customFunc, reset]);
+    const onCancelEdit = useCallback(() => {
+        setReadonly(false);
+    }, []);
 
     if (isLoading) {
         return (
@@ -59,14 +69,14 @@ export const ProfileCard = ({ className, customFunc }: ProfileCardProps) => {
     }
 
     return (
-        <div className={classNames(cls.ProfileCard, { [cls.editing]: !readOnly }, [className])}>
+        <div className={classNames(cls.ProfileCard, { [cls.editing]: !readonly }, [className])}>
             <Text className={cls.title} title={t('Профиль')} />
             <div className={cls.buttonBox}>
-                {readOnly
+                {readonly
                     ? (
                         <Button
                             theme={ButtonTheme.OUTLINE}
-                            onClick={() => setReadOnly(false)}
+                            onClick={onCancelEdit}
                         >
                             {t('Редактировать')}
                         </Button>
@@ -75,11 +85,7 @@ export const ProfileCard = ({ className, customFunc }: ProfileCardProps) => {
                         <>
                             <Button
                                 theme={ButtonTheme.OUTLINE_RED}
-                                onClick={() => {
-                                    setReadOnly(true);
-                                    // reset();
-                                    customFunc?.(reset);
-                                }}
+                                onClick={onEdit}
                             >
                                 {t('Отменить изменения')}
                             </Button>
@@ -91,15 +97,20 @@ export const ProfileCard = ({ className, customFunc }: ProfileCardProps) => {
                         </>
                     )}
             </div>
+            {data?.avatar && (
+                <div className={cls.avatarWrapper}>
+                    <Avatar src={data?.avatar} />
+                </div>
+            )}
             <Form
-                className={classNames(cls.profileForm, { [cls.readOnly]: readOnly }, [className])}
+                className={classNames(cls.profileForm, {}, [className])}
                 fields={profileConfig}
                 formError={error}
                 register={register}
                 errors={errors}
                 control={control}
+                readonly={readonly}
             />
-
         </div>
     );
 };

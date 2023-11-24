@@ -5,6 +5,7 @@ import './Select.scss';
 import { Control, Controller } from 'react-hook-form';
 import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/validation';
 import { useCallback } from 'react';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { CustomSelectProps, IOption } from '../model/types/types';
 
 export interface SelectProps extends CustomSelectProps {
@@ -15,6 +16,8 @@ export interface SelectProps extends CustomSelectProps {
     pattern?: ValidationType;
     placeholder?: string;
     options: IOption[];
+    readonly?: boolean;
+    label?: string
 }
 
 export const Select = (props: SelectProps) => {
@@ -25,42 +28,59 @@ export const Select = (props: SelectProps) => {
         required,
         pattern,
         options,
+        readonly,
+        label,
         ...otherProps
     } = props;
+
     const { t } = useTranslation();
+
     const ruleOptions = {
         ...(required && { required: 'Поле не должно быть пустым' }),
         ...(pattern && { pattern: ValidationPattern[pattern] }),
     };
-
     const getValue = useCallback((value: string) => options.find(
         (option) => option.value === value,
     ), [options]);
+
     return (
-        control
-            ? (
-                <Controller
-                    control={control}
-                    name={name}
-                    rules={ruleOptions}
-                    render={({ field: { name, value, onChange }, fieldState: { error } }) => (
-                        <ReactSelect
-                            onChange={onChange}
-                            value={getValue(value)}
-                            className={classNames('Select', {}, [className])}
-                            classNamePrefix="Select"
-                            options={options}
-                            {...otherProps}
-                        />
-                    )}
-                />
-            )
-            : (
-                <ReactSelect
-                    className={classNames('Select', {}, [className])}
-                    classNamePrefix="Select"
-                    {...otherProps}
-                />
-            )
+        <div className={classNames('Select', {}, [className])}>
+            {label
+                && (
+                    <label
+                        htmlFor={name}
+                        className="Select__label"
+                    >
+                        <Text text={label} size={TextSize.S} />
+                    </label>
+                )}
+            { control
+                ? (
+                    <Controller
+                        control={control}
+                        name={name}
+                        rules={ruleOptions}
+                        render={({ field: { name, value, onChange }, fieldState: { error } }) => (
+                            <ReactSelect
+                                name={name}
+                                value={getValue(value)}
+                                onChange={onChange}
+                                classNamePrefix="Select"
+                                options={options}
+                                isDisabled={readonly}
+                                {...otherProps}
+                            />
+                        )}
+                    />
+                )
+                : (
+                    <ReactSelect
+                        classNamePrefix="Select"
+                        isDisabled={readonly}
+                        options={options}
+                        {...otherProps}
+                    />
+                )}
+        </div>
     );
 };

@@ -5,17 +5,18 @@ import { Control } from 'react-hook-form';
 import { FC } from 'react';
 
 interface CurrencySelectProps {
-    control?: Control;
+    name?: string;
+    className?: string;
+    label?: string
 }
-export const CurrencySelect:FC<CurrencySelectProps> = ({ control }) => {
+export const CurrencySelect:FC<CurrencySelectProps> = ({ name = 'currency', ...otherProps }) => {
     const { t } = useTranslation();
-
     return (
         <Select
-            control={control}
-            name="currency"
+            name={name}
             options={currencyOptions}
             placeholder={t('Выберите валюту')}
+            {...otherProps}
         />
     );
 };

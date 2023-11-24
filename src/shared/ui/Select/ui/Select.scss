@@ -1,4 +1,6 @@
 .Select {
+  position: relative;
+
   & *,
   & &__placeholder,
   & &__control,
@@ -10,6 +12,7 @@
   }
 
   & &__control {
+    cursor: pointer;
     border-radius: 0;
     border: 2px solid var(--inverted-secondary-color);
 
@@ -38,6 +41,8 @@
   }
 
   & &__option {
+    cursor: pointer;
+
     &--is-focused {
       background: rgba(var(--secondary-color-rgb), 0.25);
     }
@@ -45,5 +50,15 @@
     &--is-selected {
       background: rgba(var(--primary-color-rgb), 0.5);
     }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: -45%;
+  }
+
+  &.storybook {
+    top: 13px;
   }
 }

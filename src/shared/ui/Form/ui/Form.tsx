@@ -40,6 +40,7 @@ interface IFormPros {
     errors?: FieldErrors
     focus?: boolean;
     control?: Control;
+    readonly?: boolean;
 }
 
 export const Form: FC<IFormPros> = (props) => {
@@ -53,6 +54,7 @@ export const Form: FC<IFormPros> = (props) => {
         register,
         errors,
         control,
+        readonly,
     } = props;
 
     const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -69,20 +71,18 @@ export const Form: FC<IFormPros> = (props) => {
             >
                 {fields && fields
                     .map(
-                        ({ Component, name, ...rest }) => {
-                            console.log('control', control);
-                            return (
-                                <Component
-                                    key={name}
-                                    error={!!errors?.[name]?.message}
-                                    errorMessage={errors?.[name]?.message?.toString()}
-                                    name={name}
-                                    register={register}
-                                    control={control}
-                                    {...rest}
-                                />
-                            );
-                        },
+                        ({ Component, name, ...rest }) => (
+                            <Component
+                                key={name}
+                                error={!!errors?.[name]?.message}
+                                errorMessage={errors?.[name]?.message?.toString()}
+                                name={name}
+                                register={register}
+                                control={control}
+                                readonly={readonly}
+                                {...rest}
+                            />
+                        ),
                     )}
                 {footer}
             </form>

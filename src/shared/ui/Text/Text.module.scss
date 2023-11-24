@@ -4,8 +4,19 @@
 }
 
 .text {
-  font: var(--font-m);
   color: var(--secondary-color);
+
+  &.sizeM {
+    font: var(--font-m);
+  }
+
+  &.sizeS {
+    font: var(--font-s);
+  }
+
+  &.sizeL {
+    font: var(--font-l);
+  }
 }
 
 .error {

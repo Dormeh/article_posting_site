@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
 import cls from './Input.module.scss';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly'> {
     name: string;
     register?: UseFormRegister<FieldValues>;
     label?: string;
@@ -17,6 +17,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string;
     className?: string;
     type: string;
+    readonly?: boolean;
 }
 
 export const Input = (props: InputProps) => {
@@ -32,6 +33,7 @@ export const Input = (props: InputProps) => {
         className,
         type,
         maxLength = 20,
+        readonly,
         ...otherProps
     } = props;
 
@@ -68,15 +70,18 @@ export const Input = (props: InputProps) => {
                     className={cls.input}
                     onSelect={onSelect}
                     maxLength={maxLength}
-                    {...otherProps}
                     onInput={onInput}
+                    readOnly={readonly}
+                    {...otherProps}
                 />
-                <span
-                    className={cls.caret}
-                    style={{
-                        left: `${caretPosition * 8.8}px`,
-                    }}
-                />
+                {!readonly && (
+                    <span
+                        className={cls.caret}
+                        style={{
+                            left: `${caretPosition * 8.8}px`,
+                        }}
+                    />
+                )}
 
                 {error && (
                     <p

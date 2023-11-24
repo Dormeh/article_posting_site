@@ -70,10 +70,10 @@ export const profileConfig = [
         type: 'text',
         Component: formChildNodes.Input,
     },
-    {
-        name: 'avatar',
-        label: 'Аватар',
-        type: 'text',
-        Component: formChildNodes.Input,
-    },
+    // {
+    //     name: 'avatar',
+    //     label: 'Аватар',
+    //     type: 'text',
+    //     Component: formChildNodes.Input,
+    // },
 ];

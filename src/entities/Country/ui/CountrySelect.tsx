@@ -5,17 +5,18 @@ import { FC } from 'react';
 import { countryOptions } from '../model/config/options';
 
 interface CountrySelectProps {
-    control?: Control;
+    name?: string
+    className?: string;
+    label?: string
 }
-export const CountrySelect:FC<CountrySelectProps> = ({ control }) => {
+export const CountrySelect:FC<CountrySelectProps> = ({ name = 'country', ...otherProps }) => {
     const { t } = useTranslation();
-
     return (
         <Select
-            name="country"
-            control={control}
+            name={name}
             options={countryOptions}
             placeholder={t('Выберите страну')}
+            {...otherProps}
         />
     );
 };
