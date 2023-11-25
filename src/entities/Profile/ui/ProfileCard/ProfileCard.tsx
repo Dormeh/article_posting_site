@@ -49,7 +49,12 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
         );
     }
     return (
-        <div className={classNames(cls.ProfileCard, { [cls.editing]: !readonly }, [className])}>
+        <div className={classNames(
+            cls.ProfileCard,
+            { [cls.editing]: !readonly, [cls.readOnly]: readonly },
+            [className],
+        )}
+        >
 
             {data?.avatar && (
                 <div className={cls.avatarWrapper}>
