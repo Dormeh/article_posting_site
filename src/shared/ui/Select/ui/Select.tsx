@@ -1,10 +1,10 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 import ReactSelect from 'react-select';
+import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
 import './Select.scss';
 import { Control, Controller } from 'react-hook-form';
 import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/validation';
-import { useCallback } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { CustomSelectProps, IOption } from '../model/types/types';
 
@@ -35,13 +35,10 @@ export const Select = (props: SelectProps) => {
 
     const { t } = useTranslation();
 
-    const ruleOptions = {
+    const ruleOptions = useMemo(() => ({
         ...(required && { required: 'Поле не должно быть пустым' }),
         ...(pattern && { pattern: ValidationPattern[pattern] }),
-    };
-    const getValue = useCallback((value: string) => options.find(
-        (option) => option.value === value,
-    ), [options]);
+    }), [pattern, required]);
 
     return (
         <div className={classNames('Select', {}, [className])}>
@@ -63,6 +60,7 @@ export const Select = (props: SelectProps) => {
                         render={({ field }) => (
                             <ReactSelect
                                 {...field}
+                                id={name}
                                 classNamePrefix="Select"
                                 options={options}
                                 isDisabled={readonly}
@@ -73,6 +71,7 @@ export const Select = (props: SelectProps) => {
                 )
                 : (
                     <ReactSelect
+                        id={name}
                         classNamePrefix="Select"
                         isDisabled={readonly}
                         options={options}
