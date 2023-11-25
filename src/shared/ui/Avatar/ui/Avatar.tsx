@@ -13,8 +13,8 @@ export const Avatar = ({
     className, src, alt, size,
 }: AvatarProps) => {
     const styles = useMemo<CSSProperties>(() => ({
-        width: 150 || size,
-        height: 150 || size,
+        width: size || 150,
+        height: size || 150,
     }), [size]);
 
     return (

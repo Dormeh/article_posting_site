@@ -1,6 +1,6 @@
 import { FieldValues, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -22,19 +22,21 @@ export const ProfileForm = () => {
     const isLoading = useSelector(getProfileIsLoading);
 
     const {
-        register,
         handleSubmit,
-        formState: { errors, isDirty },
+        formState: { errors },
         setFocus,
-        clearErrors,
         reset,
         control,
         getValues,
     } = useForm<FieldValues>({
         values: data,
         mode: 'onChange',
-
     });
+
+    useEffect(() => {
+        if (!readonly) setFocus('first');
+    }, [readonly, setFocus]);
+
     const onEdit = useCallback(() => {
         setReadonly(true);
         reset();

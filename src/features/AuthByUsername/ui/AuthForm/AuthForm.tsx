@@ -80,7 +80,7 @@ const AuthForm = memo((props: AuthFormProps) => {
         } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.error);
     }, [dispatch, formClose]);
 
-    const [t] = useTranslation();
+    const { t } = useTranslation();
     const footer = (
         <Button
             className={cls.authBtn}
