@@ -41,15 +41,10 @@ export const Select = (props: SelectProps) => {
     }), [pattern, required]);
 
     return (
-        <div className={classNames('Select', {}, [className])}>
+        <label htmlFor={name} className={classNames('Select', {}, [className])}>
             {label
                 && (
-                    <label
-                        htmlFor={name}
-                        className="Select__label"
-                    >
-                        <Text text={t(label)} size={TextSize.S} />
-                    </label>
+                    <Text className="Select__label" text={t(label)} size={TextSize.S} />
                 )}
             { control
                 ? (
@@ -60,7 +55,6 @@ export const Select = (props: SelectProps) => {
                         render={({ field }) => (
                             <ReactSelect
                                 {...field}
-                                id={name}
                                 classNamePrefix="Select"
                                 options={options}
                                 isDisabled={readonly}
@@ -71,13 +65,13 @@ export const Select = (props: SelectProps) => {
                 )
                 : (
                     <ReactSelect
-                        id={name}
+                        name={name}
                         classNamePrefix="Select"
                         isDisabled={readonly}
                         options={options}
                         {...otherProps}
                     />
                 )}
-        </div>
+        </label>
     );
 };
