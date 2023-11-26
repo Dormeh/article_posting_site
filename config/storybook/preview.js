@@ -6,6 +6,7 @@ import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorat
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
+    layout: 'fullscreen',
     controls: {
         matchers: {
             color: /(background|color)$/i,

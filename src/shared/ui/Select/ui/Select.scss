@@ -1,6 +1,5 @@
 .Select {
   position: relative;
-  padding-top: 10px;
 
   & *,
   & &__placeholder,
@@ -57,9 +56,10 @@
     position: absolute;
     left: 0;
     top: -20%;
+    transform: translateY(-50%);
   }
 
   &.storybook {
-    top: 13px;
+    top: 15px;
   }
 }

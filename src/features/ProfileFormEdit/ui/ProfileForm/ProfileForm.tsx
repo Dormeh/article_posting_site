@@ -23,7 +23,7 @@ export const ProfileForm = () => {
 
     const {
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isDirty, isValid },
         setFocus,
         reset,
         control,
@@ -44,7 +44,6 @@ export const ProfileForm = () => {
     const onCancelEdit = useCallback(() => {
         setReadonly(false);
     }, []);
-    const errorState = !!Object.entries(errors).length;
     const updateProfile = useCallback(async (data: FieldValues):Promise<void> => {
         const result = await dispatch(updateProfileData(getValues() as Profile))
             .catch((error) => error);
@@ -63,6 +62,7 @@ export const ProfileForm = () => {
                             <Button
                                 theme={ButtonTheme.OUTLINE}
                                 onClick={onCancelEdit}
+                                disabled={!data}
                             >
                                 {t('Редактировать')}
                             </Button>
@@ -78,7 +78,7 @@ export const ProfileForm = () => {
                                 <Button
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={handleSubmit(updateProfile)}
-                                    disabled={errorState}
+                                    disabled={!isValid || !isDirty}
                                 >
                                     {t('Сохранить')}
                                 </Button>
