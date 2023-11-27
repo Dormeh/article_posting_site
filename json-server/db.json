@@ -28,10 +28,10 @@
   "profile": {
     "first": "Тимур",
     "lastname": "Ульби",
-    "age": "20",
+    "age": "22",
     "currency": {
-      "value": "RUB",
-      "label": "RUB"
+      "value": "USD",
+      "label": "USD"
     },
     "country": {
       "value": "Russia",
@@ -39,6 +39,8 @@
     },
     "city": "Moscow",
     "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
+    "email": "adf@azdaf.ru",
+    "phone": "13131321321321"
   }
 }

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Control } from 'react-hook-form';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
@@ -19,6 +19,7 @@ interface ProfileCardProps {
     error?: string;
     isLoading?: boolean;
     errors?: FieldErrors
+    onClick?: () => void;
 }
 
 export const ProfileCard:FC<ProfileCardProps> = (props) => {
@@ -28,11 +29,12 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
         readonly,
         error,
         isLoading,
+        onClick,
         ...otherProps
     } = props;
     const { t } = useTranslation('profile');
 
-    if (error) {
+    if (error && !data) {
         return (
             <div className={classNames(cls.ProfileCard, {}, [cls.error])}>
                 <Text theme={TextTheme.ERROR} title={t('Произошла сетевая ошибка')} />
@@ -41,7 +43,7 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
             </div>
         );
     }
-    if (isLoading) {
+    if (isLoading && !data) {
         return (
             <div className={classNames(cls.ProfileCard, {}, [cls.loading])}>
                 <Loader />
@@ -49,11 +51,13 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
         );
     }
     return (
-        <div className={classNames(
-            cls.ProfileCard,
-            { [cls.editing]: !readonly, [cls.readOnly]: readonly },
-            [className],
-        )}
+        <div
+            className={classNames(
+                cls.ProfileCard,
+                { [cls.editing]: !readonly, [cls.readOnly]: readonly },
+                [className],
+            )}
+            onClick={onClick}
         >
 
             {data?.avatar && (

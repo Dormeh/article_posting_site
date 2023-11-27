@@ -47,14 +47,20 @@ export const Input = (props: InputProps) => {
     const [caretPosition, setCaretPosition] = useState(0);
 
     const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (type === 'number') {
-            setCaretPosition(e.target.selectionStart || e.target.value.length);
-        } else setCaretPosition(e.target.selectionStart || 0);
+        setCaretPosition(e.target.selectionStart || 0);
     };
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (type === 'tel') {
+            e.target.value = e.target.value.replace(/\D/, '');
+        }
         setCaretPosition(e.target.value.length);
     };
+    // const registerObj = register?.(name, options);
+    // const { onChange, ...rest } = registerObj || {};
 
+    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     onChange?.(e);
+    // };
     return (
         <label
             className={classNames(cls.label, {}, [className])}

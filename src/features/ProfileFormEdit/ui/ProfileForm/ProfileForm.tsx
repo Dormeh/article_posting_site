@@ -11,6 +11,7 @@ import { updateProfileData } from '../../model/services/updateProfileData';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { profileActions } from '../../model/slice/profileSlice';
 
 export const ProfileForm = () => {
     const [readonly, setReadonly] = useState<boolean>(true);
@@ -23,34 +24,43 @@ export const ProfileForm = () => {
 
     const {
         handleSubmit,
-        formState: { errors, isDirty, isValid },
+        formState: {
+            errors, isDirty, isValid, isSubmitting,
+        },
         setFocus,
         reset,
         control,
-        getValues,
     } = useForm<FieldValues>({
         values: data,
-        mode: 'onChange',
+        mode: 'all',
     });
 
+    console.log(errors, isValid);
     useEffect(() => {
         if (!readonly) setFocus('first');
     }, [readonly, setFocus]);
 
-    const onEdit = useCallback(() => {
+    const onCancelEdit = useCallback(() => {
         setReadonly(true);
         reset();
-    }, [reset]);
-    const onCancelEdit = useCallback(() => {
+        dispatch(profileActions.errorReset());
+    }, [dispatch, reset]);
+
+    const onEdit = useCallback(() => {
         setReadonly(false);
     }, []);
+
+    const onFormFocus = useCallback(() => {
+        dispatch(profileActions.errorReset());
+    }, [dispatch]);
+
     const updateProfile = useCallback(async (data: FieldValues):Promise<void> => {
-        const result = await dispatch(updateProfileData(getValues() as Profile))
+        const result = await dispatch(updateProfileData(data as Profile))
             .catch((error) => error);
         if (result.meta.requestStatus === 'fulfilled') {
             setReadonly(true);
         } else if (__IS_DEV__) console.log('ОШИБКА ОБНОВЛЕНИЯ', result.error);
-    }, [dispatch, getValues]);
+    }, [dispatch]);
 
     return (
         <>
@@ -61,7 +71,7 @@ export const ProfileForm = () => {
                         ? (
                             <Button
                                 theme={ButtonTheme.OUTLINE}
-                                onClick={onCancelEdit}
+                                onClick={onEdit}
                                 disabled={!data}
                             >
                                 {t('Редактировать')}
@@ -71,14 +81,14 @@ export const ProfileForm = () => {
                             <>
                                 <Button
                                     theme={ButtonTheme.OUTLINE_RED}
-                                    onClick={onEdit}
+                                    onClick={onCancelEdit}
                                 >
                                     {t('Отменить изменения')}
                                 </Button>
                                 <Button
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={handleSubmit(updateProfile)}
-                                    disabled={!isValid || !isDirty}
+                                    disabled={!isDirty || isSubmitting}
                                 >
                                     {t('Сохранить')}
                                 </Button>
@@ -87,6 +97,7 @@ export const ProfileForm = () => {
                 </div>
             </div>
             <ProfileCard
+                onClick={onFormFocus}
                 error={error}
                 data={data}
                 readonly={readonly}

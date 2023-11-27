@@ -12,7 +12,11 @@ const initialState: ProfileSchema = {
 export const profileSlice = createSlice({
     name: 'profileFormEdit',
     initialState,
-    reducers: {},
+    reducers: {
+        errorReset: (state) => {
+            state.error = undefined;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProfileData.pending, (state) => {

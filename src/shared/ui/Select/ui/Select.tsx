@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import ReactSelect from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -20,7 +20,7 @@ export interface SelectProps extends CustomSelectProps {
     label?: string
 }
 
-export const Select = (props: SelectProps) => {
+export const Select = memo((props: SelectProps) => {
     const {
         name,
         className,
@@ -74,4 +74,4 @@ export const Select = (props: SelectProps) => {
                 )}
         </label>
     );
-};
+});

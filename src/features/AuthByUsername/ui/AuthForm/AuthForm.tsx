@@ -51,14 +51,15 @@ const AuthForm = memo((props: AuthFormProps) => {
     const {
         control,
         handleSubmit,
-        formState: { errors },
+        formState: {
+            errors, isDirty, isValid, isSubmitting,
+        },
         setFocus,
         clearErrors,
     } = useForm<IAuthFormValues>({
-        mode: 'onBlur',
+        mode: 'onChange',
         defaultValues: authData,
     });
-    const errorState = !!Object.entries(errors).length;
 
     useEffect(() => {
         if (focus) setFocus('username');
@@ -86,7 +87,7 @@ const AuthForm = memo((props: AuthFormProps) => {
             className={cls.authBtn}
             type="submit"
             theme={ButtonTheme.OUTLINE}
-            disabled={isLoading || errorState}
+            disabled={!isValid || !isDirty || isSubmitting}
             onClick={handleSubmit(handleLogin)}
         >
             {t('Войти')}

@@ -1,4 +1,6 @@
-import { ElementType, FC, ReactNode } from 'react';
+import {
+    ElementType, FC, memo, ReactNode,
+} from 'react';
 import {
     Control, FieldValues, UseFormHandleSubmit, UseFormRegister,
 } from 'react-hook-form';
