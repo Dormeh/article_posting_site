@@ -29,7 +29,6 @@ Primary.args = {
     label: 'Select label text',
     name: 'test',
     options: selectOptions,
-    className: 'storybook',
 };
 
 export const Dark = Template.bind({});
@@ -37,7 +36,6 @@ Dark.args = {
     label: 'Select label text',
     name: 'test',
     options: selectOptions,
-    className: 'storybook',
 };
 
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
