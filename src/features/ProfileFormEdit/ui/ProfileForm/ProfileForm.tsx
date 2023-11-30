@@ -35,7 +35,6 @@ export const ProfileForm = () => {
         mode: 'all',
     });
 
-    console.log(errors, isValid);
     useEffect(() => {
         if (!readonly) setFocus('first');
     }, [readonly, setFocus]);
