@@ -1,15 +1,9 @@
-import {
-    ElementType, FC, memo, ReactNode,
-} from 'react';
-import {
-    Control, FieldValues, UseFormHandleSubmit, UseFormRegister,
-} from 'react-hook-form';
+import { ElementType, FC, ReactNode } from 'react';
+import { Control, FieldValues } from 'react-hook-form';
 import { ValidationType } from 'shared/ui/Form/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Profile } from 'entities/Profile';
-import { User } from 'entities/User';
 import cls from './Form.module.scss';
 
 export interface IFormValue { // TODO протестировать
@@ -39,6 +33,7 @@ interface IFormPros {
     className?: string
     formTitle?: string
     fields: FormConfigType[]
+    data?: FieldValues
     footer?: ReactNode
     formError?: string;
     errors?: FieldErrors
@@ -51,6 +46,7 @@ export const Form: FC<IFormPros> = (props) => {
     const {
         formTitle,
         fields,
+        data,
         footer,
         className,
         formError,
@@ -75,6 +71,7 @@ export const Form: FC<IFormPros> = (props) => {
                         ({ Component, name, ...rest }) => (
                             <Component
                                 key={name}
+                                defaultValue={!control ? data?.[name] : undefined}
                                 error={!!errors?.[name]?.message}
                                 errorMessage={errors?.[name]?.message?.toString()}
                                 name={name}

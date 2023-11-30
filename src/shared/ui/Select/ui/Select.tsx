@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import ReactSelect from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -18,6 +18,7 @@ export interface SelectProps extends CustomSelectProps {
     options: IOption[];
     readonly?: boolean;
     label?: string
+    defaultValue?: string
 }
 
 export const Select = memo((props: SelectProps) => {
@@ -30,6 +31,7 @@ export const Select = memo((props: SelectProps) => {
         options,
         readonly,
         label,
+        defaultValue,
         ...otherProps
     } = props;
 
@@ -39,6 +41,10 @@ export const Select = memo((props: SelectProps) => {
         ...(required && { required: 'Поле не должно быть пустым' }),
         ...(pattern && { pattern: ValidationPattern[pattern] }),
     }), [pattern, required]);
+
+    const getOption = useCallback((value: string | undefined) => options.find(
+        (option) => option.value === value,
+    ), [options]);
 
     return (
         <label htmlFor={name} className={classNames('Select', {}, [className])}>
@@ -52,13 +58,16 @@ export const Select = memo((props: SelectProps) => {
                         control={control}
                         name={name}
                         rules={ruleOptions}
-                        render={({ field }) => (
+                        render={({ field: { value, onChange, ...rest } }) => (
                             <ReactSelect
-                                {...field}
+                                value={getOption(value)}
+                                onChange={
+                                    (optionValue) => onChange(optionValue?.value)
+                                }
+                                {...rest}
                                 classNamePrefix="Select"
                                 options={options}
                                 isDisabled={readonly}
-                                {...otherProps}
                             />
                         )}
                     />
@@ -69,6 +78,7 @@ export const Select = memo((props: SelectProps) => {
                         classNamePrefix="Select"
                         isDisabled={readonly}
                         options={options}
+                        defaultValue={getOption(defaultValue)}
                         {...otherProps}
                     />
                 )}

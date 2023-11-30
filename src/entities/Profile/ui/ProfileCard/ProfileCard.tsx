@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Control } from 'react-hook-form';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
@@ -68,6 +68,7 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
             <Form
                 className={classNames(cls.profileForm, {}, [className])}
                 fields={profileConfig}
+                data={data}
                 formError={error}
                 readonly={readonly}
                 {...otherProps}
