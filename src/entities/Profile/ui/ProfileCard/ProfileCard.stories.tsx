@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { testProfileData } from 'shared/config/storybook/constants/profileData';
+import { testProfileData } from 'shared/config/tests/constants/profileData';
 import { Profile } from 'entities/Profile';
 import { ProfileCard } from './ProfileCard';
 

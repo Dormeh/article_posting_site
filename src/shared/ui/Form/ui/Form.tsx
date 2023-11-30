@@ -1,4 +1,6 @@
-import { ElementType, FC, ReactNode } from 'react';
+import {
+    ChangeEvent, ElementType, FC, ReactNode,
+} from 'react';
 import { Control, FieldValues } from 'react-hook-form';
 import { ValidationType } from 'shared/ui/Form/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -55,7 +57,7 @@ export const Form: FC<IFormPros> = (props) => {
         readonly,
     } = props;
 
-    const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();// для тестирования в Storybook и использования без react hook form
     };
 

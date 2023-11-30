@@ -22,7 +22,7 @@ export const profileConfig = [
     },
     {
         name: 'email',
-        label: 'Email',
+        label: 'Почта',
         pattern: ValidationType.Email,
         required: true,
         type: 'text',

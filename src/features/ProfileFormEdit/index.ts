@@ -4,4 +4,4 @@ export {
     profileReducer,
     profileActions,
 } from '../../features/ProfileFormEdit/model/slice/profileSlice';
-export { fetchProfileData } from '../../features/ProfileFormEdit/model/services/fetchProfileData';
+export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';

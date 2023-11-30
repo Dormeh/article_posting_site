@@ -7,7 +7,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Profile, ProfileCard } from 'entities/Profile';
 import cls from './ProfileForm.module.scss';
-import { updateProfileData } from '../../model/services/updateProfileData';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';

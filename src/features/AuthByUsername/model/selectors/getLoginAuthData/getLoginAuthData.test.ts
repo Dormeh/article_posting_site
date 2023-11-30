@@ -2,7 +2,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginAuthData } from './getLoginAuthData';
 
 describe('getLoginIsLoading.test', () => {
-    test('should return true', () => {
+    test('should work with filled state', () => {
         const state: DeepPartial<StateSchema> = {
             loginForm: {
                 authData: {
