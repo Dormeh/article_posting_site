@@ -1,0 +1,9 @@
+.ThemeSwitcher {
+  .icon {
+    color: var(--secondary-color);
+  }
+
+  &:hover {
+    filter: contrast(175%);
+  }
+}
