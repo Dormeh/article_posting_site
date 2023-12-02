@@ -27,7 +27,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const closeModal = useCallback(() => setIsModalOpen(false), []);
     const logout = () => {
         dispatch(userActions.logout());
-        navigate(RouterPath.main);
     };
 
     return (

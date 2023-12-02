@@ -28,7 +28,7 @@
   }
 
   & [class$="Input"] {
-    background: transparent;
+    // background: transparent;// TODO проверить необходимость
     color: var(--primary-color);
   }
 

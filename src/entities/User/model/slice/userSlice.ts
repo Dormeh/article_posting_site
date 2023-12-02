@@ -4,6 +4,7 @@ import { $api } from 'shared/api/api';
 import { User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
+    _inited: false,
 };
 export const userSlice = createSlice({
     name: 'user',
@@ -18,9 +19,9 @@ export const userSlice = createSlice({
                 $api.defaults.headers.common.authorization = user;
                 state.authData = JSON.parse(user);
             }
+            state._inited = true;
         },
         logout: (state) => {
-            console.log($api);
             state.authData = undefined;
             localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
             delete $api.defaults.headers.common.authorization;

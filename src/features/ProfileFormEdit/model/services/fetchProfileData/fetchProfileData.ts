@@ -8,9 +8,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
     async (_, thunkAPI) => {
         const { rejectWithValue, extra, dispatch } = thunkAPI;
         try {
-            const response = await extra.api.get<Profile>('/profile', {
-                headers: { authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '' },
-            });
+            const response = await extra.api.get<Profile>('/profile');
 
             if (!response.data) throw new Error('Ошибка получения данных');
 

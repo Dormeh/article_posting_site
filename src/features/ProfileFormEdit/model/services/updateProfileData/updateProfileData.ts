@@ -8,9 +8,7 @@ export const updateProfileData = createAsyncThunk<Profile, Profile, ThunkConfig<
     async (data, thunkAPI) => {
         const { rejectWithValue, extra } = thunkAPI;
         try {
-            const response = await extra.api.put<Profile>('/profile', data, {
-                headers: { authorization: localStorage.getItem(LOCAL_STORAGE_USER_KEY) || '' },
-            });
+            const response = await extra.api.put<Profile>('/profile', data);
 
             if (!response.data) throw new Error('Ошибка получения данных');
 

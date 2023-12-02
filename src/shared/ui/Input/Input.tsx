@@ -55,12 +55,7 @@ export const Input = (props: InputProps) => {
         }
         setCaretPosition(e.target.value.length);
     };
-    // const registerObj = register?.(name, options);
-    // const { onChange, ...rest } = registerObj || {};
 
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     onChange?.(e);
-    // };
     return (
         <label
             className={classNames(cls.label, {}, [className])}
