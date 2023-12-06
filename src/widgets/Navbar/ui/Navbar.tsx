@@ -7,10 +7,8 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { AuthForm } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions, getUserAuthData } from 'entities/User';
+import { getUserAuthData, userActions } from 'entities/User';
 import { Loader } from 'shared/ui/Loader/Loader';
-import { useNavigate } from 'react-router-dom';
-import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -21,7 +19,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const isUserAuth = useSelector(getUserAuthData);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const openModal = useCallback(() => setIsModalOpen(true), []);
     const closeModal = useCallback(() => setIsModalOpen(false), []);

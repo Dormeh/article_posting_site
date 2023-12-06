@@ -11,6 +11,8 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useNavigate } from 'react-router-dom';
+import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { LoginAuthData } from '../../model/types/loginSchema';
 import { authFormConfig } from '../../model/config';
@@ -47,6 +49,7 @@ const AuthForm = memo((props: AuthFormProps) => {
     const authData = useSelector(getLoginAuthData);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
+    const navigate = useNavigate();
 
     const {
         control,
@@ -75,11 +78,11 @@ const AuthForm = memo((props: AuthFormProps) => {
         const result = await dispatch(loginByUsername(data as LoginAuthData)).catch((error) => error);
 
         if (result.meta.requestStatus === 'fulfilled') {
-            dispatch(loginActions.setAuthData(data));
             formClose?.();
             if (__IS_DEV__) console.log(data);
+            navigate(RouterPath.profile);
         } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.error);
-    }, [dispatch, formClose]);
+    }, [dispatch, formClose, navigate]);
 
     const { t } = useTranslation();
     const footer = (

@@ -1,5 +1,21 @@
 .AppLink {
   color: var(--primary-color);
+
+  &:hover {
+    filter:
+      brightness(120%)
+      contrast(200%)
+      drop-shadow(1px 1px 1px rgba(var(--inverted-secondary-color-rgb), 0.8));
+  }
+
+  &.active,
+  &.active:hover {
+    filter:
+      hue-rotate(30deg)
+      brightness(150%)
+      contrast(200%)
+      drop-shadow(1px 1px 1px rgba(var(--inverted-secondary-color-rgb), 1));
+  }
 }
 
 .primary {
@@ -11,5 +27,5 @@
 }
 
 .red {
-  color: red;
+  color: var(--red-light);
 }

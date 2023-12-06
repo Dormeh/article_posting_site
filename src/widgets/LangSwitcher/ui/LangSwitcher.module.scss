@@ -1,3 +1,7 @@
 .LangSwitcher {
   color: var(--inverted-secondary-color);
+
+  &:hover {
+    filter: brightness(120%) contrast(200%) drop-shadow(1px 1px 1px rgba(var(--inverted-secondary-color-rgb), 0.8));
+  }
 }

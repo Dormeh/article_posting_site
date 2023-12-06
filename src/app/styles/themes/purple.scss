@@ -7,8 +7,10 @@
   --inverted-bg-color: #ddd0fb;
   --primary-color: #daa2ff;
   --secondary-color: #bf82cf;
-  --inverted-primary-color: #2c00fc;
-  --inverted-secondary-color: #0400bd;
+  --inverted-primary-color: #5a37fe;
+  --inverted-secondary-color: #1613b5;
   --primary-color-rgb: #{hex-to-rgb(#daa2ff)};
   --secondary-color-rgb: #{hex-to-rgb(#daa2ff)};
+  --inverted-primary-color-rgb: #{hex-to-rgb(#2c00fc)};
+  --inverted-secondary-color-rgb: #{hex-to-rgb(#0400bd)};
 }

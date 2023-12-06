@@ -17,11 +17,12 @@ export const StoreProvider = (props: StoreProviderProps) => {
         asyncReducers,
     } = props;
 
-    const navigate = useNavigate();
+    if (__IS_DEV__) console.log('render Store');
+    // const navigate = useNavigate(); // закоментировал так как ссылка на функцию обновляется и происходит ререндер стора(нужно использовать доп контекст)
     const store = createReduxStore(
         initialState as StateSchema,
         asyncReducers as ReducersMapObject<StateSchema>,
-        navigate,
+        // navigate,
     );
     return (
         <Provider store={store}>

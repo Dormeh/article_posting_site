@@ -8,7 +8,8 @@ import { getUserInited, userActions } from 'entities/User';
 
 const App = () => {
     const dispatch = useDispatch();
-    const isInited = useSelector(getUserInited);
+    const isInited = useSelector(getUserInited); // без navigate в store нет необходимости в этом
+    if (__IS_DEV__) console.log('App render');
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -20,7 +21,7 @@ const App = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    { isInited && <AppRouter />}
+                    <AppRouter />
                 </div>
             </Suspense>
 

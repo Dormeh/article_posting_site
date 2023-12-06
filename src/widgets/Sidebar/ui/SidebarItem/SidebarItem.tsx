@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink, ApplinkTheme } from 'shared/ui/AppLink/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { getUserAuthData } from 'entities/User';
 import { SidebarItemType } from 'widgets/Sidebar/models/item';
 import cls from './SidebarItem.module.scss';
@@ -23,7 +23,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     return (
         <AppLink
             className={cls.link}
-            theme={ApplinkTheme.SECONDARY}
+            theme={AppLinkTheme.SECONDARY}
             to={path}
         >
             {/* <AboutIcon className={cls.icon} /> */}

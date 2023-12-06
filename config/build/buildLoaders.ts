@@ -18,9 +18,9 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         use: [
             {
                 loader: 'ts-loader',
-                options: {
-                    transpileOnly: true, // игнорирует ошибки
-                },
+                // options: {
+                //     transpileOnly: true, // игнорирует ошибки
+                // },
             },
         ],
         exclude: /node_modules/,
