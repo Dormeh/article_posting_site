@@ -10,7 +10,9 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     const { className } = props;
     const { t } = useTranslation();
     return (
-        <div className={classNames(cls.ArticleDetailPage, {}, [className])} />
+        <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+            {t('ARTICLE DETAILS PAGE')}
+        </div>
     );
 };
 

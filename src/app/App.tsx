@@ -21,7 +21,7 @@ const App = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    <AppRouter />
+                    {isInited && <AppRouter />}
                 </div>
             </Suspense>
 
