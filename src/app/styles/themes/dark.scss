@@ -13,4 +13,11 @@
   --secondary-color-rgb: #{hex-to-rgb(#02b902)};
   --inverted-primary-color-rgb: #{hex-to-rgb(#0452ff)};
   --inverted-secondary-color-rgb: #{hex-to-rgb(#0234d4)};
+
+  // skeleton
+  --skeleton-color: #242499;
+  --skeleton-shadow: rgba(22, 83, 255, 70%);
+
+  // code
+  --code-bg: #1212a1;
 }
