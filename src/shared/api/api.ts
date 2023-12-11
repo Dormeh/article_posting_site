@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
 
 export const $api = axios.create({

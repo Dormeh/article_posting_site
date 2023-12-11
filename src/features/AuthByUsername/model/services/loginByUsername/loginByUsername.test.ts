@@ -1,5 +1,6 @@
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { ApiErrorTypes } from 'shared/api/types';
 import { loginByUsername } from './loginByUsername';
 
 describe('loginByUsername.test', () => {
@@ -25,6 +26,6 @@ describe('loginByUsername.test', () => {
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(thunk.api.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toBe('Ошибка получения данных');
+        expect(result.payload).toBe(ApiErrorTypes.AUTH_ERROR);
     });
 });

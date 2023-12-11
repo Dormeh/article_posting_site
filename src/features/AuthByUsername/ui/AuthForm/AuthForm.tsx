@@ -81,7 +81,7 @@ const AuthForm = memo((props: AuthFormProps) => {
             formClose?.();
             if (__IS_DEV__) console.log(data);
             navigate(RouterPath.profile);
-        } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.error);
+        } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.payload);
     }, [dispatch, formClose, navigate]);
 
     const { t } = useTranslation();

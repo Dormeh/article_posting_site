@@ -1,6 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { testProfileData } from 'shared/config/tests/constants/profileData';
 import { Profile } from 'entities/Profile';
+import { ApiErrorTypes } from 'shared/api/types';
 import { updateProfileData } from './updateProfileData';
 
 describe('updateProfileData.test', () => {
@@ -23,6 +24,6 @@ describe('updateProfileData.test', () => {
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(thunk.api.put).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toBe('Ошибка получения данных');
+        expect(result.payload).toBe(ApiErrorTypes.PROFILE_UPDATE_ERROR);
     });
 });
