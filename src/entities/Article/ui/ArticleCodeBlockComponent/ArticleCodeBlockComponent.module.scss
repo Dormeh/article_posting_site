@@ -1,3 +1,5 @@
 .ArticleCodeBlockComponent {
-  display: initial;
+  background: var(--inverted-bg-color);
+  color: var(--inverted-primary-color);
+  overflow: auto;
 }

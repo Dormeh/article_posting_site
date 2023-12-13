@@ -1,21 +1,45 @@
-.title {
-  font: var(--font-l);
-  color: var(--primary-color);
-}
+.Text {
+  .title {
+    font: var(--font-l);
+    color: var(--primary-color);
+  }
 
-.text {
-  color: var(--secondary-color);
+  .text {
+    color: var(--secondary-color);
+  }
 
   &.sizeM {
+    & .title {
+      font: var(--font-l);
+    }
+
     font: var(--font-m);
   }
 
   &.sizeS {
+    & .title {
+      font: var(--font-m);
+    }
+
     font: var(--font-s);
   }
 
   &.sizeL {
+    & .title {
+      font: var(--font-xl);
+    }
+
     font: var(--font-l);
+  }
+
+  &.error {
+    .title {
+      color: var(--red-light);
+    }
+
+    .text {
+      color: var(--red-dark);
+    }
   }
 }
 
@@ -29,14 +53,4 @@
 
 .center {
   text-align: center;
-}
-
-.error {
-  .title {
-    color: var(--red-light);
-  }
-
-  .text {
-    color: var(--red-dark);
-  }
 }

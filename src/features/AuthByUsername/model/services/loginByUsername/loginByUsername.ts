@@ -8,7 +8,7 @@ import { ApiErrorType, ApiErrorTypes } from 'shared/api/types';
 import { LoginAuthData } from '../../types/loginSchema';
 
 export const loginByUsername = createAsyncThunk<
-    User, LoginAuthData, ThunkConfig<ApiErrorType | string>>(
+    User, LoginAuthData, ThunkConfig<ApiErrorType>>(
         'loginForm/loginByUsername',
         async (authData, thunkAPI) => {
             const { rejectWithValue, extra, dispatch } = thunkAPI;

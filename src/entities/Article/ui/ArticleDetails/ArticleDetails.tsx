@@ -13,6 +13,10 @@ import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
+import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
+import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
+import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
+import { renderBlocks } from 'entities/Article/model/renderBlocks';
 import cls from './ArticleDetails.module.scss';
 import {
     getArticleDetailsData,
@@ -28,6 +32,7 @@ interface ArticleDetailsProps {
 const initialReducers: ReducersList = {
     articleDetails: articleReducer,
 };
+
 export const ArticleDetails = (props: ArticleDetailsProps) => {
     const {
         className,
@@ -37,8 +42,8 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);
-    const data = useSelector(getArticleDetailsData);
-
+    const article = useSelector(getArticleDetailsData);
+    // const renderBlocks = useCallback((block: ArticleBlock) => articleBlocksSelect(block), []);
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchArticleData(id));
@@ -46,7 +51,6 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     }, [dispatch, id]);
 
     let content;
-
     if (isLoading) {
         content = (
             <>
@@ -67,7 +71,32 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                 align={TextAlign.CENTER}
             />
         );
-    } else content = JSON.stringify(data);
+    } else {
+        content = (
+            <>
+                <div className={cls.avatarWrapper}>
+                    <Avatar src={article?.img} size={200} className={cls.avatar} alt={article?.title} />
+                </div>
+                <Text
+                    title={article?.title}
+                    text={article?.subtitle}
+                    size={TextSize.L}
+                    className={cls.title}
+                    align={TextAlign.LEFT}
+                />
+                <div className={cls.articleInfo}>
+                    <EyeIcon className={cls.icon} />
+                    <Text text={String(article?.views)} />
+                </div>
+                <div className={cls.articleInfo}>
+                    <CalendarIcon className={cls.icon} />
+                    <Text text={article?.createdAt} />
+                </div>
+                {article?.blocks.map((block) => renderBlocks(block, cls.block))}
+            </>
+
+        );
+    }
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>

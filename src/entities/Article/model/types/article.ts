@@ -6,7 +6,6 @@ export enum ArticleBlockType {
 
 export interface ArticleBlockBase {
     id: string;
-    type: ArticleBlockType;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
@@ -36,5 +35,5 @@ export interface Article {
     views: number,
     createdAt: string,
     type: ArticleBlockType,
-    blocks: ArticleBlock
+    blocks: ArticleBlock[]
 }

@@ -1,6 +1,6 @@
+import { createElement, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
@@ -11,7 +11,15 @@ export enum TextSize {
     L = 'sizeL',
     M = 'sizeM',
     S = 'sizeS',
+    XS = 'sizeXS',
 }
+
+const TitleTags = {
+    [TextSize.L]: 'h1',
+    [TextSize.M]: 'h2',
+    [TextSize.S]: 'h3',
+    [TextSize.XS]: 'h4',
+};
 
 export enum TextAlign {
     RIGHT = 'right',
@@ -38,9 +46,9 @@ export const Text = (props: TextProps) => {
     } = props;
 
     return (
-        <div className={classNames(cls.Text, {}, [className, cls[theme], cls[align]])}>
-            {title && <h3 className={cls.title}>{title}</h3>}
-            {text && <p className={classNames(cls.text, {}, [cls[size]])}>{text}</p>}
+        <div className={classNames(cls.Text, {}, [className, cls[theme], cls[align], cls[size]])}>
+            {title && createElement(TitleTags[size], { className: cls.title }, title)}
+            {text && <p className={cls.text}>{text}</p>}
         </div>
     );
 };

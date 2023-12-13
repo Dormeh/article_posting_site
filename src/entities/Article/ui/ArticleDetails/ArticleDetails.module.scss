@@ -5,8 +5,23 @@
   justify-content: space-evenly;
 }
 
+.articleInfo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 7px;
+
+  .icon {
+    color: var(--inverted-primary-color);
+  }
+}
+
 .avatar {
   margin: 0 auto;
+}
+
+.avatarWrapper {
+  align-self: center;
 }
 
 .title {
@@ -15,4 +30,8 @@
 
 .skeleton {
   margin-top: 15px;
+}
+
+.block {
+  margin-bottom: 39px;
 }
