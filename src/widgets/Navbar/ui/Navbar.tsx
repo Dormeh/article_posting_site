@@ -31,9 +31,9 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             className={classNames(cls.Navbar, {}, [className])}
         >
             <Button
-                className={cls.links}
+                className={cls.btn}
                 onClick={isUserAuth ? logout : openModal}
-                theme={ButtonTheme.BACKGROUND_INVERTED}
+                theme={ButtonTheme.CLEAR}
             >
                 {isUserAuth ? t('Выйти') : t('Войти') }
             </Button>

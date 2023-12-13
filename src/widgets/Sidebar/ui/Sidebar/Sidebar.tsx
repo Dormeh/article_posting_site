@@ -4,7 +4,6 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import Arrow from 'shared/assets/icons/arrow.svg';
-import RotateArrow from 'shared/assets/icons/rotateArrow.svg';
 import { SidebarItemsList } from '../../models/item';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -45,7 +44,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 size={ButtonSize.L}
             >
-                {collapsed ? <RotateArrow /> : <Arrow />}
+                <Arrow className={cls.arrow} />
             </Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />

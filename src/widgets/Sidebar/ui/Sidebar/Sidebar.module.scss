@@ -20,15 +20,27 @@
   width: 100%;
 }
 
+.arrow {
+  transition: transform 0.3s;
+}
+
 .collapsed {
   width: var(--sidebar-width-collapsed);
 
   .switchers {
     flex-direction: column;
   }
+
+  .arrow {
+    transform: scale(-1, -1);
+  }
 }
 
 .collapseBtn {
+  &:hover {
+    filter: initial;
+  }
+
   svg:hover {
     filter: brightness(120%) contrast(200%) drop-shadow(1px 1px 1px rgba(var(--inverted-secondary-color-rgb), 0.8));
   }

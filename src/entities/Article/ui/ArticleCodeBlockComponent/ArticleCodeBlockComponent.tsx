@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { Code } from 'shared/ui/Code/Code';
 import cls from './ArticleCodeBlockComponent.module.scss';
 import { ArticleCodeBlock } from '../../model/types/article';
 
@@ -17,11 +18,7 @@ export const ArticleCodeBlockComponent = memo((props: ArticleCodeBlockComponentP
     const { t } = useTranslation();
     return (
         <div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>
-            <pre>
-                <code>
-                    {block.code}
-                </code>
-            </pre>
+            <Code code={block.code} />
         </div>
     );
 });

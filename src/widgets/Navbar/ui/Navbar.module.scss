@@ -7,8 +7,9 @@
   padding: 20px;
 }
 
-.links {
+.btn {
   margin-left: auto;
+  color: var(--inverted-primary-color);
 
   :not(:last-child) {
     margin-right: 15px;
