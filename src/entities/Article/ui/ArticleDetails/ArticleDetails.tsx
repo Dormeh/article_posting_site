@@ -8,7 +8,6 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleReducer } from 'entities/Article/model/slice/articleSlice';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import {
     Text, TextAlign, TextSize, TextTheme,
@@ -17,12 +16,13 @@ import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
 import { renderBlocks } from 'entities/Article/model/renderBlocks';
-import cls from './ArticleDetails.module.scss';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading,
-} from '../../model/selectors/getAtricleDetails/getAtricleDetails';
+} from 'entities/Article/model/selectors/getArticleDetails/getArticleDetails';
+import { articleReducer } from '../../model/slice/articleSlice';
+import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -43,7 +43,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);
     const article = useSelector(getArticleDetailsData);
-    // const renderBlocks = useCallback((block: ArticleBlock) => articleBlocksSelect(block), []);
+
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchArticleData(id));

@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {
-    lioshi, vs2015, githubGist, rainbow, railscasts, xcode, github, shadesOfPurple, qtcreatorLight,
+    lioshi, vs2015, githubGist, rainbow, railscasts, xcode, github, shadesOfPurple, qtcreatorLight, docco,
 } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { classNames } from '../../lib/classNames/classNames';

@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { textBlock } from 'shared/config/tests/constants/textBlock';
+import { ArticleTextBlock } from 'entities/Article/model/types/article';
 import { ArticleTextBlockComponent } from './ArticleTextBlockComponent';
 
 export default {
@@ -14,9 +16,13 @@ export default {
 const Template: ComponentStory<typeof ArticleTextBlockComponent> = (args) => <ArticleTextBlockComponent {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+    block: textBlock as ArticleTextBlock,
+};
 
 export const Dark = Template.bind({});
-Dark.args = {};
+Dark.args = {
+    block: textBlock as ArticleTextBlock,
+};
 
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

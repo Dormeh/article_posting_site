@@ -8,12 +8,12 @@
     color: var(--secondary-color);
   }
 
-  &.sizeM {
+  &.sizeXS {
     & .title {
-      font: var(--font-l);
+      font: var(--font-s);
     }
 
-    font: var(--font-m);
+    font: var(--font-xs);
   }
 
   &.sizeS {
@@ -22,6 +22,14 @@
     }
 
     font: var(--font-s);
+  }
+
+  &.sizeM {
+    & .title {
+      font: var(--font-l);
+    }
+
+    font: var(--font-m);
   }
 
   &.sizeL {

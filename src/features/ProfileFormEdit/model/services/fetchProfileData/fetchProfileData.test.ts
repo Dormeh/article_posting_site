@@ -17,7 +17,12 @@ describe('fetchProfileData.test', () => {
 
     test('error get profile data', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
-        thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
+        thunk.api.get.mockRejectedValue(Promise.resolve({
+            status: 403,
+            data: {
+                message: ApiErrorTypes.PROFILE_GET_ERROR,
+            },
+        }));
         const result = await thunk.callThunk();
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);

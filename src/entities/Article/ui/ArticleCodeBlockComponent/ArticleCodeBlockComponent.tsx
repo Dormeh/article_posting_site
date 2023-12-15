@@ -15,7 +15,7 @@ export const ArticleCodeBlockComponent = memo((props: ArticleCodeBlockComponentP
         className,
         block,
     } = props;
-    const { t } = useTranslation();
+
     return (
         <div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>
             <Code code={block.code} />

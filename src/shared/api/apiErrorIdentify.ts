@@ -1,7 +1,9 @@
 import axios from 'axios';
-import { ApiErrorTypes } from './types';
+import { ApiError, ApiErrorType, ApiErrorTypes } from './types';
 
 export const apiErrorIdentify = (
     e: unknown,
-    message?: string,
-) => (axios.isAxiosError(e) ? e.response?.data : message) || ApiErrorTypes.UNKNOWN_SERVER_ERROR;
+    message?: ApiErrorTypes,
+) => (axios.isAxiosError(e)
+    ? e.response?.data
+    : (e instanceof Error && e.message) || message) || ApiErrorTypes.UNKNOWN_SERVER_ERROR;
