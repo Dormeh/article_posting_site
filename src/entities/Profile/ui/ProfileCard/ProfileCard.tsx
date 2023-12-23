@@ -60,11 +60,9 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
             onClick={onClick}
         >
 
-            {data?.avatar && (
-                <div className={cls.avatarWrapper}>
-                    <Avatar src={data?.avatar} />
-                </div>
-            )}
+            <div className={cls.avatarWrapper}>
+                <Avatar src={data?.avatar} />
+            </div>
             <Form
                 className={classNames(cls.profileForm, {}, [className])}
                 fields={profileConfig}

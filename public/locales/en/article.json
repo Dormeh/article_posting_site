@@ -1,1 +1,6 @@
-{}
+{
+  "Такой страницы нет": "There is no such page",
+  "Комментарии": "Comments",
+  "Комментарии отсутствуют": "No comments",
+  "Произошла ошибка при загрузке статьи": "There was an error loading the article."
+}

@@ -9,6 +9,7 @@ import { AxiosInstance } from 'axios';
 import { To } from '@remix-run/router';
 import { NavigateOptions } from 'react-router/dist/lib/context';
 import { ArticleDetailSchema } from 'entities/Article/model/types/articleDetailsSchema';
+import { ArticleCommentsSchema } from 'pages/ArticleDetailPage';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -18,6 +19,7 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailSchema
+    articleComments?: ArticleCommentsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -26,16 +26,30 @@ PrimarySmall.args = {
     src: AvatarImg,
     alt: 'Avatar',
 };
+export const Default = Template.bind({});
+Default.args = {
+    size: 150,
+    alt: 'Avatar',
+};
+
 export const Dark = Template.bind({});
 Dark.args = {
     src: AvatarImg,
     alt: 'Avatar',
 };
+
+export const DefaultDark = Template.bind({});
+DefaultDark.args = {
+    size: 150,
+    alt: 'Avatar',
+};
+
 export const DarkSmall = Template.bind({});
 DarkSmall.args = {
     size: 50,
     src: AvatarImg,
     alt: 'Avatar',
 };
-
+DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];
+DarkSmall.decorators = [ThemeDecorator(Theme.DARK)];
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

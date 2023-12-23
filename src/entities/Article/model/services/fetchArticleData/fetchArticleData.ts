@@ -5,7 +5,7 @@ import { ApiErrorTypes } from 'shared/api/types';
 import { Article } from '../../types/article';
 
 export const fetchArticleData = createAsyncThunk<Article, string, ThunkConfig<string>>(
-    'profileFormEdit/fetchProfileData',
+    'articleData/fetchArticleData',
     async (id, thunkAPI) => {
         const { rejectWithValue, extra, dispatch } = thunkAPI;
         try {
@@ -16,7 +16,7 @@ export const fetchArticleData = createAsyncThunk<Article, string, ThunkConfig<st
             return response.data;
         } catch (e) {
             if (__IS_DEV__) console.log(e);
-            return rejectWithValue(apiErrorIdentify(e, ApiErrorTypes.ARTICLE_GET_ERROR));
+            return rejectWithValue(apiErrorIdentify(e, ApiErrorTypes.COMMENT_GET_ERROR));
         }
     },
 );

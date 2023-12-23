@@ -38,7 +38,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         className,
         id,
     } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);

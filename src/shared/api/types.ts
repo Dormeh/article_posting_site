@@ -4,7 +4,8 @@ export enum ApiErrorTypes {
     AUTH_ERROR = 'Ошибка авторизации',
     PROFILE_GET_ERROR = 'Ошибка получения профиля',
     PROFILE_UPDATE_ERROR = 'Ошибка обновления профиля',
-    ARTICLE_GET_ERROR = 'Ошибка получения статьи'
+    ARTICLE_GET_ERROR = 'Ошибка получения статьи',
+    COMMENT_GET_ERROR = 'Ошибка получения комментариев',
 }
 
 export interface ApiError {

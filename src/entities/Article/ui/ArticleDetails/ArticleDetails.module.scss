@@ -1,13 +1,7 @@
 .ArticleDetails {
-  padding: 0 20px;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  max-width: 1000px;
-  min-width: 400px;
-  margin: 0 auto;
-  backdrop-filter: brightness(113%) grayscale(0.5) invert(2%);
 }
 
 .articleInfo {
