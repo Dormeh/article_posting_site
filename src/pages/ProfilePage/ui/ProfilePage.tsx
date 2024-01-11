@@ -7,6 +7,8 @@ import {
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ProfileForm, fetchProfileData, profileReducer } from 'features/ProfileFormEdit';
+import { useParams } from 'react-router-dom';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 
 interface ProfilePageProps {
     className?: string;
@@ -19,14 +21,16 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation('profile');
 
     const dispatch = useAppDispatch();
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    const { id } = useParams<{ id: string }>();
+
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={initialReducers}>
             <div className={classNames('', {}, [className])}>
                 <ProfileForm />
             </div>

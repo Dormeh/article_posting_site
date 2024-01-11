@@ -4,12 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import cls from './CommentCard.module.scss';
 import { Comment } from '../../model/types/comments';
 
 interface CommentCardProps {
     className?: string;
-    comment: Comment;
+    comment?: Comment;
     isLoading?: boolean;
 }
 
@@ -17,12 +19,12 @@ export const CommentCard = memo((props: CommentCardProps) => {
     const {
         className,
         isLoading,
-        comment: { user: { username, avatar }, text },
+        comment,
     } = props;
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.CommentCard, {}, [className])}>
+            <div className={classNames(cls.CommentCard, {}, [className, cls.isLoading])}>
                 <div className={cls.header}>
                     <Skeleton borderRadius="50%" width={30} height={30} />
                     <Skeleton width="100px" height={18} />
@@ -31,17 +33,22 @@ export const CommentCard = memo((props: CommentCardProps) => {
             </div>
         );
     }
+    if (!comment) {
+        return null;
+    }
+
+    const { profile: { username, avatar, id }, text } = comment;
 
     return (
         <div className={classNames(cls.CommentCard, {}, [className])}>
-            <div className={cls.header}>
+            <AppLink to={`${RouterPath.profile}${id}`} className={cls.header}>
                 <Avatar
                     className={cls.avatar}
                     size={30}
                     src={avatar}
                 />
                 <Text title={username} className={cls.userName} />
-            </div>
+            </AppLink>
             <Text text={text} className={cls.text} />
         </div>
     );

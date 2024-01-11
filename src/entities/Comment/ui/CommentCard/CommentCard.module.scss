@@ -9,3 +9,12 @@
   gap: 20px;
   margin-bottom: 10px;
 }
+
+.text {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.isLoading {
+  border: none;
+}

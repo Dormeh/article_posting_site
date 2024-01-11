@@ -1,5 +1,5 @@
 import {
-    ChangeEvent, ElementType, FC, ReactNode,
+    ChangeEvent, FC, ElementType, ReactNode, forwardRef, ForwardedRef,
 } from 'react';
 import { Control, FieldValues } from 'react-hook-form';
 import { ValidationType } from 'shared/ui/Form/validation/validation';
@@ -17,7 +17,7 @@ export type IFormInputs<T> = { // TODO протестировать
 }
 export interface FormConfigType {
     name: string;
-    label: string;
+    label?: string;
     pattern?: ValidationType;
     required?: boolean;
     value?: string;
@@ -31,6 +31,11 @@ export interface LoginFormParams extends FieldValues {
     password?: string;
 }
 
+export enum FormOrientation {
+    COLUMN = 'column',
+    ROW = 'row'
+}
+
 interface IFormPros {
     className?: string
     formTitle?: string
@@ -42,9 +47,10 @@ interface IFormPros {
     focus?: boolean;
     control?: Control;
     readonly?: boolean;
+    orientation?: FormOrientation
 }
 
-export const Form: FC<IFormPros> = (props) => {
+export const Form = forwardRef((props: IFormPros, ref: ForwardedRef<HTMLFormElement>) => {
     const {
         formTitle,
         fields,
@@ -55,6 +61,7 @@ export const Form: FC<IFormPros> = (props) => {
         errors,
         control,
         readonly,
+        orientation = FormOrientation.COLUMN,
     } = props;
 
     const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
@@ -63,9 +70,10 @@ export const Form: FC<IFormPros> = (props) => {
 
     return (
         <div className={classNames(cls.formWrapper, {}, [className])}>
-            <Text title={formTitle} className={cls.title} />
+            { formTitle && (<Text title={formTitle} className={cls.title} />)}
             <form
-                className={cls.form}
+                ref={ref}
+                className={classNames(cls.form, {}, [cls[orientation]])}
                 onSubmit={handleSubmit}
             >
                 {fields && fields
@@ -80,13 +88,20 @@ export const Form: FC<IFormPros> = (props) => {
                                 register={control?.register}
                                 control={control}
                                 readonly={readonly}
+                                className={cls.field}
                                 {...rest}
                             />
                         ),
                     )}
                 {footer}
             </form>
-            {formError && <Text text={formError} theme={TextTheme.ERROR} />}
+            {formError && (
+                <Text
+                    className={classNames(cls.formError, {}, [cls[orientation]])}
+                    text={formError}
+                    theme={TextTheme.ERROR}
+                />
+            )}
         </div>
     );
-};
+});

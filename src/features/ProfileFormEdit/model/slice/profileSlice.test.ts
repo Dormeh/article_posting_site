@@ -1,5 +1,5 @@
 import { Profile, ProfileSchema } from 'entities/Profile';
-import { testProfileData } from 'shared/config/tests/constants/profileData';
+import { testProfileData } from 'features/ProfileFormEdit/model/services/updateProfileData/profileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { profileActions, profileReducer } from './profileSlice';
 

@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { testProfileData } from 'shared/config/tests/constants/profileData';
+import { testProfileData } from 'features/ProfileFormEdit/model/services/updateProfileData/profileData';
 import { Profile } from 'entities/Profile';
 import { getProfileData } from './getProfileData';
 

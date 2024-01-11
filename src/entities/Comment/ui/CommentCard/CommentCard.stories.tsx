@@ -11,12 +11,23 @@ export default {
     },
     args: {
         comment: {
-            user: {
-                username: 'TestUser',
+            profile: {
                 id: '1',
+                first: 'Тимур',
+                lastname: 'Ульби',
+                username: 'admin',
+                age: 22,
+                currency: 'RUB',
+                country: 'Russia',
+                city: 'Moscow',
+                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                email: 'adf@azdaf.ru',
+                phone: '13131321321321',
             },
             id: '1',
             text: 'Some comment text',
+            profileId: '1',
+            articleId: '1',
         },
     },
 } as ComponentMeta<typeof CommentCard>;

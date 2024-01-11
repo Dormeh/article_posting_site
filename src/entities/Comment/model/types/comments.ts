@@ -1,7 +1,10 @@
 import { User } from 'entities/User';
+import { Profile } from 'entities/Profile';
 
 export interface Comment {
     id: string;
-    user: User;
+    articleId: string;
+    profileId: string;
+    profile: Profile;
     text: string;
 }

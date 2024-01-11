@@ -26,6 +26,7 @@
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
+  min-width: 80px;
 
   .switchers {
     flex-direction: column;

@@ -3,33 +3,11 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { articleTestData } from 'entities/Article/ui/ArticleDetails/articleTestData';
+import { articleComments } from 'pages/ArticleDetailPage/ui/articleComments';
 import ArticleDetailPage from './ArticleDetailPage';
 
-const articleComments = {
-    ids: ['1', '2'],
-    isLoading: false,
-    error: undefined,
-    entities: {
-        1: {
-            user: {
-                id: '1',
-                username: 'TestUser',
-            },
-            id: '1',
-            text: 'Some comment text',
-        },
-        2: {
-            user: {
-                id: '1',
-                username: 'TestUser',
-            },
-            id: '2',
-            text: 'Some comment text',
-        },
-    },
-};
 export default {
-    title: 'pages/ArticleDetailPage',
+    title: 'pages/ArticleDetailPage/ArticleDetailsPage',
     component: ArticleDetailPage,
     argTypes: {
         backgroundColor: { control: 'color' },

@@ -1,16 +1,27 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Profile } from 'entities/Profile';
-import { LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
+import { getProfileData } from '../../selectors/getProfileData/getProfileData';
+import {
+    getProfileCanEditMode,
+} from '../../selectors/getProfileCanEditMode/getProfileCanEditMode';
 
 export const updateProfileData = createAsyncThunk<Profile, Profile, ThunkConfig<string>>(
     'profileFormEdit/updateProfileData',
-    async (data, thunkAPI) => {
-        const { rejectWithValue, extra } = thunkAPI;
+    async (updateData, thunkAPI) => {
+        const { rejectWithValue, extra, getState } = thunkAPI;
+
+        const profile = getProfileData(getState());
+        const canEdit = getProfileCanEditMode(getState());
+
+        if (!canEdit) {
+            return rejectWithValue('Вы не можете редактировать этот профиль');
+        }
+
         try {
-            const response = await extra.api.put<Profile>('/profile', data);
+            const response = await extra.api.put<Profile>(`/profiles/${1}`, updateData);
 
             if (!response.data) throw new Error('Ошибка получения данных');
 

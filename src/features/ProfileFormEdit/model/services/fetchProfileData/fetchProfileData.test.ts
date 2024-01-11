@@ -1,5 +1,5 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { testProfileData } from 'shared/config/tests/constants/profileData';
+import { testProfileData } from 'features/ProfileFormEdit/model/services/updateProfileData/profileData';
 import { ApiErrorTypes } from 'shared/api/types';
 import { fetchProfileData } from './fetchProfileData';
 
@@ -8,7 +8,7 @@ describe('fetchProfileData.test', () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({ data: testProfileData }));
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(thunk.api.get).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
@@ -23,7 +23,7 @@ describe('fetchProfileData.test', () => {
                 message: ApiErrorTypes.PROFILE_GET_ERROR,
             },
         }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(thunk.api.get).toHaveBeenCalled();

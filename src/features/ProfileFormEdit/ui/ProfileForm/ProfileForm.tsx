@@ -6,6 +6,9 @@ import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Profile, ProfileCard } from 'entities/Profile';
+import {
+    getProfileCanEditMode,
+} from 'features/ProfileFormEdit/model/selectors/getProfileCanEditMode/getProfileCanEditMode';
 import cls from './ProfileForm.module.scss';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
@@ -21,6 +24,7 @@ export const ProfileForm = () => {
     const data = useSelector(getProfileData);
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
+    const isCanEdit = useSelector(getProfileCanEditMode);
 
     const {
         handleSubmit,
@@ -66,7 +70,7 @@ export const ProfileForm = () => {
             <div className={cls.heading}>
                 <Text className={cls.title} title={t('Профиль')} />
                 <div className={cls.buttonBox}>
-                    {readonly
+                    {isCanEdit && (readonly
                         ? (
                             <Button
                                 theme={ButtonTheme.OUTLINE}
@@ -78,12 +82,15 @@ export const ProfileForm = () => {
                         )
                         : (
                             <>
-                                <Button
-                                    theme={ButtonTheme.OUTLINE_RED}
-                                    onClick={onCancelEdit}
-                                >
-                                    {t('Отменить изменения')}
-                                </Button>
+                                {isDirty && (
+                                    <Button
+                                        theme={ButtonTheme.OUTLINE_RED}
+                                        onClick={onCancelEdit}
+                                        disabled={isSubmitting}
+                                    >
+                                        {t('Отменить изменения')}
+                                    </Button>
+                                )}
                                 <Button
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={handleSubmit(updateProfile)}
@@ -92,7 +99,7 @@ export const ProfileForm = () => {
                                     {t('Сохранить')}
                                 </Button>
                             </>
-                        )}
+                        ))}
                 </div>
             </div>
             <ProfileCard

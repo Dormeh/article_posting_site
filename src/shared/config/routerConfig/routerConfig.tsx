@@ -4,7 +4,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { ArticlePage } from 'pages/ArticlePage';
-import ArticleDetailPage from 'pages/ArticleDetailPage/ui/ArticleDetailPage';
+import { ArticleDetailPage } from 'pages/ArticleDetailPage';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
@@ -22,7 +22,7 @@ export enum AppRoutes {
 export const RouterPath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
-    [AppRoutes.PROFILE]: '/profile',
+    [AppRoutes.PROFILE]: '/profiles/',
     [AppRoutes.ARTICLE]: '/article',
     [AppRoutes.ARTICLE_DETAILS]: '/articles/',
     // last
@@ -39,7 +39,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <AboutPage />,
     },
     [AppRoutes.PROFILE]: {
-        path: RouterPath.profile,
+        path: `${RouterPath.profile}:id`,
         element: <ProfilePage />,
         authOnly: true,
     },

@@ -1,4 +1,6 @@
-import React, { memo, useState } from 'react';
+import React, {
+    memo, useCallback, useEffect, useState,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
@@ -14,12 +16,27 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
+
+    const handleResize = useCallback(() => {
+        const width = window.innerWidth;
+        if (!collapsed && width < 950) {
+            setCollapsed(true);
+        } else if (collapsed && width >= 950) {
+            setCollapsed(false);
+        }
+    }, [collapsed]);
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [handleResize]);
+
     const onToggle = () => {
         setCollapsed((prev) => !prev);
     };
 
     return (
-        <div
+        <aside
             data-testid="sidebar"
             className={
                 classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])
@@ -53,6 +70,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     short={collapsed}
                 />
             </div>
-        </div>
+        </aside>
     );
 });

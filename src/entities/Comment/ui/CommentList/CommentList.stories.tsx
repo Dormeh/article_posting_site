@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { commentsData } from 'shared/config/tests/constants/commentsData';
 import { CommentList } from './CommentList';
 
 export default {
@@ -10,26 +11,7 @@ export default {
         backgroundColor: { control: 'color' },
     },
     args: {
-        comments: [
-            {
-                user: {
-                    username: 'TestUser',
-                    id: '1',
-                },
-                id: '1',
-                text: 'Some comment text',
-
-            },
-            {
-                user: {
-                    username: 'TestUser',
-                    id: '1',
-                },
-                id: '2',
-                text: 'Some comment text',
-
-            },
-        ],
+        comments: commentsData,
     },
 } as ComponentMeta<typeof CommentList>;
 

@@ -1,5 +1,5 @@
 export enum ApiErrorTypes {
-    DATA_EMPTY_ERROR = 'Ошибка получения данных',
+    DATA_EMPTY_ERROR = 'Ошибка получения данных от сервера',
     UNKNOWN_SERVER_ERROR = 'Неизвестная ошибка сервера',
     AUTH_ERROR = 'Ошибка авторизации',
     PROFILE_GET_ERROR = 'Ошибка получения профиля',

@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.11.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -88,7 +90,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.11.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -156,46 +160,133 @@
       "id": "1",
       "text": "some comment",
       "articleId": "1",
-      "userId": "1",
-      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+      "profileId": "1"
     },
     {
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "2",
-      "avatar": "https://tse3.mm.bing.net/th?id=OIP.Zmki3GIiRk-XKTzRRlxn4QHaER&pid=15.1"
+      "profileId": "2"
     },
     {
-      "id": "3",
-      "text": "some comment 3",
-      "articleId": "2",
-      "userId": "2",
-      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+      "text": "sdsadasdsdad",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "kdZvksQ"
+    },
+    {
+      "text": "fffffffffffffffff",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "oxzyjEM"
+    },
+    {
+      "text": "ffffffffffffffff\nfffffff\nf\nf\n",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "3O4pPhp"
+    },
+    {
+      "text": "dsfsdfsdfsdf",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "8Q5VcNf"
+    },
+    {
+      "text": "dfgfsdgfd\nfdgdfg",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "BumiLeH"
+    },
+    {
+      "text": "sdsdfsdf",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "zy-52KW"
+    },
+    {
+      "text": "dfdsfsdf",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "medMPij"
+    },
+    {
+      "text": "dddd",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "HaJS5CB"
+    },
+    {
+      "text": "смчсмчсмчсмчсмсмчсм\nПривет",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "gOn9EZ7"
+    },
+    {
+      "text": "с Новым годом!",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "_1nMK6r"
+    },
+    {
+      "text": "fgsdfdsf",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "0wfPz6u"
+    },
+    {
+      "text": "xcczczxc",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "_lpP3OR"
+    },
+    {
+      "text": "{;ldsfjalsdfj\n",
+      "articleId": "1",
+      "profileId": "1",
+      "id": "aCQ1pD5"
     }
   ],
   "users": [
     {
       "id": "1",
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "profileId": "1"
     },
     {
       "id": "2",
       "username": "user",
-      "password": "123"
+      "password": "123",
+      "profileId": "2"
     }
   ],
-  "profile": {
-    "first": "Тимур",
-    "lastname": "Ульби",
-    "age": "22",
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
-    "email": "adf@azdaf.ru",
-    "phone": "13131321321321"
-  }
+  "profiles": [
+    {
+      "id": "1",
+      "first": "Тимур",
+      "lastname": "Ульби",
+      "age": 22,
+      "currency": "USD",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
+      "email": "adf@azdaf.ru",
+      "phone": "13131321321321"
+    },
+    {
+      "id": "2",
+      "first": "Иван",
+      "lastname": "Иванов",
+      "username": "user",
+      "age": 22,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
+      "email": "adf@azdaf.ru",
+      "phone": "13131321321321"
+    }
+  ]
 }

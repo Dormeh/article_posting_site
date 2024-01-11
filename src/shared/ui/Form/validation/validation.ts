@@ -5,11 +5,12 @@ export enum ValidationType {
     Phone = 'phone',
     Name = 'name',
     Age = 'age',
+    Comment = 'comment'
 }
 // TODO добавить переводы для валидации
 export const ValidationPattern = {
     username: {
-        value: /^(?=.*[\D])[\w-]{3,20}$/g,
+        value: /^(?=.*\D)[\w-]{3,20}$/g,
         message:
             '3-20 символов, допустимые символы: латин. буквы, цифры, дефис, подчеркивание _',
     },
@@ -23,16 +24,20 @@ export const ValidationPattern = {
         message: 'Невалидный email',
     },
     name: {
-        value: /^[A-Z|А-Я|Ë][A-ZА-ЯËa-zа-яё-]+$/g,
+        value: /^[A-Z|А-ЯË][A-ZА-ЯËa-zа-яё-]+$/g,
         message:
             'Первая буква должна быть заглавной, без пробелов и без цифр, допустим дефис',
     },
     phone: {
-        value: /^[\d|+][\d]{10,15}$/i,
+        value: /^[\d|+]\d{10,15}$/i,
         message: '10-15 цифр, может начинаться с плюса',
     },
     age: {
         value: /^(110|1[0-1][0-9]|[5-9]|[1-9][0-9])$/i,
         message: 'возраст не больше 119 и не меньше 5, первая цифра больше 0',
+    },
+    comment: {
+        value: /[A-ZА-ЯËa-zа-яё0-9]+/,
+        message: 'комментарий не должен быть пустым',
     },
 };

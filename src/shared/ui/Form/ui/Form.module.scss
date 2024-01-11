@@ -1,14 +1,41 @@
 .formWrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .form {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+
+  &.column {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &.row {
+    flex-direction: row;
+    gap: 20px;
+  }
 }
 
 .title {
   margin-bottom: 10px;
+}
+
+.field {
+  flex-grow: 1;
+}
+
+.formError {
+  position: absolute;
+  bottom: 0;
+  transform: translate(-50%, 70%);
+
+  &.row {
+    left: 44%;
+  }
+
+  &.column {
+    left: 50%;
+  }
 }

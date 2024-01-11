@@ -1,12 +1,21 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { testProfileData } from 'shared/config/tests/constants/profileData';
 import { Profile } from 'entities/Profile';
 import { ApiErrorTypes } from 'shared/api/types';
+import { testProfileData } from './profileData';
 import { updateProfileData } from './updateProfileData';
 
 describe('updateProfileData.test', () => {
     test('success fetch profile data', async () => {
-        const thunk = new TestAsyncThunk(updateProfileData);
+        const thunk = new TestAsyncThunk(updateProfileData, {
+            profile: {
+                data: testProfileData,
+            },
+            user: {
+                authData: {
+                    profileId: '1',
+                },
+            },
+        });
         thunk.api.put.mockReturnValue(Promise.resolve({ data: testProfileData }));
 
         const result = await thunk.callThunk(testProfileData as Profile);
@@ -17,7 +26,16 @@ describe('updateProfileData.test', () => {
     });
 
     test('error get profile data', async () => {
-        const thunk = new TestAsyncThunk(updateProfileData);
+        const thunk = new TestAsyncThunk(updateProfileData, {
+            profile: {
+                data: testProfileData,
+            },
+            user: {
+                authData: {
+                    profileId: '1',
+                },
+            },
+        });
         thunk.api.put.mockRejectedValue(Promise.resolve({
             status: 403,
             data: {
