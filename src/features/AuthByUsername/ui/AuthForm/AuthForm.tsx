@@ -80,7 +80,7 @@ const AuthForm = memo((props: AuthFormProps) => {
         if (result.meta.requestStatus === 'fulfilled') {
             formClose?.();
             if (__IS_DEV__) console.log(data);
-            navigate(RouterPath.profile);
+            navigate(RouterPath.profile + result.payload.profileId);
         } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.payload);
     }, [dispatch, formClose, navigate]);
 

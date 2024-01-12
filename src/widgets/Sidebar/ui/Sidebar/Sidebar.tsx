@@ -6,7 +6,8 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import Arrow from 'shared/assets/icons/arrow.svg';
-import { SidebarItemsList } from '../../models/item';
+import { useSelector } from 'react-redux';
+import { getSidebarItemsList } from '../../models/selectors/getSidebarItemsList';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 
@@ -35,6 +36,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         setCollapsed((prev) => !prev);
     };
 
+    const sidebarItemsList = useSelector(getSidebarItemsList);
+
     return (
         <aside
             data-testid="sidebar"
@@ -43,7 +46,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             }
         >
             <div className={cls['link-box']}>
-                {SidebarItemsList.map((
+                {sidebarItemsList.map((
                     item,
                 ) => (
                     <SidebarItem
