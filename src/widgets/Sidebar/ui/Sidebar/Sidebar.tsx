@@ -1,12 +1,11 @@
-import React, {
-    memo, useCallback, useEffect, useState,
-} from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import Arrow from 'shared/assets/icons/arrow.svg';
 import { useSelector } from 'react-redux';
+import { useCollapseSidebarState } from '../../lib/hooks/useCollapseSidebarState';
 import { getSidebarItemsList } from '../../models/selectors/getSidebarItemsList';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -15,23 +14,15 @@ interface SidebarProps {
     className?: string;
 }
 
+const WINDOW_WIDTH_TO_COLLAPSE = 950;
+
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-
-    const handleResize = useCallback(() => {
-        const width = window.innerWidth;
-        if (!collapsed && width < 950) {
-            setCollapsed(true);
-        } else if (collapsed && width >= 950) {
-            setCollapsed(false);
-        }
-    }, [collapsed]);
+    const canBeCollapsed = useCollapseSidebarState(WINDOW_WIDTH_TO_COLLAPSE);
 
     useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [handleResize]);
-
+        if (!canBeCollapsed) setCollapsed(true);
+    }, [canBeCollapsed]);
     const onToggle = () => {
         setCollapsed((prev) => !prev);
     };
@@ -56,16 +47,18 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     />
                 ))}
             </div>
-            <Button
-                data-testid="sidebar-toggle"
-                type="button"
-                onClick={onToggle}
-                className={cls.collapseBtn}
-                theme={ButtonTheme.BACKGROUND_INVERTED}
-                size={ButtonSize.L}
-            >
-                <Arrow className={cls.arrow} />
-            </Button>
+            {canBeCollapsed && (
+                <Button
+                    data-testid="sidebar-toggle"
+                    type="button"
+                    onClick={onToggle}
+                    className={cls.collapseBtn}
+                    theme={ButtonTheme.BACKGROUND_INVERTED}
+                    size={ButtonSize.L}
+                >
+                    <Arrow className={cls.arrow} />
+                </Button>
+            )}
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher
