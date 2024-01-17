@@ -32,6 +32,8 @@ interface TextProps {
     theme?: TextTheme;
     size?: TextSize;
     align?: TextAlign;
+    titleClassName?: string;
+    textClassName?: string;
 }
 export const Text = memo((props: TextProps) => {
     const {
@@ -41,13 +43,24 @@ export const Text = memo((props: TextProps) => {
         theme = TextTheme.PRIMARY,
         align = TextAlign.LEFT,
         size = TextSize.M,
-
+        titleClassName,
+        textClassName,
     } = props;
 
     return (
         <div className={classNames(cls.Text, {}, [className, cls[theme], cls[align], cls[size]])}>
-            {title && createElement(TitleTags[size], { className: cls.title }, title)}
-            {text && <p className={cls.text}>{text}</p>}
+            {title && createElement(
+                TitleTags[size],
+                { className: classNames(cls.title, {}, [titleClassName]) },
+                title,
+            )}
+            {text && (
+                <p
+                    className={classNames(cls.text, {}, [textClassName])}
+                >
+                    {text}
+                </p>
+            )}
         </div>
     );
 });

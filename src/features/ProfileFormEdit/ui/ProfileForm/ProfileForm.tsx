@@ -29,7 +29,7 @@ export const ProfileForm = () => {
     const {
         handleSubmit,
         formState: {
-            errors, isDirty, isValid, isSubmitting,
+            errors, isDirty, isSubmitting,
         },
         setFocus,
         reset,
@@ -54,8 +54,8 @@ export const ProfileForm = () => {
     }, []);
 
     const onFormFocus = useCallback(() => {
-        dispatch(profileActions.errorReset());
-    }, [dispatch]);
+        if (error) dispatch(profileActions.errorReset());
+    }, [dispatch, error]);
 
     const updateProfile = useCallback(async (data: FieldValues):Promise<void> => {
         const result = await dispatch(updateProfileData(data as Profile))
@@ -82,15 +82,13 @@ export const ProfileForm = () => {
                         )
                         : (
                             <>
-                                {isDirty && (
-                                    <Button
-                                        theme={ButtonTheme.OUTLINE_RED}
-                                        onClick={onCancelEdit}
-                                        disabled={isSubmitting}
-                                    >
-                                        {t('Отменить изменения')}
-                                    </Button>
-                                )}
+                                <Button
+                                    theme={ButtonTheme.OUTLINE_RED}
+                                    onClick={onCancelEdit}
+                                    disabled={isSubmitting}
+                                >
+                                    {t('Отменить')}
+                                </Button>
                                 <Button
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={handleSubmit(updateProfile)}

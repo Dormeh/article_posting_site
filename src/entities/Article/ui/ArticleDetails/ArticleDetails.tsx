@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useEffect } from 'react';
-import { fetchArticleData } from 'entities/Article/model/services/fetchArticleData/fetchArticleData';
+import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
 import {
     DynamicModuleLoader,
@@ -15,12 +15,15 @@ import {
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
+import Arrow from 'shared/assets/icons/arrow.svg';
 import { renderBlocks } from 'entities/Article/model/renderBlocks';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from 'entities/Article/model/selectors/getArticleDetails/getArticleDetails';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { articleReducer } from '../../model/slice/articleSlice';
 import cls from './ArticleDetails.module.scss';
 
@@ -46,7 +49,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleData(id));
+            dispatch(fetchArticleById(id));
         }
     }, [dispatch, id]);
 
@@ -74,6 +77,10 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     } else {
         content = (
             <>
+                <AppLink className={cls.link} to={RouterPath.article}>
+                    <Arrow className={cls.arrowIcon} />
+                    <Text text={t('Назад к списку статей')} className={cls.linkText} />
+                </AppLink>
                 <div className={cls.avatarWrapper}>
                     <Avatar src={article?.img} size={200} className={cls.avatar} alt={article?.title} />
                 </div>

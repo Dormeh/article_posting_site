@@ -4,7 +4,7 @@ import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
 import { Article } from '../../types/article';
 
-export const fetchArticleData = createAsyncThunk<Article, string, ThunkConfig<string>>(
+export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<string>>(
     'articleData/fetchArticleData',
     async (id, thunkAPI) => {
         const { rejectWithValue, extra, dispatch } = thunkAPI;

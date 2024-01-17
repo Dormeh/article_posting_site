@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import AvatarImg from 'shared/assets/images/storybook.jpg';
 import { CommentCard } from './CommentCard';
 
 export default {
@@ -20,7 +21,7 @@ export default {
                 currency: 'RUB',
                 country: 'Russia',
                 city: 'Moscow',
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: AvatarImg,
                 email: 'adf@azdaf.ru',
                 phone: '13131321321321',
             },

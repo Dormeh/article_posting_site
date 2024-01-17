@@ -1,0 +1,14 @@
+.ArticleList {
+  padding: 30px 0;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+
+  &.plate {
+    flex-flow: wrap;
+  }
+
+  &.list {
+    flex-direction: column;
+  }
+}

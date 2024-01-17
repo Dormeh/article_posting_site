@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .Button {
   display: flex;
   cursor: pointer;
@@ -5,13 +7,16 @@
   align-items: center;
   justify-content: center;
   border: none;
+  transition: 0.2s;
 
   &:disabled {
+    cursor: default;
     opacity: 0.7;
   }
 
-  &:hover {
-    filter: brightness(120%) contrast(200%) drop-shadow(1px 1px 1px rgba(var(--inverted-secondary-color-rgb), 0.8));
+  &:hover:not(:disabled) {
+    filter: brightness(120%) contrast(120%) drop-shadow(1px 0 0.5px rgba(var(--inverted-secondary-color-rgb), 0.7));
+    transform: translateY(1.5%);
   }
 }
 

@@ -4,6 +4,7 @@
   background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.3s;
+  transform: none;
 }
 
 .link-box {
@@ -21,7 +22,9 @@
 }
 
 .arrow {
-  transition: transform 0.3s;
+  transition: 0.3s;
+  width: 13px;
+  height: 34px;
 }
 
 .collapsed {
@@ -37,7 +40,7 @@
   }
 }
 
-.collapseBtn {
+.collapseBtn:not(:disabled) {
   &:hover {
     filter: initial;
   }

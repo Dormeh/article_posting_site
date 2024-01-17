@@ -3,8 +3,8 @@
 }
 
 .app_dark_theme {
-  --bg-color: #090949;
-  --bg-color-rgb: #{hex-to-rgb(#090949)};
+  --bg-color: #0b0b58;
+  --bg-color-rgb: #{hex-to-rgb(#0b0b58)};
   --inverted-bg-color: #b5bcc3;
   --primary-color: #18fe18;
   --secondary-color: #0de37ced;
@@ -16,9 +16,12 @@
   --inverted-secondary-color-rgb: #{hex-to-rgb(#0234d4)};
 
   // skeleton
-  --skeleton-color: #242499;
-  --skeleton-shadow: rgba(22, 83, 255, 70%);
+  --skeleton-color: #4c62be;
+  --skeleton-shadow: rgba(74, 99, 170, 70%);
 
   // code
   --code-bg: #1212a1;
+
+  // card
+  --card-bg: #272783;
 }

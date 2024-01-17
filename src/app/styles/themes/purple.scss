@@ -7,12 +7,12 @@
   --inverted-bg-color: #ddd0fb;
   --primary-color: #e2b5ff;
   --secondary-color: #d191e3;
-  --inverted-primary-color: #5a37fe;
-  --inverted-secondary-color: #1613b5;
+  --inverted-primary-color: #7051ff;
+  --inverted-secondary-color: #654ae2;
   --primary-color-rgb: #{hex-to-rgb(#daa2ff)};
   --secondary-color-rgb: #{hex-to-rgb(#daa2ff)};
-  --inverted-primary-color-rgb: #{hex-to-rgb(#2c00fc)};
-  --inverted-secondary-color-rgb: #{hex-to-rgb(#0400bd)};
+  --inverted-primary-color-rgb: #{hex-to-rgb(#7051ff)};
+  --inverted-secondary-color-rgb: #{hex-to-rgb(#654ae2)};
 
   // skeleton
   --skeleton-color: #3a0082;
@@ -20,4 +20,7 @@
 
   // code
   --code-bg: #12128f;
+
+  // card
+  --card-bg: #7515ea;
 }

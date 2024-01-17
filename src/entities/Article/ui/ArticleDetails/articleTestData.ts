@@ -1,10 +1,27 @@
 import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
+import AvatarImg from 'shared/assets/images/storybook.jpg';
+import JSImg from 'shared/assets/images/js.png';
 
 export const articleTestData: Article = {
     id: '1',
+    profile: {
+        id: '1',
+        first: 'Тимур',
+        lastname: 'Ульби',
+        age: 22,
+        currency: Currency.USD,
+        country: Country.Russia,
+        city: 'Moscow',
+        username: 'admin',
+        avatar: AvatarImg,
+        email: 'adf@azdaf.ru',
+        phone: '13131321321321',
+    },
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: JSImg,
     views: 1022,
     createdAt: '26.02.2022',
     type: [ArticleType.IT],

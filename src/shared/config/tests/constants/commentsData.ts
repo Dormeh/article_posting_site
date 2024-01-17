@@ -1,3 +1,5 @@
+import AvatarImg from 'shared/assets/images/storybook.jpg';
+
 export const commentsData = [
     {
         profile: {
@@ -9,7 +11,7 @@ export const commentsData = [
             currency: 'RUB',
             country: 'Russia',
             city: 'Moscow',
-            avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+            avatar: AvatarImg,
             email: 'adf@azdaf.ru',
             phone: '13131321321321',
         },
@@ -29,7 +31,7 @@ export const commentsData = [
             currency: 'RUB',
             country: 'Russia',
             city: 'Moscow',
-            avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+            avatar: AvatarImg,
             email: 'adf@azdkaf.ru',
             phone: '13131321321321',
         },

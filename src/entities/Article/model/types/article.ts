@@ -1,3 +1,5 @@
+import { Profile } from 'entities/Profile';
+
 export enum ArticleBlockType {
     CODE = 'CODE',
     IMAGE = 'IMAGE',
@@ -34,6 +36,7 @@ export enum ArticleType {
 }
 export interface Article {
     id: string,
+    profile: Profile;
     title: string,
     subtitle: string,
     img: string,
@@ -41,4 +44,9 @@ export interface Article {
     createdAt: string,
     type: ArticleType[],
     blocks: ArticleBlock[]
+}
+
+export enum ArticleView {
+    PLATE = 'plate',
+    LIST = 'list',
 }

@@ -79,7 +79,7 @@ export default {
 
     // A set of global variables that need to be available in all test environments
     moduleNameMapper: {
-        '\\.s?css$': 'identity-obj-proxy',
+        '\\.(s?css|jpg|png)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
 

@@ -1,0 +1,149 @@
+.ArticleListItem {
+  width: 100%;
+
+  .date,
+  .date.dateText {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: var(primary-color);
+    opacity: 0.6;
+    line-height: 0;
+    box-shadow: 0 0 15px 10px var(--bg-color);
+  }
+
+  .views {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    .icon {
+      filter: contrast(50%) brightness(120%);
+      color: var(--inverted-primary-color);
+    }
+  }
+
+  .type {
+    width: 60%;
+
+    .typeText {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.plate {
+  .card {
+    cursor: pointer;
+    transition: 0.2s;
+
+    &.skeletonCard {
+      gap: 5px;
+    }
+  }
+
+  .date {
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: scale(1.01);
+    filter: brightness(110%);
+    box-shadow: 3px 3px 10px 5px var(--skeleton-color);
+
+    .date {
+      opacity: 1;
+    }
+  }
+
+  width: 230px;
+
+  .imageWrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  .imgPreview {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .infoWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .titleText {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.list {
+  /* stylelint-disable no-descending-specificity */
+  .card {
+    gap: 15px;
+  }
+
+  .header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .username {
+    margin-right: 30px;
+  }
+
+  .title {
+    margin-bottom: 7px;
+
+    .titleText {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 15px;
+  }
+
+  .imgWrapper {
+    background: var(--skeleton-color);
+    line-height: 0;
+  }
+
+  .imgPreview {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+  }
+
+  .textBlock {
+    max-height: 170px;
+    overflow: hidden;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}

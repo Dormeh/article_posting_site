@@ -1,11 +1,11 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { ApiErrorTypes } from 'shared/api/types';
-import { fetchArticleData } from './fetchArticleData';
+import { fetchArticleById } from './fetchArticleById';
 import { articleTestData } from '../../../ui/ArticleDetails/articleTestData';
 
 describe('fetchArticleData.test', () => {
     test('success get data', async () => {
-        const thunk = new TestAsyncThunk(fetchArticleData);
+        const thunk = new TestAsyncThunk(fetchArticleById);
         thunk.api.get.mockReturnValue(Promise.resolve({ data: articleTestData }));
         const result = await thunk.callThunk('1');
 
@@ -16,7 +16,7 @@ describe('fetchArticleData.test', () => {
     });
 
     test('error article get', async () => {
-        const thunk = new TestAsyncThunk(fetchArticleData);
+        const thunk = new TestAsyncThunk(fetchArticleById);
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
         const result = await thunk.callThunk('1');
 

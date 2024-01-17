@@ -1,5 +1,6 @@
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import AvatarImg from 'shared/assets/images/storybook.jpg';
 
 export const testProfileData = {
     id: '1',
@@ -10,7 +11,7 @@ export const testProfileData = {
     country: Country.Russia,
     city: 'Moscow',
     username: 'admin',
-    avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+    avatar: AvatarImg,
     email: 'adf@azdaf.ru',
     phone: '13131321321321',
 };

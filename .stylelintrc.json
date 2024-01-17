@@ -4,6 +4,12 @@
     "indentation": [2],
     "selector-class-pattern": null,
     "color-function-notation": null,
-    "property-no-vendor-prefix": null
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": [
+      true,
+      {
+        "ignoreValues": ["box"]
+      }
+    ]
   }
 }
