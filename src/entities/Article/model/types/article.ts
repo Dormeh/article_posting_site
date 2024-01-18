@@ -46,7 +46,7 @@ export interface Article {
     blocks: ArticleBlock[]
 }
 
-export enum ArticleView {
+export enum ArticlesView {
     PLATE = 'plate',
     LIST = 'list',
 }

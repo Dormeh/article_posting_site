@@ -28,7 +28,7 @@ export const sidebarItemsList: SidebarItemType[] = [
         },
     },
     {
-        path: RouterPath.article,
+        path: RouterPath.articles,
         text: 'Статьи',
         Icon: ArticleIcon,
         authOnly: true,

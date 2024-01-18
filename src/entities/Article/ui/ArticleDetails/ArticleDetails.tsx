@@ -77,7 +77,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     } else {
         content = (
             <>
-                <AppLink className={cls.link} to={RouterPath.article}>
+                <AppLink className={cls.link} to={RouterPath.articles}>
                     <Arrow className={cls.arrowIcon} />
                     <Text text={t('Назад к списку статей')} className={cls.linkText} />
                 </AppLink>

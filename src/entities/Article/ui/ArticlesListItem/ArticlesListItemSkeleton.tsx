@@ -1,23 +1,23 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleView } from 'entities/Article';
+import { ArticlesView } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import cls from './ArticleListItem.module.scss';
+import cls from './ArticlesListItem.module.scss';
 
-interface ArticleListItemSkeletonProps {
+interface ArticlesListItemSkeletonProps {
     className?: string;
-    view: ArticleView;
+    view: ArticlesView;
 }
 
-export const ArticleListItemSkeleton = (props: ArticleListItemSkeletonProps) => {
+export const ArticlesListItemSkeleton = (props: ArticlesListItemSkeletonProps) => {
     const {
         className,
         view,
     } = props;
 
-    if (view === ArticleView.LIST) {
+    if (view === ArticlesView.LIST) {
         return (
-            <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+            <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
                     <div className={cls.header}>
                         <div className={cls.userInfo}>
@@ -42,7 +42,7 @@ export const ArticleListItemSkeleton = (props: ArticleListItemSkeletonProps) => 
     }
 
     return (
-        <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+        <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
             <Card className={classNames(cls.card, {}, [cls.skeletonCard])}>
                 <div className={cls.imageWrapper}>
                     <Skeleton className={cls.imgPreview} height={200} />

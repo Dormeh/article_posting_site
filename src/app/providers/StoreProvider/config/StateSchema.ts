@@ -11,6 +11,7 @@ import { NavigateOptions } from 'react-router/dist/lib/context';
 import { ArticleDetailSchema } from 'entities/Article/model/types/articleDetailsSchema';
 import { ArticleCommentsSchema } from 'pages/ArticleDetailPage';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
+import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -19,6 +20,7 @@ export interface StateSchema {
     // Асинхронные редьюсеры
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    articlesPage?: ArticlesPageSchema;
     articleDetails?: ArticleDetailSchema
     articleComments?: ArticleCommentsSchema
     addCommentForArticle?: AddCommentFormSchema

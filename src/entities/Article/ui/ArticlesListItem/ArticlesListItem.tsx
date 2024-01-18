@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { ArticleView } from 'entities/Article';
+import { ArticlesView } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
@@ -9,20 +9,20 @@ import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
-import cls from './ArticleListItem.module.scss';
+import cls from './ArticlesListItem.module.scss';
 import { Article, ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
 
-interface ArticleListItemProps {
+interface ArticlesListItemProps {
     className?: string;
     article: Article;
-    view: ArticleView;
+    view: ArticlesView;
 }
 
-export const ArticleListItem = memo((props: ArticleListItemProps) => {
+export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
     const {
         className,
         article,
-        view = ArticleView.PLATE,
+        view = ArticlesView.PLATE,
     } = props;
     const { t } = useTranslation();
 
@@ -39,13 +39,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         navigate(RouterPath.article_details + article.id);
     }, [article.id, navigate]);
 
-    if (view === ArticleView.LIST) {
+    if (view === ArticlesView.LIST) {
         const textBlock = article.blocks.find(
             (block) => block.type === ArticleBlockType.TEXT,
         ) as ArticleTextBlock;
 
         return (
-            <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+            <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
                     <div className={cls.header}>
                         <div className={cls.userInfo}>
@@ -77,7 +77,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     }
 
     return (
-        <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+        <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
             <Card className={cls.card} onClick={onClickNavigate}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.imgPreview} />
