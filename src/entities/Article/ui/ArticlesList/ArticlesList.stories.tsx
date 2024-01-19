@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { ArticlesView } from 'entities/Article';
+import { ContentView } from 'shared/model/types/types';
 import { ArticlesList } from './ArticlesList';
 import { articlesMockData } from '../../model/mockData/articlesMockData';
 
@@ -20,18 +20,18 @@ const Template: ComponentStory<typeof ArticlesList> = (args) => <ArticlesList {.
 
 export const PrimaryPlate = Template.bind({});
 PrimaryPlate.args = {
-    view: ArticlesView.PLATE,
+    view: ContentView.PLATE,
 };
 
 export const PrimaryPlateLoading = Template.bind({});
 PrimaryPlateLoading.args = {
-    view: ArticlesView.PLATE,
+    view: ContentView.PLATE,
     isLoading: true,
 };
 
 export const DarkPlate = Template.bind({});
 DarkPlate.args = {
-    view: ArticlesView.PLATE,
+    view: ContentView.PLATE,
 };
 
 DarkPlate.decorators = [ThemeDecorator(Theme.DARK)];
@@ -39,7 +39,7 @@ DarkPlate.decorators = [ThemeDecorator(Theme.DARK)];
 export const DarkPlateLoading = Template.bind({});
 
 DarkPlateLoading.args = {
-    view: ArticlesView.PLATE,
+    view: ContentView.PLATE,
     isLoading: true,
 };
 
@@ -47,25 +47,25 @@ DarkPlateLoading.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const PrimaryList = Template.bind({});
 PrimaryList.args = {
-    view: ArticlesView.LIST,
+    view: ContentView.LIST,
 };
 
 export const PrimaryListLoading = Template.bind({});
 PrimaryListLoading.args = {
-    view: ArticlesView.LIST,
+    view: ContentView.LIST,
     isLoading: true,
 };
 
 export const DarkList = Template.bind({});
 DarkList.args = {
-    view: ArticlesView.LIST,
+    view: ContentView.LIST,
 };
 
 DarkList.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const DarkListLoading = Template.bind({});
 DarkListLoading.args = {
-    view: ArticlesView.LIST,
+    view: ContentView.LIST,
     isLoading: true,
 };
 

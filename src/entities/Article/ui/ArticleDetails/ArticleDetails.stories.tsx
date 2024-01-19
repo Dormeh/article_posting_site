@@ -60,6 +60,15 @@ DarkLoading.decorators = [StoreDecorator({
 }),
 ThemeDecorator(Theme.DARK)];
 
+export const PurpleLoading = Template.bind({});
+PurpleLoading.args = {};
+PurpleLoading.decorators = [StoreDecorator({
+    articleDetails: {
+        isLoading: true,
+    },
+}),
+ThemeDecorator(Theme.PURPLE)];
+
 export const DarkError = Template.bind({});
 DarkError.args = {};
 DarkError.decorators = [StoreDecorator({

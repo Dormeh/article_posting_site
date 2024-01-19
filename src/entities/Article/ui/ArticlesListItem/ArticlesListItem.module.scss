@@ -35,9 +35,12 @@
 }
 
 .plate {
+  width: 230px;
+
   .card {
     cursor: pointer;
     transition: 0.2s;
+    height: 320px;
 
     &.skeletonCard {
       gap: 5px;
@@ -59,15 +62,16 @@
     }
   }
 
-  width: 230px;
-
   .imageWrapper {
     width: 100%;
+    height: 78%;
     position: relative;
+    margin-bottom: 7px;
   }
 
   .imgPreview {
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 

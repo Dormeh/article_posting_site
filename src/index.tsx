@@ -19,3 +19,4 @@ render(
     </BrowserRouter>,
     document.getElementById('root'),
 );
+export { ContentView } from 'shared/model/types/types';

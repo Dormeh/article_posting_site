@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { ArticlesView } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
@@ -9,20 +8,21 @@ import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
+import { ContentView } from 'shared/model/types/types';
 import cls from './ArticlesListItem.module.scss';
 import { Article, ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
 
 interface ArticlesListItemProps {
     className?: string;
     article: Article;
-    view: ArticlesView;
+    view: ContentView;
 }
 
 export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
     const {
         className,
         article,
-        view = ArticlesView.PLATE,
+        view = ContentView.PLATE,
     } = props;
     const { t } = useTranslation();
 
@@ -39,7 +39,7 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
         navigate(RouterPath.article_details + article.id);
     }, [article.id, navigate]);
 
-    if (view === ArticlesView.LIST) {
+    if (view === ContentView.LIST) {
         const textBlock = article.blocks.find(
             (block) => block.type === ArticleBlockType.TEXT,
         ) as ArticleTextBlock;

@@ -5,6 +5,7 @@ export enum ApiErrorTypes {
     PROFILE_GET_ERROR = 'Ошибка получения профиля',
     PROFILE_UPDATE_ERROR = 'Ошибка обновления профиля',
     ARTICLE_GET_ERROR = 'Ошибка получения статьи',
+    ARTICLES_GET_ERROR = 'Ошибка получения всех статей',
     COMMENT_GET_ERROR = 'Ошибка получения комментариев',
 }
 

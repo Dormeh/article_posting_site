@@ -1,12 +1,12 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticlesView } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { ContentView } from 'shared/model/types/types';
 import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemSkeletonProps {
     className?: string;
-    view: ArticlesView;
+    view: ContentView;
 }
 
 export const ArticlesListItemSkeleton = (props: ArticlesListItemSkeletonProps) => {
@@ -15,7 +15,7 @@ export const ArticlesListItemSkeleton = (props: ArticlesListItemSkeletonProps) =
         view,
     } = props;
 
-    if (view === ArticlesView.LIST) {
+    if (view === ContentView.LIST) {
         return (
             <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
                 <Card className={cls.card}>

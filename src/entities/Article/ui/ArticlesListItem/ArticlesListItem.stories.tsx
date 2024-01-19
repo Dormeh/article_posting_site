@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { ArticlesView } from 'entities/Article';
+import { ContentView } from 'shared/model/types/types';
 import { articlesMockData } from '../../model/mockData/articlesMockData';
 import { ArticlesListItem } from './ArticlesListItem';
 
@@ -20,23 +20,23 @@ const Template: ComponentStory<typeof ArticlesListItem> = (args) => <ArticlesLis
 
 export const PrimaryPlate = Template.bind({});
 PrimaryPlate.args = {
-    view: ArticlesView.PLATE,
+    view: ContentView.PLATE,
 };
 
 export const DarkPlate = Template.bind({});
 DarkPlate.args = {
-    view: ArticlesView.PLATE,
+    view: ContentView.PLATE,
 };
 
 DarkPlate.decorators = [ThemeDecorator(Theme.DARK)];
 export const PrimaryList = Template.bind({});
 PrimaryList.args = {
-    view: ArticlesView.LIST,
+    view: ContentView.LIST,
 };
 
 export const DarkList = Template.bind({});
 DarkList.args = {
-    view: ArticlesView.LIST,
+    view: ContentView.LIST,
 };
 
 DarkList.decorators = [ThemeDecorator(Theme.DARK)];
