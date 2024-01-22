@@ -27,7 +27,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     };
 
     return (
-        <div
+        <header
             className={classNames(cls.Navbar, {}, [className])}
         >
             <Button
@@ -53,6 +53,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 </Modal>
             )}
 
-        </div>
+        </header>
     );
 });

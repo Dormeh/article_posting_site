@@ -36,7 +36,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])
             }
         >
-            <div className={cls['link-box']}>
+            <nav className={cls['link-box']}>
                 {sidebarItemsList.map((
                     item,
                 ) => (
@@ -46,7 +46,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         collapsed={collapsed}
                     />
                 ))}
-            </div>
+            </nav>
             {canBeCollapsed && (
                 <Button
                     data-testid="sidebar-toggle"

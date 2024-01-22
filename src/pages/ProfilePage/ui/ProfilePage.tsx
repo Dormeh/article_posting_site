@@ -1,14 +1,11 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ProfileForm, fetchProfileData, profileReducer } from 'features/ProfileFormEdit';
+import { fetchProfileData, ProfileForm, profileReducer } from 'features/ProfileFormEdit';
 import { useParams } from 'react-router-dom';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 
 interface ProfilePageProps {
     className?: string;
@@ -31,9 +28,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className={classNames('', {}, [className])}>
+            <Page className={className}>
                 <ProfileForm />
-            </div>
+            </Page>
         </DynamicModuleLoader>
 
     );

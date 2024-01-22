@@ -20,12 +20,5 @@ iframe {
 
 .content-page {
   display: flex;
-}
-
-.page-wrapper {
-  flex-grow: 1;
-  flex-shrink: 100;
-  padding: 0 20px;
   height: calc(100vh - var(--navbar-height));
-  overflow-y: auto;
 }

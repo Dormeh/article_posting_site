@@ -13,6 +13,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
 import { useCallback } from 'react';
 import { ContentView } from 'shared/model/types/types';
+import { Page } from 'shared/ui/Page/Page';
 import { contentArticlesPageSelects } from '../config/contentArticlesPageSelects';
 import { fetchArticlesList } from '../model/services/fetchArticlePageData/fetchArticlesList';
 import cls from './ArticlesPage.module.scss';
@@ -46,15 +47,20 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialsReducers}>
-            <div className={classNames(cls.ArticlesPage, {}, [className])}>
-                <SelectContentPreview selects={contentArticlesPageSelects} view={view} onSelect={onSelectView} />
+            <Page className={classNames(cls.ArticlesPage, {}, [className])}>
+                <SelectContentPreview
+                    className={cls.viewSelect}
+                    selects={contentArticlesPageSelects}
+                    view={view}
+                    onSelect={onSelectView}
+                />
                 <ArticlesList
                     view={view}
                     isLoading={isLoading}
                     articles={articles}
                     error={error}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
 
     );
