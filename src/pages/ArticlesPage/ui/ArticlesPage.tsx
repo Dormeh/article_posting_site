@@ -5,16 +5,16 @@ import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/D
 import { useSelector } from 'react-redux';
 import {
     getArticlesPageError,
-    getArticlesPageIsLoading,
+    getArticlesPageIsLoading, getArticlesPagePage,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlePageData/fetchArticlesList';
 import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
-import { contentArticlesPageSelects } from 'pages/ArticlesPage/config/contentArticlesPageSelects';
 import { useCallback } from 'react';
 import { ContentView } from 'shared/model/types/types';
+import { contentArticlesPageSelects } from '../config/contentArticlesPageSelects';
+import { fetchArticlesList } from '../model/services/fetchArticlePageData/fetchArticlesList';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageActions, articlesPageReducer, getArticlesSelector } from '../model/slice/articlesPageSlice';
 
@@ -28,15 +28,16 @@ const initialsReducers = {
 const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props;
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
-    const dispatch = useAppDispatch();
+    const page = useSelector(getArticlesPagePage);
     const articles = useSelector(getArticlesSelector.selectAll);
 
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlesPageActions.initPageContentView());
+        dispatch(fetchArticlesList(page));
     });
 
     const onSelectView = useCallback((view: ContentView) => {

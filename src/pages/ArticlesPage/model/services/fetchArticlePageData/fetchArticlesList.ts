@@ -3,15 +3,24 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
 import { Article } from 'entities/Article/model/types/article';
+import {
+    getArticlesPageLimit,
+} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 
-export const fetchArticlesList = createAsyncThunk<Article[], void, ThunkConfig<string>>(
+export const fetchArticlesList = createAsyncThunk<Article[], number, ThunkConfig<string>>(
     'ArticlePage/fetchArticlePageData',
-    async (_, thunkAPI) => {
-        const { rejectWithValue, extra, dispatch } = thunkAPI;
+    async (page, thunkAPI) => {
+        const {
+            rejectWithValue, extra, dispatch, getState,
+        } = thunkAPI;
+        const limit = getArticlesPageLimit(getState());
+
         try {
             const response = await extra.api.get<Article[]>('/articles', {
                 params: {
                     _expand: 'profile',
+                    _page: page,
+                    _limit: limit,
                 },
             });
 
