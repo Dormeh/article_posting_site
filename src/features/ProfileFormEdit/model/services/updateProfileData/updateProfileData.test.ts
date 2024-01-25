@@ -1,6 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { Profile } from 'entities/Profile';
 import { ApiErrorTypes } from 'shared/api/types';
+import { profileReducer } from 'features/ProfileFormEdit';
 import { testProfileData } from './profileData';
 import { updateProfileData } from './updateProfileData';
 
@@ -15,7 +16,7 @@ describe('updateProfileData.test', () => {
                     profileId: '1',
                 },
             },
-        });
+        }, { profile: profileReducer });
         thunk.api.put.mockReturnValue(Promise.resolve({ data: testProfileData }));
 
         const result = await thunk.callThunk(testProfileData as Profile);
@@ -35,7 +36,7 @@ describe('updateProfileData.test', () => {
                     profileId: '1',
                 },
             },
-        });
+        }, { profile: profileReducer });
         thunk.api.put.mockRejectedValue(Promise.resolve({
             status: 403,
             data: {

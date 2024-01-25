@@ -1,5 +1,5 @@
 import {
-    memo, Suspense, useCallback,
+    ForwardedRef, forwardRef, memo, Suspense, useCallback, useRef,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +10,7 @@ import { CommentList } from 'entities/Comment/ui/CommentList/CommentList';
 import { Text } from 'shared/ui/Text/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-    getAddCommentForArticleError,
-} from '../../model/selectors/addCommentForArticleSelectors';
+import { getAddCommentForArticleError } from '../../model/selectors/addCommentForArticleSelectors';
 import { addCommentForArticleReducer } from '../../model/slices/AddCommentForArticleSlice';
 import { fetchArticleComments } from '../../model/services/fetchArticleComments/fetchArticleComments';
 import { articleCommentsReducer, getArticleComments } from '../../model/slices/ArticleCommentsSlice';
@@ -30,7 +28,7 @@ const initialReducers = {
     addCommentForArticle: addCommentForArticleReducer,
 };
 
-export const ArticleComments = memo((props: ArticleCommentsProps) => {
+const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {
         className,
         id,
@@ -40,6 +38,7 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
     const comments = useSelector(getArticleComments.selectAll);
     const isLoading = useSelector(getArticleCommentsIsLoading);
     const error = useSelector(getAddCommentForArticleError);
+    const addCommentFormRef = useRef<HTMLFormElement>(null);
 
     useInitialEffect(() => {
         if (id) dispatch(fetchArticleComments(id));
@@ -48,10 +47,22 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
     const sendComment = useCallback(async (text) => {
         const result = await dispatch(addCommentForArticle(text));
         if (result.meta.requestStatus === 'fulfilled') {
-            const pageElem = document.querySelector('.page-wrapper');
-            setTimeout(() => pageElem?.scrollTo({ top: pageElem.scrollHeight, behavior: 'smooth' }), 200);
+            if (ref && addCommentFormRef && typeof ref !== 'function') {
+                setTimeout(() => {
+                    const cordDif = (addCommentFormRef.current?.getBoundingClientRect().bottom || 0)
+                        - (ref.current?.clientHeight || 0);
+                    if (cordDif > 0) {
+                        ref.current?.scrollBy(
+                            {
+                                top: (cordDif),
+                                behavior: 'smooth',
+                            },
+                        );
+                    }
+                }, 200);
+            }
         }
-    }, [dispatch]);
+    }, [dispatch, ref]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
@@ -59,6 +70,7 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
             <CommentList isLoading={isLoading} comments={comments} />
             <Suspense fallback={<Loader />}>
                 <AddCommentForm
+                    ref={addCommentFormRef}
                     formTitle={t('Ваш комментарий')}
                     onSubmit={sendComment}
                     className={cls.commentEdit}
@@ -69,3 +81,5 @@ export const ArticleComments = memo((props: ArticleCommentsProps) => {
 
     );
 });
+
+export default memo(ArticleComments);

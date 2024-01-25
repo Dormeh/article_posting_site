@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { Text } from 'shared/ui/Text/Text';
-import { Page } from './Page';
+import Page from './Page';
 
 export default {
     title: 'shared/Page',

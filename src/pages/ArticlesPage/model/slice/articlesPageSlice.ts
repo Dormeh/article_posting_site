@@ -3,8 +3,8 @@ import { Article } from 'entities/Article/model/types/article';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ContentView } from 'shared/model/types/types';
 import { LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY, LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
+import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
-import { fetchArticlesList } from '../services/fetchArticlePageData/fetchArticlesList';
 
 export const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article: Article) => article.id,
@@ -23,16 +23,16 @@ export const articlesPageSlice = createSlice({
         ids: [],
         entities: {},
         view: ContentView.PLATE,
-        limit: 9,
+        limit: 12,
         page: 1,
-        hasMore: false,
+        hasMore: true,
     }),
     reducers: {
         errorReset: (state) => {
             state.error = undefined;
         },
         changeLimitByView: (state, { payload }: PayloadAction<ContentView>) => {
-            state.limit = payload === ContentView.PLATE ? 9 : 4;
+            state.limit = payload === ContentView.PLATE ? 12 : 4;
         },
         initPageContentView: (state) => {
             const view = localStorage.getItem(LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY) as ContentView;
@@ -46,6 +46,9 @@ export const articlesPageSlice = createSlice({
                 .changeLimitByView(state, articlesPageSlice.actions.changeLimitByView(payload));
             localStorage.setItem(LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY, payload);
         },
+        increasePage: (state) => {
+            state.page += 1;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -55,7 +58,8 @@ export const articlesPageSlice = createSlice({
             })
             .addCase(fetchArticlesList.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
-                articlesAdapter.setAll(state, payload);
+                articlesAdapter.addMany(state, payload);
+                state.hasMore = payload.length === state.limit;
             })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;

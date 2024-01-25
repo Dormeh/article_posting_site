@@ -6,12 +6,14 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { $api } from 'shared/api/api';
 import { To } from '@remix-run/router';
 import { NavigateOptions } from 'react-router/dist/lib/context';
+import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 
 export function createReduxStore(
     initialState?: StateSchema,
-    asyncReducers?: ReducersMapObject<StateSchema>,
+    asyncReducers?: ReducersMapObject<StateSchema> | ReducersList,
     navigate?: (to: To, options?: NavigateOptions) => void,
+    api = $api,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
@@ -22,7 +24,7 @@ export function createReduxStore(
     const reducerManager = createReducerManager(rootReducers);
 
     const extraArg: ThunkExtraArg = {
-        api: $api,
+        api,
         navigate,
     };
     const store = configureStore({

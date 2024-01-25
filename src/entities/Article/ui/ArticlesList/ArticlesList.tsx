@@ -32,14 +32,6 @@ export const ArticlesList = memo((props: ArticleListProps) => {
     } = props;
     const { t } = useTranslation();
 
-    if (isLoading) {
-        return (
-            <div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
-                {getSkeleton(view)}
-            </div>
-        );
-    }
-
     if (error) {
         return (
             <div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
@@ -64,6 +56,7 @@ export const ArticlesList = memo((props: ArticleListProps) => {
             {articles.length
                 ? articles.map(renderArticle)
                 : null}
+            {isLoading && getSkeleton(view)}
         </div>
     );
 });

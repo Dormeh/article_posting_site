@@ -4,22 +4,26 @@ import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
 import { Article } from 'entities/Article/model/types/article';
 import {
-    getArticlesPageLimit,
+    getArticlesPageLimit, getArticlesPagePage,
 } from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+import { useSelector } from 'react-redux';
+import { getArticlesSelector } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
 
-export const fetchArticlesList = createAsyncThunk<Article[], number, ThunkConfig<string>>(
+export const fetchArticlesList = createAsyncThunk<Article[], void, ThunkConfig<string>>(
     'ArticlePage/fetchArticlePageData',
-    async (page, thunkAPI) => {
+    async (_, thunkAPI) => {
         const {
             rejectWithValue, extra, dispatch, getState,
         } = thunkAPI;
         const limit = getArticlesPageLimit(getState());
+        const page = getArticlesPagePage(getState());
+        const articles = getArticlesSelector.selectAll(getState());
 
         try {
             const response = await extra.api.get<Article[]>('/articles', {
                 params: {
                     _expand: 'profile',
-                    _page: page,
+                    _start: articles.length,
                     _limit: limit,
                 },
             });

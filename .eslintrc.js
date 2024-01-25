@@ -57,6 +57,7 @@ module.exports = {
         'linebreak-style': ['error', (process.platform === 'win32' ? 'windows' : 'unix')],
         'no-param-reassign': 'off',
         'no-undef': 'off',
+        'consistent-return': [1],
     },
     globals: {
         __IS_DEV__: true,

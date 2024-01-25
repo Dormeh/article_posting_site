@@ -11,11 +11,12 @@ import {
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
-import { useCallback } from 'react';
+import { memo, useCallback, useRef } from 'react';
 import { ContentView } from 'shared/model/types/types';
-import { Page } from 'shared/ui/Page/Page';
+import Page from 'shared/ui/Page/Page';
+import { fetchNextPartData } from 'pages/ArticlesPage/model/services/fetchNextPartData/fetchNextPartData';
+import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { contentArticlesPageSelects } from '../config/contentArticlesPageSelects';
-import { fetchArticlesList } from '../model/services/fetchArticlePageData/fetchArticlesList';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageActions, articlesPageReducer, getArticlesSelector } from '../model/slice/articlesPageSlice';
 
@@ -33,13 +34,16 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
-    const page = useSelector(getArticlesPagePage);
     const articles = useSelector(getArticlesSelector.selectAll);
 
     useInitialEffect(() => {
         dispatch(articlesPageActions.initPageContentView());
-        dispatch(fetchArticlesList(page));
+        dispatch(fetchArticlesList());
     });
+
+    const onLoadNextContent = useCallback(() => {
+        dispatch(fetchNextPartData());
+    }, [dispatch]);
 
     const onSelectView = useCallback((view: ContentView) => {
         dispatch(articlesPageActions.setPageContentView(view));
@@ -47,7 +51,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialsReducers}>
-            <Page className={classNames(cls.ArticlesPage, {}, [className])}>
+            <Page className={className} onScrollCallback={onLoadNextContent}>
                 <SelectContentPreview
                     className={cls.viewSelect}
                     selects={contentArticlesPageSelects}
@@ -66,4 +70,4 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     );
 };
 
-export default ArticlesPage;
+export default memo(ArticlesPage);
