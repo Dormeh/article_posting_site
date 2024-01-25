@@ -27,6 +27,7 @@ export const PrimaryPlateLoading = Template.bind({});
 PrimaryPlateLoading.args = {
     view: ContentView.PLATE,
     isLoading: true,
+    articles: [],
 };
 
 export const DarkPlate = Template.bind({});
@@ -41,6 +42,7 @@ export const DarkPlateLoading = Template.bind({});
 DarkPlateLoading.args = {
     view: ContentView.PLATE,
     isLoading: true,
+    articles: [],
 };
 
 DarkPlateLoading.decorators = [ThemeDecorator(Theme.DARK)];
@@ -54,6 +56,7 @@ export const PrimaryListLoading = Template.bind({});
 PrimaryListLoading.args = {
     view: ContentView.LIST,
     isLoading: true,
+    articles: [],
 };
 
 export const DarkList = Template.bind({});
@@ -67,6 +70,7 @@ export const DarkListLoading = Template.bind({});
 DarkListLoading.args = {
     view: ContentView.LIST,
     isLoading: true,
+    articles: [],
 };
 
 DarkListLoading.decorators = [ThemeDecorator(Theme.DARK)];
