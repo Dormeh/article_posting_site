@@ -26,6 +26,7 @@ export const articlesPageSlice = createSlice({
         limit: 12,
         page: 1,
         hasMore: true,
+        _inited: false,
     }),
     reducers: {
         errorReset: (state) => {
@@ -34,11 +35,12 @@ export const articlesPageSlice = createSlice({
         changeLimitByView: (state, { payload }: PayloadAction<ContentView>) => {
             state.limit = payload === ContentView.PLATE ? 12 : 4;
         },
-        initPageContentView: (state) => {
+        initPageState: (state) => {
             const view = localStorage.getItem(LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY) as ContentView;
             articlesPageSlice.caseReducers
                 .changeLimitByView(state, articlesPageSlice.actions.changeLimitByView(view));
             state.view = view;
+            state._inited = true;
         },
         setPageContentView: (state, { payload }: PayloadAction<ContentView>) => {
             state.view = payload;

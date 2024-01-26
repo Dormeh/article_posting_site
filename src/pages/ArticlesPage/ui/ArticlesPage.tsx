@@ -1,24 +1,22 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { ArticlesList } from 'entities/Article';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import {
-    getArticlesPageError,
-    getArticlesPageIsLoading, getArticlesPagePage,
-    getArticlesPageView,
-} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
-import { memo, useCallback, useRef } from 'react';
+import { memo, useCallback } from 'react';
 import { ContentView } from 'shared/model/types/types';
 import Page from 'shared/ui/Page/Page';
-import { fetchNextPartData } from 'pages/ArticlesPage/model/services/fetchNextPartData/fetchNextPartData';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
+import {
+    getArticlesPageError,
+    getArticlesPageIsLoading,
+    getArticlesPageView,
+} from '../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+import { fetchNextPartData } from '../model/services/fetchNextPartData/fetchNextPartData';
 import { contentArticlesPageSelects } from '../config/contentArticlesPageSelects';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageActions, articlesPageReducer, getArticlesSelector } from '../model/slice/articlesPageSlice';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 
 interface ArticlesPageProps {
     className?: string;
@@ -29,7 +27,6 @@ const initialsReducers = {
 };
 const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props;
-    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
@@ -37,8 +34,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const articles = useSelector(getArticlesSelector.selectAll);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initPageContentView());
-        dispatch(fetchArticlesList());
+        dispatch(initArticlesPage());
     });
 
     const onLoadNextContent = useCallback(() => {
