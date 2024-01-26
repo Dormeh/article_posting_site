@@ -19,7 +19,6 @@ export const loginByUsername = createAsyncThunk<
 
                 localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(response.data));
                 dispatch(userActions.setAuthData(response.data));
-                extra.navigate?.(RouterPath.profile);// пока оставил как было, но в сторе сейчас нет navigate (убрал из-за обновления ссылки при useNavigate)
 
                 return response.data;
             } catch (e) {

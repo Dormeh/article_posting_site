@@ -25,8 +25,6 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
     api: jest.MockedFunctionDeep<AxiosStatic>;
 
-    navigate: jest.MockedFn<any>;
-
     constructor(
         actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
         state?: DeepPartial<StateSchema>,
@@ -36,14 +34,12 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
         this.store = createReduxStore(
             state as StateSchema,
             asyncReducers,
-            undefined,
             this.api,
         );
         this.actionCreator = actionCreator;
         this.dispatch = jest.spyOn(this.store, 'dispatch');
 
         this.getState = jest.fn(() => state as StateSchema);
-        this.navigate = jest.fn();
     }
 
     async callThunk(arg: Arg) {
@@ -51,7 +47,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
         const result = await action(
             this.store?.dispatch,
             this.store.getState,
-            { api: this.api, navigate: this.navigate },
+            { api: this.api },
         );
 
         return result;

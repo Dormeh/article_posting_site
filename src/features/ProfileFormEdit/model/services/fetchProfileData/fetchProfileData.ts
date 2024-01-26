@@ -15,7 +15,6 @@ export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<st
             if (!response.data) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
 
             // dispatch(userActions.setAuthData(response.data));
-            // extra.navigate(RouterPath.profile);
 
             return response.data;
         } catch (e) {
