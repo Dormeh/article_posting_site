@@ -1,12 +1,12 @@
+import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import { ArticlesList } from 'entities/Article';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
-import { memo, useCallback } from 'react';
 import { ContentView } from 'shared/model/types/types';
-import Page from 'shared/ui/Page/Page';
+import Page from 'shared/ui/Page/ui/Page';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
@@ -47,7 +47,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialsReducers}>
-            <Page className={className} onScrollCallback={onLoadNextContent}>
+            <Page className={className} onScrollCallback={onLoadNextContent} scrollPositionTake>
                 <SelectContentPreview
                     className={cls.viewSelect}
                     selects={contentArticlesPageSelects}

@@ -1,20 +1,22 @@
-import { ForwardedRef, MutableRefObject, useEffect } from 'react';
+import {
+    ForwardedRef, MutableRefObject, RefObject, useEffect,
+} from 'react';
 
 export interface UseInfinityScrollProps {
-    wrapRef: ForwardedRef<HTMLDivElement>;
+    wrapRef: MutableRefObject<HTMLElement | null>;
     triggerRef: MutableRefObject<HTMLElement | null>;
     onScrollCallback?: () => void;
 }
 
-export const useInfinityScroll = (props: UseInfinityScrollProps) => {
+export const useInfinityScroll = (props: UseInfinityScrollProps, deps: ReadonlyArray<any>) => {
     const {
         triggerRef,
         wrapRef,
         onScrollCallback,
     } = props;
     useEffect(() => {
-        const wrapRefElem = typeof wrapRef !== 'function' ? wrapRef?.current : null;
-        const triggerRefElem = triggerRef?.current;
+        const wrapRefElem = wrapRef.current;
+        const triggerRefElem = triggerRef.current;
         let observer: IntersectionObserver;
 
         if (onScrollCallback && triggerRefElem && wrapRefElem) {
@@ -42,5 +44,5 @@ export const useInfinityScroll = (props: UseInfinityScrollProps) => {
                 observer.unobserve(triggerRefElem);
             }
         };
-    }, [onScrollCallback, triggerRef, wrapRef]);
+    }, [deps, onScrollCallback, triggerRef, wrapRef]);
 };

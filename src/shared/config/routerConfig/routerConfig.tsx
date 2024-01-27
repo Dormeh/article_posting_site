@@ -19,7 +19,7 @@ export enum AppRoutes {
     NOT_FOUND = 'not_found',
 }
 
-export const RouterPath: Record<AppRoutes, string> = {
+export const RouterPath = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.PROFILE]: '/profile/',
@@ -27,7 +27,7 @@ export const RouterPath: Record<AppRoutes, string> = {
     [AppRoutes.ARTICLE_DETAILS]: '/article/',
     // last
     [AppRoutes.NOT_FOUND]: '*',
-};
+} as const;
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
