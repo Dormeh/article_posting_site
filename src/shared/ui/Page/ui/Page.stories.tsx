@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { Text } from 'shared/ui/Text/Text';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import Page from './Page';
 
 export default {
@@ -18,6 +19,9 @@ export default {
             </>
         ),
     },
+    decorators: [
+        StoreDecorator({}),
+    ],
 } as ComponentMeta<typeof Page>;
 
 const Template: ComponentStory<typeof Page> = (args) => <Page {...args} />;
