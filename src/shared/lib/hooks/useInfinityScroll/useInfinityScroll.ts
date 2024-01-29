@@ -1,6 +1,4 @@
-import {
-    ForwardedRef, MutableRefObject, RefObject, useEffect,
-} from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
 export interface UseInfinityScrollProps {
     wrapRef: MutableRefObject<HTMLElement | null>;
@@ -8,7 +6,7 @@ export interface UseInfinityScrollProps {
     onScrollCallback?: () => void;
 }
 
-export const useInfinityScroll = (props: UseInfinityScrollProps, deps: ReadonlyArray<any>) => {
+export function useInfinityScroll(props: UseInfinityScrollProps, deps: ReadonlyArray<any>) {
     const {
         triggerRef,
         wrapRef,
@@ -28,8 +26,7 @@ export const useInfinityScroll = (props: UseInfinityScrollProps, deps: ReadonlyA
 
             const callback = ([entry]:IntersectionObserverEntry[]) => {
                 if (entry.isIntersecting) {
-                    console.log('scroll to end callback');
-
+                    if (__IS_DEV__) console.log('scroll to end callback');
                     onScrollCallback();
                 }
             };
@@ -45,4 +42,4 @@ export const useInfinityScroll = (props: UseInfinityScrollProps, deps: ReadonlyA
             }
         };
     }, [deps, onScrollCallback, triggerRef, wrapRef]);
-};
+}
