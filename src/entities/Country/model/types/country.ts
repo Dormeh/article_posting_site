@@ -5,3 +5,8 @@ export enum Country {
     Kazakhstan = 'Kazakhstan',
     Armenia = 'Armenia',
 }
+
+export interface CountrySelectOption {
+    value: Country;
+    label: Country;
+}

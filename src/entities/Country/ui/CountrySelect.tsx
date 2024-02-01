@@ -1,8 +1,7 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select } from 'shared/ui/Select/ui/Select';
-import { Control } from 'react-hook-form';
-import { FC } from 'react';
-import { countryOptions } from '../model/config/options';
+import { countryOptions } from '../config/countrySelectOptions';
 
 interface CountrySelectProps {
     name?: string

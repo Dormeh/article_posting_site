@@ -3,3 +3,8 @@ export enum Currency {
     USD = 'USD',
     EUR = 'EUR',
 }
+
+export interface CurrencySelectOption {
+    value: Currency;
+    label: Currency;
+}

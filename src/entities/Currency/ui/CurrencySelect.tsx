@@ -1,8 +1,7 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select } from 'shared/ui/Select/ui/Select';
-import { currencyOptions } from 'entities/Currency/model/config/options';
-import { Control } from 'react-hook-form';
-import { FC } from 'react';
+import { currencyOptions } from 'entities/Currency/config/currencySelectOptions';
 
 interface CurrencySelectProps {
     name?: string;

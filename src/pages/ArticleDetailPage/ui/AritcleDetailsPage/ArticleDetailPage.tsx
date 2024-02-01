@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -33,4 +33,4 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     );
 };
 
-export default ArticleDetailPage;
+export default memo(ArticleDetailPage);
