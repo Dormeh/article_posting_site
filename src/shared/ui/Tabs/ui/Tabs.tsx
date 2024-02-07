@@ -15,7 +15,7 @@ interface TabsProps extends InputHTMLAttributes<HTMLInputElement>{
     register?: UseFormRegister<FieldValues>;
 }
 
-export const Tabs = (props: TabsProps) => {
+export const Tabs = memo((props: TabsProps) => {
     const {
         className,
         tabsConfig: {
@@ -45,4 +45,4 @@ export const Tabs = (props: TabsProps) => {
             ))}
         </div>
     );
-};
+});

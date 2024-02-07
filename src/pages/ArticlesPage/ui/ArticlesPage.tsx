@@ -1,5 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { ArticlesList } from 'entities/Article';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -8,13 +10,14 @@ import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectCo
 import { ContentView } from 'shared/model/types/types';
 import Page from 'shared/ui/Page/ui/Page';
 import { ContentSortForm } from 'features/ContentSortForm';
-import { useTranslation } from 'react-i18next';
 import { getArticleTabsSelectConfig } from 'entities/Article/lib/getArticleTabsSelectConfig';
+import { articlesSortApply } from 'pages/ArticlesPage/model/services/articlesSortApply/articlesSortApply';
 import { ArticlesPageSortData } from '../model/types/ArticlesPageSchema';
 import { getArticlesSelectsSortConfig } from '../lib/getArticlesSortConfig';
 import {
     getArticlesPageError,
-    getArticlesPageIsLoading, getArticlesPageSortData,
+    getArticlesPageIsLoading,
+    getArticlesPageSortData,
     getArticlesPageView,
 } from '../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { fetchNextPartData } from '../model/services/fetchNextPartData/fetchNextPartData';
@@ -40,9 +43,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const sortData = useSelector(getArticlesPageSortData);
 
     const { t } = useTranslation();
+    const [searchParams] = useSearchParams();
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     const onLoadNextContent = useCallback(() => {
@@ -54,7 +58,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch]);
 
     const onChangeSort = useCallback((data: ArticlesPageSortData) => {
-        dispatch(articlesPageActions.setPageSortParams(data));
+        dispatch(articlesSortApply(data));
     }, [dispatch]);
 
     const tabsConfig = useMemo(() => getArticleTabsSelectConfig(t), [t]);

@@ -19,7 +19,7 @@ export const fetchNextPartData = createAsyncThunk<void, void, ThunkConfig<string
 
         if (hasMore && !isLoading) {
             dispatch(articlesPageActions.increasePage());
-            await dispatch(fetchArticlesList()); // поставил ожидание результат для тестирования thunk`а
+            await dispatch(fetchArticlesList({})); // поставил ожидание результат для тестирования thunk`а
         }
     },
 );

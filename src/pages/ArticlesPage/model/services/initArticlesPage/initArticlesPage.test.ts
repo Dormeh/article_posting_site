@@ -27,8 +27,8 @@ describe('initArticlesPage.test', () => {
             status: 200,
             data: articlesMockData,
         }));
-        await thunk.callThunk();
-        expect(thunk.dispatch).toBeCalledTimes(4);
+        await thunk.callThunk(new URLSearchParams());
+        expect(thunk.dispatch).toBeCalledTimes(5);
         expect(thunk.dispatch).toHaveBeenCalledWith(articlesPageActions.initPageState());
         expect(getArticlesPageIsInit(thunk.store.getState())).toBe(true);
         expect(getArticlesSelector.selectAll(thunk.store.getState())).toHaveLength(articlesMockData.length);
@@ -45,7 +45,7 @@ describe('initArticlesPage.test', () => {
                 _inited: true,
             },
         }, { articlesPage: articlesPageReducer });
-        await thunk.callThunk();
+        await thunk.callThunk(new URLSearchParams());
 
         expect(thunk.dispatch).toBeCalledTimes(2);
         expect(thunk.dispatch).not.toHaveBeenCalledWith(articlesPageActions.initPageState());

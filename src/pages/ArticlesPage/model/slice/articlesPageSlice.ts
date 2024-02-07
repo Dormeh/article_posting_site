@@ -67,10 +67,14 @@ export const articlesPageSlice = createSlice({
                 state.isLoading = true;
                 state.error = undefined;
             })
-            .addCase(fetchArticlesList.fulfilled, (state, { payload }) => {
+            .addCase(fetchArticlesList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                articlesAdapter.addMany(state, payload);
-                state.hasMore = payload.length === state.limit;
+                state.hasMore = action.payload.length === state.limit;
+                if (action.meta.arg.refreshList) {
+                    articlesAdapter.setAll(state, action.payload);
+                } else {
+                    articlesAdapter.addMany(state, action.payload);
+                }
             })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;

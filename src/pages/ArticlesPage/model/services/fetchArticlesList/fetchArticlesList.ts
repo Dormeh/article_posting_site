@@ -2,29 +2,40 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
-import { Article } from 'entities/Article/model/types/article';
+import { Article, ArticleType } from 'entities/Article/model/types/article';
 import {
-    getArticlesPageLimit, getArticlesPagePage,
+    getArticlesPageLimit,
+    getArticlesPagePage,
+    getArticlesPageSortData,
 } from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
-import { useSelector } from 'react-redux';
 import { getArticlesSelector } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
 
-export const fetchArticlesList = createAsyncThunk<Article[], void, ThunkConfig<string>>(
+interface FetchArticlesListProps{
+    refreshList?: boolean;
+}
+
+export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
     'ArticlePage/fetchArticlePageData',
-    async (_, thunkAPI) => {
+    async ({ refreshList }, thunkAPI) => {
         const {
             rejectWithValue, extra, dispatch, getState,
         } = thunkAPI;
         const limit = getArticlesPageLimit(getState());
         const page = getArticlesPagePage(getState());
         const articles = getArticlesSelector.selectAll(getState());
-
+        const sortData = getArticlesPageSortData(getState());
+        addQueryParams(sortData);
         try {
             const response = await extra.api.get<Article[]>('/articles', {
                 params: {
                     _expand: 'profile',
-                    _start: articles.length,
+                    _start: refreshList ? 0 : articles.length,
                     _limit: limit,
+                    _sort: sortData.sort,
+                    _order: sortData.order,
+                    q: sortData.search,
+                    type: sortData.type === ArticleType.ALL ? null : sortData.type,
                 },
             });
 

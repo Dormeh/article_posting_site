@@ -10,7 +10,7 @@ import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ChangeHandler } from 'react-hook-form/dist/types/form';
 import cls from './ContentSortForm.module.scss';
 
-interface ContentSortFormProps {
+interface ContentSortFormProps{
     className?: string;
     tabsConfig?: TabsConfig;
     sortSelectsConfig?: SortSelectProps[];
