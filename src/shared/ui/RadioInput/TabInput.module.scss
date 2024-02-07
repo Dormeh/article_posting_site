@@ -1,0 +1,37 @@
+.tabBox {
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: box-shadow 0.3s;
+}
+
+.radioInput {
+  position: absolute;
+  outline: none;
+  clip: rect(0, 0, 0, 0);
+
+  &:checked ~ .tabBox {
+    border: 1px solid var(--inverted-primary-color);
+    animation: pulse 300ms;
+    background-color: rgba(var(--card-bg-rgb), 0.5);
+    box-shadow: 1px 1px 3px 1px rgba(var(--inverted-bg-color-rgb), 0.3);
+  }
+
+  &:not(:checked) ~ .tabBox:hover {
+    background-color: rgba(var(--card-bg-rgb), 0.7);
+    box-shadow: 1px 1px 7px 2px rgba(var(--inverted-bg-color-rgb), 0.6);
+  }
+}
+
+.tabTitle {
+  color: var(--primary-color);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: rgba(var(--inverted-bg-color-rgb), 1);
+  }
+
+  100% {
+    box-shadow: 0 0 1em 0.2rem rgba(var(--inverted-bg-color-rgb), 0.5);
+  }
+}

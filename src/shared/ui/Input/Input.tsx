@@ -1,12 +1,15 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import React, { InputHTMLAttributes, memo, useState } from 'react';
+import React, {
+    InputHTMLAttributes, useState,
+} from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/validation';
 import { useTranslation } from 'react-i18next';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
+import { ChangeHandler } from 'react-hook-form/dist/types/form';
 import cls from './Input.module.scss';
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly'> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'onChange'> {
     name: string;
     register?: UseFormRegister<FieldValues>;
     label?: string;
@@ -18,6 +21,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
     className?: string;
     type: string;
     readonly?: boolean;
+    onChange?: (value: ((...args: any[]) => void) | string, e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = (props: InputProps) => {
@@ -34,15 +38,16 @@ export const Input = (props: InputProps) => {
         type,
         maxLength = 20,
         readonly,
+        onChange,
         ...otherProps
     } = props;
 
+    const [t] = useTranslation();
+
     const options = {
-        ...(required && { required: 'Поле не должно быть пустым' }),
+        ...(required && { required: t('Поле не должно быть пустым') }),
         ...(pattern && { pattern: ValidationPattern[pattern] }),
     };
-
-    const [t] = useTranslation();
 
     const [caretPosition, setCaretPosition] = useState(0);
 
@@ -56,6 +61,15 @@ export const Input = (props: InputProps) => {
         setCaretPosition(e.target.value.length);
     };
 
+    const { onChange: registerChange, ...registerProps } = { ...register?.(name, options) };
+
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            const { target: { value } } = e;
+            onChange(registerChange || value, e);
+        } else registerChange?.(e);
+    };
+
     return (
         <label
             className={classNames(cls.label, {}, [className])}
@@ -65,9 +79,10 @@ export const Input = (props: InputProps) => {
 
             <div className={cls.caretWrapper}>
                 <input
-                    {...register?.(name, options)}
+                    {...registerProps}
                     placeholder={placeholder || ''}
                     type={type}
+                    onChange={onChangeHandler}
                     className={cls.input}
                     onSelect={onSelect}
                     maxLength={maxLength}
@@ -88,7 +103,7 @@ export const Input = (props: InputProps) => {
                     <p
                         className={cls.error}
                     >
-                        { errorMessage }
+                        {errorMessage}
                     </p>
                 )}
             </div>

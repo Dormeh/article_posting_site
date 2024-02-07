@@ -2,10 +2,16 @@
   filter: brightness(0.9);
   display: flex;
   height: 40px;
+  align-items: center;
+  transition: 0.2s;
 
   &:hover,
   &:focus-within {
-    filter: brightness(1.1) drop-shadow(1px 1px 1px rgba(var(--primary-color-rgb), 0.5));
+    filter: brightness(106%);
+
+    & * {
+      filter: drop-shadow(1px 1px 1px rgba(var(--primary-color-rgb), 0.5));
+    }
   }
 }
 

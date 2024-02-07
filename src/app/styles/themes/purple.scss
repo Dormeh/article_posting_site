@@ -5,6 +5,7 @@
 .app_purple_theme {
   --bg-color: #5b00c4;
   --inverted-bg-color: #ddd0fb;
+  --inverted-bg-color-rgb: #{hex-to-rgb(#ddd0fb)};
   --primary-color: #e2b5ff;
   --secondary-color: #d191e3;
   --inverted-primary-color: #7051ff;
@@ -23,4 +24,5 @@
 
   // card
   --card-bg: #7515ea;
+  --card-bg-rgb: #{hex-to-rgb(#7515ea)};
 }

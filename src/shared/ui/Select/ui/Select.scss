@@ -1,5 +1,8 @@
 .Select {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   & &__menu,
   & &__indicator.Select__dropdown-indicator,
@@ -10,6 +13,10 @@
     color: var(--primary-color);
     background: var(--bg-color);
     box-shadow: none;
+  }
+
+  & [class$="container"] {
+    width: 100%;
   }
 
   & &__control {
@@ -43,6 +50,7 @@
 
   & &__option {
     cursor: pointer;
+    white-space: nowrap;
 
     &--is-focused {
       background: rgba(var(--secondary-color-rgb), 0.25);
@@ -54,10 +62,18 @@
   }
 
   &__label {
-    position: absolute;
-    left: 0;
-    top: -20%;
-    transform: translateY(-50%);
+    color: var(--primary-color);
+
+    &.labelTop {
+      position: absolute;
+      left: 0;
+      top: -20%;
+      transform: translateY(-50%);
+    }
+
+    &.labelLeft {
+      white-space: nowrap;
+    }
   }
 
   &__indicator.Select__dropdown-indicator:hover [class$="Svg"] {

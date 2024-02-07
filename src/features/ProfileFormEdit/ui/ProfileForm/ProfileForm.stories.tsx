@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { testProfileData } from 'features/ProfileFormEdit/model/services/updateProfileData/profileData';
 import { Profile } from 'entities/Profile';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { testProfileData } from '../../model/services/updateProfileData/profileData';
 import { ProfileForm } from './ProfileForm';
 
 export default {

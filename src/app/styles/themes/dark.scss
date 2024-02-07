@@ -6,6 +6,7 @@
   --bg-color: #0b0b58;
   --bg-color-rgb: #{hex-to-rgb(#0b0b58)};
   --inverted-bg-color: #b5bcc3;
+  --inverted-bg-color-rgb: #{hex-to-rgb(#b5bcc3)};
   --primary-color: #18fe18;
   --secondary-color: #0de37ced;
   --inverted-primary-color: #0452ff;
@@ -24,4 +25,5 @@
 
   // card
   --card-bg: #272783;
+  --card-bg-rgb: #{hex-to-rgb(#272783)};
 }

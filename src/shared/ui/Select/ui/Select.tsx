@@ -8,6 +8,13 @@ import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/val
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { CustomSelectProps, IOption } from '../model/types/types';
 
+export enum SelectLabelView {
+    TOP = 'labelTop',
+    LEFT = 'labelLeft',
+}
+
+type SelectLabelSize = TextSize
+
 export interface SelectProps extends CustomSelectProps {
     name: string;
     className?: string;
@@ -19,6 +26,8 @@ export interface SelectProps extends CustomSelectProps {
     readonly?: boolean;
     label?: string
     defaultValue?: string
+    labelView?: SelectLabelView;
+    selectLabelSize?: SelectLabelSize;
 }
 
 export const Select = memo((props: SelectProps) => {
@@ -32,6 +41,8 @@ export const Select = memo((props: SelectProps) => {
         readonly,
         label,
         defaultValue,
+        labelView = SelectLabelView.LEFT,
+        selectLabelSize = TextSize.S,
         ...otherProps
     } = props;
 
@@ -47,10 +58,20 @@ export const Select = memo((props: SelectProps) => {
     ), [options]);
 
     return (
-        <label htmlFor={name} className={classNames('Select', {}, [className])}>
+        <label
+            htmlFor={name}
+            className={
+                classNames('Select', {}, [className])
+            }
+        >
             {label
                 && (
-                    <Text className="Select__label" text={t(label)} size={TextSize.S} />
+                    <Text
+                        className={classNames('Select__label', {}, [className, labelView])}
+                        title={labelView === SelectLabelView.LEFT ? `${t(label)}>` : undefined}
+                        text={labelView === SelectLabelView.TOP ? t(label) : undefined}
+                        size={selectLabelSize}
+                    />
                 )}
             { control
                 ? (
@@ -68,6 +89,7 @@ export const Select = memo((props: SelectProps) => {
                                 classNamePrefix="Select"
                                 options={options}
                                 isDisabled={readonly}
+                                {...otherProps}
                             />
                         )}
                     />
