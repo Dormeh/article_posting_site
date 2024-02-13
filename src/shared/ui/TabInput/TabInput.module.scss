@@ -24,6 +24,7 @@
 
 .tabTitle {
   color: var(--primary-color);
+  white-space: nowrap;
 }
 
 @keyframes pulse {

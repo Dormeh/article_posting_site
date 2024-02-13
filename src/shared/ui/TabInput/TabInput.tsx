@@ -1,5 +1,4 @@
-import React, { InputHTMLAttributes, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import React, { InputHTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card } from 'shared/ui/Card/Card';
 import { Text } from 'shared/ui/Text/Text';
@@ -7,7 +6,7 @@ import { UseFormRegister } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
 import cls from './TabInput.module.scss';
 
-    interface TabInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TabInputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     name: string;
     register?: UseFormRegister<FieldValues>;
@@ -29,7 +28,7 @@ export const TabInput = (props: TabInputProps) => {
     const { t } = useTranslation();
 
     return (
-        <label htmlFor={id}>
+        <label htmlFor={id} className={className}>
             <input
                 id={id}
                 name={name}

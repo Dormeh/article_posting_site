@@ -20,9 +20,8 @@ export const SortSelect = memo((props: SortSelectProps) => {
         defaultValue = SortOrder.ASC,
         sortOptions = defaultSortOptions,
         placeholder = t('Выберите вид сортировки'),
-        control,
         label,
-        readonly,
+        ...otherProps
     } = props;
 
     return (
@@ -32,9 +31,8 @@ export const SortSelect = memo((props: SortSelectProps) => {
             options={sortOptions}
             label={label || t('Сортировать по')}
             placeholder={placeholder}
-            control={control}
             defaultValue={defaultValue}
-            readonly={readonly}
+            {...otherProps}
         />
     );
 });

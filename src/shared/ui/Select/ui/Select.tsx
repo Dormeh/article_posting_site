@@ -1,4 +1,6 @@
-import { memo, useCallback, useMemo } from 'react';
+import {
+    CSSProperties, memo, useCallback, useMemo,
+} from 'react';
 import ReactSelect from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -24,10 +26,12 @@ export interface SelectProps extends CustomSelectProps {
     placeholder?: string;
     options: IOption[];
     readonly?: boolean;
-    label?: string
-    defaultValue?: string
+    label?: string;
+    defaultValue?: string;
     labelView?: SelectLabelView;
     selectLabelSize?: SelectLabelSize;
+    style?: CSSProperties | undefined;
+    labelTextClass?: string;
 }
 
 export const Select = memo((props: SelectProps) => {
@@ -43,6 +47,8 @@ export const Select = memo((props: SelectProps) => {
         defaultValue,
         labelView = SelectLabelView.LEFT,
         selectLabelSize = TextSize.S,
+        style,
+        labelTextClass,
         ...otherProps
     } = props;
 
@@ -59,6 +65,7 @@ export const Select = memo((props: SelectProps) => {
 
     return (
         <label
+            style={style}
             htmlFor={name}
             className={
                 classNames('Select', {}, [className])
@@ -67,13 +74,14 @@ export const Select = memo((props: SelectProps) => {
             {label
                 && (
                     <Text
-                        className={classNames('Select__label', {}, [className, labelView])}
+                        className={classNames('Select__label', {}, [labelView])}
                         title={labelView === SelectLabelView.LEFT ? `${t(label)}>` : undefined}
                         text={labelView === SelectLabelView.TOP ? t(label) : undefined}
                         size={selectLabelSize}
+                        titleClassName={labelTextClass}
                     />
                 )}
-            { control
+            {control
                 ? (
                     <Controller
                         control={control}

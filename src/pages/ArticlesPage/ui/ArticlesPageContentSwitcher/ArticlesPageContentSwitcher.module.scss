@@ -1,0 +1,28 @@
+.ArticlesPageContentSwitcher {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 10px 0 20px;
+  container: content-switcher/inline-size;
+}
+
+.viewSelect {
+  padding: 10px 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+// работает от 105 версии хрома
+// @container content-switcher (max-width: 550px) {
+//  .viewSelect {
+//    position: static;
+//  }
+// }
+
+@media screen and (max-width: 660px) {
+  .viewSelect {
+    position: static;
+    padding: 10px 0 0;
+  }
+}

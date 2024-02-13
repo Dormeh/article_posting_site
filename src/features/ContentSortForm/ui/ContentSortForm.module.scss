@@ -13,14 +13,32 @@
   padding: 0 10px;
   display: flex;
   gap: 15px;
+  justify-content: space-between;
 }
 
 .sortSelect {
   flex-grow: 1;
+  min-width: 200px;
 }
 
 .searchInput {
   padding: 0 10px;
   background-color: rgba(var(--card-bg-rgb), 0.7);
   border-radius: 10px;
+}
+
+@media screen and (max-width: 750px) {
+  .ContentSortForm {
+    .selectsWrapper {
+      padding: 0;
+    }
+
+    .sortSelect {
+      display: initial;
+
+      .labelText {
+        font: var(--font-s);
+      }
+    }
+  }
 }

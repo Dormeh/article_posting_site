@@ -14,4 +14,4 @@ export const getArticlesPageIsInit = (state: StateSchema) => state.articlesPage?
 
 export const getArticlesPageSortData = (
     state: StateSchema,
-): ArticlesPageSortData => state?.articlesPage?.sortData || {};
+) => <ArticlesPageSortData>state?.articlesPage?.sortData || {};

@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { Tabs } from 'shared/ui/Tabs/ui/Tabs';
 import { SortSelect, SortSelectProps } from 'shared/ui/SortSelect/ui/SortSelect';
 import { TabsConfig } from 'shared/ui/Tabs/model/types/tabsType';
@@ -10,12 +10,12 @@ import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ChangeHandler } from 'react-hook-form/dist/types/form';
 import cls from './ContentSortForm.module.scss';
 
-interface ContentSortFormProps{
+interface ContentSortFormProps {
     className?: string;
     tabsConfig?: TabsConfig;
     sortSelectsConfig?: SortSelectProps[];
-    sortData: OptionalRecord<string, string>; // TODO сделать тип из контекста TabsConfig и sortSelectsConfig
-    onChangeSort: (data: OptionalRecord<string, string>) => void;
+    sortData: FieldValues; // TODO сделать тип из контекста TabsConfig и sortSelectsConfig
+    onChangeSort: (data: FieldValues) => void;
     isLoading?: boolean;
 }
 
@@ -70,6 +70,9 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
                         },
                     ) => (
                         <SortSelect
+                            style={{
+                                width: `${Math.floor(100 / sortSelectsConfig.length)}%`,
+                            }}
                             name={name}
                             className={cls.sortSelect}
                             placeholder={placeholder}
@@ -78,6 +81,7 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
                             label={label}
                             key={name}
                             readonly={isLoading}
+                            labelTextClass={cls.labelText}
                         />
                     ))}
                 </div>

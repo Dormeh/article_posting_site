@@ -7,7 +7,7 @@ import { articleComments } from 'pages/ArticleDetailPage/ui/articleComments';
 import ArticleDetailPage from './ArticleDetailPage';
 
 export default {
-    title: 'pages/ArticleDetailPage/ArticleDetailsPage',
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
     component: ArticleDetailPage,
     argTypes: {
         backgroundColor: { control: 'color' },

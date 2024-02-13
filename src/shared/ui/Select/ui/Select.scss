@@ -20,6 +20,7 @@
   }
 
   & &__control {
+    flex-wrap: nowrap;
     cursor: pointer;
     border-radius: 0;
     border: 2px solid var(--inverted-secondary-color);

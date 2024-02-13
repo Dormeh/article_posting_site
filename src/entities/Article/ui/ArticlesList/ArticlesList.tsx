@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ArticlesListItem } from 'entities/Article/ui/ArticlesListItem/ArticlesListItem';
 import { ArticlesListItemSkeleton } from 'entities/Article/ui/ArticlesListItem/ArticlesListItemSkeleton';
 import { ContentView } from 'shared/model/types/types';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import cls from './ArticlesList.module.scss';
 import { Article } from '../../model/types/article';
 
@@ -14,6 +14,7 @@ interface ArticleListProps {
     isLoading?: boolean;
     view: ContentView;
     error?: string;
+    pageIsInit: boolean;
 }
 
 const getSkeleton = (view: ContentView) => [...Array(view === ContentView.LIST ? 3 : 9)]
@@ -29,6 +30,7 @@ export const ArticlesList = memo((props: ArticleListProps) => {
         isLoading,
         view,
         error,
+        pageIsInit,
     } = props;
     const { t } = useTranslation();
 
@@ -55,7 +57,13 @@ export const ArticlesList = memo((props: ArticleListProps) => {
         <div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
             {articles.length
                 ? articles.map(renderArticle)
-                : null}
+                : !isLoading && pageIsInit && (
+                    <Text
+                        className={cls.emptyContentText}
+                        title={t('Статьи не найдены')}
+                        align={TextAlign.CENTER}
+                    />
+                )}
             {isLoading && getSkeleton(view)}
         </div>
     );

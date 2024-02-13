@@ -2,13 +2,13 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ContentView } from 'shared/model/types/types';
+import { ContentView, SortOrder } from 'shared/model/types/types';
 import { articlesMockData } from 'entities/Article/model/mockData/articlesMockData';
-import { articlesPageReducer } from '../model/slice/articlesPageSlice';
+import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
 import ArticlesPage from './ArticlesPage';
 
 export default {
-    title: 'pages/ArticlePage',
+    title: 'pages/ArticlesPage/ArticlesPage',
     component: ArticlesPage,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -26,17 +26,21 @@ export default {
                 ids: ['1', '2', '3'],
                 isLoading: false,
                 _inited: false,
+                sortData: {
+                    sort: ArticleSortField.CREATED,
+                    order: SortOrder.ASC,
+                    type: ArticleType.ALL,
+                    search: '',
+                },
             },
         }),
     ],
 } as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
+const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
 
 export const Dark = Template.bind({});
-Dark.args = {};
 
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
