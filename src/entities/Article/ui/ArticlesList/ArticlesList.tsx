@@ -14,7 +14,7 @@ interface ArticleListProps {
     isLoading?: boolean;
     view: ContentView;
     error?: string;
-    pageIsInit: boolean;
+    pageIsInit?: boolean;
 }
 
 const getSkeleton = (view: ContentView) => [...Array(view === ContentView.LIST ? 3 : 9)]

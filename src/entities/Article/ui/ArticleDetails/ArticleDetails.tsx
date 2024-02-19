@@ -61,7 +61,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                 <Skeleton className={cls.title} width={300} height={32} />
                 <Skeleton className={cls.skeleton} width={600} height={24} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />
-                <Skeleton className={cls.skeleton} width="100%" height={200} />
+                <Skeleton className={`${cls.skeleton} ${cls.block}`} width="100%" height={200} />
             </>
         );
     } else if (error) {

@@ -6,6 +6,7 @@ import { ArticleDetails } from 'entities/Article';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import Page from 'shared/ui/Page/ui/Page';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ArticlesRecommendations } from '../ArticlesRecommendations/ArticlesRecommendations';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleAllContentIsLoading } from '../../model/selectors/getArticleAllContentIsLoading';
 import cls from './ArticleDetailsPage.module.scss';
@@ -33,6 +34,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <Page className={cls.ArticleDetailsPage} ref={wrapperPagRef} scrollPositionTake={!isLoading}>
                 <ArticleDetails className={cls.pageContent} id={id} />
+                <ArticlesRecommendations className={cls.recommendations} />
                 <ArticleComments id={id} ref={wrapperPagRef} />
             </Page>
         </DynamicModuleLoader>

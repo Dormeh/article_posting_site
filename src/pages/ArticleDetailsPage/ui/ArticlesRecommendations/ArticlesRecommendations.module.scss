@@ -1,3 +1,10 @@
+@import "shared/styles/tamplates";
+
 .ArticlesRecommendations {
-  display: initial;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 15px;
+
+  @extend %custom-scroll-bar;
 }

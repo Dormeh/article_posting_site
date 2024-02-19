@@ -1,27 +1,26 @@
 .ArticlesList {
   display: flex;
   gap: 30px;
-  justify-content: center;
   flex-grow: 1;
+}
 
-  &.plate {
-    flex-flow: wrap;
-  }
+.plate {
+  flex-flow: wrap;
+}
 
-  &.list {
-    flex-direction: column;
-  }
+.list {
+  flex-direction: column;
+}
 
-  .error {
-    position: absolute;
-    top: 50%;
-  }
+.error {
+  position: absolute;
+  top: 50%;
+}
 
-  .emptyContentText {
-    position: absolute;
-    opacity: 0.7;
-    left: 50%;
-    top: 50%;
-    flex-grow: 1;
-  }
+.emptyContentText {
+  position: absolute;
+  opacity: 0.7;
+  left: 50%;
+  top: 50%;
+  flex-grow: 1;
 }
