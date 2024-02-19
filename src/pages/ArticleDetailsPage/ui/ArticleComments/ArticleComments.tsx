@@ -17,16 +17,13 @@ import { articleCommentsReducer, getArticleComments } from '../../model/slices/A
 import { getArticleCommentsIsLoading } from '../../model/selectors/articleCommentsStateSelectors';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import cls from './ArticleComments.module.scss';
+import { ArticleDetailsPageSchema } from '../../model/types/ArticleDetailsPageSchema';
+import { articleDetailsPageReducer } from '../../model/slices';
 
 export interface ArticleCommentsProps {
     className?: string;
     id: string;
 }
-
-const initialReducers = {
-    articleComments: articleCommentsReducer,
-    addCommentForArticle: addCommentForArticleReducer,
-};
 
 const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {
@@ -65,7 +62,7 @@ const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedR
     }, [dispatch, ref]);
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+        <>
             <Text className={cls.commentTitle} title={t('Комментарии')} />
             <CommentList isLoading={isLoading} comments={comments} />
             <Suspense fallback={<Loader />}>
@@ -77,7 +74,7 @@ const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedR
                     formError={error}
                 />
             </Suspense>
-        </DynamicModuleLoader>
+        </>
 
     );
 });
