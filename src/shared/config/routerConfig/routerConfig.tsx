@@ -4,7 +4,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { ArticlesPage } from 'pages/ArticlesPage';
-import { ArticleDetailPage } from 'pages/ArticleDetailPage';
+import { ArticleDetailPage } from 'pages/ArticleDetailsPage';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;

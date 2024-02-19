@@ -7,7 +7,7 @@ import { CombinedState, ReducersMapObject } from 'redux';
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailSchema } from 'entities/Article/model/types/articleDetailsSchema';
-import { ArticleCommentsSchema } from 'pages/ArticleDetailPage';
+import { ArticleCommentsSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { PageSchema } from 'shared/ui/Page/model/type/PageSchema';

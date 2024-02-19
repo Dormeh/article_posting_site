@@ -6,14 +6,14 @@ import { ArticleDetails } from 'entities/Article';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import Page from 'shared/ui/Page/ui/Page';
 import { getArticleAllContentIsLoading } from '../../model/selectors/getArticleAllContentIsLoading';
-import cls from './ArticleDetailPage.module.scss';
+import cls from './ArticleDetailsPage.module.scss';
 import ArticleComments from '../ArticleComments/ArticleComments';
 
-interface ArticleDetailPageProps {
+interface ArticleDetailsPageProps {
     className?: string;
 }
 
-const ArticleDetailPage = (props: ArticleDetailPageProps) => {
+const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { className } = props;
     const { t } = useTranslation('article');
     let { id } = useParams();
@@ -25,7 +25,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     if (!id) return <Text theme={TextTheme.ERROR} title={t('Такой статьи нет')} />;
 
     return (
-        <Page className={cls.ArticleDetailPage} ref={wrapperPagRef} scrollPositionTake={!isLoading}>
+        <Page className={cls.ArticleDetailsPage} ref={wrapperPagRef} scrollPositionTake={!isLoading}>
             <ArticleDetails className={cls.pageContent} id={id} />
             <ArticleComments id={id} ref={wrapperPagRef} />
         </Page>
@@ -33,4 +33,4 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     );
 };
 
-export default memo(ArticleDetailPage);
+export default memo(ArticleDetailsPage);

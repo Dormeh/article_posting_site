@@ -3,24 +3,26 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { articleTestData } from 'entities/Article/ui/ArticleDetails/articleTestData';
-import { articleComments } from 'pages/ArticleDetailPage/ui/articleComments';
-import ArticleDetailPage from './ArticleDetailPage';
+import { articleComments } from 'pages/ArticleDetailsPage/ui/articleComments';
+import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
     title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
-    component: ArticleDetailPage,
+    component: ArticleDetailsPage,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
     decorators: [StoreDecorator({
-        articleComments,
+        articleDetailsPage: {
+            articleComments,
+        },
         articleDetails: {
             data: articleTestData,
         },
     })],
-} as ComponentMeta<typeof ArticleDetailPage>;
+} as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailPage> = (args) => <ArticleDetailPage {...args} />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
