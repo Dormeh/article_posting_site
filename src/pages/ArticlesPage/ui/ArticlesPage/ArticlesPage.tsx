@@ -37,15 +37,22 @@ const ArticlesPage = () => {
     const { t } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
-        setSearchParams(sortData);
+        setSearchParams(
+            sortData,
+            {
+                replace: true,
+            },
+        );
     }, [sortData, setSearchParams]);
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams));
     });
 
     const onLoadNextContent = useCallback(() => {
-        dispatch(fetchNextPartData());
-    }, [dispatch]);
+        if (!isLoading) {
+            dispatch(fetchNextPartData());
+        }
+    }, [dispatch, isLoading]);
 
     return (
         <DynamicModuleLoader reducers={initialsReducers}>
