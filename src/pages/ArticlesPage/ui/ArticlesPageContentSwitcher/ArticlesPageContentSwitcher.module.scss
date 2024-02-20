@@ -3,7 +3,6 @@
   flex-direction: column;
   position: relative;
   margin: 10px 0 20px;
-  container: content-switcher/inline-size;
 }
 
 .viewSelect {
@@ -20,7 +19,7 @@
 //  }
 // }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 680px) {
   .viewSelect {
     position: static;
     padding: 10px 0 0;

@@ -56,7 +56,7 @@ const ArticlesPage = () => {
 
     return (
         <DynamicModuleLoader reducers={initialsReducers}>
-            <Page className={cls.page} onScrollCallback={onLoadNextContent} scrollPositionTake>
+            <Page className={cls.ArticlesPage} onScrollCallback={onLoadNextContent} scrollPositionTake>
                 <ArticlesPageContentSwitcher sortData={sortData} isLoading={isLoading} />
                 <ArticlesList
                     view={view}
@@ -64,6 +64,7 @@ const ArticlesPage = () => {
                     articles={articles}
                     error={error}
                     pageIsInit={isInit}
+                    className={cls.ArticlesList}
                 />
             </Page>
         </DynamicModuleLoader>
