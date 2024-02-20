@@ -4,7 +4,6 @@ import { loginReducer } from 'features/AuthByUsername';
 import { profileReducer } from 'features/ProfileFormEdit';
 import { articleReducer } from 'entities/Article/model/slice/articleSlice';
 import {
-    articleCommentsReducer,
     addCommentForArticleReducer,
     articleDetailsPageReducer,
 } from 'pages/ArticleDetailsPage';
@@ -14,10 +13,9 @@ import { ReducersList } from '../../../lib/components/DynamicModuleLoader/Dynami
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
-    articlesPage: articlesPageReducer,
     articleDetails: articleReducer,
-    // articleComments: articleCommentsReducer,
-    // addCommentForArticle: addCommentForArticleReducer,
+    articlesPage: articlesPageReducer,
+    addCommentForArticle: addCommentForArticleReducer,
     articleDetailsPage: articleDetailsPageReducer,
 };
 export const StoreDecorator = (

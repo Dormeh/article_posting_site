@@ -7,5 +7,4 @@ import { articleRecommendationsReducer } from './articleRecommendationsSlice';
 export const articleDetailsPageReducer = combineReducers<ArticleDetailsPageSchema>({
     articleComments: articleCommentsReducer,
     articleRecommendations: articleRecommendationsReducer,
-    addComment: addCommentForArticleReducer,
 });

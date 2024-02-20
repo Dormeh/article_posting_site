@@ -10,6 +10,7 @@ import { ArticleDetailSchema } from 'entities/Article/model/types/articleDetails
 import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { PageSchema } from 'shared/ui/Page/model/type/PageSchema';
+import { AddCommentFormSchema } from 'features/AddCommentForm';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -22,8 +23,8 @@ export interface StateSchema {
     articlesPage?: ArticlesPageSchema;
     articleDetails?: ArticleDetailSchema;
     // articleComments?: ArticleCommentsSchema;
-    // addCommentForArticle?: AddCommentFormSchema;
-    // articlesRecommendations?: ArticlesRecommendationsSchema;
+    // articlesRecommendations?: ArticleRecommendationsSchema;
+    addCommentForArticle?: AddCommentFormSchema;
     articleDetailsPage?: ArticleDetailsPageSchema;
 }
 

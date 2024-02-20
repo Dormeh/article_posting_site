@@ -25,6 +25,10 @@ export interface ArticleCommentsProps {
     id: string;
 }
 
+const initialReducers = {
+    addCommentForArticle: addCommentForArticleReducer,
+};
+
 const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {
         className,
@@ -62,7 +66,7 @@ const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedR
     }, [dispatch, ref]);
 
     return (
-        <>
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <Text className={cls.commentTitle} title={t('Комментарии')} />
             <CommentList isLoading={isLoading} comments={comments} />
             <Suspense fallback={<Loader />}>
@@ -74,7 +78,7 @@ const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedR
                     formError={error}
                 />
             </Suspense>
-        </>
+        </DynamicModuleLoader>
 
     );
 });
