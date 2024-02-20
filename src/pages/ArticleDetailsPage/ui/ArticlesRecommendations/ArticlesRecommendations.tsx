@@ -20,6 +20,7 @@ export const ArticlesRecommendations = memo((props: ArticlesRecommendationsProps
             className={classNames(cls.ArticlesRecommendations, {}, [className])}
             articles={articlesMockData}
             view={ContentView.PLATE}
+            target="_blank"
         />
     );
 });

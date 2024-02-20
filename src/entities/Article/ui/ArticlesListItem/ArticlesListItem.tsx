@@ -1,12 +1,12 @@
-import { memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import React, { HTMLAttributeAnchorTarget, memo } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useNavigate } from 'react-router-dom';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { ContentView } from 'shared/model/types/types';
 import cls from './ArticlesListItem.module.scss';
@@ -16,6 +16,7 @@ interface ArticlesListItemProps {
     className?: string;
     article: Article;
     view: ContentView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
@@ -23,6 +24,7 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
         className,
         article,
         view = ContentView.PLATE,
+        target,
     } = props;
     const { t } = useTranslation();
 
@@ -34,10 +36,6 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
     );
 
     const navigate = useNavigate();
-
-    const onClickNavigate = useCallback(() => {
-        navigate(RouterPath.article_details + article.id);
-    }, [article.id, navigate]);
 
     if (view === ContentView.LIST) {
         const textBlock = article.blocks.find(
@@ -63,12 +61,16 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
                         <Text textClassName={cls.textBlock} text={textBlock.paragraphs.toString()} />
                     </div>
                     <div className={cls.footer}>
-                        <Button
-                            onClick={onClickNavigate}
-                            theme={ButtonTheme.OUTLINE}
+                        <Link
+                            to={RouterPath.article_details + article.id}
+                            target={target}
                         >
-                            {t('Читать далее')}
-                        </Button>
+                            <Button
+                                theme={ButtonTheme.OUTLINE}
+                            >
+                                {t('Читать далее')}
+                            </Button>
+                        </Link>
                         {views}
                     </div>
                 </Card>
@@ -77,8 +79,12 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
     }
 
     return (
-        <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
-            <Card className={cls.card} onClick={onClickNavigate}>
+        <Link
+            to={RouterPath.article_details + article.id}
+            target={target}
+            className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}
+        >
+            <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.imgPreview} />
                     <Text text={article.createdAt} className={cls.date} textClassName={cls.dateText} />
@@ -89,6 +95,6 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
                 </div>
                 <Text title={article.title} titleClassName={cls.titleText} />
             </Card>
-        </div>
+        </Link>
     );
 });

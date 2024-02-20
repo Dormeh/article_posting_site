@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { ArticlesListItem } from 'entities/Article/ui/ArticlesListItem/ArticlesListItem';
@@ -15,6 +15,7 @@ interface ArticleListProps {
     view: ContentView;
     error?: string;
     pageIsInit?: boolean;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeleton = (view: ContentView) => [...Array(view === ContentView.LIST ? 3 : 9)]
@@ -31,6 +32,7 @@ export const ArticlesList = memo((props: ArticleListProps) => {
         view,
         error,
         pageIsInit,
+        target,
     } = props;
     const { t } = useTranslation();
 
@@ -51,6 +53,7 @@ export const ArticlesList = memo((props: ArticleListProps) => {
             article={article}
             view={view}
             key={article.id}
+            target={target}
         />
     );
     return (
