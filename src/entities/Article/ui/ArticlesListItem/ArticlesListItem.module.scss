@@ -36,6 +36,7 @@
 
 .plate {
   width: 230px;
+  flex-shrink: 0;
 
   .card {
     cursor: pointer;

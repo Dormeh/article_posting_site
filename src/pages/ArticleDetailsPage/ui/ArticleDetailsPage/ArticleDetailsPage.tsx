@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { FC, memo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -12,15 +12,10 @@ import { getArticleAllContentIsLoading } from '../../model/selectors/getArticleA
 import cls from './ArticleDetailsPage.module.scss';
 import ArticleComments from '../ArticleComments/ArticleComments';
 
-interface ArticleDetailsPageProps {
-    className?: string;
-}
-
 const initialReducers = {
     articleDetailsPage: articleDetailsPageReducer,
 };
-const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
-    const { className } = props;
+const ArticleDetailsPage = () => {
     const { t } = useTranslation('article');
     let { id } = useParams();
     if (__PROJECT__ === 'storybook') id = '1';
