@@ -9,7 +9,14 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<st
     async (id, thunkAPI) => {
         const { rejectWithValue, extra, dispatch } = thunkAPI;
         try {
-            const response = await extra.api.get<Article>(`/articles/${id}`);
+            const response = await extra.api.get<Article>(
+                `/articles/${id}`,
+                {
+                    params: {
+                        _expand: 'profile',
+                    },
+                },
+            );
 
             if (!response.data) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
 

@@ -9,11 +9,16 @@ import { AuthForm } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { Loader } from 'shared/ui/Loader/Loader';
+import CreateArticleIcon from 'shared/assets/icons/add_new_item_icon.svg';
+import { Link, useNavigate } from 'react-router-dom';
+import { RouterPath } from 'shared/config/routerConfig/routerConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
     className?: string;
 }
+
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,12 +35,21 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         <header
             className={classNames(cls.Navbar, {}, [className])}
         >
+            { isUserAuth && (
+                <AppLink
+                    to={RouterPath.article_create}
+                    className={`${cls.btn} ${cls.link}`}
+                    activeView={false}
+                >
+                    <CreateArticleIcon className={cls.createIcon} />
+                </AppLink>
+            )}
             <Button
                 className={cls.btn}
                 onClick={isUserAuth ? logout : openModal}
                 theme={ButtonTheme.CLEAR}
             >
-                {isUserAuth ? t('Выйти') : t('Войти') }
+                {isUserAuth ? t('Выйти') : t('Войти')}
             </Button>
             {!isUserAuth && (
                 <Modal

@@ -4,14 +4,21 @@
   background: var(--inverted-bg-color);
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 20px;
+  gap: 10px;
 }
 
 .btn {
-  margin-left: auto;
   color: var(--inverted-primary-color);
+}
 
-  :not(:last-child) {
-    margin-right: 15px;
-  }
+.link {
+  display: flex;
+}
+
+.createIcon {
+  margin-left: auto;
+  width: 28px;
+  height: 20px;
 }

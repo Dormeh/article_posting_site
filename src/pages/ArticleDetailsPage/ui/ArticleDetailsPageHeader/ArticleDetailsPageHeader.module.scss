@@ -1,0 +1,44 @@
+.ArticleDetailsPageHeader {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.linkText {
+  p {
+    font: var(--font-lm);
+    font-weight: 600;
+  }
+}
+
+.link {
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  left: 0;
+  top: -15px;
+  transition: opacity 0.2s;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.arrowIcon {
+  color: var(--secondary-color);
+  transform: scale(1.5, 1);
+  width: 8px;
+  height: 14px;
+}
+
+.editIcon {
+  color: var(--secondary-color);
+  width: 20px;
+  height: 20px;
+}

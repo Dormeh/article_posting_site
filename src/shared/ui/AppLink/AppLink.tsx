@@ -8,18 +8,21 @@ export enum AppLinkTheme {
     SECONDARY = 'secondary',
     RED = 'red',
 }
+
 interface AppLinkProps extends NavLinkProps {
     className?: string;
     theme?: AppLinkTheme;
     children?: ReactNode;
+    activeView?: boolean;
 }
 
-export const AppLink = memo((props:AppLinkProps) => {
+export const AppLink = memo((props: AppLinkProps) => {
     const {
         to,
         className,
         children,
         theme = AppLinkTheme.PRIMARY,
+        activeView = true,
         ...otherProps
     } = props;
 
@@ -28,7 +31,11 @@ export const AppLink = memo((props:AppLinkProps) => {
             to={to}
             className={({
                 isActive,
-            }) => classNames(cls.AppLink, { [cls.active]: isActive }, [className, cls[theme]])}
+            }) => classNames(
+                cls.AppLink,
+                { [cls.active]: activeView && isActive },
+                [className, cls[theme]],
+            )}
             {...otherProps}
         >
             {children}
