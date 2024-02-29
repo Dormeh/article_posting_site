@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Profile } from 'entities/Profile';
-import { LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
 
@@ -12,7 +11,7 @@ export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<st
         try {
             const response = await extra.api.get<Profile>(`/profiles/${profileId}`);
 
-            if (!response.data) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
+            if (!response.data?.id) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
 
             // dispatch(userActions.setAuthData(response.data));
 
