@@ -45,7 +45,7 @@ export const Input = (props: InputProps) => {
     const [t] = useTranslation();
 
     const options = {
-        ...(required && { required: t('Поле не должно быть пустым') }),
+        ...(required && { required: 'Поле не должно быть пустым' }),
         ...(pattern && { pattern: ValidationPattern[pattern] }),
     };
 
@@ -103,7 +103,7 @@ export const Input = (props: InputProps) => {
                     <p
                         className={cls.error}
                     >
-                        {errorMessage}
+                        {t(errorMessage || '')}
                     </p>
                 )}
             </div>

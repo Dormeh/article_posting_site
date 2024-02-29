@@ -4,11 +4,11 @@ import { SortSelectOption } from 'shared/ui/SortSelect/model/types/types';
 
 export const getSortByOrderOptions = (t: TFunction): SortSelectOption[] => [
     {
-        label: 'возрастанию',
+        label: t('возрастанию'),
         value: SortOrder.ASC,
     },
     {
-        label: 'убыванию',
+        label: t('убыванию'),
         value: SortOrder.DESC,
     },
 ];

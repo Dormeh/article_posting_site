@@ -39,5 +39,19 @@
   "Редактирование статьи": "Editing an article",
   "Создать новую статью": "Create a new article",
   "Страница в разработке": "Page under development",
-  "Статьи не найдены": "No articles found"
+  "Статьи не найдены": "No articles found",
+  "Отправить": "Send",
+  "Отчистить": "Clear",
+  "Комментарии": "Comments",
+  "Поиск": "Search",
+  "Все статьи": "All articles",
+  "ИT": "IT",
+  "Экономика": "Economy",
+  "Наука": "Science",
+  "дате создания": "creation date",
+  "названию": "title",
+  "просмотрам": "views",
+  "Сортировать по": "Sort by",
+  "возрастанию": "ascending",
+  "убыванию": "descending"
 }

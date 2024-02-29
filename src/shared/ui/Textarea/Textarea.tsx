@@ -56,7 +56,7 @@ export const Textarea: FC<TextareaProps> = (props) => {
                 <Text
                     theme={TextTheme.ERROR}
                     className={cls.error}
-                    text={errorMessage}
+                    text={t(errorMessage || '')}
                     align={TextAlign.CENTER}
                 />
             )}
