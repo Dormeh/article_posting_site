@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { Loader } from 'shared/ui/Loader/ui/Loader/Loader';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { CommentList } from 'entities/Comment/ui/CommentList/CommentList';
@@ -17,8 +17,6 @@ import { articleCommentsReducer, getArticleComments } from '../../model/slices/A
 import { getArticleCommentsIsLoading } from '../../model/selectors/articleCommentsStateSelectors';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import cls from './ArticleComments.module.scss';
-import { ArticleDetailsPageSchema } from '../../model/types/ArticleDetailsPageSchema';
-import { articleDetailsPageReducer } from '../../model/slices';
 
 export interface ArticleCommentsProps {
     className?: string;

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Control } from 'react-hook-form';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { Loader } from 'shared/ui/Loader/ui/Loader/Loader';
 import { Form } from 'shared/ui/Form/ui/Form';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Text, TextTheme } from 'shared/ui/Text/Text';

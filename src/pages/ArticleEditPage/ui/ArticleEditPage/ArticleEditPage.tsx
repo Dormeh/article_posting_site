@@ -1,7 +1,8 @@
 import { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Page from 'shared/ui/Page/ui/Page';
+import { GearLoader } from 'shared/ui/Loader';
 
 interface ArticleEditPageProps {
     className?: string;
@@ -12,11 +13,12 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
     const { t } = useTranslation();
 
     return (
-        <div>
+        <Page>
             {id
                 ? `${t('Редактирование статьи')}: ${id}`
                 : `${t('Создать новую статью')}`}
-        </div>
+            <GearLoader title={t('Страница в разработке')} />
+        </Page>
     );
 };
 

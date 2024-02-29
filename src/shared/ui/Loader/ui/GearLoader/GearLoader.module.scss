@@ -1,0 +1,62 @@
+.GearLoader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 350px;
+  transform: translate(-50%, -50%);
+}
+
+.gear {
+  opacity: 0.8;
+  color: var(--shadow);
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  animation: spin 12s infinite;
+}
+
+.gear.two {
+  top: -65px;
+  left: 250px;
+  width: 160px;
+  height: 160px;
+  animation: spin-reverse 12s infinite;
+}
+
+.gear.three {
+  top: 80px;
+  left: 300px;
+  width: 200px;
+  height: 200px;
+}
+
+@keyframes spin {
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  50% {
+    transform: rotate(-360deg);
+  }
+}
+
+.text {
+  position: absolute;
+  transform: translateX(-50%);
+  filter: hue-rotate(15deg) contrast(200%) drop-shadow(2px 2px 2px rgba(var(--inverted-secondary-color-rgb), 1));
+  white-space: nowrap;
+  bottom: 0;
+  left: 50%;
+  color: var(--primary-color);
+  animation: pulse 12s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0;
+  }
+}
