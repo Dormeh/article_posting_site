@@ -1,11 +1,11 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import Arrow from 'shared/assets/icons/arrow.svg';
 import { useSelector } from 'react-redux';
-import { useCollapseSidebarState } from '../../lib/hooks/useCollapseSidebarState';
+import { useViewportSizeState } from 'shared/lib/hooks/useViewportSizeState/useViewportSizeState';
 import { getSidebarItemsList } from '../../models/selectors/getSidebarItemsList';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -18,11 +18,8 @@ const WINDOW_WIDTH_TO_COLLAPSE = 950;
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-    const canBeCollapsed = useCollapseSidebarState(WINDOW_WIDTH_TO_COLLAPSE);
+    const overSizeToCollapse = useViewportSizeState(WINDOW_WIDTH_TO_COLLAPSE, () => setCollapsed(true));
 
-    useEffect(() => {
-        if (!canBeCollapsed) setCollapsed(true);
-    }, [canBeCollapsed]);
     const onToggle = () => {
         setCollapsed((prev) => !prev);
     };
@@ -47,7 +44,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     />
                 ))}
             </nav>
-            {canBeCollapsed && (
+            {!overSizeToCollapse && (
                 <Button
                     data-testid="sidebar-toggle"
                     type="button"
