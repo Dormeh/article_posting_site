@@ -14,6 +14,11 @@ export default {
         backgroundColor: { control: 'color' },
     },
     decorators: [StoreDecorator({
+        user: {
+            authData: {
+                profileId: '1',
+            },
+        },
         articleDetailsPage: {
             articleComments,
             articleRecommendations: {

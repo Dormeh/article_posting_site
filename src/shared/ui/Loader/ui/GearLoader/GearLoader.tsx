@@ -24,7 +24,7 @@ export const GearLoader = memo((props: GearLoaderProps) => {
             <GearOne className={`${cls.gear} ${cls.one}`} />
             <GearTwo className={`${cls.gear} ${cls.two}`} />
             <GearThree className={`${cls.gear} ${cls.three}`} />
-            <Text className={cls.text} size={TextSize.L} title={title} />
+            <Text className={cls.text} size={TextSize.L} title={title} titleClassName={cls.title} />
         </div>
     );
 });

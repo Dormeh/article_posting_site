@@ -6,7 +6,7 @@ import { articlesMockData } from 'entities/Article/model/mockData/articlesMockDa
 import { ArticlesRecommendations } from './ArticlesRecommendations';
 
 export default {
-    title: 'pages/ArticleDetails/ArticlesRecommendations',
+    title: 'pages/ArticleDetailsPage/ArticlesRecommendations',
     component: ArticlesRecommendations,
     argTypes: {
         backgroundColor: { control: 'color' },

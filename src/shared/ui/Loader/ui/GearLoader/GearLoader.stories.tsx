@@ -4,7 +4,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { GearLoader } from './GearLoader';
 
 export default {
-    title: '.../GearLoader',
+    title: 'shared/Loader/GearLoader',
     component: GearLoader,
     argTypes: {
         backgroundColor: { control: 'color' },

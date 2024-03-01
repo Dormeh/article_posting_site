@@ -60,3 +60,24 @@
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 590px), (max-height: 400px) {
+  .GearLoader {
+    top: 55%;
+
+    .text {
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      & .title {
+        font: var(--font-l);
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .GearLoader {
+    top: 65%;
+  }
+}
