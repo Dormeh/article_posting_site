@@ -9,6 +9,7 @@ import EditIcon from 'shared/assets/icons/edit_icon.svg';
 import { useSelector } from 'react-redux';
 import { canArticleEditSelector } from 'pages/ArticleDetailsPage/model/selectors/canArticleEditSelector';
 import { getArticleDetailsData } from 'entities/Article';
+import { useRefWithSizeSate } from 'shared/lib/hooks/useElementSize/useElementSize';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {
@@ -21,15 +22,20 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
     const canEdit = useSelector(canArticleEditSelector);
     const article = useSelector(getArticleDetailsData);
 
+    const [ref, isMobile] = useRefWithSizeSate<HTMLDivElement>(790);
+
     return (
-        <div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
+        <div
+            ref={ref}
+            className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}
+        >
             <AppLink className={cls.link} to={RouterPath.articles}>
                 <Arrow className={cls.arrowIcon} />
-                <Text text={t('Назад к списку статей')} className={cls.linkText} />
+                {!isMobile && (<Text text={t('Назад к списку статей')} className={cls.linkText} />)}
             </AppLink>
             {canEdit && (
                 <AppLink className={cls.link} to={`${RouterPath.article_edit}${article?.id}`}>
-                    <Text text={t('Редактировать')} className={cls.linkText} />
+                    {!isMobile && (<Text text={t('Редактировать')} className={cls.linkText} />)}
                     <EditIcon className={cls.editIcon} />
                 </AppLink>
             )}

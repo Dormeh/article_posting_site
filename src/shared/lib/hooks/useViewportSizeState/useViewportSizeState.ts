@@ -4,7 +4,7 @@ import {
 
 export function useViewportSizeState(
     WINDOW_WIDTH_TO_COLLAPSE: number,
-    onOverSizeCallback: (...ars:any[]) => void,
+    onOverSizeCallback?: (...ars:any[]) => void,
 ): boolean {
     const [overSize, setOverSize] = useState(false);
 
@@ -12,7 +12,7 @@ export function useViewportSizeState(
         const width = window.innerWidth;
         if (width < WINDOW_WIDTH_TO_COLLAPSE) {
             setOverSize(true);
-            onOverSizeCallback();
+            onOverSizeCallback?.();
         } else if (width >= WINDOW_WIDTH_TO_COLLAPSE) {
             setOverSize(false);
         }
