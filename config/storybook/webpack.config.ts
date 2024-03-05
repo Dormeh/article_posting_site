@@ -9,6 +9,9 @@ export default ({ config }: {config: webpack.Configuration}) => {
         html: '',
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
+        favicon: '',
+        locales: '',
+        buildLocales: '',
     };
     // установить приоритет поиска модуля, ставим путь до компонентов в начало
     config?.resolve?.modules?.unshift(paths.src);
