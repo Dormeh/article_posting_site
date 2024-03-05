@@ -26,7 +26,7 @@ const ArticleDetailsPage = () => {
     if (!id) return <Text theme={TextTheme.ERROR} title={t('Такой статьи нет')} />;
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={initialReducers}>
             <Page className={cls.ArticleDetailsPage} ref={wrapperPagRef} scrollPositionTake={!isLoading}>
                 <ArticleDetails className={cls.pageContent} id={id} />
                 <ArticlesRecommendations className={cls.recommendations} />

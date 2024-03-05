@@ -49,7 +49,7 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
                 handleSubmit(onChangeSort)();
             }
         });
-        setFocus('search');
+        // setFocus('search'); // убрал так как позиция скрола не срабатывает при фокусе
         return () => subscription.unsubscribe();
     }, [dirtyFields, handleSubmit, isDirty, onChangeSort, setFocus, sortData, watch]);
 

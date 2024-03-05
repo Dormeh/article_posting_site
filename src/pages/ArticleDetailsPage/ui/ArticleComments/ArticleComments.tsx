@@ -64,7 +64,7 @@ const ArticleComments = forwardRef((props: ArticleCommentsProps, ref: ForwardedR
     }, [dispatch, ref]);
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={initialReducers}>
             <Text className={cls.commentTitle} title={t('Комментарии')} />
             <CommentList isLoading={isLoading} comments={comments} />
             <Suspense fallback={<Loader />}>
