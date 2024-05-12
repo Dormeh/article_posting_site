@@ -5,7 +5,13 @@
 }
 
 .plate {
-  flex-flow: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 230px);
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  grid-auto-flow: row;
 }
 
 .list {
