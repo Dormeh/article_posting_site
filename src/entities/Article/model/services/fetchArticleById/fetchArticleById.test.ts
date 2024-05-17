@@ -1,7 +1,7 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { ApiErrorTypes } from 'shared/api/types';
 import { fetchArticleById } from './fetchArticleById';
-import { articleTestData } from '../../../ui/ArticleDetails/articleTestData';
+import { articleTestData } from '../../../config/mock/articleTestData';
 
 describe('fetchArticleData.test', () => {
     test('success get data', async () => {

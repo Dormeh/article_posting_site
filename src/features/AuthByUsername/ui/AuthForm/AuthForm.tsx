@@ -9,10 +9,10 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { LoginAuthData } from '../../model/types/loginSchema';
 import { authFormConfig } from '../../model/config';

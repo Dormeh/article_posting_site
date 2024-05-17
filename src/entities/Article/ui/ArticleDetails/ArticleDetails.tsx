@@ -2,7 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useEffect } from 'react';
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
@@ -12,15 +11,16 @@ import {
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
-import { renderBlocks } from 'entities/Article/model/renderBlocks';
+import {
+    ArticleDetailsPageHeader,
+} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { renderBlocks } from '../../model/renderBlocks';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading,
-} from 'entities/Article/model/selectors/getArticleDetails/getArticleDetails';
-import {
-    ArticleDetailsPageHeader,
-} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+} from '../../model/selectors/getArticleDetails/getArticleDetails';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleReducer } from '../../model/slice/articleSlice';
 import cls from './ArticleDetails.module.scss';
 

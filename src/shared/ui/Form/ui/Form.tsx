@@ -2,10 +2,10 @@ import {
     ChangeEvent, FC, ElementType, ReactNode, forwardRef, ForwardedRef,
 } from 'react';
 import { Control, FieldValues } from 'react-hook-form';
-import { ValidationType } from 'shared/ui/Form/validation/validation';
+import { ValidationType } from 'shared/config/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextTheme } from '../../Text/Text';
 import cls from './Form.module.scss';
 
 export interface IFormValue { // TODO протестировать

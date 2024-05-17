@@ -3,18 +3,18 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { ContentSortForm } from 'features/ContentSortForm';
 import { SelectContentPreview } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
-import { contentArticlesPageSelects } from 'pages/ArticlesPage/config/contentArticlesPageSelects';
-import { ArticlesPageSortData } from 'pages/ArticlesPage/model/types/ArticlesPageSchema';
 import { getArticleTabsSelectConfig } from 'entities/Article/lib/getArticleTabsSelectConfig';
-import { getArticlesSelectsSortConfig } from 'pages/ArticlesPage/lib/getArticlesSortConfig';
 import { FieldValues } from 'react-hook-form';
-import { articlesSortApply } from 'pages/ArticlesPage/model/services/articlesSortApply/articlesSortApply';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { ContentView } from 'shared/model/types/types';
+import { ArticlesPageSortData } from '../../model/types/ArticlesPageSchema';
+import { contentArticlesPageSelects } from '../../config/contentArticlesPageSelects';
+import { getArticlesSelectsSortConfig } from '../../lib/getArticlesSortConfig';
+import { articlesSortApply } from '../../model/services/articlesSortApply/articlesSortApply';
 import {
     getArticlesPageView,
-} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
-import { ContentView } from 'shared/model/types/types';
+} from '../../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import cls from './ArticlesPageContentSwitcher.module.scss';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 

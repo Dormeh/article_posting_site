@@ -3,8 +3,8 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import {
     getArticlesPageIsInit,
     getArticlesPageSortData,
-} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
+} from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../slice/articlesPageSlice';
 
 export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(

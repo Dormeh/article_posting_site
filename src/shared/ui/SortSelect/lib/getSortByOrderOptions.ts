@@ -1,6 +1,6 @@
 import { SortOrder } from 'shared/model/types/types';
 import { TFunction } from 'i18next';
-import { SortSelectOption } from 'shared/ui/SortSelect/model/types/types';
+import { SortSelectOption } from '../model/types/types';
 
 export const getSortByOrderOptions = (t: TFunction): SortSelectOption[] => [
     {

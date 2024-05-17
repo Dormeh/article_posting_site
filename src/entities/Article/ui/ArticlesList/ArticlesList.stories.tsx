@@ -3,7 +3,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { ContentView } from 'shared/model/types/types';
 import { ArticlesList } from './ArticlesList';
-import { articlesMockData } from '../../model/mockData/articlesMockData';
+import { articlesMockData } from '../../config/mock/articlesMockData';
 
 export default {
     title: 'entities/ArticlesList',

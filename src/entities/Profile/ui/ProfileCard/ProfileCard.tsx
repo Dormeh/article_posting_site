@@ -7,7 +7,7 @@ import { Loader } from 'shared/ui/Loader/ui/Loader/Loader';
 import { Form } from 'shared/ui/Form/ui/Form';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Profile } from 'entities/Profile';
+import { Profile } from '../../model/types/profile';
 import { profileConfig } from '../../model/config';
 import cls from './ProfileCard.module.scss';
 

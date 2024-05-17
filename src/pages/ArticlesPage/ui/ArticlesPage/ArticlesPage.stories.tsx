@@ -3,7 +3,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ContentView, SortOrder } from 'shared/model/types/types';
-import { articlesMockData } from 'entities/Article/model/mockData/articlesMockData';
+import { articlesMockData } from 'entities/Article/config/mock/articlesMockData';
 import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
 import ArticlesPage from './ArticlesPage';
 

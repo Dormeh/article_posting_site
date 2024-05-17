@@ -1,14 +1,13 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { userActions } from 'entities/User';
+import { articlesMockData } from 'entities/Article/config/mock/articlesMockData';
 import {
     articlesPageActions,
     articlesPageReducer,
     getArticlesSelector,
-} from 'pages/ArticlesPage/model/slice/articlesPageSlice';
+} from '../../slice/articlesPageSlice';
 import {
-    getArticlesPageHasMore, getArticlesPageIsInit,
-} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
-import { articlesMockData } from 'entities/Article/model/mockData/articlesMockData';
+    getArticlesPageIsInit,
+} from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { initArticlesPage } from './initArticlesPage';
 
 describe('initArticlesPage.test', () => {

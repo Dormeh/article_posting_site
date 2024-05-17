@@ -1,9 +1,9 @@
+import { CombinedState } from 'redux';
+import axios, { AxiosStatic } from 'axios';
 import { createReduxStore, StateSchema } from 'app/providers/StoreProvider';
 import { AnyAction, AsyncThunkAction, ThunkAction } from '@reduxjs/toolkit';
-import axios, { AxiosStatic } from 'axios';
-import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { CombinedState } from 'redux';
 import { ThunkExtraArg } from 'app/providers/StoreProvider/config/StateSchema';
+import { ReducersList } from '../../components/DynamicModuleLoader/DynamicModuleLoader';
 import SpyInstance = jest.SpyInstance;
 
 type ActionCreatorType<Return, Arg, RejectedValue>

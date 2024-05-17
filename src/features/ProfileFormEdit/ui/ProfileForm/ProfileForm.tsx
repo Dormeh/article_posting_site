@@ -8,7 +8,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Profile, ProfileCard } from 'entities/Profile';
 import {
     getProfileCanEditMode,
-} from 'features/ProfileFormEdit/model/selectors/getProfileCanEditMode/getProfileCanEditMode';
+} from '../../model/selectors/getProfileCanEditMode/getProfileCanEditMode';
 import cls from './ProfileForm.module.scss';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';

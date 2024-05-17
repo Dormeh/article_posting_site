@@ -8,7 +8,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Textarea } from 'shared/ui/Textarea/Textarea';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Form, FormOrientation } from 'shared/ui/Form/ui/Form';
-import { ValidationType } from 'shared/ui/Form/validation/validation';
+import { ValidationType } from 'shared/config/validation/validation';
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {

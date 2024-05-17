@@ -3,8 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { UseFormRegister } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
-import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/validation';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
+import { Text, TextAlign, TextTheme } from '../Text/Text';
 import cls from './Textarea.module.scss';
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {

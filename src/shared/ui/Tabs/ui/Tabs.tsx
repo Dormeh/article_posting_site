@@ -1,9 +1,9 @@
 import { InputHTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { TabsConfig } from 'shared/ui/Tabs/model/types/tabsType';
-import { TabInput } from 'shared/ui/TabInput/TabInput';
 import { UseFormRegister } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
+import { TabsConfig } from '../model/types/tabsType';
+import { TabInput } from '../../TabInput/TabInput';
 import cls from './Tabs.module.scss';
 
 interface TabsProps extends InputHTMLAttributes<HTMLInputElement>{

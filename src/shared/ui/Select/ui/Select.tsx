@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import './Select.scss';
 import { Control, Controller } from 'react-hook-form';
-import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/validation';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
+import { Text, TextSize } from '../../Text/Text';
 import { CustomSelectProps, IOption } from '../model/types/types';
 
 export enum SelectLabelView {

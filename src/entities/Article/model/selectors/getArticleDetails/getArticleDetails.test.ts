@@ -1,10 +1,10 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { getLoginAuthData } from 'features/AuthByUsername/model/selectors/getLoginAuthData/getLoginAuthData';
-import { articleTestData } from 'entities/Article/ui/ArticleDetails/articleTestData';
+import { articleTestData } from '../../../config/mock/articleTestData';
 import {
     getArticleDetailsData,
-    getArticleDetailsError, getArticleDetailsIsLoading,
-} from 'entities/Article/model/selectors/getArticleDetails/getArticleDetails';
+    getArticleDetailsError,
+    getArticleDetailsIsLoading,
+} from '../../selectors/getArticleDetails/getArticleDetails';
 
 describe('getArticleDetailsData.test', () => {
     test('should work with filled state', () => {

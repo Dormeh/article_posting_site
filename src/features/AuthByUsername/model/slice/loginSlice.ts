@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
-import { ApiErrorType, ApiErrorTypes } from 'shared/api/types';
+import { createSlice } from '@reduxjs/toolkit';
 import { rejectedPayloadHandle } from 'shared/api/rejectedPayloadHandle';
+import { loginByUsername } from '../services/loginByUsername/loginByUsername';
 import { LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {

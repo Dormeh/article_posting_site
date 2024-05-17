@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Form } from 'shared/ui/Form/ui/Form';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
+import { Form } from '../../Form/ui/Form';
+import { Button, ButtonTheme } from '../../Button/Button';
+import { formChildNodes } from '../model/formChildNodes';
 
 export default {
     title: 'shared/Form',

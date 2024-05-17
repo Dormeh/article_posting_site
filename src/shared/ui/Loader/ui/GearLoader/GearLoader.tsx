@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextSize } from 'shared/ui/Text/Text';
 import GearOne from 'shared/assets/icons/gears/gear_1.svg';
 import GearTwo from 'shared/assets/icons/gears/gear_2.svg';
 import GearThree from 'shared/assets/icons/gears/gear_3.svg';
+import { Text, TextSize } from '../../../Text/Text';
 import cls from './GearLoader.module.scss';
 
 interface GearLoaderProps {

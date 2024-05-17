@@ -1,8 +1,8 @@
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import AvatarImg from 'shared/assets/images/storybook.jpg';
 import JSImg from 'shared/assets/images/js.png';
+import { Article, ArticleBlockType, ArticleType } from '../../model/types/article';
 
 export const articleTestData: Article = {
     id: '1',

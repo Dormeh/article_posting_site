@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { testProfileData } from 'features/ProfileFormEdit/model/services/updateProfileData/profileData';
 import { ApiErrorTypes } from 'shared/api/types';
+import { testProfileData } from '../updateProfileData/profileData';
 import { fetchProfileData } from './fetchProfileData';
 
 describe('fetchProfileData.test', () => {

@@ -1,14 +1,14 @@
 import {
     ForwardedRef, forwardRef, memo, ReactNode, useEffect, useLayoutEffect, useRef,
 } from 'react';
-import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll/useInfinityScroll';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getPageScrollPosition } from 'shared/ui/Page/model/selectors/getPageScroll';
+import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll/useInfinityScroll';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { pageActions } from 'shared/ui/Page/model/slice/pageSlice';
+import { getPageScrollPosition } from '../model/selectors/getPageScroll';
+import { pageActions } from '../model/slice/pageSlice';
 import cls from './Page.module.scss';
 
 interface PageProps {

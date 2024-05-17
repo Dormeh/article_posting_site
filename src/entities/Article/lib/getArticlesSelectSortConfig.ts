@@ -1,5 +1,5 @@
-import { ArticleSortField, ArticleSortOption } from 'entities/Article/model/types/article';
 import { TFunction } from 'i18next';
+import { ArticleSortField, ArticleSortOption } from '../model/types/article';
 
 export const getArticlesSelectSortConfig = (t: TFunction): ArticleSortOption[] => [
     {

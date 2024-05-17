@@ -2,8 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { articleComments } from 'pages/ArticleDetailsPage/ui/articleComments';
-import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage';
+import { articleComments } from '../../config/mock/articleComments';
 import ArticleComments from './ArticleComments';
 
 export default {

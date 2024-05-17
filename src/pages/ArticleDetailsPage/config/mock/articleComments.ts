@@ -1,7 +1,7 @@
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import AvatarImg from 'shared/assets/images/storybook.jpg';
-import { ArticleCommentsSchema } from '../model/types/ArticleCommentsSchema';
+import { ArticleCommentsSchema } from '../../model/types/ArticleCommentsSchema';
 
 export const articleComments: ArticleCommentsSchema = {
     ids: ['1', '2'],

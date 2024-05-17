@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select } from 'shared/ui/Select/ui/Select';
-import { currencyOptions } from 'entities/Currency/config/currencySelectOptions';
+import { currencyOptions } from '../config/currencySelectOptions';
 
 interface CurrencySelectProps {
     name?: string;

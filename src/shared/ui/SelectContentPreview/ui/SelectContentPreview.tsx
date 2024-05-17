@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { ContentView } from 'shared/model/types/types';
+import { Button, ButtonTheme } from '../../Button/Button';
 import cls from './SelectContentPreview.module.scss';
 
 export interface SelectContentPreviewType {

@@ -1,4 +1,4 @@
-import { ValidationType } from 'shared/ui/Form/validation/validation';
+import { ValidationType } from 'shared/config/validation/validation';
 import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
 
 export const authFormFields = [

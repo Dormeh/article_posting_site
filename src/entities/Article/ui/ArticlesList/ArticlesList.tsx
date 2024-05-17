@@ -1,10 +1,10 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { ArticlesListItem } from 'entities/Article/ui/ArticlesListItem/ArticlesListItem';
-import { ArticlesListItemSkeleton } from 'entities/Article/ui/ArticlesListItem/ArticlesListItemSkeleton';
 import { ContentView } from 'shared/model/types/types';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
+import { ArticlesListItemSkeleton } from '../ArticlesListItem/ArticlesListItemSkeleton';
 import cls from './ArticlesList.module.scss';
 import { Article } from '../../model/types/article';
 

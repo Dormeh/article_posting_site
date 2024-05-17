@@ -7,7 +7,7 @@ import { getArticleDetailsData } from 'entities/Article';
 import { getUserAuthData } from 'entities/User';
 import {
     articleCommentsActions,
-} from 'pages/ArticleDetailsPage/model/slices/ArticleCommentsSlice';
+} from '../../slices/ArticleCommentsSlice';
 
 export const addCommentForArticle = createAsyncThunk<null, string, ThunkConfig<string>>(
     ' articleComment/addCommentForArticle',

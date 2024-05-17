@@ -2,9 +2,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { articleTestData } from 'entities/Article/ui/ArticleDetails/articleTestData';
-import { articleComments } from 'pages/ArticleDetailsPage/ui/articleComments';
-import { articlesMockData } from 'entities/Article/model/mockData/articlesMockData';
+import { articleTestData } from 'entities/Article/config/mock/articleTestData';
+import { articlesMockData } from 'entities/Article/config/mock/articlesMockData';
+import { articleComments } from '../../config/mock/articleComments';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {

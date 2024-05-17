@@ -1,9 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { userActions } from 'entities/User';
-import { articlesPageActions, articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
-import {
-    getArticlesPageHasMore,
-} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+import { articlesPageActions, articlesPageReducer } from '../../slice/articlesPageSlice';
+import { getArticlesPageHasMore } from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { fetchNextPartData } from './fetchNextPartData';
 
 describe('fetchNextArticlesPage.test', () => {

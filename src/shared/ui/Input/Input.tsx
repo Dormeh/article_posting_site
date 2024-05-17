@@ -1,12 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import React, {
-    InputHTMLAttributes, useState,
-} from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { ValidationPattern, ValidationType } from 'shared/ui/Form/validation/validation';
+import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
 import { useTranslation } from 'react-i18next';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
-import { ChangeHandler } from 'react-hook-form/dist/types/form';
 import cls from './Input.module.scss';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'onChange'> {

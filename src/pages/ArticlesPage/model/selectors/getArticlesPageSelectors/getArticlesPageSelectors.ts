@@ -1,7 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
 import { ContentView } from 'shared/model/types/types';
-import { ArticlesPageSortData } from 'pages/ArticlesPage/model/types/ArticlesPageSchema';
+import { ArticlesPageSortData } from '../../types/ArticlesPageSchema';
 
 export const getArticlesPageIsLoading = (state: StateSchema) => state.articlesPage?.isLoading || false;
 export const getArticlesPageError = (state: StateSchema) => state.articlesPage?.error;

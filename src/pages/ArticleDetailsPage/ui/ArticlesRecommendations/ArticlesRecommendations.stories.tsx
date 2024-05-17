@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { articlesMockData } from 'entities/Article/model/mockData/articlesMockData';
+import { articlesMockData } from 'entities/Article/config/mock/articlesMockData';
 import { ArticlesRecommendations } from './ArticlesRecommendations';
 
 export default {

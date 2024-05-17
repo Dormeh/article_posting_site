@@ -1,9 +1,9 @@
 import React, { InputHTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card } from 'shared/ui/Card/Card';
-import { Text } from 'shared/ui/Text/Text';
 import { UseFormRegister } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
+import { Card } from '../Card/Card';
+import { Text } from '../Text/Text';
 import cls from './TabInput.module.scss';
 
 interface TabInputProps extends InputHTMLAttributes<HTMLInputElement> {

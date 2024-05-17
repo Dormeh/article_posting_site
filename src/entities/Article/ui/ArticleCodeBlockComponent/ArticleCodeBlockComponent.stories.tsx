@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { ArticleBlockType, ArticleCodeBlock } from 'entities/Article/model/types/article';
 import { codeBlock } from 'shared/config/tests/constants/codeBlock';
+import { ArticleCodeBlock } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from './ArticleCodeBlockComponent';
 
 export default {

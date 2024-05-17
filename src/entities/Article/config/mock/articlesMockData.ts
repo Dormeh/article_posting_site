@@ -1,6 +1,6 @@
-import { Article } from 'entities/Article/model/types/article';
 import AvatarImg from 'shared/assets/images/storybook.jpg';
 import JSImg from 'shared/assets/images/js.png';
+import { Article } from '../../model/types/article';
 
 export const articlesMockData = [
     {

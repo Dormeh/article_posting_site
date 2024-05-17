@@ -3,13 +3,13 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
 import { Article, ArticleType } from 'entities/Article/model/types/article';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
 import {
     getArticlesPageLimit,
     getArticlesPagePage,
     getArticlesPageSortData,
-} from 'pages/ArticlesPage/model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
-import { getArticlesSelector } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
-import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
+} from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+import { getArticlesSelector } from '../../slice/articlesPageSlice';
 
 interface FetchArticlesListProps{
     refreshList?: boolean;
