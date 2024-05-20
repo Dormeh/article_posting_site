@@ -11,26 +11,13 @@ interface ArticleTextBlockComponentProps {
 }
 
 export const ArticleTextBlockComponent = memo((props: ArticleTextBlockComponentProps) => {
-    const {
-        className,
-        block,
-    } = props;
+    const { className, block } = props;
     const { t } = useTranslation();
     return (
         <div className={classNames(cls.ArticleTextBlockComponent, {}, [className])}>
-            {block.title
-                && (
-                    <Text
-                        title={block.title}
-                        className={cls.paragraph}
-                    />
-                )}
+            {block.title && <Text title={block.title} className={cls.paragraph} />}
             {block.paragraphs.map((paragraph) => (
-                <Text
-                    key={paragraph}
-                    text={paragraph}
-                    className={cls.paragraph}
-                />
+                <Text key={paragraph} text={paragraph} className={cls.paragraph} />
             ))}
         </div>
     );

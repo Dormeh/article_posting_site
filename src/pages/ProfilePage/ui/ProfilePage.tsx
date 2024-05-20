@@ -1,5 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchProfileData, ProfileForm, profileReducer } from 'features/ProfileFormEdit';
@@ -32,7 +35,6 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                 <ProfileForm />
             </Page>
         </DynamicModuleLoader>
-
     );
 };
 

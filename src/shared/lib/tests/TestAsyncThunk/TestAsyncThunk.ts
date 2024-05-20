@@ -6,8 +6,9 @@ import { ThunkExtraArg } from 'app/providers/StoreProvider/config/StateSchema';
 import { ReducersList } from '../../components/DynamicModuleLoader/DynamicModuleLoader';
 import SpyInstance = jest.SpyInstance;
 
-type ActionCreatorType<Return, Arg, RejectedValue>
-    = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>
+type ActionCreatorType<Return, Arg, RejectedValue> = (
+    arg: Arg,
+) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
 jest.mock('axios');
 
@@ -17,7 +18,13 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     store: ReturnType<typeof createReduxStore>;
 
     dispatch: SpyInstance<
-        unknown, [action: AnyAction | ThunkAction<unknown, CombinedState<StateSchema>, ThunkExtraArg, AnyAction>]>;
+        unknown,
+        [
+            action:
+                | AnyAction
+                | ThunkAction<unknown, CombinedState<StateSchema>, ThunkExtraArg, AnyAction>,
+        ]
+    >;
 
     getState: () => StateSchema;
 
@@ -31,11 +38,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
         asyncReducers?: ReducersList,
     ) {
         this.api = mockedAxios;
-        this.store = createReduxStore(
-            state as StateSchema,
-            asyncReducers,
-            this.api,
-        );
+        this.store = createReduxStore(state as StateSchema, asyncReducers, this.api);
         this.actionCreator = actionCreator;
         this.dispatch = jest.spyOn(this.store, 'dispatch');
 
@@ -44,11 +47,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
     async callThunk(arg: Arg) {
         const action = this.actionCreator(arg);
-        const result = await action(
-            this.store?.dispatch,
-            this.store.getState,
-            { api: this.api },
-        );
+        const result = await action(this.store?.dispatch, this.store.getState, { api: this.api });
 
         return result;
     }

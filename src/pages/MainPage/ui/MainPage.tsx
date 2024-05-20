@@ -4,9 +4,7 @@ import Page from 'shared/ui/Page/ui/Page';
 import { GearLoader } from 'shared/ui/Loader';
 
 const MainPage = () => {
-    const { t } = useTranslation(
-        'main',
-    );
+    const { t } = useTranslation('main');
 
     return (
         <Page>

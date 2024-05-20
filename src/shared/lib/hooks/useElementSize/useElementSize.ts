@@ -1,6 +1,4 @@
-import {
-    MutableRefObject, useCallback, useLayoutEffect, useRef, useState,
-} from 'react';
+import { MutableRefObject, useCallback, useLayoutEffect, useRef, useState } from 'react';
 
 export function useRefWithSizeSate<T extends HTMLElement>(
     size: number,

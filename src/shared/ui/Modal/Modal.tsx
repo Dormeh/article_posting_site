@@ -1,7 +1,5 @@
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
-import React, {
-    ReactNode, useCallback, useEffect, useRef, useState,
-} from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 
@@ -16,13 +14,7 @@ interface ModalProps {
 const ANIMATION_DELAY = 200;
 
 export const Modal = (props: ModalProps) => {
-    const {
-        className,
-        isOpen,
-        onClose,
-        lazy,
-        children,
-    } = props;
+    const { className, isOpen, onClose, lazy, children } = props;
 
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
@@ -49,11 +41,14 @@ export const Modal = (props: ModalProps) => {
         e.stopPropagation();
     };
 
-    const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeHandler();
-        }
-    }, [closeHandler]);
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                closeHandler();
+            }
+        },
+        [closeHandler],
+    );
 
     useEffect(() => {
         if (isOpen) {
@@ -79,18 +74,11 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div
-                onClick={closeHandler}
-                className={classNames(cls.Modal, mods, [className])}
-            >
-                <div
-                    onClick={contentClick}
-                    className={cls.content}
-                >
+            <div onClick={closeHandler} className={classNames(cls.Modal, mods, [className])}>
+                <div onClick={contentClick} className={cls.content}>
                     {children}
                 </div>
             </div>
         </Portal>
-
     );
 };

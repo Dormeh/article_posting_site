@@ -12,9 +12,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        StoreDecorator({}),
-    ],
+    decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof Sidebar>;
 
 const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />;
@@ -29,8 +27,11 @@ Dark.decorators = [ThemeDecorator(Theme.DARK)];
 export const DarkAuth = Template.bind({});
 DarkAuth.args = {};
 
-DarkAuth.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    user: {
-        authData: {},
-    },
-})];
+DarkAuth.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        user: {
+            authData: {},
+        },
+    }),
+];

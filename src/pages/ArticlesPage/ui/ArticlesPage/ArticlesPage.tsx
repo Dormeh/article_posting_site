@@ -17,9 +17,7 @@ import {
 import { fetchNextPartData } from '../../model/services/fetchNextPartData/fetchNextPartData';
 import { articlesPageReducer, getArticlesSelector } from '../../model/slice/articlesPageSlice';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import {
-    ArticlesPageContentSwitcher,
-} from '../ArticlesPageContentSwitcher/ArticlesPageContentSwitcher';
+import { ArticlesPageContentSwitcher } from '../ArticlesPageContentSwitcher/ArticlesPageContentSwitcher';
 import cls from './ArticlesPage.module.scss';
 
 const initialsReducers = {
@@ -37,12 +35,9 @@ const ArticlesPage = () => {
     const { t } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
-        setSearchParams(
-            sortData,
-            {
-                replace: true,
-            },
-        );
+        setSearchParams(sortData, {
+            replace: true,
+        });
     }, [sortData, setSearchParams]);
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams));
@@ -56,7 +51,11 @@ const ArticlesPage = () => {
 
     return (
         <DynamicModuleLoader reducers={initialsReducers}>
-            <Page className={cls.ArticlesPage} onScrollCallback={onLoadNextContent} scrollPositionTake>
+            <Page
+                className={cls.ArticlesPage}
+                onScrollCallback={onLoadNextContent}
+                scrollPositionTake
+            >
                 <ArticlesPageContentSwitcher sortData={sortData} isLoading={isLoading} />
                 <ArticlesList
                     view={view}
@@ -68,7 +67,6 @@ const ArticlesPage = () => {
                 />
             </Page>
         </DynamicModuleLoader>
-
     );
 };
 

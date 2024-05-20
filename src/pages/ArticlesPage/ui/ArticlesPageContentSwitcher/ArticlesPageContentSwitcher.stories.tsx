@@ -41,7 +41,9 @@ export default {
     ],
 } as ComponentMeta<typeof ArticlesPageContentSwitcher>;
 
-const Template: ComponentStory<typeof ArticlesPageContentSwitcher> = (args) => <ArticlesPageContentSwitcher {...args} />;
+const Template: ComponentStory<typeof ArticlesPageContentSwitcher> = (args) => (
+    <ArticlesPageContentSwitcher {...args} />
+);
 
 export const Primary = Template.bind({});
 

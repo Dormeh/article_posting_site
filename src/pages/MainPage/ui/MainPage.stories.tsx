@@ -11,9 +11,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        StoreDecorator({}),
-    ],
+    decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof MainPage>;
 
 // @ts-ignore

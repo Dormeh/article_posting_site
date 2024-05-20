@@ -5,21 +5,17 @@ import { profileActions, profileReducer } from './profileSlice';
 
 describe('profileSlice.test', () => {
     test('test errorReset', () => {
-        const state : DeepPartial<ProfileSchema> = { error: 'error' };
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.errorReset(),
-        )).toEqual({ error: undefined });
+        const state: DeepPartial<ProfileSchema> = { error: 'error' };
+        expect(profileReducer(state as ProfileSchema, profileActions.errorReset())).toEqual({
+            error: undefined,
+        });
     });
     test('test updateProfileData pending', () => {
-        const state : DeepPartial<ProfileSchema> = {
+        const state: DeepPartial<ProfileSchema> = {
             error: 'error',
             isLoading: false,
         };
-        expect(profileReducer(
-            state as ProfileSchema,
-            updateProfileData.pending,
-        )).toEqual({
+        expect(profileReducer(state as ProfileSchema, updateProfileData.pending)).toEqual({
             error: undefined,
             isLoading: true,
         });
@@ -29,10 +25,16 @@ describe('profileSlice.test', () => {
             isLoading: true,
         };
 
-        expect(profileReducer(
-            state as ProfileSchema,
-            updateProfileData.fulfilled(testProfileData as Profile, '', testProfileData as Profile),
-        )).toEqual({
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                updateProfileData.fulfilled(
+                    testProfileData as Profile,
+                    '',
+                    testProfileData as Profile,
+                ),
+            ),
+        ).toEqual({
             isLoading: false,
             data: testProfileData,
         });
@@ -43,10 +45,12 @@ describe('profileSlice.test', () => {
             error: undefined,
         };
 
-        expect(profileReducer(
-            state as ProfileSchema,
-            updateProfileData.rejected(new Error(), '', testProfileData as Profile, 'error'),
-        )).toEqual({
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                updateProfileData.rejected(new Error(), '', testProfileData as Profile, 'error'),
+            ),
+        ).toEqual({
             isLoading: false,
             error: 'error',
         });

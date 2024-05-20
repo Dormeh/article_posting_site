@@ -17,12 +17,7 @@ interface SelectContentPreviewProps {
 }
 
 export const SelectContentPreview = memo((props: SelectContentPreviewProps) => {
-    const {
-        className,
-        selects,
-        onSelect,
-        view,
-    } = props;
+    const { className, selects, onSelect, view } = props;
 
     const onClick = (newView: ContentView) => () => {
         onSelect?.(newView);
@@ -31,7 +26,12 @@ export const SelectContentPreview = memo((props: SelectContentPreviewProps) => {
     return (
         <div className={classNames(cls.SelectPageTypePreview, {}, [className])}>
             {selects.map(({ Icon, view: viewType }) => (
-                <Button key={viewType} className={cls.btn} onClick={onClick(viewType)} theme={ButtonTheme.CLEAR}>
+                <Button
+                    key={viewType}
+                    className={cls.btn}
+                    onClick={onClick(viewType)}
+                    theme={ButtonTheme.CLEAR}
+                >
                     <Icon className={classNames(cls.icon, { [cls.selected]: viewType === view })} />
                 </Button>
             ))}

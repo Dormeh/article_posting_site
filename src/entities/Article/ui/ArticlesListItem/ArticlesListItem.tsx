@@ -20,12 +20,7 @@ interface ArticlesListItemProps {
 }
 
 export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
-    const {
-        className,
-        article,
-        view = ContentView.PLATE,
-        target,
-    } = props;
+    const { className, article, view = ContentView.PLATE, target } = props;
     const { t } = useTranslation();
 
     const views = (
@@ -49,27 +44,35 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
                         <div className={cls.userInfo}>
                             <Avatar src={article.profile.avatar} size={30} />
                             <Text text={article.profile.username} className={cls.username} />
-                            <Text text={article.createdAt} className={cls.date} textClassName={cls.dateText} />
+                            <Text
+                                text={article.createdAt}
+                                className={cls.date}
+                                textClassName={cls.dateText}
+                            />
                         </div>
-                        <Text className={cls.title} title={article.title} titleClassName={cls.titleText} />
-                        <Text className={cls.type} text={article.type.toString()} textClassName={cls.typeText} />
+                        <Text
+                            className={cls.title}
+                            title={article.title}
+                            titleClassName={cls.titleText}
+                        />
+                        <Text
+                            className={cls.type}
+                            text={article.type.toString()}
+                            textClassName={cls.typeText}
+                        />
                     </div>
                     <div className={cls.main}>
                         <div className={cls.imgWrapper}>
                             <img className={cls.imgPreview} src={article.img} alt={article.title} />
                         </div>
-                        <Text textClassName={cls.textBlock} text={textBlock.paragraphs.toString()} />
+                        <Text
+                            textClassName={cls.textBlock}
+                            text={textBlock.paragraphs.toString()}
+                        />
                     </div>
                     <div className={cls.footer}>
-                        <Link
-                            to={RouterPath.article_details + article.id}
-                            target={target}
-                        >
-                            <Button
-                                theme={ButtonTheme.OUTLINE}
-                            >
-                                {t('Читать далее')}
-                            </Button>
+                        <Link to={RouterPath.article_details + article.id} target={target}>
+                            <Button theme={ButtonTheme.OUTLINE}>{t('Читать далее')}</Button>
                         </Link>
                         {views}
                     </div>
@@ -87,10 +90,18 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt={article.title} className={cls.imgPreview} />
-                    <Text text={article.createdAt} className={cls.date} textClassName={cls.dateText} />
+                    <Text
+                        text={article.createdAt}
+                        className={cls.date}
+                        textClassName={cls.dateText}
+                    />
                 </div>
                 <div className={cls.infoWrapper}>
-                    <Text className={cls.type} text={article.type.toString()} textClassName={cls.typeText} />
+                    <Text
+                        className={cls.type}
+                        text={article.type.toString()}
+                        textClassName={cls.typeText}
+                    />
                     {views}
                 </div>
                 <Text title={article.title} titleClassName={cls.titleText} />

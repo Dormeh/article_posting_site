@@ -4,11 +4,11 @@ import { Select } from 'shared/ui/Select/ui/Select';
 import { countryOptions } from '../config/countrySelectOptions';
 
 interface CountrySelectProps {
-    name?: string
+    name?: string;
     className?: string;
-    label?: string
+    label?: string;
 }
-export const CountrySelect:FC<CountrySelectProps> = ({ name = 'country', ...otherProps }) => {
+export const CountrySelect: FC<CountrySelectProps> = ({ name = 'country', ...otherProps }) => {
     const { t } = useTranslation();
     return (
         <Select

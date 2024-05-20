@@ -18,7 +18,9 @@ const WINDOW_WIDTH_TO_COLLAPSE = 950;
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-    const overSizeToCollapse = useViewportSizeState(WINDOW_WIDTH_TO_COLLAPSE, () => setCollapsed(true));
+    const overSizeToCollapse = useViewportSizeState(WINDOW_WIDTH_TO_COLLAPSE, () =>
+        setCollapsed(true),
+    );
 
     const onToggle = () => {
         setCollapsed((prev) => !prev);
@@ -29,19 +31,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     return (
         <aside
             data-testid="sidebar"
-            className={
-                classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])
-            }
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
             <nav className={cls['link-box']}>
-                {sidebarItemsList.map((
-                    item,
-                ) => (
-                    <SidebarItem
-                        key={item.path}
-                        item={item}
-                        collapsed={collapsed}
-                    />
+                {sidebarItemsList.map((item) => (
+                    <SidebarItem key={item.path} item={item} collapsed={collapsed} />
                 ))}
             </nav>
             {!overSizeToCollapse && (
@@ -58,10 +52,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             )}
             <div className={cls.switchers}>
                 <ThemeSwitcher />
-                <LangSwitcher
-                    className={cls.lang}
-                    short={collapsed}
-                />
+                <LangSwitcher className={cls.lang} short={collapsed} />
             </div>
         </aside>
     );

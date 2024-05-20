@@ -1,10 +1,8 @@
-import {
-    useCallback, useEffect, useState,
-} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export function useViewportSizeState(
     WINDOW_WIDTH_TO_COLLAPSE: number,
-    onOverSizeCallback?: (...ars:any[]) => void,
+    onOverSizeCallback?: (...ars: any[]) => void,
 ): boolean {
     const [overSize, setOverSize] = useState(false);
 

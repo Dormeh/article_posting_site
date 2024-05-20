@@ -29,13 +29,12 @@ export const AppLink = memo((props: AppLinkProps) => {
     return (
         <NavLink
             to={to}
-            className={({
-                isActive,
-            }) => classNames(
-                cls.AppLink,
-                { [cls.active]: activeView && isActive },
-                [className, cls[theme]],
-            )}
+            className={({ isActive }) =>
+                classNames(cls.AppLink, { [cls.active]: activeView && isActive }, [
+                    className,
+                    cls[theme],
+                ])
+            }
             {...otherProps}
         >
             {children}

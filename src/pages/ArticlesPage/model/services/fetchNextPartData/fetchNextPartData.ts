@@ -10,9 +10,7 @@ import { articlesPageActions } from '../../slice/articlesPageSlice';
 export const fetchNextPartData = createAsyncThunk<void, void, ThunkConfig<string>>(
     'ArticlePage/fetchNextPartData',
     async (_, thunkAPI) => {
-        const {
-            dispatch, getState,
-        } = thunkAPI;
+        const { dispatch, getState } = thunkAPI;
         const isLoading = getArticlesPageIsLoading(getState());
         const hasMore = getArticlesPageHasMore(getState());
 

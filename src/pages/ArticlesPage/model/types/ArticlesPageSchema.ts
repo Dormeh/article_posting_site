@@ -2,7 +2,7 @@ import { EntityState } from '@reduxjs/toolkit';
 import { Article, ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
 import { ContentView, SortOrder } from 'shared/model/types/types';
 
-export interface ArticlesPageSortData extends Record<string, string>{
+export interface ArticlesPageSortData extends Record<string, string> {
     sort: ArticleSortField;
     order: SortOrder;
     type: ArticleType;

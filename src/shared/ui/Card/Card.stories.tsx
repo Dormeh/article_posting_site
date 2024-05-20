@@ -15,7 +15,8 @@ export default {
             <>
                 <Text title="Test title" />
                 <Text text="Test text" />
-            </>),
+            </>
+        ),
     },
 } as ComponentMeta<typeof Card>;
 

@@ -5,18 +5,13 @@ import cls from './Skeleton.module.scss';
 
 interface SkeletonProps {
     className?: string;
-    width?: string | number
-    height?: string | number
-    borderRadius?: string
+    width?: string | number;
+    height?: string | number;
+    borderRadius?: string;
 }
 
 export const Skeleton = memo((props: SkeletonProps) => {
-    const {
-        className,
-        width,
-        height,
-        borderRadius,
-    } = props;
+    const { className, width, height, borderRadius } = props;
 
     return (
         <div

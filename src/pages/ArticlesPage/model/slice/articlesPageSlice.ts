@@ -43,15 +43,19 @@ export const articlesPageSlice = createSlice({
         },
         initPageState: (state) => {
             const view = localStorage.getItem(LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY) as ContentView;
-            articlesPageSlice.caseReducers
-                .changeLimitByView(state, articlesPageSlice.actions.changeLimitByView(view));
+            articlesPageSlice.caseReducers.changeLimitByView(
+                state,
+                articlesPageSlice.actions.changeLimitByView(view),
+            );
             state.view = view;
             state._inited = true;
         },
         setPageContentView: (state, { payload }: PayloadAction<ContentView>) => {
             state.view = payload;
-            articlesPageSlice.caseReducers
-                .changeLimitByView(state, articlesPageSlice.actions.changeLimitByView(payload));
+            articlesPageSlice.caseReducers.changeLimitByView(
+                state,
+                articlesPageSlice.actions.changeLimitByView(payload),
+            );
             localStorage.setItem(LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY, payload);
         },
         setPageSortParams: (state, { payload }: PayloadAction<ArticlesPageSortData>) => {

@@ -5,14 +5,13 @@ export enum ValidationType {
     Phone = 'phone',
     Name = 'name',
     Age = 'age',
-    Comment = 'comment'
+    Comment = 'comment',
 }
 // TODO добавить переводы для валидации
 export const ValidationPattern = {
     username: {
         value: /^(?=.*\D)[\w-]{3,20}$/g,
-        message:
-            '3-20 символов, допустимые символы: латин. буквы, цифры, дефис, подчеркивание _',
+        message: '3-20 символов, допустимые символы: латин. буквы, цифры, дефис, подчеркивание _',
     },
     password: {
         // value: /^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z!@#-$%^_&*]{8,40}$/g,
@@ -25,8 +24,7 @@ export const ValidationPattern = {
     },
     name: {
         value: /^[A-Z|А-ЯË][A-ZА-ЯËa-zа-яё-]+$/g,
-        message:
-            'Первая буква должна быть заглавной, без пробелов и без цифр, допустим дефис',
+        message: 'Первая буква должна быть заглавной, без пробелов и без цифр, допустим дефис',
     },
     phone: {
         value: /^[\d|+]\d{10,15}$/i,

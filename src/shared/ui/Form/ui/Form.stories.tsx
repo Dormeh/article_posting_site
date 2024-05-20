@@ -26,7 +26,8 @@ Primary.args = {
             theme={ButtonTheme.BACKGROUND_INVERTED}
         >
             Text
-        </Button>),
+        </Button>
+    ),
     focus: true,
     fields: [
         {

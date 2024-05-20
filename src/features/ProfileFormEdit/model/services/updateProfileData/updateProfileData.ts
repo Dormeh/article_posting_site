@@ -4,9 +4,7 @@ import { Profile } from 'entities/Profile';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorTypes } from 'shared/api/types';
 import { getProfileData } from '../../selectors/getProfileData/getProfileData';
-import {
-    getProfileCanEditMode,
-} from '../../selectors/getProfileCanEditMode/getProfileCanEditMode';
+import { getProfileCanEditMode } from '../../selectors/getProfileCanEditMode/getProfileCanEditMode';
 
 export const updateProfileData = createAsyncThunk<Profile, Profile, ThunkConfig<string>>(
     'profileFormEdit/updateProfileData',

@@ -19,12 +19,13 @@ export const Primary = Template.bind({});
 Primary.args = {
     focus: true,
 };
-Primary.decorators = [StoreDecorator({
-    loginForm: {
-        authData: {},
-    },
-
-})];
+Primary.decorators = [
+    StoreDecorator({
+        loginForm: {
+            authData: {},
+        },
+    }),
+];
 export const Dark = Template.bind({});
 
 Dark.args = {
@@ -36,31 +37,35 @@ Dark.decorators = [
         loginForm: {
             authData: {},
         },
-    })];
+    }),
+];
 
 export const PrimaryError = Template.bind({});
 PrimaryError.args = {
     focus: true,
 };
-PrimaryError.decorators = [StoreDecorator({
-    loginForm: {
-        error: 'ERROR',
-        authData: {
-            username: 'test',
-            password: 'test',
+PrimaryError.decorators = [
+    StoreDecorator({
+        loginForm: {
+            error: 'ERROR',
+            authData: {
+                username: 'test',
+                password: 'test',
+            },
         },
-    },
-
-})];
+    }),
+];
 
 export const PrimaryLoading = Template.bind({});
 PrimaryLoading.args = {};
-PrimaryLoading.decorators = [StoreDecorator({
-    loginForm: {
-        isLoading: true,
-        authData: {
-            username: 'test',
-            password: 'test',
+PrimaryLoading.decorators = [
+    StoreDecorator({
+        loginForm: {
+            isLoading: true,
+            authData: {
+                username: 'test',
+                password: 'test',
+            },
         },
-    },
-})];
+    }),
+];

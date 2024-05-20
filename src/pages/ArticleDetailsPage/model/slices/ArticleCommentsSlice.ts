@@ -10,7 +10,8 @@ export const articleCommentsAdapter = createEntityAdapter<Comment>({
 });
 
 export const getArticleComments = articleCommentsAdapter.getSelectors<StateSchema>(
-    (state) => state.articleDetailsPage?.articleComments || articleCommentsAdapter.getInitialState(),
+    (state) =>
+        state.articleDetailsPage?.articleComments || articleCommentsAdapter.getInitialState(),
 );
 
 const commentsSlice = createSlice({
@@ -26,17 +27,18 @@ const commentsSlice = createSlice({
             articleCommentsAdapter.addOne(state, action.payload);
         },
     },
-    extraReducers: (builder) => builder
-        .addCase(fetchArticleComments.pending, (state) => {
-            state.isLoading = true;
-        })
-        .addCase(fetchArticleComments.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
-        .addCase(fetchArticleComments.fulfilled, (state, { payload }) => {
-            articleCommentsAdapter.setAll(state, payload);
-            state.isLoading = false;
-        }),
+    extraReducers: (builder) =>
+        builder
+            .addCase(fetchArticleComments.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchArticleComments.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = payload;
+            })
+            .addCase(fetchArticleComments.fulfilled, (state, { payload }) => {
+                articleCommentsAdapter.setAll(state, payload);
+                state.isLoading = false;
+            }),
 });
 export const { reducer: articleCommentsReducer, actions: articleCommentsActions } = commentsSlice;

@@ -10,10 +10,7 @@ interface ArticlesListItemSkeletonProps {
 }
 
 export const ArticlesListItemSkeleton = (props: ArticlesListItemSkeletonProps) => {
-    const {
-        className,
-        view,
-    } = props;
+    const { className, view } = props;
 
     if (view === ContentView.LIST) {
         return (

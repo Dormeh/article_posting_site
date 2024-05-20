@@ -1,6 +1,4 @@
-import React, {
-    memo, Suspense, useCallback, useState,
-} from 'react';
+import React, { memo, Suspense, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -31,10 +29,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     };
 
     return (
-        <header
-            className={classNames(cls.Navbar, {}, [className])}
-        >
-            { isUserAuth && (
+        <header className={classNames(cls.Navbar, {}, [className])}>
+            {isUserAuth && (
                 <AppLink
                     to={RouterPath.article_create}
                     className={`${cls.btn} ${cls.link}`}
@@ -51,21 +47,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 {isUserAuth ? t('Выйти') : t('Войти')}
             </Button>
             {!isUserAuth && (
-                <Modal
-                    isOpen={isModalOpen}
-                    onClose={closeModal}
-                    lazy
-                >
+                <Modal isOpen={isModalOpen} onClose={closeModal} lazy>
                     <Suspense fallback={<Loader />}>
-                        <AuthForm
-                            focus={isModalOpen}
-                            formClose={closeModal}
-                        />
+                        <AuthForm focus={isModalOpen} formClose={closeModal} />
                     </Suspense>
-
                 </Modal>
             )}
-
         </header>
     );
 });

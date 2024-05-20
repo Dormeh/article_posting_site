@@ -27,13 +27,16 @@ const ArticleDetailsPage = () => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <Page className={cls.ArticleDetailsPage} ref={wrapperPagRef} scrollPositionTake={!isLoading}>
+            <Page
+                className={cls.ArticleDetailsPage}
+                ref={wrapperPagRef}
+                scrollPositionTake={!isLoading}
+            >
                 <ArticleDetails className={cls.pageContent} id={id} />
                 <ArticlesRecommendations className={cls.recommendations} />
                 <ArticleComments id={id} ref={wrapperPagRef} />
             </Page>
         </DynamicModuleLoader>
-
     );
 };
 

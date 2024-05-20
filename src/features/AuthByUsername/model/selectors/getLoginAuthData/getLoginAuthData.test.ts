@@ -11,7 +11,10 @@ describe('getLoginIsLoading.test', () => {
                 },
             },
         };
-        expect(getLoginAuthData(state as StateSchema)).toEqual({ username: 'test', password: 'test' });
+        expect(getLoginAuthData(state as StateSchema)).toEqual({
+            username: 'test',
+            password: 'test',
+        });
     });
     test('should work with empty state', () => {
         const state: DeepPartial<StateSchema> = {};

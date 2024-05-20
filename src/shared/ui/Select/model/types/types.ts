@@ -9,6 +9,6 @@ export interface IOption {
 
 export type isMulti = false;
 
-export type Group = GroupBase<IOption>
+export type Group = GroupBase<IOption>;
 
-export type CustomSelectProps = CreateMutable<Props<IOption, isMulti, Group>>
+export type CustomSelectProps = CreateMutable<Props<IOption, isMulti, Group>>;

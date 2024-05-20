@@ -6,5 +6,5 @@ export interface TabOption {
 export interface TabsConfig {
     name: string;
     defaultCheckedValue: string;
-    tabOptions: TabOption[]
+    tabOptions: TabOption[];
 }

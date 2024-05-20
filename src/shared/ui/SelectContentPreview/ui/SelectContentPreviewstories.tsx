@@ -24,7 +24,9 @@ export default {
     // }
 } as ComponentMeta<typeof SelectContentPreview>;
 
-const Template: ComponentStory<typeof SelectContentPreview> = (args) => <SelectContentPreview {...args} />;
+const Template: ComponentStory<typeof SelectContentPreview> = (args) => (
+    <SelectContentPreview {...args} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {};

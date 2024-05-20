@@ -8,6 +8,8 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'plugin:prettier/recommended',
+        // 'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,20 +20,17 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: [
-        'react',
+        'react', //
         '@typescript-eslint',
         'i18next',
         'react-hooks',
         'paths-by-fsd',
     ],
     rules: {
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
-        indent: [2, 4],
-        'react/jsx-filename-extension': [
-            2,
-            { extensions: ['.js', '.jsx', '.tsx'] },
-        ],
+        // 'react/jsx-indent': [2, 4],
+        // 'react/jsx-indent-props': [2, 4],
+        // indent: [2, 4],
+        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'off',
@@ -50,16 +49,16 @@ module.exports = {
                 ignoreAttribute: ['data-testid', 'to', 'classNamePrefix', 'name', 'target'],
             },
         ],
-        'max-len': ['error', { ignoreComments: true, code: 120 }],
+        'max-len': ['error', { ignoreComments: true, ignoreStrings: true, code: 120 }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
-        'linebreak-style': ['error', (process.platform === 'win32' ? 'windows' : 'unix')],
+        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'consistent-return': [1],
-        'arrow-body-style': 'off',
+        // 'arrow-body-style': 'off',
         'paths-by-fsd/path-checker': 'error',
     },
     globals: {

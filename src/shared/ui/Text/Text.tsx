@@ -49,18 +49,13 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={classNames(cls.Text, {}, [className, cls[theme], cls[align], cls[size]])}>
-            {title && createElement(
-                TitleTags[size],
-                { className: classNames(cls.title, {}, [titleClassName]) },
-                title,
-            )}
-            {text && (
-                <p
-                    className={classNames(cls.text, {}, [textClassName])}
-                >
-                    {text}
-                </p>
-            )}
+            {title &&
+                createElement(
+                    TitleTags[size],
+                    { className: classNames(cls.title, {}, [titleClassName]) },
+                    title,
+                )}
+            {text && <p className={classNames(cls.text, {}, [textClassName])}>{text}</p>}
         </div>
     );
 });

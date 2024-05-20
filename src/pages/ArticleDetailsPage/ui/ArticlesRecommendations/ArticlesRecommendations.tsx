@@ -14,9 +14,7 @@ interface ArticlesRecommendationsProps {
 }
 
 export const ArticlesRecommendations = memo((props: ArticlesRecommendationsProps) => {
-    const {
-        className,
-    } = props;
+    const { className } = props;
     const dispatch = useAppDispatch();
     const recommendations = useSelector(getRecommendations.selectAll);
 

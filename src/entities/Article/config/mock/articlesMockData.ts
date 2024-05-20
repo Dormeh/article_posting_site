@@ -24,12 +24,7 @@ export const articlesMockData = [
         img: JSImg,
         views: 1022,
         createdAt: '26.11.2023',
-        type: [
-            'IT',
-            'SCIENCE',
-            'POLITICS',
-            'ECONOMICS',
-        ],
+        type: ['IT', 'SCIENCE', 'POLITICS', 'ECONOMICS'],
         blocks: [
             {
                 id: '1',
@@ -123,9 +118,7 @@ export const articlesMockData = [
         img: JSImg,
         views: 1022,
         createdAt: '26.11.2023',
-        type: [
-            'IT',
-        ],
+        type: ['IT'],
         blocks: [
             {
                 id: '1',
@@ -219,9 +212,7 @@ export const articlesMockData = [
         img: JSImg,
         views: 1022,
         createdAt: '26.11.2023',
-        type: [
-            'IT',
-        ],
+        type: ['IT'],
         blocks: [
             {
                 id: '1',
@@ -315,9 +306,7 @@ export const articlesMockData = [
         img: JSImg,
         views: 1022,
         createdAt: '26.11.2023',
-        type: [
-            'IT',
-        ],
+        type: ['IT'],
         blocks: [
             {
                 id: '1',
@@ -411,9 +400,7 @@ export const articlesMockData = [
         img: JSImg,
         views: 1022,
         createdAt: '26.11.2023',
-        type: [
-            'IT',
-        ],
+        type: ['IT'],
         blocks: [
             {
                 id: '1',
@@ -507,9 +494,7 @@ export const articlesMockData = [
         img: JSImg,
         views: 1022,
         createdAt: '26.11.2023',
-        type: [
-            'IT',
-        ],
+        type: ['IT'],
         blocks: [
             {
                 id: '1',

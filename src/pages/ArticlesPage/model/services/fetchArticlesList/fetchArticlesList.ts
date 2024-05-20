@@ -11,40 +11,39 @@ import {
 } from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { getArticlesSelector } from '../../slice/articlesPageSlice';
 
-interface FetchArticlesListProps{
+interface FetchArticlesListProps {
     refreshList?: boolean;
 }
 
-export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
-    'ArticlePage/fetchArticlePageData',
-    async ({ refreshList }, thunkAPI) => {
-        const {
-            rejectWithValue, extra, dispatch, getState,
-        } = thunkAPI;
-        const limit = getArticlesPageLimit(getState());
-        const page = getArticlesPagePage(getState());
-        const articles = getArticlesSelector.selectAll(getState());
-        const sortData = getArticlesPageSortData(getState());
-        addQueryParams(sortData);
-        try {
-            const response = await extra.api.get<Article[]>('/articles', {
-                params: {
-                    _expand: 'profile',
-                    _start: refreshList ? 0 : articles.length,
-                    _limit: limit,
-                    _sort: sortData.sort,
-                    _order: sortData.order,
-                    q: sortData.search,
-                    type: sortData.type === ArticleType.ALL ? null : sortData.type,
-                },
-            });
+export const fetchArticlesList = createAsyncThunk<
+    Article[],
+    FetchArticlesListProps,
+    ThunkConfig<string>
+>('ArticlePage/fetchArticlePageData', async ({ refreshList }, thunkAPI) => {
+    const { rejectWithValue, extra, dispatch, getState } = thunkAPI;
+    const limit = getArticlesPageLimit(getState());
+    const page = getArticlesPagePage(getState());
+    const articles = getArticlesSelector.selectAll(getState());
+    const sortData = getArticlesPageSortData(getState());
+    addQueryParams(sortData);
+    try {
+        const response = await extra.api.get<Article[]>('/articles', {
+            params: {
+                _expand: 'profile',
+                _start: refreshList ? 0 : articles.length,
+                _limit: limit,
+                _sort: sortData.sort,
+                _order: sortData.order,
+                q: sortData.search,
+                type: sortData.type === ArticleType.ALL ? null : sortData.type,
+            },
+        });
 
-            if (!response.data) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
+        if (!response.data) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
 
-            return response.data;
-        } catch (e) {
-            if (__IS_DEV__) console.log(e);
-            return rejectWithValue(apiErrorIdentify(e, ApiErrorTypes.ARTICLES_GET_ERROR));
-        }
-    },
-);
+        return response.data;
+    } catch (e) {
+        if (__IS_DEV__) console.log(e);
+        return rejectWithValue(apiErrorIdentify(e, ApiErrorTypes.ARTICLES_GET_ERROR));
+    }
+});

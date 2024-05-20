@@ -6,7 +6,7 @@ import { TabsConfig } from '../model/types/tabsType';
 import { TabInput } from '../../TabInput/TabInput';
 import cls from './Tabs.module.scss';
 
-interface TabsProps extends InputHTMLAttributes<HTMLInputElement>{
+interface TabsProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     tabsConfig: TabsConfig;
     register?: UseFormRegister<FieldValues>;
@@ -15,11 +15,7 @@ interface TabsProps extends InputHTMLAttributes<HTMLInputElement>{
 export const Tabs = (props: TabsProps) => {
     const {
         className,
-        tabsConfig: {
-            defaultCheckedValue,
-            name,
-            tabOptions,
-        },
+        tabsConfig: { defaultCheckedValue, name, tabOptions },
         register,
         readOnly,
         onChange,

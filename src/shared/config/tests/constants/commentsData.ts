@@ -19,7 +19,6 @@ export const commentsData = [
         text: 'Some comment text',
         profileId: '1',
         articleId: '1',
-
     },
     {
         profile: {

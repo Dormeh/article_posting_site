@@ -10,21 +10,11 @@ interface TabInputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     name: string;
     register?: UseFormRegister<FieldValues>;
-    label?: string
+    label?: string;
 }
 
 export const TabInput = (props: TabInputProps) => {
-    const {
-        className,
-        name,
-        register,
-        label,
-        value,
-        defaultChecked,
-        style,
-        readOnly,
-        id,
-    } = props;
+    const { className, name, register, label, value, defaultChecked, style, readOnly, id } = props;
     const { t } = useTranslation();
 
     return (

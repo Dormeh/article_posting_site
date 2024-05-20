@@ -6,7 +6,7 @@ import { getSortByOrderOptions } from '../lib/getSortByOrderOptions';
 import { Select, SelectProps } from '../../Select/ui/Select';
 import { IOption } from '../../Select/model/types/types';
 
-export interface SortSelectProps extends Omit<SelectProps, 'options'>{
+export interface SortSelectProps extends Omit<SelectProps, 'options'> {
     sortOptions?: IOption[];
 }
 

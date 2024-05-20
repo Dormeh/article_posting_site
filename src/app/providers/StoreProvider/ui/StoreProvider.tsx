@@ -10,11 +10,7 @@ interface StoreProviderProps {
     asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
 }
 export const StoreProvider = (props: StoreProviderProps) => {
-    const {
-        children,
-        initialState,
-        asyncReducers,
-    } = props;
+    const { children, initialState, asyncReducers } = props;
 
     if (__IS_DEV__) console.log('render Store');
 
@@ -22,9 +18,5 @@ export const StoreProvider = (props: StoreProviderProps) => {
         initialState as StateSchema,
         asyncReducers as ReducersMapObject<StateSchema>,
     );
-    return (
-        <Provider store={store}>
-            {children}
-        </Provider>
-    );
+    return <Provider store={store}>{children}</Provider>;
 };

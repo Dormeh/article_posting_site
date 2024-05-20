@@ -11,10 +11,7 @@ interface ArticleCodeBlockComponentProps {
 }
 
 export const ArticleCodeBlockComponent = memo((props: ArticleCodeBlockComponentProps) => {
-    const {
-        className,
-        block,
-    } = props;
+    const { className, block } = props;
 
     return (
         <div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>

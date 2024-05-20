@@ -20,6 +20,5 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
         >
             <ThemeIcon className={cls.icon} />
         </Button>
-
     );
 });

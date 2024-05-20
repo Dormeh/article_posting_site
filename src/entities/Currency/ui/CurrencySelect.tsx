@@ -6,9 +6,9 @@ import { currencyOptions } from '../config/currencySelectOptions';
 interface CurrencySelectProps {
     name?: string;
     className?: string;
-    label?: string
+    label?: string;
 }
-export const CurrencySelect:FC<CurrencySelectProps> = ({ name = 'currency', ...otherProps }) => {
+export const CurrencySelect: FC<CurrencySelectProps> = ({ name = 'currency', ...otherProps }) => {
     const { t } = useTranslation();
     return (
         <Select

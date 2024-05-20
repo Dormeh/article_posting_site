@@ -13,14 +13,16 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
-        profile: { data: testProfileData as Profile },
-        user: {
-            authData: {
-                profileId: '1',
+    decorators: [
+        StoreDecorator({
+            profile: { data: testProfileData as Profile },
+            user: {
+                authData: {
+                    profileId: '1',
+                },
             },
-        },
-    })],
+        }),
+    ],
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;

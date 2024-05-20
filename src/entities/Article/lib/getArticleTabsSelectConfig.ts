@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { ArticleTabsConfig, ArticleType } from '../model/types/article';
 
-export const getArticleTabsSelectConfig = (t: TFunction):ArticleTabsConfig => ({
+export const getArticleTabsSelectConfig = (t: TFunction): ArticleTabsConfig => ({
     defaultCheckedValue: ArticleType.ALL,
     name: 'type',
     tabOptions: [

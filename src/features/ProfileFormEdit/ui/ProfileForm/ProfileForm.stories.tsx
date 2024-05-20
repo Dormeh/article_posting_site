@@ -12,19 +12,19 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
-        profile: { data: testProfileData as Profile },
-    })],
+    decorators: [
+        StoreDecorator({
+            profile: { data: testProfileData as Profile },
+        }),
+    ],
 } as unknown as ComponentMeta<typeof ProfileForm>;
 
 const Template: ComponentStory<typeof ProfileForm> = (args) => <ProfileForm />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-};
+Primary.args = {};
 
 export const Dark = Template.bind({});
-Dark.args = {
-};
+Dark.args = {};
 
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

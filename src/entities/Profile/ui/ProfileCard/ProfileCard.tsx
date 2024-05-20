@@ -13,25 +13,17 @@ import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
-    readonly?: boolean
+    readonly?: boolean;
     data?: Profile;
     control?: Control;
     error?: string;
     isLoading?: boolean;
-    errors?: FieldErrors
+    errors?: FieldErrors;
     onClick?: () => void;
 }
 
-export const ProfileCard:FC<ProfileCardProps> = (props) => {
-    const {
-        data,
-        className,
-        readonly,
-        error,
-        isLoading,
-        onClick,
-        ...otherProps
-    } = props;
+export const ProfileCard: FC<ProfileCardProps> = (props) => {
+    const { data, className, readonly, error, isLoading, onClick, ...otherProps } = props;
     const { t } = useTranslation('profile');
 
     if (error && !data) {
@@ -59,7 +51,6 @@ export const ProfileCard:FC<ProfileCardProps> = (props) => {
             )}
             onClick={onClick}
         >
-
             <div className={cls.avatarWrapper}>
                 <Avatar src={data?.avatar} />
             </div>

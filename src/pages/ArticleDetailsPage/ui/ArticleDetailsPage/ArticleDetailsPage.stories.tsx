@@ -13,29 +13,31 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
-        user: {
-            authData: {
-                profileId: '1',
-            },
-        },
-        articleDetailsPage: {
-            articleComments,
-            articleRecommendations: {
-                entities: {
-                    1: articlesMockData[0],
-                    2: articlesMockData[1],
-                    3: articlesMockData[2],
+    decorators: [
+        StoreDecorator({
+            user: {
+                authData: {
+                    profileId: '1',
                 },
-                error: undefined,
-                ids: ['1', '2', '3'],
-                isLoading: false,
             },
-        },
-        articleDetails: {
-            data: articleTestData,
-        },
-    })],
+            articleDetailsPage: {
+                articleComments,
+                articleRecommendations: {
+                    entities: {
+                        1: articlesMockData[0],
+                        2: articlesMockData[1],
+                        3: articlesMockData[2],
+                    },
+                    error: undefined,
+                    ids: ['1', '2', '3'],
+                    isLoading: false,
+                },
+            },
+            articleDetails: {
+                data: articleTestData,
+            },
+        }),
+    ],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
 const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage />;

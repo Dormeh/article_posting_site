@@ -24,7 +24,6 @@ const App = () => {
                     {isInited && <AppRouter />}
                 </div>
             </Suspense>
-
         </div>
     );
 };

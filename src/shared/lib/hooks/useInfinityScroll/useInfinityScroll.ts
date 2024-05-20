@@ -7,11 +7,7 @@ export interface UseInfinityScrollProps {
 }
 
 export function useInfinityScroll(props: UseInfinityScrollProps, deps: ReadonlyArray<any>) {
-    const {
-        triggerRef,
-        wrapRef,
-        onScrollCallback,
-    } = props;
+    const { triggerRef, wrapRef, onScrollCallback } = props;
     useEffect(() => {
         const wrapRefElem = wrapRef.current;
         const triggerRefElem = triggerRef.current;
@@ -24,7 +20,7 @@ export function useInfinityScroll(props: UseInfinityScrollProps, deps: ReadonlyA
                 threshold: 0.9,
             };
 
-            const callback = ([entry]:IntersectionObserverEntry[]) => {
+            const callback = ([entry]: IntersectionObserverEntry[]) => {
                 if (entry.isIntersecting) {
                     if (__IS_DEV__) console.log('scroll to end callback');
                     onScrollCallback();

@@ -6,9 +6,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Profile, ProfileCard } from 'entities/Profile';
-import {
-    getProfileCanEditMode,
-} from '../../model/selectors/getProfileCanEditMode/getProfileCanEditMode';
+import { getProfileCanEditMode } from '../../model/selectors/getProfileCanEditMode/getProfileCanEditMode';
 import cls from './ProfileForm.module.scss';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
@@ -28,9 +26,7 @@ export const ProfileForm = () => {
 
     const {
         handleSubmit,
-        formState: {
-            errors, isDirty, isSubmitting,
-        },
+        formState: { errors, isDirty, isSubmitting },
         setFocus,
         reset,
         control,
@@ -57,30 +53,29 @@ export const ProfileForm = () => {
         if (error) dispatch(profileActions.errorReset());
     }, [dispatch, error]);
 
-    const updateProfile = useCallback(async (data: FieldValues):Promise<void> => {
-        const result = await dispatch(updateProfileData(data as Profile))
-            .catch((error) => error);
-        if (result.meta.requestStatus === 'fulfilled') {
-            setReadonly(true);
-        } else if (__IS_DEV__) console.log('ОШИБКА ОБНОВЛЕНИЯ', result.error);
-    }, [dispatch]);
+    const updateProfile = useCallback(
+        async (data: FieldValues): Promise<void> => {
+            const result = await dispatch(updateProfileData(data as Profile)).catch(
+                (error) => error,
+            );
+            if (result.meta.requestStatus === 'fulfilled') {
+                setReadonly(true);
+            } else if (__IS_DEV__) console.log('ОШИБКА ОБНОВЛЕНИЯ', result.error);
+        },
+        [dispatch],
+    );
 
     return (
         <>
             <div className={cls.heading}>
                 <Text className={cls.title} title={t('Профиль')} />
                 <div className={cls.buttonBox}>
-                    {isCanEdit && (readonly
-                        ? (
-                            <Button
-                                theme={ButtonTheme.OUTLINE}
-                                onClick={onEdit}
-                                disabled={!data}
-                            >
+                    {isCanEdit &&
+                        (readonly ? (
+                            <Button theme={ButtonTheme.OUTLINE} onClick={onEdit} disabled={!data}>
                                 {t('Редактировать')}
                             </Button>
-                        )
-                        : (
+                        ) : (
                             <>
                                 <Button
                                     theme={ButtonTheme.OUTLINE_RED}

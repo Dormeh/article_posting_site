@@ -1,7 +1,16 @@
 import { memo, useCallback } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {
-    lioshi, vs2015, githubGist, rainbow, railscasts, xcode, github, shadesOfPurple, qtcreatorLight, docco,
+    lioshi,
+    vs2015,
+    githubGist,
+    rainbow,
+    railscasts,
+    xcode,
+    github,
+    shadesOfPurple,
+    qtcreatorLight,
+    docco,
 } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { classNames } from '../../lib/classNames/classNames';
@@ -15,10 +24,7 @@ interface CodeProps {
 }
 
 export const Code = memo((props: CodeProps) => {
-    const {
-        className,
-        code,
-    } = props;
+    const { className, code } = props;
 
     const onCopy = useCallback(() => {
         navigator.clipboard.writeText(code);
@@ -26,11 +32,7 @@ export const Code = memo((props: CodeProps) => {
 
     return (
         <div className={classNames(cls.Code, {}, [className])}>
-            <Button
-                onClick={onCopy}
-                theme={ButtonTheme.CLEAR}
-                className={cls.codeBtn}
-            >
+            <Button onClick={onCopy} theme={ButtonTheme.CLEAR} className={cls.codeBtn}>
                 <CopyIcon />
             </Button>
             {/* <code>{code}</code> */}

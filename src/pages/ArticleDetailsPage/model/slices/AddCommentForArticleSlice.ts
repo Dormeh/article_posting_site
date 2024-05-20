@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AddCommentFormSchema, AddCommentForm } from 'features/AddCommentForm';
-import {
-    addCommentForArticle,
-} from '../services/addCommentForArticle/addCommentForArticle';
+import { addCommentForArticle } from '../services/addCommentForArticle/addCommentForArticle';
 
 const initialState: AddCommentFormSchema = {
     isLoading: false,

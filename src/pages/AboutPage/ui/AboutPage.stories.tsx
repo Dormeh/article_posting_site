@@ -11,14 +11,12 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        StoreDecorator({}),
-    ],
+    decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof AboutPage>;
 
 // TODO убрать ts-ignore когда найду причину ошибки для ...args
 // eslint-disable-next-line prefer-object-spread
-const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage {...Object.assign({}, args)} />;
+const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage />;
 
 export const Light = Template.bind({});
 Light.args = {};

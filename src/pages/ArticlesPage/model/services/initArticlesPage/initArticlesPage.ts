@@ -10,9 +10,7 @@ import { articlesPageActions } from '../../slice/articlesPageSlice';
 export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
     'ArticlePage/initArticlesPage',
     async (searchParams, thunkAPI) => {
-        const {
-            dispatch, getState,
-        } = thunkAPI;
+        const { dispatch, getState } = thunkAPI;
         const isInit = getArticlesPageIsInit(getState());
 
         if (!isInit) {

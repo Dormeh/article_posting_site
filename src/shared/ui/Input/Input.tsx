@@ -6,7 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
 import cls from './Input.module.scss';
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'onChange'> {
+export interface InputProps
+    extends Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'onChange'> {
     name: string;
     register?: UseFormRegister<FieldValues>;
     label?: string;
@@ -18,7 +19,10 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
     className?: string;
     type: string;
     readonly?: boolean;
-    onChange?: (value: ((...args: any[]) => void) | string, e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (
+        value: ((...args: any[]) => void) | string,
+        e: React.ChangeEvent<HTMLInputElement>,
+    ) => void;
 }
 
 export const Input = (props: InputProps) => {
@@ -62,16 +66,15 @@ export const Input = (props: InputProps) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
-            const { target: { value } } = e;
+            const {
+                target: { value },
+            } = e;
             onChange(registerChange || value, e);
         } else registerChange?.(e);
     };
 
     return (
-        <label
-            className={classNames(cls.label, {}, [className])}
-            htmlFor={name}
-        >
+        <label className={classNames(cls.label, {}, [className])} htmlFor={name}>
             <span className={cls.placeholder}>{label && `${t(label)}> `}</span>
 
             <div className={cls.caretWrapper}>
@@ -96,13 +99,7 @@ export const Input = (props: InputProps) => {
                     />
                 )}
 
-                {error && (
-                    <p
-                        className={cls.error}
-                    >
-                        {t(errorMessage || '')}
-                    </p>
-                )}
+                {error && <p className={cls.error}>{t(errorMessage || '')}</p>}
             </div>
         </label>
     );

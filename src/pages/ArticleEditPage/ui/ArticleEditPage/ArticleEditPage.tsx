@@ -14,9 +14,7 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
 
     return (
         <Page>
-            {id
-                ? `${t('Редактирование статьи')}: ${id}`
-                : `${t('Создать новую статью')}`}
+            {id ? `${t('Редактирование статьи')}: ${id}` : `${t('Создать новую статью')}`}
             <GearLoader title={t('Страница в разработке')} />
         </Page>
     );

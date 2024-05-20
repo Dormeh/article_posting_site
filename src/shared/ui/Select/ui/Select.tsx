@@ -1,6 +1,4 @@
-import {
-    CSSProperties, memo, useCallback, useMemo,
-} from 'react';
+import { CSSProperties, memo, useCallback, useMemo } from 'react';
 import ReactSelect from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -15,7 +13,7 @@ export enum SelectLabelView {
     LEFT = 'labelLeft',
 }
 
-type SelectLabelSize = TextSize
+type SelectLabelSize = TextSize;
 
 export interface SelectProps extends CustomSelectProps {
     name: string;
@@ -54,64 +52,57 @@ export const Select = memo((props: SelectProps) => {
 
     const { t } = useTranslation();
 
-    const ruleOptions = useMemo(() => ({
-        ...(required && { required: 'Поле не должно быть пустым' }),
-        ...(pattern && { pattern: ValidationPattern[pattern] }),
-    }), [pattern, required]);
+    const ruleOptions = useMemo(
+        () => ({
+            ...(required && { required: 'Поле не должно быть пустым' }),
+            ...(pattern && { pattern: ValidationPattern[pattern] }),
+        }),
+        [pattern, required],
+    );
 
-    const getOption = useCallback((value: string | undefined) => options.find(
-        (option) => option.value === value,
-    ), [options]);
+    const getOption = useCallback(
+        (value: string | undefined) => options.find((option) => option.value === value),
+        [options],
+    );
 
     return (
-        <label
-            style={style}
-            htmlFor={name}
-            className={
-                classNames('Select', {}, [className])
-            }
-        >
-            {label
-                && (
-                    <Text
-                        className={classNames('Select__label', {}, [labelView])}
-                        title={labelView === SelectLabelView.LEFT ? `${t(label)}>` : undefined}
-                        text={labelView === SelectLabelView.TOP ? t(label) : undefined}
-                        size={selectLabelSize}
-                        titleClassName={labelTextClass}
-                    />
-                )}
-            {control
-                ? (
-                    <Controller
-                        control={control}
-                        name={name}
-                        rules={ruleOptions}
-                        render={({ field: { value, onChange, ...rest } }) => (
-                            <ReactSelect
-                                value={getOption(value)}
-                                onChange={
-                                    (optionValue) => onChange(optionValue?.value)
-                                }
-                                {...rest}
-                                classNamePrefix="Select"
-                                options={options}
-                                isDisabled={readonly}
-                                {...otherProps}
-                            />
-                        )}
-                    />
-                )
-                : (
-                    <ReactSelect
-                        name={name}
-                        classNamePrefix="Select"
-                        isDisabled={readonly}
-                        options={options}
-                        defaultValue={getOption(defaultValue)}
-                        {...otherProps}
-                    />
-                )}
+        <label style={style} htmlFor={name} className={classNames('Select', {}, [className])}>
+            {label && (
+                <Text
+                    className={classNames('Select__label', {}, [labelView])}
+                    title={labelView === SelectLabelView.LEFT ? `${t(label)}>` : undefined}
+                    text={labelView === SelectLabelView.TOP ? t(label) : undefined}
+                    size={selectLabelSize}
+                    titleClassName={labelTextClass}
+                />
+            )}
+            {control ? (
+                <Controller
+                    control={control}
+                    name={name}
+                    rules={ruleOptions}
+                    render={({ field: { value, onChange, ...rest } }) => (
+                        <ReactSelect
+                            value={getOption(value)}
+                            onChange={(optionValue) => onChange(optionValue?.value)}
+                            {...rest}
+                            classNamePrefix="Select"
+                            options={options}
+                            isDisabled={readonly}
+                            {...otherProps}
+                        />
+                    )}
+                />
+            ) : (
+                <ReactSelect
+                    name={name}
+                    classNamePrefix="Select"
+                    isDisabled={readonly}
+                    options={options}
+                    defaultValue={getOption(defaultValue)}
+                    {...otherProps}
+                />
+            )}
         </label>
     );
 });

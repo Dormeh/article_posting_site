@@ -3,17 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import {
-    Text, TextAlign, TextSize, TextTheme,
-} from 'shared/ui/Text/Text';
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Text, TextAlign, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
-import {
-    ArticleDetailsPageHeader,
-} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { renderBlocks } from '../../model/renderBlocks';
 import {
     getArticleDetailsData,
@@ -34,10 +33,7 @@ const initialReducers: ReducersList = {
 };
 
 export const ArticleDetails = (props: ArticleDetailsProps) => {
-    const {
-        className,
-        id,
-    } = props;
+    const { className, id } = props;
     const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
@@ -76,7 +72,12 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
             <>
                 <ArticleDetailsPageHeader />
                 <div className={cls.avatarWrapper}>
-                    <Avatar src={article?.img} size={200} className={cls.avatar} alt={article?.title} />
+                    <Avatar
+                        src={article?.img}
+                        size={200}
+                        className={cls.avatar}
+                        alt={article?.title}
+                    />
                 </div>
                 <Text
                     title={article?.title}
@@ -95,15 +96,12 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                 </div>
                 {article?.blocks.map((block) => renderBlocks(block, cls.block))}
             </>
-
         );
     }
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>
-                {content}
-            </div>
+            <div className={classNames(cls.ArticleDetails, {}, [className])}>{content}</div>
         </DynamicModuleLoader>
     );
 };

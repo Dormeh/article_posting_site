@@ -18,62 +18,72 @@ const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetail
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator(
-    {
+Normal.decorators = [
+    StoreDecorator({
         articleDetails: {
             data: articleTestData,
         },
-    },
-)];
+    }),
+];
 export const Loading = Template.bind({});
 Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-})];
+Loading.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: true,
+        },
+    }),
+];
 
 export const Error = Template.bind({});
 Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'error',
-    },
-})];
+Error.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            error: 'error',
+        },
+    }),
+];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [StoreDecorator(
-    {
+Dark.decorators = [
+    StoreDecorator({
         articleDetails: {
             data: articleTestData,
         },
-    },
-),
-ThemeDecorator(Theme.DARK)];
+    }),
+    ThemeDecorator(Theme.DARK),
+];
 export const DarkLoading = Template.bind({});
 DarkLoading.args = {};
-DarkLoading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-}),
-ThemeDecorator(Theme.DARK)];
+DarkLoading.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: true,
+        },
+    }),
+    ThemeDecorator(Theme.DARK),
+];
 
 export const PurpleLoading = Template.bind({});
 PurpleLoading.args = {};
-PurpleLoading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-}),
-ThemeDecorator(Theme.PURPLE)];
+PurpleLoading.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            isLoading: true,
+        },
+    }),
+    ThemeDecorator(Theme.PURPLE),
+];
 
 export const DarkError = Template.bind({});
 DarkError.args = {};
-DarkError.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'error',
-    },
-}),
-ThemeDecorator(Theme.DARK)];
+DarkError.decorators = [
+    StoreDecorator({
+        articleDetails: {
+            error: 'error',
+        },
+    }),
+    ThemeDecorator(Theme.DARK),
+];

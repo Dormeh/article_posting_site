@@ -2,9 +2,7 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article/model/types/article';
 import { ArticleRecommendationsSchema } from '../types/ArticleRecommendationsSchema';
-import {
-    fetchRecommendations,
-} from '../services/fetchRecommendations/fetchRecommendations';
+import { fetchRecommendations } from '../services/fetchRecommendations/fetchRecommendations';
 
 export const recommendationsAdapter = createEntityAdapter<Article>({
     selectId: (article: Article) => article.id,
@@ -12,7 +10,9 @@ export const recommendationsAdapter = createEntityAdapter<Article>({
 });
 
 export const getRecommendations = recommendationsAdapter.getSelectors<StateSchema>(
-    (state) => state.articleDetailsPage?.articleRecommendations || recommendationsAdapter.getInitialState(),
+    (state) =>
+        state.articleDetailsPage?.articleRecommendations ||
+        recommendationsAdapter.getInitialState(),
 );
 
 const articleRecommendationsSlice = createSlice({
@@ -24,20 +24,19 @@ const articleRecommendationsSlice = createSlice({
         entities: {},
     }),
     reducers: {},
-    extraReducers: (builder) => builder
-        .addCase(fetchRecommendations.pending, (state) => {
-            state.isLoading = true;
-        })
-        .addCase(fetchRecommendations.rejected, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = payload;
-        })
-        .addCase(fetchRecommendations.fulfilled, (state, { payload }) => {
-            recommendationsAdapter.setAll(state, payload);
-            state.isLoading = false;
-        }),
+    extraReducers: (builder) =>
+        builder
+            .addCase(fetchRecommendations.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchRecommendations.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = payload;
+            })
+            .addCase(fetchRecommendations.fulfilled, (state, { payload }) => {
+                recommendationsAdapter.setAll(state, payload);
+                state.isLoading = false;
+            }),
 });
-export const {
-    reducer: articleRecommendationsReducer,
-    actions: articleRecommendationsActions,
-} = articleRecommendationsSlice;
+export const { reducer: articleRecommendationsReducer, actions: articleRecommendationsActions } =
+    articleRecommendationsSlice;

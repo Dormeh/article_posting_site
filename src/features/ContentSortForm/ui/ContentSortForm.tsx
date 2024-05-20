@@ -20,22 +20,13 @@ interface ContentSortFormProps {
 }
 
 export const ContentSortForm = memo((props: ContentSortFormProps) => {
-    const {
-        className,
-        sortSelectsConfig,
-        tabsConfig,
-        onChangeSort,
-        sortData,
-        isLoading,
-    } = props;
+    const { className, sortSelectsConfig, tabsConfig, onChangeSort, sortData, isLoading } = props;
     const { t } = useTranslation();
 
     const {
         control,
         handleSubmit,
-        formState: {
-            isDirty, dirtyFields,
-        },
+        formState: { isDirty, dirtyFields },
         watch,
         setFocus,
     } = useForm<typeof sortData>({
@@ -53,22 +44,20 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
         return () => subscription.unsubscribe();
     }, [dirtyFields, handleSubmit, isDirty, onChangeSort, setFocus, sortData, watch]);
 
-    const debounceOnInputChange = useDebounce((callback: ChangeHandler, e: React.ChangeEvent<HTMLInputElement>) => {
-        callback(e).then();
-    }, 1000);
+    const debounceOnInputChange = useDebounce(
+        (callback: ChangeHandler, e: React.ChangeEvent<HTMLInputElement>) => {
+            callback(e).then();
+        },
+        1000,
+    );
 
     return (
         <form
             className={classNames(cls.ContentSortForm, { [cls.loading]: isLoading }, [className])}
-
         >
             {sortSelectsConfig && (
                 <div className={cls.selectsWrapper}>
-                    {sortSelectsConfig.map((
-                        {
-                            placeholder, sortOptions, label, name,
-                        },
-                    ) => (
+                    {sortSelectsConfig.map(({ placeholder, sortOptions, label, name }) => (
                         <SortSelect
                             style={{
                                 width: `${Math.floor(100 / sortSelectsConfig.length)}%`,
@@ -97,11 +86,7 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
                 maxLength={100}
             />
             {tabsConfig && (
-                <Tabs
-                    tabsConfig={tabsConfig}
-                    register={control.register}
-                    readOnly={isLoading}
-                />
+                <Tabs tabsConfig={tabsConfig} register={control.register} readOnly={isLoading} />
             )}
         </form>
     );

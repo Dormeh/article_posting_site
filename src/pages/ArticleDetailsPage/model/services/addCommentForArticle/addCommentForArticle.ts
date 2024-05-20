@@ -5,16 +5,12 @@ import { ApiErrorTypes } from 'shared/api/types';
 import { Comment } from 'entities/Comment';
 import { getArticleDetailsData } from 'entities/Article';
 import { getUserAuthData } from 'entities/User';
-import {
-    articleCommentsActions,
-} from '../../slices/ArticleCommentsSlice';
+import { articleCommentsActions } from '../../slices/ArticleCommentsSlice';
 
 export const addCommentForArticle = createAsyncThunk<null, string, ThunkConfig<string>>(
     ' articleComment/addCommentForArticle',
     async (text, thunkAPI) => {
-        const {
-            rejectWithValue, extra, getState, dispatch,
-        } = thunkAPI;
+        const { rejectWithValue, extra, getState, dispatch } = thunkAPI;
 
         const article = getArticleDetailsData(getState());
         const userAuthData = getUserAuthData(getState());
@@ -39,9 +35,9 @@ export const addCommentForArticle = createAsyncThunk<null, string, ThunkConfig<s
 
             const { id } = commentData;
 
-            const {
-                data: [newComment] = [],
-            } = await extra.api.get<Comment[]>(`/comments?id=${id}&_expand=profile`);
+            const { data: [newComment] = [] } = await extra.api.get<Comment[]>(
+                `/comments?id=${id}&_expand=profile`,
+            );
 
             if (!newComment) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR);
 

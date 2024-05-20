@@ -31,19 +31,12 @@ const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 
-type IAuthFormValues = LoginAuthData | FieldValues
+type IAuthFormValues = LoginAuthData | FieldValues;
 
 const AuthForm = memo((props: AuthFormProps) => {
-    const {
-        className,
-        formClose,
-        focus,
-    } = props;
+    const { className, formClose, focus } = props;
 
-    const {
-        formTitle,
-        fields,
-    } = authFormConfig;
+    const { formTitle, fields } = authFormConfig;
 
     const dispatch = useAppDispatch();
     const authData = useSelector(getLoginAuthData);
@@ -54,9 +47,7 @@ const AuthForm = memo((props: AuthFormProps) => {
     const {
         control,
         handleSubmit,
-        formState: {
-            errors, isDirty, isValid, isSubmitting,
-        },
+        formState: { errors, isDirty, isValid, isSubmitting },
         setFocus,
         clearErrors,
     } = useForm<IAuthFormValues>({
@@ -74,15 +65,20 @@ const AuthForm = memo((props: AuthFormProps) => {
             dispatch(loginActions.errorReset());
         }
     }, [dispatch, error, focus]);
-    const handleLogin = useCallback(async (data: IAuthFormValues): Promise<void> => {
-        const result = await dispatch(loginByUsername(data as LoginAuthData)).catch((error) => error);
+    const handleLogin = useCallback(
+        async (data: IAuthFormValues): Promise<void> => {
+            const result = await dispatch(loginByUsername(data as LoginAuthData)).catch(
+                (error) => error,
+            );
 
-        if (result.meta.requestStatus === 'fulfilled') {
-            formClose?.();
-            if (__IS_DEV__) console.log(data);
-            navigate(RouterPath.profile + result.payload.profileId);
-        } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.payload);
-    }, [dispatch, formClose, navigate]);
+            if (result.meta.requestStatus === 'fulfilled') {
+                formClose?.();
+                if (__IS_DEV__) console.log(data);
+                navigate(RouterPath.profile + result.payload.profileId);
+            } else if (__IS_DEV__) console.log('ОШИБКА АВТОРИЗАЦИИ', result.payload);
+        },
+        [dispatch, formClose, navigate],
+    );
 
     const { t } = useTranslation();
     const footer = (
@@ -97,10 +93,7 @@ const AuthForm = memo((props: AuthFormProps) => {
         </Button>
     );
     return (
-        <DynamicModuleLoader
-            reducers={initialReducers}
-            removeAfterUnmount
-        >
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <Form
                 className={classNames(cls.AuthForm, {}, [className])}
                 formTitle={t(formTitle)}
@@ -111,7 +104,6 @@ const AuthForm = memo((props: AuthFormProps) => {
                 errors={errors}
             />
         </DynamicModuleLoader>
-
     );
 });
 

@@ -12,9 +12,7 @@ import { ArticlesPageSortData } from '../../model/types/ArticlesPageSchema';
 import { contentArticlesPageSelects } from '../../config/contentArticlesPageSelects';
 import { getArticlesSelectsSortConfig } from '../../lib/getArticlesSortConfig';
 import { articlesSortApply } from '../../model/services/articlesSortApply/articlesSortApply';
-import {
-    getArticlesPageView,
-} from '../../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+import { getArticlesPageView } from '../../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import cls from './ArticlesPageContentSwitcher.module.scss';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 
@@ -25,11 +23,7 @@ interface ArticlesPageContentSwitcherProps {
 }
 
 export const ArticlesPageContentSwitcher = memo((props: ArticlesPageContentSwitcherProps) => {
-    const {
-        className,
-        sortData,
-        isLoading,
-    } = props;
+    const { className, sortData, isLoading } = props;
     const { t } = useTranslation();
 
     const dispatch = useAppDispatch();
@@ -37,12 +31,18 @@ export const ArticlesPageContentSwitcher = memo((props: ArticlesPageContentSwitc
     const sortSelectsConfig = useMemo(() => getArticlesSelectsSortConfig(t), [t]);
     const view = useSelector(getArticlesPageView);
 
-    const onChangeSort = useCallback((data: FieldValues) => {
-        dispatch(articlesSortApply(data as ArticlesPageSortData));
-    }, [dispatch]);
-    const onSelectView = useCallback((view: ContentView) => {
-        dispatch(articlesPageActions.setPageContentView(view));
-    }, [dispatch]);
+    const onChangeSort = useCallback(
+        (data: FieldValues) => {
+            dispatch(articlesSortApply(data as ArticlesPageSortData));
+        },
+        [dispatch],
+    );
+    const onSelectView = useCallback(
+        (view: ContentView) => {
+            dispatch(articlesPageActions.setPageContentView(view));
+        },
+        [dispatch],
+    );
     return (
         <div className={classNames(cls.ArticlesPageContentSwitcher, {}, [className])}>
             <ContentSortForm
