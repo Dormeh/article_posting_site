@@ -1,0 +1,36 @@
+$gaps: 4, 8, 16, 32;
+$justifies: flex-start, center, flex-end, space-between;
+$aligns: flex-start, center, flex-end;
+$directions: row, column;
+
+.Stack {
+  display: flex;
+}
+
+.max {
+  width: 100%;
+}
+
+@each $direction in $directions {
+  .direction_#{$direction} {
+    flex-direction: #{$direction};
+  }
+}
+
+@each $gap in $gaps {
+  .gap_#{$gap} {
+    gap: #{$gap}px;
+  }
+}
+
+@each $justify in $justifies {
+  .justify_#{$justify} {
+    justify-content: #{$justify};
+  }
+}
+
+@each $align in $aligns {
+  .align_#{$align} {
+    align-items: #{$align};
+  }
+}
