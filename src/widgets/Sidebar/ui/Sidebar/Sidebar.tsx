@@ -6,6 +6,7 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import Arrow from 'shared/assets/icons/arrow.svg';
 import { useSelector } from 'react-redux';
 import { useViewportSizeState } from 'shared/lib/hooks/useViewportSizeState/useViewportSizeState';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { getSidebarItemsList } from '../../models/selectors/getSidebarItemsList';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -33,11 +34,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             data-testid="sidebar"
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
-            <nav className={cls['link-box']}>
+            <VStack tagName="nav" className={cls['link-box']} max={false} align="start" gap={10}>
                 {sidebarItemsList.map((item) => (
                     <SidebarItem key={item.path} item={item} collapsed={collapsed} />
                 ))}
-            </nav>
+            </VStack>
             {!overSizeToCollapse && (
                 <Button
                     data-testid="sidebar-toggle"
@@ -50,10 +51,10 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     <Arrow className={cls.arrow} />
                 </Button>
             )}
-            <div className={cls.switchers}>
+            <HStack className={cls.switchers} justify="evenly">
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang} short={collapsed} />
-            </div>
+            </HStack>
         </aside>
     );
 });

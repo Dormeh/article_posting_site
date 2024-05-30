@@ -34,6 +34,6 @@ export const Avatar = memo(({ className, src, alt, size }: AvatarProps) => {
             onError={onError}
         />
     ) : (
-        <AvatarIcon style={styles} className={cls.defaultAvatarImg} />
+        <AvatarIcon style={styles} className={classNames(cls.defaultAvatarImg, {}, [className])} />
     );
 });

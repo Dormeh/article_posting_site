@@ -1,6 +1,9 @@
 @import "shared/styles/tamplates";
 
 .ArticlesRecommendations {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;

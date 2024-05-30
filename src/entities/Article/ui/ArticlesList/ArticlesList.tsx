@@ -40,7 +40,12 @@ export const ArticlesList = memo((props: ArticleListProps) => {
         <ArticlesListItem article={article} view={view} key={article.id} target={target} />
     );
     return (
-        <div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
+        <div
+            className={classNames(cls.ArticlesList, { [cls.one_item]: articles.length === 1 }, [
+                className,
+                cls[view],
+            ])}
+        >
             {articles.length
                 ? articles.map(renderArticle)
                 : !isLoading &&

@@ -7,6 +7,7 @@ import { Loader } from 'shared/ui/Loader/ui/Loader/Loader';
 import { Form } from 'shared/ui/Form/ui/Form';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack';
 import { Profile } from '../../model/types/profile';
 import { profileConfig } from '../../model/config';
 import cls from './ProfileCard.module.scss';
@@ -28,18 +29,26 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 
     if (error && !data) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [cls.error])}>
+            <VStack
+                align="center"
+                justify="center"
+                className={classNames(cls.ProfileCard, {}, [cls.error])}
+            >
                 <Text theme={TextTheme.ERROR} title={t('Произошла сетевая ошибка')} />
                 <Text className={cls.title} theme={TextTheme.ERROR} text={t(error)} />
                 <Text theme={TextTheme.PRIMARY} text={t('Попробуйте обновить страницу')} />
-            </div>
+            </VStack>
         );
     }
     if (isLoading && !data) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [cls.loading])}>
+            <VStack
+                align="center"
+                justify="center"
+                className={classNames(cls.ProfileCard, {}, [cls.loading])}
+            >
                 <Loader />
-            </div>
+            </VStack>
         );
     }
     return (

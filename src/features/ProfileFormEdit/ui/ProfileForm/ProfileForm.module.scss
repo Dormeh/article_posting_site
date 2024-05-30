@@ -1,5 +1,4 @@
 .heading {
-  display: flex;
   margin-top: 20px;
 
   .title {
@@ -8,8 +7,6 @@
 
   .buttonBox {
     margin-left: auto;
-    display: flex;
-    gap: 20px;
     margin-bottom: 20px;
   }
 }

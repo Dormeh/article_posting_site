@@ -1,8 +1,4 @@
 .link {
-  &:not(:first-child) {
-    margin-top: 10px;
-  }
-
   display: flex;
   align-items: center;
   height: 25px;

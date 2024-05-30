@@ -8,6 +8,7 @@ import { FieldValues } from 'react-hook-form';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ContentView } from 'shared/model/types/types';
+import { VStack } from 'shared/ui/Stack';
 import { ArticlesPageSortData } from '../../model/types/ArticlesPageSchema';
 import { contentArticlesPageSelects } from '../../config/contentArticlesPageSelects';
 import { getArticlesSelectsSortConfig } from '../../lib/getArticlesSortConfig';
@@ -44,7 +45,7 @@ export const ArticlesPageContentSwitcher = memo((props: ArticlesPageContentSwitc
         [dispatch],
     );
     return (
-        <div className={classNames(cls.ArticlesPageContentSwitcher, {}, [className])}>
+        <VStack className={classNames(cls.ArticlesPageContentSwitcher, {}, [className])}>
             <ContentSortForm
                 sortData={sortData}
                 tabsConfig={tabsConfig}
@@ -58,6 +59,6 @@ export const ArticlesPageContentSwitcher = memo((props: ArticlesPageContentSwitc
                 view={view}
                 onSelect={onSelectView}
             />
-        </div>
+        </VStack>
     );
 });

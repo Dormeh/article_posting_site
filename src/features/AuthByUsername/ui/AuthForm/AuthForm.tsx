@@ -1,16 +1,16 @@
+import { memo, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FieldValues, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Form } from 'shared/ui/Form/ui/Form';
-import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useSelector } from 'react-redux';
-import { memo, useCallback, useEffect } from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useNavigate } from 'react-router-dom';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';

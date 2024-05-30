@@ -1,13 +1,8 @@
 .ArticleDetails {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   position: relative;
 }
 
 .articleInfo {
-  display: flex;
-  align-items: center;
   gap: 7px;
   margin-bottom: 7px;
 
@@ -17,11 +12,7 @@
 }
 
 .avatar {
-  margin: 0 auto;
   object-fit: cover;
-}
-
-.avatarWrapper {
   align-self: center;
 }
 
@@ -30,6 +21,7 @@
 }
 
 .skeleton {
+  align-self: flex-start;
   margin-top: 15px;
 }
 

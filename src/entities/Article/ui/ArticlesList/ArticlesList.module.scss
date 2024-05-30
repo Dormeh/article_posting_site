@@ -8,10 +8,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 230px);
   justify-items: center;
-  align-content: center;
-  align-items: center;
+
+  // align-content: center;
+  // align-items: center;
   justify-content: center;
   grid-auto-flow: row;
+
+  &.one_item {
+    justify-content: flex-start;
+  }
 }
 
 .list {
@@ -30,4 +35,12 @@
   top: 50%;
   transform: translateX(-50%);
   flex-grow: 1;
+}
+
+@media screen and (max-width: 750px) {
+  .plate {
+    &.one_item {
+      justify-content: center;
+    }
+  }
 }

@@ -13,10 +13,6 @@
   }
 
   .views {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-
     .icon {
       filter: contrast(50%) brightness(120%);
       color: var(--inverted-primary-color);
@@ -77,11 +73,6 @@
     object-fit: cover;
   }
 
-  .infoWrapper {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .titleText {
     width: 100%;
     white-space: nowrap;
@@ -98,15 +89,6 @@
 
   .header {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .userInfo {
-    display: flex;
-    align-items: center;
-    gap: 20px;
   }
 
   .username {
@@ -126,10 +108,7 @@
   }
 
   .main {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 30px;
-    gap: 15px;
   }
 
   .imgWrapper {
@@ -146,10 +125,5 @@
   .textBlock {
     max-height: 170px;
     overflow: hidden;
-  }
-
-  .footer {
-    display: flex;
-    justify-content: space-between;
   }
 }

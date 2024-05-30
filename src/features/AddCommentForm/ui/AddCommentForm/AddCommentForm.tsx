@@ -1,4 +1,4 @@
-import { FC, ForwardedRef, forwardRef, LegacyRef, memo, useCallback } from 'react';
+import { ForwardedRef, forwardRef, memo, useCallback } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -6,7 +6,7 @@ import { Textarea } from 'shared/ui/Textarea/Textarea';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Form, FormOrientation } from 'shared/ui/Form/ui/Form';
 import { ValidationType } from 'shared/config/validation/validation';
-import cls from './AddCommentForm.module.scss';
+import { VStack } from 'shared/ui/Stack';
 
 export interface AddCommentFormProps {
     className?: string;
@@ -49,7 +49,7 @@ const AddCommentForm = forwardRef(
         }, [reset]);
 
         const footer = (
-            <div className={cls.btnWrapper}>
+            <VStack justify="start" max={false} gap={10}>
                 <Button
                     type="submit"
                     theme={ButtonTheme.OUTLINE}
@@ -61,14 +61,13 @@ const AddCommentForm = forwardRef(
                 {isDirty && !isSubmitting && (
                     <Button
                         type="button"
-                        className={cls.clearBtn}
                         theme={ButtonTheme.OUTLINE_INVERTED}
                         onClick={onCancelEdit}
                     >
                         {t('Отчистить')}
                     </Button>
                 )}
-            </div>
+            </VStack>
         );
 
         return (

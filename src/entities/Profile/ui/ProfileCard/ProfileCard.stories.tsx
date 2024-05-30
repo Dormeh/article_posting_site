@@ -20,6 +20,18 @@ Primary.args = {
     data: testProfileData as Profile,
 };
 
+export const PrimaryError = Template.bind({});
+PrimaryError.args = {
+    data: undefined,
+    error: 'ERROR',
+};
+
+export const PrimaryLoading = Template.bind({});
+PrimaryLoading.args = {
+    data: undefined,
+    isLoading: true,
+};
+
 export const Dark = Template.bind({});
 Dark.args = {
     data: testProfileData as Profile,

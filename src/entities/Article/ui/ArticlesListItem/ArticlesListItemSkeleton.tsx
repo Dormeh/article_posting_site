@@ -2,6 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { ContentView } from 'shared/model/types/types';
+import { VStack, HStack } from 'shared/ui/Stack';
 import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemSkeletonProps {
@@ -16,23 +17,23 @@ export const ArticlesListItemSkeleton = (props: ArticlesListItemSkeletonProps) =
         return (
             <div className={classNames(cls.ArticlesListItem, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
-                    <div className={cls.header}>
-                        <div className={cls.userInfo}>
+                    <VStack gap={7} className={cls.header}>
+                        <HStack gap={10} align="center">
                             <Skeleton height={30} width={30} borderRadius="50%" />
                             <Skeleton height={16} width={100} />
                             <Skeleton width={100} height={16} className={cls.date} />
-                        </div>
+                        </HStack>
                         <Skeleton className={cls.title} height={25} />
                         <Skeleton className={cls.type} height={16} />
-                    </div>
-                    <div className={cls.main}>
+                    </VStack>
+                    <VStack gap={16} className={cls.main}>
                         <Skeleton className={cls.imgPreview} height={170} />
                         <Skeleton height={200} />
-                    </div>
-                    <div className={cls.footer}>
+                    </VStack>
+                    <HStack justify="between">
                         <Skeleton height={30} width={110} />
                         <Skeleton width={80} height={16} />
-                    </div>
+                    </HStack>
                 </Card>
             </div>
         );
@@ -44,9 +45,9 @@ export const ArticlesListItemSkeleton = (props: ArticlesListItemSkeletonProps) =
                 <div className={cls.imageWrapper}>
                     <Skeleton className={cls.imgPreview} height={200} />
                 </div>
-                <div className={cls.infoWrapper}>
+                <HStack>
                     <Skeleton className={cls.type} height={16} />
-                </div>
+                </HStack>
                 <Skeleton height={20} />
             </Card>
         </div>

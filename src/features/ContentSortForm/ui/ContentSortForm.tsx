@@ -8,6 +8,7 @@ import { TabsConfig } from 'shared/ui/Tabs/model/types/tabsType';
 import { Input } from 'shared/ui/Input/Input';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ChangeHandler } from 'react-hook-form/dist/types/form';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './ContentSortForm.module.scss';
 
 interface ContentSortFormProps {
@@ -52,11 +53,13 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
     );
 
     return (
-        <form
+        <VStack
+            gap={7}
+            tagName="form"
             className={classNames(cls.ContentSortForm, { [cls.loading]: isLoading }, [className])}
         >
             {sortSelectsConfig && (
-                <div className={cls.selectsWrapper}>
+                <HStack justify="between" gap={16} className={cls.selectsWrapper}>
                     {sortSelectsConfig.map(({ placeholder, sortOptions, label, name }) => (
                         <SortSelect
                             style={{
@@ -73,7 +76,7 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
                             labelTextClass={cls.labelText}
                         />
                     ))}
-                </div>
+                </HStack>
             )}
             <Input
                 className={cls.searchInput}
@@ -88,6 +91,6 @@ export const ContentSortForm = memo((props: ContentSortFormProps) => {
             {tabsConfig && (
                 <Tabs tabsConfig={tabsConfig} register={control.register} readOnly={isLoading} />
             )}
-        </form>
+        </VStack>
     );
 });

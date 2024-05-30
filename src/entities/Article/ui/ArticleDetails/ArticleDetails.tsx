@@ -13,6 +13,7 @@ import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
 import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { renderBlocks } from '../../model/renderBlocks';
 import {
     getArticleDetailsData,
@@ -71,14 +72,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         content = (
             <>
                 <ArticleDetailsPageHeader />
-                <div className={cls.avatarWrapper}>
-                    <Avatar
-                        src={article?.img}
-                        size={200}
-                        className={cls.avatar}
-                        alt={article?.title}
-                    />
-                </div>
+                <Avatar src={article?.img} size={200} className={cls.avatar} alt={article?.title} />
                 <Text
                     title={article?.title}
                     text={article?.subtitle}
@@ -86,14 +80,14 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                     className={cls.title}
                     align={TextAlign.LEFT}
                 />
-                <div className={cls.articleInfo}>
+                <HStack align="center" className={cls.articleInfo}>
                     <EyeIcon className={cls.icon} />
                     <Text text={String(article?.views)} />
-                </div>
-                <div className={cls.articleInfo}>
+                </HStack>
+                <HStack align="center" className={cls.articleInfo}>
                     <CalendarIcon className={cls.icon} />
                     <Text text={article?.createdAt} />
-                </div>
+                </HStack>
                 {article?.blocks.map((block) => renderBlocks(block, cls.block))}
             </>
         );
@@ -101,7 +95,9 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>{content}</div>
+            <VStack justify="evenly" className={classNames(cls.ArticleDetails, {}, [className])}>
+                {content}
+            </VStack>
         </DynamicModuleLoader>
     );
 };

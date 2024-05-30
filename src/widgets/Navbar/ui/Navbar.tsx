@@ -10,6 +10,7 @@ import { Loader } from 'shared/ui/Loader/ui/Loader/Loader';
 import CreateArticleIcon from 'shared/assets/icons/add_new_item_icon.svg';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { HStack } from 'shared/ui/Stack';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -29,7 +30,13 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     };
 
     return (
-        <header className={classNames(cls.Navbar, {}, [className])}>
+        <HStack
+            tagName="header"
+            justify="end"
+            align="center"
+            gap={10}
+            className={classNames(cls.Navbar, {}, [className])}
+        >
             {isUserAuth && (
                 <AppLink
                     to={RouterPath.article_create}
@@ -53,6 +60,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </Suspense>
                 </Modal>
             )}
-        </header>
+        </HStack>
     );
 });

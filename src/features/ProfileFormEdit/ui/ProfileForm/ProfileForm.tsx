@@ -6,6 +6,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Profile, ProfileCard } from 'entities/Profile';
+import { HStack } from 'shared/ui/Stack';
 import { getProfileCanEditMode } from '../../model/selectors/getProfileCanEditMode/getProfileCanEditMode';
 import cls from './ProfileForm.module.scss';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
@@ -67,9 +68,9 @@ export const ProfileForm = () => {
 
     return (
         <>
-            <div className={cls.heading}>
+            <HStack className={cls.heading}>
                 <Text className={cls.title} title={t('Профиль')} />
-                <div className={cls.buttonBox}>
+                <HStack gap={20} className={cls.buttonBox} max={false}>
                     {isCanEdit &&
                         (readonly ? (
                             <Button theme={ButtonTheme.OUTLINE} onClick={onEdit} disabled={!data}>
@@ -93,8 +94,8 @@ export const ProfileForm = () => {
                                 </Button>
                             </>
                         ))}
-                </div>
-            </div>
+                </HStack>
+            </HStack>
             <ProfileCard
                 onClick={onFormFocus}
                 error={error}
