@@ -1,0 +1,59 @@
+@import "shared/styles/tamplates";
+
+$border-radius: (
+  bottom-left: 0 5px 5px,
+  bottom-right: 5px 0 5px 5px,
+  top-left: 5px 5px 5px 0,
+  top-right: 5px 5px 0
+);
+$shadow-color: rgba(var(--shadow-rgb), 0.5);
+$shadow-map: (
+  bottom-left: 2px 2px 3px 1px $shadow-color,
+  bottom-right: -2px 2px 3px 1px $shadow-color,
+  top-left: 2px -2px 3px 1px $shadow-color,
+  top-right: -2px -2px 3px 1px $shadow-color
+);
+
+.Dropdown {
+  position: relative;
+}
+
+.btn {
+  padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: var(--dropdown-z-index);
+  background: rgba(var(--inverted-bg-color-rgb), 1);
+  border: 1.5px solid rgba(var(--primary-color-rgb), 0.6);
+
+  @each $position, $pos in $positions {
+    &.#{$position} {
+      @each $prop, $val in $pos {
+        #{$prop}: $val;
+      }
+
+      border-radius: map-get($border-radius, $position);
+      box-shadow: map-get($shadow-map, $position);
+    }
+  }
+}
+
+.active {
+  background: rgba(var(--secondary-color-rgb), 0.4);
+}
+
+.dropdownItem {
+  white-space: nowrap;
+  padding: 6px 12px;
+  color: var(--inverted-primary-color);
+  justify-content: flex-start;
+  width: 100%;
+}

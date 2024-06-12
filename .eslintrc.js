@@ -56,6 +56,7 @@ module.exports = {
                     'gap',
                     'max',
                     'tagName',
+                    'as',
                 ],
             },
         ],

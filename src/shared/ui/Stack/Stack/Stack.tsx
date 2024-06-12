@@ -1,4 +1,4 @@
-import { createElement, ReactNode } from 'react';
+import { createElement, HTMLAttributes, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Stack.module.scss';
 
@@ -7,7 +7,7 @@ export type FlexAlign = 'start' | 'center' | 'end' | 'stretch';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = 4 | 7 | 8 | 10 | 16 | 20 | 32;
 
-export interface StackProps {
+export interface StackProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     tagName?: keyof JSX.IntrinsicElements;
     children?: ReactNode;
@@ -59,6 +59,7 @@ export const Stack = (props: StackProps) => {
         gap,
         max = true,
         children,
+        ...otherProps
     } = props;
 
     const classes = [
@@ -71,7 +72,7 @@ export const Stack = (props: StackProps) => {
 
     return createElement(
         tagName,
-        { className: classNames(cls.Stack, { [cls.max]: max }, classes) },
+        { className: classNames(cls.Stack, { [cls.max]: max }, classes), ...otherProps },
         children,
     );
 };
