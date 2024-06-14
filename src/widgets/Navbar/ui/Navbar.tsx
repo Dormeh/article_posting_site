@@ -1,4 +1,4 @@
-import React, { memo, Suspense, useCallback, useState } from 'react';
+import React, { memo, Suspense, useCallback, useMemo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -11,6 +11,9 @@ import CreateArticleIcon from 'shared/assets/icons/add_new_item_icon.svg';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { HStack } from 'shared/ui/Stack';
+import { Dropdown, DropdownItem } from 'shared/ui/Dropdown/Dropdown';
+import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
+import { getProfileData } from 'features/ProfileFormEdit/model/selectors/getProfileData/getProfileData';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -20,45 +23,64 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const isUserAuth = useSelector(getUserAuthData);
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
     const dispatch = useDispatch();
 
     const openModal = useCallback(() => setIsModalOpen(true), []);
     const closeModal = useCallback(() => setIsModalOpen(false), []);
-    const logout = () => {
+    const logout = useCallback(() => {
         dispatch(userActions.logout());
-    };
+    }, [dispatch]);
+
+    const menuItems: DropdownItem[] = useMemo(
+        () => [
+            {
+                content: t('Профиль'),
+                href: `${RouterPath.profile}${profileData?.id || ''}`,
+            },
+            {
+                content: t('Выйти'),
+                onClick: authData ? logout : openModal,
+            },
+        ],
+        [t, authData, logout, openModal, profileData?.id],
+    );
 
     return (
         <HStack
             tagName="header"
             justify="end"
             align="center"
-            gap={10}
+            gap={16}
             className={classNames(cls.Navbar, {}, [className])}
         >
-            {isUserAuth && (
-                <AppLink
-                    to={RouterPath.article_create}
-                    className={`${cls.btn} ${cls.link}`}
-                    activeView={false}
-                >
-                    <CreateArticleIcon className={cls.createIcon} />
-                </AppLink>
-            )}
-            <Button
-                className={cls.btn}
-                onClick={isUserAuth ? logout : openModal}
-                theme={ButtonTheme.CLEAR}
-            >
-                {isUserAuth ? t('Выйти') : t('Войти')}
-            </Button>
-            {!isUserAuth && (
-                <Modal isOpen={isModalOpen} onClose={closeModal} lazy>
-                    <Suspense fallback={<Loader />}>
-                        <AuthForm focus={isModalOpen} formClose={closeModal} />
-                    </Suspense>
-                </Modal>
+            {authData ? (
+                <>
+                    <AppLink
+                        to={RouterPath.article_create}
+                        className={`${cls.btn} ${cls.link}`}
+                        activeView={false}
+                    >
+                        <CreateArticleIcon className={cls.createIcon} />
+                    </AppLink>
+                    <Dropdown
+                        dropdownItems={menuItems}
+                        dropdownTrigger={<Avatar size={40} src={profileData?.avatar} />}
+                        direction="bottom-right"
+                    />
+                </>
+            ) : (
+                <>
+                    <Button className={cls.btn} onClick={openModal} theme={ButtonTheme.CLEAR}>
+                        {t('Войти')}
+                    </Button>
+                    <Modal isOpen={isModalOpen} onClose={closeModal} lazy>
+                        <Suspense fallback={<Loader />}>
+                            <AuthForm focus={isModalOpen} formClose={closeModal} />
+                        </Suspense>
+                    </Modal>
+                </>
             )}
         </HStack>
     );

@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User, userActions } from 'entities/User';
 import { LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
-import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
 import { ApiErrorType, ApiErrorTypes } from 'shared/api/types';

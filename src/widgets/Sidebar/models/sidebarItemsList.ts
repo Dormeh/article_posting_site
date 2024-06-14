@@ -19,12 +19,12 @@ export const sidebarItemsList: SidebarItemType[] = [
         Icon: AboutIcon,
     },
     {
-        path: RouterPath.profile,
+        path: '',
         text: 'Профиль',
         Icon: ProfileIcon,
         authOnly: true,
         pathModify(authData: User) {
-            this.path += authData.profileId;
+            this.path = `${RouterPath.profile}${authData.id}`;
         },
     },
     {
