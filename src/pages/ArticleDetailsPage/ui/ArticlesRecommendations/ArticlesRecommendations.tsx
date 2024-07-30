@@ -1,13 +1,9 @@
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticlesList } from 'entities/Article';
 import { ContentView } from 'shared/model/types/types';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getRecommendations } from '../../model/slices/articleRecommendationsSlice';
-import { fetchRecommendations } from '../../model/services/fetchRecommendations/fetchRecommendations';
 import cls from './ArticlesRecommendations.module.scss';
+import { useGetArticleRecommendationsListQuery } from '../../api/articleRecommendationsApi';
 
 interface ArticlesRecommendationsProps {
     className?: string;
@@ -15,12 +11,11 @@ interface ArticlesRecommendationsProps {
 
 export const ArticlesRecommendations = memo((props: ArticlesRecommendationsProps) => {
     const { className } = props;
-    const dispatch = useAppDispatch();
-    const recommendations = useSelector(getRecommendations.selectAll);
+    /**
+     * альтернативный вариант получения данных из состояния использую RTK Query
+     */
+    const { data: recommendations = [] } = useGetArticleRecommendationsListQuery();
 
-    useInitialEffect(() => {
-        dispatch(fetchRecommendations());
-    });
     return (
         <ArticlesList
             className={classNames(cls.ArticlesRecommendations, {}, [className])}
