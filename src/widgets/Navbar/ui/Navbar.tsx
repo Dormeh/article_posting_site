@@ -37,14 +37,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         () => [
             {
                 content: t('Профиль'),
-                href: `${RouterPath.profile}${profileData?.id || ''}`,
+                href: `${RouterPath.profile}${authData?.profileId || ''}`,
             },
             {
                 content: t('Выйти'),
                 onClick: authData ? logout : openModal,
             },
         ],
-        [t, authData, logout, openModal, profileData?.id],
+        [t, authData, logout, openModal],
     );
 
     return (
