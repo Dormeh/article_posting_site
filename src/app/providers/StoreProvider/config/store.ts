@@ -6,6 +6,7 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { $api } from 'shared/api/api';
 import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { pageReducer } from 'shared/ui/Page/model/slice/pageSlice';
+import { rtkApi } from 'shared/api/rtkApi';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 
 export function createReduxStore(
@@ -14,6 +15,7 @@ export function createReduxStore(
     api = $api,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
+        [rtkApi.reducerPath]: rtkApi.reducer,
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
@@ -34,7 +36,7 @@ export function createReduxStore(
                 thunk: {
                     extraArgument: extraArg,
                 },
-            }),
+            }).concat(rtkApi.middleware),
     });
 
     // @ts-ignore
