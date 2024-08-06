@@ -25,7 +25,7 @@ export default {
                 error: undefined,
                 ids: ['1', '2', '3'],
                 isLoading: false,
-                _inited: false,
+                _inited: true,
                 sortData: {
                     sort: ArticleSortField.CREATED,
                     order: SortOrder.ASC,
