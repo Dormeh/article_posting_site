@@ -14,7 +14,6 @@ interface ArticleListProps {
     isLoading?: boolean;
     view: ContentView;
     error?: string;
-    pageIsInit?: boolean;
     target?: HTMLAttributeAnchorTarget;
 }
 
@@ -25,7 +24,7 @@ const getSkeleton = (view: ContentView) =>
     ));
 
 export const ArticlesList = memo((props: ArticleListProps) => {
-    const { className, articles, isLoading, view, error, pageIsInit, target } = props;
+    const { className, articles, isLoading, view, error, target } = props;
     const { t } = useTranslation();
 
     if (error) {
@@ -48,8 +47,7 @@ export const ArticlesList = memo((props: ArticleListProps) => {
         >
             {articles.length
                 ? articles.map(renderArticle)
-                : !isLoading &&
-                  pageIsInit && (
+                : !isLoading && (
                       <Text
                           className={cls.emptyContentText}
                           title={t('Статьи не найдены')}
