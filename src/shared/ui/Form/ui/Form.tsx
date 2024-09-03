@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, ElementType, ReactNode, forwardRef, ForwardedRef } from 'react';
 import { Control, FieldValues } from 'react-hook-form';
-import { ValidationType } from 'shared/config/validation/validation';
+import { ValidateFunctionsType, ValidationType } from 'shared/config/validation/validation';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { Text, TextTheme } from '../../Text/Text';
@@ -19,6 +19,7 @@ export interface FormConfigType {
     name: string;
     label?: string;
     pattern?: ValidationType;
+    validation?: ValidateFunctionsType;
     required?: boolean;
     value?: string;
     type?: string;
@@ -88,6 +89,7 @@ export const Form = forwardRef((props: IFormPros, ref: ForwardedRef<HTMLFormElem
                             control={control}
                             readonly={readonly}
                             className={cls.field}
+                            testId={name}
                             {...rest}
                         />
                     ))}

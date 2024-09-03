@@ -2,8 +2,9 @@ import { ValidationType } from 'shared/config/validation/validation';
 import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
 import { CurrencySelect } from 'entities/Currency/ui/CurrencySelect';
 import { CountrySelect } from 'entities/Country/ui/CountrySelect';
+import { FormConfigType } from 'shared/ui/Form/ui/Form';
 
-export const profileConfig = [
+export const profileConfig: FormConfigType[] = [
     {
         name: 'first',
         label: 'Имя',
@@ -39,7 +40,11 @@ export const profileConfig = [
     {
         name: 'age',
         label: 'Возраст',
-        pattern: ValidationType.Age,
+        validation: {
+            setValueAs: (v: string) => parseInt(v, 10),
+            validate: (v: number) =>
+                (v > 5 && v <= 100) || 'возраст не больше 119 и не меньше 5, первая цифра больше 0',
+        },
         required: true,
         type: 'tel',
         Component: formChildNodes.Input,

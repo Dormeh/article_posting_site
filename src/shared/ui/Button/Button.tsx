@@ -28,10 +28,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     design?: ButtonDesign; // TODO на будущее лучше добавить пропс дизайн и все варианты добавить в enum
     size?: ButtonSize;
     children?: ReactNode;
+    testId?: string;
 }
 
 const ButtonBase = (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
-    const { className, children, theme, design, size = ButtonSize.M, ...otherProps } = props;
+    const {
+        className,
+        children,
+        theme,
+        design,
+        size = ButtonSize.M,
+        testId = 'testId',
+        ...otherProps
+    } = props;
 
     const additionalClasses = [className, theme && cls[theme], cls[size], design && cls[design]];
 
@@ -40,6 +49,7 @@ const ButtonBase = (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) =>
             type="button"
             ref={ref}
             className={classNames(cls.Button, {}, additionalClasses)}
+            data-testid={`Button.${testId}`}
             {...otherProps}
         >
             {children}

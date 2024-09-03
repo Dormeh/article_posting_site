@@ -22,7 +22,7 @@ import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 
 interface ProfileFormProps {
-    id?: string;
+    id: string;
 }
 
 const initialReducers: ReducersList = {
@@ -91,7 +91,12 @@ export const ProfileForm = ({ id }: ProfileFormProps) => {
                 <HStack gap={20} className={cls.buttonBox} max={false}>
                     {isCanEdit &&
                         (readonly ? (
-                            <Button theme={ButtonTheme.OUTLINE} onClick={onEdit} disabled={!data}>
+                            <Button
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={onEdit}
+                                disabled={!data}
+                                testId="edit"
+                            >
                                 {t('Редактировать')}
                             </Button>
                         ) : (
@@ -100,6 +105,7 @@ export const ProfileForm = ({ id }: ProfileFormProps) => {
                                     theme={ButtonTheme.OUTLINE_RED}
                                     onClick={onCancelEdit}
                                     disabled={isSubmitting}
+                                    testId="cancel"
                                 >
                                     {t('Отменить')}
                                 </Button>
@@ -107,6 +113,7 @@ export const ProfileForm = ({ id }: ProfileFormProps) => {
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={handleSubmit(updateProfile)}
                                     disabled={!isDirty || isSubmitting}
+                                    testId="save"
                                 >
                                     {t('Сохранить')}
                                 </Button>

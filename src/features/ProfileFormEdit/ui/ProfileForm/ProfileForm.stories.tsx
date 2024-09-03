@@ -19,7 +19,7 @@ export default {
     ],
 } as unknown as ComponentMeta<typeof ProfileForm>;
 
-const Template: ComponentStory<typeof ProfileForm> = (args) => <ProfileForm />;
+const Template: ComponentStory<typeof ProfileForm> = (args) => <ProfileForm id="1" />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
