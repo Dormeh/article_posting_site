@@ -13,7 +13,6 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { HStack } from 'shared/ui/Stack';
 import { Dropdown, DropdownItem } from 'shared/ui/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
-import { getProfileData } from 'features/ProfileFormEdit/model/selectors/getProfileData/getProfileData';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -24,7 +23,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const authData = useSelector(getUserAuthData);
-    const profileData = useSelector(getProfileData);
     const dispatch = useDispatch();
 
     const openModal = useCallback(() => setIsModalOpen(true), []);
@@ -66,7 +64,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </AppLink>
                     <Dropdown
                         dropdownItems={menuItems}
-                        dropdownTrigger={<Avatar size={40} src={profileData?.avatar} />}
+                        dropdownTrigger={<Avatar size={40} src={authData?.avatar} />}
                         direction="bottom-right"
                     />
                 </>
