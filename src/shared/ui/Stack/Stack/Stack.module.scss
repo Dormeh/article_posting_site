@@ -11,6 +11,10 @@ $directions: row, column;
   width: 100%;
 }
 
+.maxHeight {
+  height: 100%;
+}
+
 @each $direction in $directions {
   .direction_#{$direction} {
     flex-direction: #{$direction};

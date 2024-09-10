@@ -1,15 +1,11 @@
-export enum UserRoles {
-    ADMIN = 'ADMIN',
-    MANAGER = 'MANAGER',
-    USER = 'USER',
-}
+import { UserRole } from 'shared/model/types/types';
 
 export interface User {
     id: string;
     username: string;
     profileId: string;
     avatar?: string;
-    roles?: UserRoles[];
+    roles?: UserRole[];
 }
 
 export interface UserSchema {
