@@ -14,7 +14,7 @@ export const ArticlesRecommendations = memo((props: ArticlesRecommendationsProps
     /**
      * альтернативный вариант получения данных из состояния использую RTK Query
      */
-    const { data: recommendations = [] } = useGetArticleRecommendationsListQuery();
+    const { data: recommendations = [], isLoading } = useGetArticleRecommendationsListQuery();
 
     return (
         <ArticlesList
@@ -22,6 +22,7 @@ export const ArticlesRecommendations = memo((props: ArticlesRecommendationsProps
             articles={recommendations}
             view={ContentView.PLATE}
             target="_blank"
+            isLoading={isLoading}
         />
     );
 });

@@ -3,6 +3,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { articlesMockData } from 'entities/Article/config/mock/articlesMockData';
+import withMock from 'storybook-addon-mock';
 import { ArticlesRecommendations } from './ArticlesRecommendations';
 
 export default {
@@ -11,22 +12,17 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        StoreDecorator({
-            articleDetailsPage: {
-                articleRecommendations: {
-                    entities: {
-                        1: articlesMockData[0],
-                        2: articlesMockData[1],
-                        3: articlesMockData[2],
-                    },
-                    error: undefined,
-                    ids: ['1', '2', '3'],
-                    isLoading: false,
-                },
+    decorators: [StoreDecorator({}), withMock],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}recommendations?_expand=profile&_limit=6`,
+                method: 'GET',
+                status: 200,
+                response: articlesMockData,
             },
-        }),
-    ],
+        ],
+    },
 } as ComponentMeta<typeof ArticlesRecommendations>;
 
 const Template: ComponentStory<typeof ArticlesRecommendations> = (args) => (
