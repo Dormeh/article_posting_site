@@ -9,3 +9,9 @@ export enum SortOrder {
 }
 
 export type Direction = 'bottom-left' | 'top-left' | 'bottom-right' | 'top-right';
+
+export enum UserRole {
+    ADMIN = 'ADMIN',
+    MANAGER = 'MANAGER',
+    USER = 'USER',
+}

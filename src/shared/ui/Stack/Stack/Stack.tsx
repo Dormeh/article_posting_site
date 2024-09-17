@@ -16,6 +16,7 @@ export interface StackProps extends HTMLAttributes<HTMLDivElement> {
     align?: FlexAlign;
     gap?: FlexGap;
     max?: boolean;
+    maxHeight?: boolean;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -58,6 +59,7 @@ export const Stack = (props: StackProps) => {
         direction = 'row',
         gap,
         max = true,
+        maxHeight = false,
         children,
         ...otherProps
     } = props;
@@ -72,7 +74,14 @@ export const Stack = (props: StackProps) => {
 
     return createElement(
         tagName,
-        { className: classNames(cls.Stack, { [cls.max]: max }, classes), ...otherProps },
+        {
+            className: classNames(
+                cls.Stack,
+                { [cls.max]: max, [cls.maxHeight]: maxHeight },
+                classes,
+            ),
+            ...otherProps,
+        },
         children,
     );
 };

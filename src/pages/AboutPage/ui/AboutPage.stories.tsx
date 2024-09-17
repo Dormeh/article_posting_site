@@ -14,9 +14,7 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof AboutPage>;
 
-// TODO убрать ts-ignore когда найду причину ошибки для ...args
-// eslint-disable-next-line prefer-object-spread
-const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage />;
+const Template: ComponentStory<typeof AboutPage> = () => <AboutPage />;
 
 export const Light = Template.bind({});
 Light.args = {};

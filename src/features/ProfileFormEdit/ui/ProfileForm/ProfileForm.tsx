@@ -7,19 +7,37 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Profile, ProfileCard } from 'entities/Profile';
 import { HStack } from 'shared/ui/Stack';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getProfileCanEditMode } from '../../model/selectors/getProfileCanEditMode/getProfileCanEditMode';
 import cls from './ProfileForm.module.scss';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
-import { profileActions } from '../../model/slice/profileSlice';
+import { profileActions, profileReducer } from '../../model/slice/profileSlice';
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 
-export const ProfileForm = () => {
-    const [readonly, setReadonly] = useState<boolean>(true);
+interface ProfileFormProps {
+    id: string;
+}
+
+const initialReducers: ReducersList = {
+    profile: profileReducer,
+};
+export const ProfileForm = ({ id }: ProfileFormProps) => {
     const dispatch = useAppDispatch();
-    const { t } = useTranslation('profile');
 
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
+        }
+    });
+    const [readonly, setReadonly] = useState<boolean>(true);
+    const { t } = useTranslation('profile');
     const data = useSelector(getProfileData);
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
@@ -67,13 +85,18 @@ export const ProfileForm = () => {
     );
 
     return (
-        <>
+        <DynamicModuleLoader reducers={initialReducers}>
             <HStack className={cls.heading}>
                 <Text className={cls.title} title={t('Профиль')} />
                 <HStack gap={20} className={cls.buttonBox} max={false}>
                     {isCanEdit &&
                         (readonly ? (
-                            <Button theme={ButtonTheme.OUTLINE} onClick={onEdit} disabled={!data}>
+                            <Button
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={onEdit}
+                                disabled={!data}
+                                testId="edit"
+                            >
                                 {t('Редактировать')}
                             </Button>
                         ) : (
@@ -82,6 +105,7 @@ export const ProfileForm = () => {
                                     theme={ButtonTheme.OUTLINE_RED}
                                     onClick={onCancelEdit}
                                     disabled={isSubmitting}
+                                    testId="cancel"
                                 >
                                     {t('Отменить')}
                                 </Button>
@@ -89,6 +113,7 @@ export const ProfileForm = () => {
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={handleSubmit(updateProfile)}
                                     disabled={!isDirty || isSubmitting}
+                                    testId="save"
                                 >
                                     {t('Сохранить')}
                                 </Button>
@@ -105,6 +130,6 @@ export const ProfileForm = () => {
                 errors={errors}
                 isLoading={isLoading}
             />
-        </>
+        </DynamicModuleLoader>
     );
 };

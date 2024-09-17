@@ -15,11 +15,12 @@ export default {
     decorators: [
         StoreDecorator({
             profile: { data: testProfileData as Profile },
+            user: { authData: { id: '1', profileId: '1', username: 'admin' } },
         }),
     ],
 } as unknown as ComponentMeta<typeof ProfileForm>;
 
-const Template: ComponentStory<typeof ProfileForm> = (args) => <ProfileForm />;
+const Template: ComponentStory<typeof ProfileForm> = (args) => <ProfileForm id="1" />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

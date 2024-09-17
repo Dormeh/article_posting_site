@@ -1,7 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import React, { InputHTMLAttributes, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
+import {
+    ValidateFunctionsType,
+    ValidationPattern,
+    ValidationType,
+} from 'shared/config/validation/validation';
 import { useTranslation } from 'react-i18next';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
 import cls from './Input.module.scss';
@@ -15,10 +19,12 @@ export interface InputProps
     errorMessage?: string;
     required?: boolean;
     pattern?: ValidationType;
+    validation?: ValidateFunctionsType;
     placeholder?: string;
     className?: string;
     type: string;
     readonly?: boolean;
+    testId?: string;
     onChange?: (
         value: ((...args: any[]) => void) | string,
         e: React.ChangeEvent<HTMLInputElement>,
@@ -34,21 +40,24 @@ export const Input = (props: InputProps) => {
         error,
         errorMessage,
         pattern,
+        validation,
         placeholder,
         className,
         type,
         maxLength = 20,
         readonly,
+        testId = 'testId',
         onChange,
         ...otherProps
     } = props;
 
-    const [t] = useTranslation();
-
     const options = {
         ...(required && { required: 'Поле не должно быть пустым' }),
         ...(pattern && { pattern: ValidationPattern[pattern] }),
+        ...(validation && { ...validation }),
     };
+
+    const [t] = useTranslation();
 
     const [caretPosition, setCaretPosition] = useState(0);
 
@@ -87,6 +96,7 @@ export const Input = (props: InputProps) => {
                     onSelect={onSelect}
                     maxLength={maxLength}
                     onInput={onInput}
+                    data-testid={`Input.input.${testId}`}
                     readOnly={readonly}
                     {...otherProps}
                 />
@@ -99,7 +109,11 @@ export const Input = (props: InputProps) => {
                     />
                 )}
 
-                {error && <p className={cls.error}>{t(errorMessage || '')}</p>}
+                {error && (
+                    <p className={cls.error} data-testid={`Input.error.${testId}`}>
+                        {t(errorMessage || '')}
+                    </p>
+                )}
             </div>
         </label>
     );

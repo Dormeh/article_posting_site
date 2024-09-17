@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 import { ArticleBlock, ArticleBlockType } from './types/article';
 import { ArticleImageBlockComponent } from '../ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleCodeBlockComponent } from '../ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';

@@ -1,40 +1,25 @@
 import { useTranslation } from 'react-i18next';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchProfileData, ProfileForm, profileReducer } from 'features/ProfileFormEdit';
+import { ProfileForm } from 'features/ProfileFormEdit';
 import { useParams } from 'react-router-dom';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Text } from 'shared/ui/Text/Text';
 import Page from 'shared/ui/Page/ui/Page';
 
 interface ProfilePageProps {
     className?: string;
 }
 
-const initialReducers: ReducersList = {
-    profile: profileReducer,
-};
 const ProfilePage = ({ className }: ProfilePageProps) => {
+    let { id } = useParams<{ id: string }>();
     const { t } = useTranslation('profile');
-
-    const dispatch = useAppDispatch();
-    const { id } = useParams<{ id: string }>();
-
-    useInitialEffect(() => {
-        if (id) {
-            dispatch(fetchProfileData(id));
-        }
-    });
+    if (__PROJECT__ === 'storybook') id = '1';
+    if (!id) {
+        return <Text text={t('Профиль не найден')} />;
+    }
 
     return (
-        <DynamicModuleLoader reducers={initialReducers}>
-            <Page className={className}>
-                <ProfileForm />
-            </Page>
-        </DynamicModuleLoader>
+        <Page className={className}>
+            <ProfileForm id={id} />
+        </Page>
     );
 };
 
