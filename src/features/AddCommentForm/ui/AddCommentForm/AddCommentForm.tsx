@@ -10,7 +10,7 @@ import { VStack } from 'shared/ui/Stack';
 
 export interface AddCommentFormProps {
     className?: string;
-    onSubmit: (text: FieldValues) => void;
+    onSubmit: (text: string) => void;
     formError?: string;
     formTitle?: string;
 }
@@ -36,7 +36,7 @@ const AddCommentForm = forwardRef(
         });
 
         const onSubmitHandler = useCallback(
-            ({ text }) => {
+            ({ text }: FieldValues) => {
                 onSubmit(text);
                 reset();
                 setFocus('text');

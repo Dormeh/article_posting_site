@@ -40,7 +40,7 @@ const ArticleComments = forwardRef(
         });
 
         const sendComment = useCallback(
-            async (text) => {
+            async (text: string) => {
                 const result = await dispatch(addCommentForArticle(text));
                 if (result.meta.requestStatus === 'fulfilled') {
                     if (ref && addCommentFormRef && typeof ref !== 'function') {
