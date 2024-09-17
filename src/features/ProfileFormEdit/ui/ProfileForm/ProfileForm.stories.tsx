@@ -15,6 +15,7 @@ export default {
     decorators: [
         StoreDecorator({
             profile: { data: testProfileData as Profile },
+            user: { authData: { id: '1', profileId: '1', username: 'admin' } },
         }),
     ],
 } as unknown as ComponentMeta<typeof ProfileForm>;
