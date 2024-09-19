@@ -14,7 +14,7 @@ import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
 import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { HStack, VStack } from 'shared/ui/Stack';
-import { renderBlocks } from '../../model/renderBlocks';
+import { renderBlocks } from '../../lib/renderBlocks';
 import {
     getArticleDetailsData,
     getArticleDetailsError,

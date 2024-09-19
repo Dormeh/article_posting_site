@@ -5,7 +5,7 @@ import { Menu } from '@headlessui/react';
 import { AppLink } from '../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 import { Button } from '../Button/Button';
-import { Direction } from '../../model/types/types';
+import { Direction } from '../../model/types/common';
 
 export interface DropdownItem {
     content: string;

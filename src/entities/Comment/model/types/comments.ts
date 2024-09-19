@@ -1,4 +1,3 @@
-import { User } from 'entities/User';
 import { Profile } from 'entities/Profile';
 
 export interface Comment {

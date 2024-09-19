@@ -1,7 +1,7 @@
 import { ValidationType } from 'shared/config/validation/validation';
 import { formChildNodes } from 'shared/ui/Form/model/formChildNodes';
-import { CurrencySelect } from 'entities/Currency/ui/CurrencySelect';
-import { CountrySelect } from 'entities/Country/ui/CountrySelect';
+import { CurrencySelect } from 'entities/Currency';
+import { CountrySelect } from 'entities/Country';
 import { FormConfigType } from 'shared/ui/Form/ui/Form';
 
 export const profileConfig: FormConfigType[] = [

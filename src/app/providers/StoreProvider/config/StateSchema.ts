@@ -12,6 +12,7 @@ import { PageSchema } from 'shared/ui/Page/model/type/PageSchema';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { rtkApi } from 'shared/api/rtkApi';
 import { ProfileSchema } from 'features/ProfileFormEdit';
+import { createReduxStore } from 'app/providers/StoreProvider';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -51,3 +52,5 @@ export interface ThunkConfig<E> {
     extra: ThunkExtraArg;
     state: StateSchema;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

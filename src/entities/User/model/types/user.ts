@@ -1,4 +1,4 @@
-import { UserRole } from 'shared/model/types/types';
+import { UserRole } from 'shared/model/consts/common';
 
 export interface User {
     id: string;

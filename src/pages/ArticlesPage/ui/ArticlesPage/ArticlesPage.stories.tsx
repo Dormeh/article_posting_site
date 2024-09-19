@@ -2,9 +2,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ContentView, SortOrder } from 'shared/model/types/types';
 import { articlesMockData } from 'entities/Article/config/mock/articlesMockData';
-import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
+import { ContentView, SortOrder } from 'shared/model/consts/common';
+import { ArticleSortField, ArticleType } from 'entities/Article/model/consts/consts';
 import ArticlesPage from './ArticlesPage';
 
 export default {

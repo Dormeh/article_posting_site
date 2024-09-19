@@ -8,8 +8,6 @@ export enum SortOrder {
     DESC = 'desc',
 }
 
-export type Direction = 'bottom-left' | 'top-left' | 'bottom-right' | 'top-right';
-
 export enum UserRole {
     ADMIN = 'ADMIN',
     MANAGER = 'MANAGER',

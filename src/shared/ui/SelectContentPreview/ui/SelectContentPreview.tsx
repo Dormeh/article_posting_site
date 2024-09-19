@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ContentView } from 'shared/model/types/types';
+import { ContentView } from 'shared/model/consts/common';
 import { Button, ButtonTheme } from '../../Button/Button';
 import cls from './SelectContentPreview.module.scss';
 

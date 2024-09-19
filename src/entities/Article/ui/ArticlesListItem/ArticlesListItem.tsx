@@ -8,10 +8,11 @@ import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
-import { ContentView } from 'shared/model/types/types';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { ContentView } from 'shared/model/consts/common';
+import { ArticleBlockType } from '../../model/consts/consts';
 import cls from './ArticlesListItem.module.scss';
-import { Article, ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
+import type { Article, ArticleTextBlock } from '../../model/types/article';
 
 interface ArticlesListItemProps {
     className?: string;

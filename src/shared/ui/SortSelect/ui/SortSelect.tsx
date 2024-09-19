@@ -1,10 +1,10 @@
 import { memo, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { SortOrder } from 'shared/model/types/types';
+import { SortOrder } from 'shared/model/consts/common';
 import { getSortByOrderOptions } from '../lib/getSortByOrderOptions';
 import { Select, SelectProps } from '../../Select/ui/Select';
-import { IOption } from '../../Select/model/types/types';
+import type { IOption } from '../../Select/model/types/types';
 
 export interface SortSelectProps extends Omit<SelectProps, 'options'> {
     sortOptions?: IOption[];

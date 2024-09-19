@@ -6,7 +6,7 @@ import './Select.scss';
 import { Control, Controller } from 'react-hook-form';
 import { ValidationPattern, ValidationType } from 'shared/config/validation/validation';
 import { Text, TextSize } from '../../Text/Text';
-import { CustomSelectProps, IOption } from '../model/types/types';
+import type { CustomSelectProps, IOption } from '../model/types/types';
 
 export enum SelectLabelView {
     TOP = 'labelTop',

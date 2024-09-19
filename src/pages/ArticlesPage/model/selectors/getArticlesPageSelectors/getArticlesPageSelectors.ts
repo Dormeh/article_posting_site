@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
-import { ContentView } from 'shared/model/types/types';
+import { ContentView } from 'shared/model/consts/common';
 import { ArticlesPageSortData } from '../../types/ArticlesPageSchema';
 
 export const getArticlesPageIsLoading = (state: StateSchema) =>

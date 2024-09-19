@@ -1,4 +1,5 @@
-import { Country, CountrySelectOption } from '../model/types/country';
+import { Country } from '../model/consts/consts';
+import { CountrySelectOption } from '../model/types/country';
 
 export const countryOptions: CountrySelectOption[] = [
     { value: Country.Armenia, label: Country.Armenia },

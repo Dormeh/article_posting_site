@@ -1,8 +1,4 @@
-export enum Currency {
-    RUB = 'RUB',
-    USD = 'USD',
-    EUR = 'EUR',
-}
+import { Currency } from '../consts/consts';
 
 export interface CurrencySelectOption {
     value: Currency;

@@ -1,5 +1,6 @@
 import { TFunction } from 'i18next';
-import { ArticleSortField, ArticleSortOption } from '../model/types/article';
+import { ArticleSortField } from '../model/consts/consts';
+import type { ArticleSortOption } from '../model/types/article';
 
 export const getArticlesSelectSortConfig = (t: TFunction): ArticleSortOption[] => [
     {

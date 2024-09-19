@@ -7,8 +7,8 @@ import { getArticleTabsSelectConfig } from 'entities/Article/lib/getArticleTabsS
 import { FieldValues } from 'react-hook-form';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { ContentView } from 'shared/model/types/types';
 import { VStack } from 'shared/ui/Stack';
+import { ContentView } from 'shared/model/consts/common';
 import { ArticlesPageSortData } from '../../model/types/ArticlesPageSchema';
 import { contentArticlesPageSelects } from '../../config/contentArticlesPageSelects';
 import { getArticlesSelectsSortConfig } from '../../lib/getArticlesSortConfig';

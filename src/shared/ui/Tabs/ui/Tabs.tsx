@@ -1,8 +1,8 @@
 import { InputHTMLAttributes } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { UseFormRegister } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types/fields';
-import { TabsConfig } from '../model/types/tabsType';
+import { classNames } from 'shared/lib/classNames/classNames';
+import type { TabsConfig } from '../model/types/tabsType';
 import { TabInput } from '../../TabInput/TabInput';
 import cls from './Tabs.module.scss';
 

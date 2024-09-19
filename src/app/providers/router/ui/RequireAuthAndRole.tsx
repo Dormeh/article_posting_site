@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData, getUserRoles } from 'entities/User';
 import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { useMemo } from 'react';
-import { UserRole } from 'shared/model/types/types';
+
+import { UserRole } from 'shared/model/consts/common';
 
 export const RequireAuthAndRole = ({
     roles,

@@ -1,5 +1,6 @@
 import { TFunction } from 'i18next';
-import { ArticleTabsConfig, ArticleType } from '../model/types/article';
+import { ArticleType } from '../model/consts/consts';
+import type { ArticleTabsConfig } from '../model/types/article';
 
 export const getArticleTabsSelectConfig = (t: TFunction): ArticleTabsConfig => ({
     defaultCheckedValue: ArticleType.ALL,

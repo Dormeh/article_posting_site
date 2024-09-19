@@ -1,1 +1,1 @@
-export { Comment } from 'entities/Comment/model/types/comments';
+export type { Comment } from 'entities/Comment/model/types/comments';

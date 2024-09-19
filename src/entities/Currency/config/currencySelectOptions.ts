@@ -1,4 +1,5 @@
-import { Currency, CurrencySelectOption } from '../model/types/currency';
+import { Currency } from '../model/consts/consts';
+import { CurrencySelectOption } from '../model/types/currency';
 
 export const currencyOptions: CurrencySelectOption[] = [
     { value: Currency.RUB, label: Currency.RUB },

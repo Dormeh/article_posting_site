@@ -1,7 +1,8 @@
 import { SelectContentPreviewType } from 'shared/ui/SelectContentPreview/ui/SelectContentPreview';
 import PlateIcon from 'shared/assets/icons/plateView.svg';
 import ListIcon from 'shared/assets/icons/listView.svg';
-import { ContentView } from 'shared/model/types/types';
+
+import { ContentView } from 'shared/model/consts/common';
 
 export const contentArticlesPageSelects: SelectContentPreviewType[] = [
     {

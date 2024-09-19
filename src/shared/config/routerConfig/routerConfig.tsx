@@ -9,7 +9,7 @@ import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
 import { ForbiddenPage } from 'pages/Forbidden';
 
-import { UserRole } from '../../model/types/types';
+import { UserRole } from 'shared/model/consts/common';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
