@@ -61,7 +61,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         content = (
             <Text
                 className={cls.error}
-                title={t('Произошла ошибка при загрузке статьи')}
+                title={t('Произошла ошибка при загрузке статьи.')}
                 theme={TextTheme.ERROR}
                 size={TextSize.L}
                 align={TextAlign.CENTER}
