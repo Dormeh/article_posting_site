@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Profile } from 'entities/Profile';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
-import { ApiErrorTypes } from 'shared/api/types';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 import { getProfileData } from '../../selectors/getProfileData/getProfileData';
 import { getProfileCanEditMode } from '../../selectors/getProfileCanEditMode/getProfileCanEditMode';
 

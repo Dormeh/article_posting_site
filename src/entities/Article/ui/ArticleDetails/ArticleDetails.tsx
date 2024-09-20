@@ -12,7 +12,6 @@ import { Text, TextAlign, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_20-20.svg';
-import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { HStack, VStack } from 'shared/ui/Stack';
 import { renderBlocks } from '../../lib/renderBlocks';
 import {
@@ -62,7 +61,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         content = (
             <Text
                 className={cls.error}
-                title={t('Произошла ошибка при загрузке статьи.')}
+                title={t('Произошла ошибка при загрузке статьи')}
                 theme={TextTheme.ERROR}
                 size={TextSize.L}
                 align={TextAlign.CENTER}
@@ -71,7 +70,6 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     } else {
         content = (
             <>
-                <ArticleDetailsPageHeader />
                 <Avatar src={article?.img} size={200} className={cls.avatar} alt={article?.title} />
                 <Text
                     title={article?.title}

@@ -2,13 +2,13 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import Arrow from 'shared/assets/icons/arrow_bold.svg';
 import { Text } from 'shared/ui/Text/Text';
 import EditIcon from 'shared/assets/icons/edit_icon.svg';
 import { useSelector } from 'react-redux';
 import { getArticleDetailsData } from 'entities/Article';
 import { useRefWithSizeSate } from 'shared/lib/hooks/useElementSize/useElementSize';
+import { RouterPath } from 'shared/model/consts/router';
 import { canArticleEditSelector } from '../../model/selectors/canArticleEditSelector';
 import cls from './ArticleDetailsPageHeader.module.scss';
 

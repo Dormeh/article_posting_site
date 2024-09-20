@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { Profile } from 'entities/Profile';
-import { ApiErrorTypes } from 'shared/api/types';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 import { profileReducer } from '../../slice/profileSlice';
 import { testProfileData } from './profileData';
 import { updateProfileData } from './updateProfileData';

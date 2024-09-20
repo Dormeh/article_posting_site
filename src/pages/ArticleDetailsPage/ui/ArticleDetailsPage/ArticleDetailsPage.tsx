@@ -1,11 +1,11 @@
-import { FC, memo, useRef } from 'react';
+import { memo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArticleDetails } from 'entities/Article';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import Page from 'shared/ui/Page/ui/Page';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ArticleDetailsPageMainContent } from '../ArticleDetailsPageMainContent/ArticleDetailsPageMainContent';
 import { ArticlesRecommendations } from '../ArticlesRecommendations/ArticlesRecommendations';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleAllContentIsLoading } from '../../model/selectors/getArticleAllContentIsLoading';
@@ -32,7 +32,7 @@ const ArticleDetailsPage = () => {
                 ref={wrapperPagRef}
                 scrollPositionTake={!isLoading}
             >
-                <ArticleDetails className={cls.pageContent} id={id} />
+                <ArticleDetailsPageMainContent id={id} />
                 <ArticlesRecommendations className={cls.recommendations} />
                 <ArticleComments id={id} ref={wrapperPagRef} />
             </Page>

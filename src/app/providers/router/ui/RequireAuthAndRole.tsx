@@ -1,10 +1,10 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, getUserRoles } from 'entities/User';
-import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { useMemo } from 'react';
 
 import { UserRole } from 'shared/model/consts/common';
+import { RouterPath } from 'shared/model/consts/router';
 
 export const RequireAuthAndRole = ({
     roles,

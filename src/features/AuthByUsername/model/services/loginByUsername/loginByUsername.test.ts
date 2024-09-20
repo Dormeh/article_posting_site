@@ -1,6 +1,6 @@
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { ApiErrorTypes } from 'shared/api/types';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 import { loginByUsername } from './loginByUsername';
 
 describe('loginByUsername.test', () => {

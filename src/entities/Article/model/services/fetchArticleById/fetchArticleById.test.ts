@@ -1,5 +1,5 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { ApiErrorTypes } from 'shared/api/types';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 import { fetchArticleById } from './fetchArticleById';
 import { articleTestData } from '../../../config/mock/articleTestData';
 

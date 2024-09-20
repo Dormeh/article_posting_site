@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { ApiErrorTypes } from './types';
+
+import { ApiErrorTypes } from 'shared/model/consts/api';
 
 export const apiErrorIdentify = (e: unknown, message?: ApiErrorTypes) =>
     (axios.isAxiosError(e)

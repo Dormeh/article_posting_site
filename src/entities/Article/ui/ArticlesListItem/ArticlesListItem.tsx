@@ -1,5 +1,5 @@
 import React, { HTMLAttributeAnchorTarget, memo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
@@ -7,9 +7,9 @@ import { Text } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye_20-20.svg';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { RouterPath } from 'shared/config/routerConfig/routerConfig';
 import { HStack, VStack } from 'shared/ui/Stack';
 import { ContentView } from 'shared/model/consts/common';
+import { RouterPath } from 'shared/model/consts/router';
 import { ArticleBlockType } from '../../model/consts/consts';
 import cls from './ArticlesListItem.module.scss';
 import type { Article, ArticleTextBlock } from '../../model/types/article';
@@ -31,8 +31,6 @@ export const ArticlesListItem = memo((props: ArticlesListItemProps) => {
             <Text text={String(article?.views)} />
         </HStack>
     );
-
-    const navigate = useNavigate();
 
     if (view === ContentView.LIST) {
         const textBlock = article.blocks.find(

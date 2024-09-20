@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-
 import { ContentView } from 'shared/model/consts/common';
+import { articlesAdapter } from '../../../model/slice/articlesPageSlice/articlesAdapter';
 import { ArticlesPageSortData } from '../../types/ArticlesPageSchema';
 
 export const getArticlesPageIsLoading = (state: StateSchema) =>
@@ -16,3 +16,9 @@ export const getArticlesPageIsInit = (state: StateSchema) => state.articlesPage?
 
 export const getArticlesPageSortData = (state: StateSchema) =>
     <ArticlesPageSortData>state?.articlesPage?.sortData || {};
+
+export const getArticlesSelector = articlesAdapter.getSelectors<StateSchema>(
+    (state) => state.articlesPage || articlesAdapter.getInitialState(),
+);
+
+export const getArticlesCount = (state: StateSchema) => getArticlesSelector.selectAll(state).length;

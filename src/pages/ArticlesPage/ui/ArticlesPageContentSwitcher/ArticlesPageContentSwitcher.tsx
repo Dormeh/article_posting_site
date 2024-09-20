@@ -15,7 +15,7 @@ import { getArticlesSelectsSortConfig } from '../../lib/getArticlesSortConfig';
 import { articlesSortApply } from '../../model/services/articlesSortApply/articlesSortApply';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import cls from './ArticlesPageContentSwitcher.module.scss';
-import { articlesPageActions } from '../../model/slice/articlesPageSlice';
+import { articlesPageActions } from '../../model/slice/articlesPageSlice/articlesPageSlice';
 
 interface ArticlesPageContentSwitcherProps {
     className?: string;

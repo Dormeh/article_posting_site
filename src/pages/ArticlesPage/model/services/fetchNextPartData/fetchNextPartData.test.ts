@@ -1,5 +1,8 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { articlesPageActions, articlesPageReducer } from '../../slice/articlesPageSlice';
+import {
+    articlesPageActions,
+    articlesPageReducer,
+} from '../../slice/articlesPageSlice/articlesPageSlice';
 import { getArticlesPageHasMore } from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { fetchNextPartData } from './fetchNextPartData';
 

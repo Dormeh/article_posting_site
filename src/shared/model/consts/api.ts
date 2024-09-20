@@ -8,9 +8,3 @@ export enum ApiErrorTypes {
     ARTICLES_GET_ERROR = 'Ошибка получения всех статей',
     COMMENT_GET_ERROR = 'Ошибка получения комментариев',
 }
-
-export interface ApiError {
-    message: string;
-}
-
-export type ApiErrorType = ApiError | ApiErrorTypes;

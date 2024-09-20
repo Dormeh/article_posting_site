@@ -1,6 +1,5 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -12,7 +11,7 @@ import {
     getArticlesPageSortData,
 } from '../../model/selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { fetchNextPartData } from '../../model/services/fetchNextPartData/fetchNextPartData';
-import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice/articlesPageSlice';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesPageContentSwitcher } from '../ArticlesPageContentSwitcher/ArticlesPageContentSwitcher';
 import cls from './ArticlesPage.module.scss';
@@ -21,7 +20,6 @@ const initialsReducers = {
     articlesPage: articlesPageReducer,
 };
 const ArticlesPage = () => {
-    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticlesPageIsLoading);
 

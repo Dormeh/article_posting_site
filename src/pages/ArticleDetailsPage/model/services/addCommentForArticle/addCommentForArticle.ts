@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
-import { ApiErrorTypes } from 'shared/api/types';
 import { Comment } from 'entities/Comment';
 import { getArticleDetailsData } from 'entities/Article';
 import { getUserAuthData } from 'entities/User';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 import { articleCommentsActions } from '../../slices/ArticleCommentsSlice';
 
 export const addCommentForArticle = createAsyncThunk<null, string, ThunkConfig<string>>(

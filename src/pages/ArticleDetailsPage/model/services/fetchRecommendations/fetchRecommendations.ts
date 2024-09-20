@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
-import { ApiErrorTypes } from 'shared/api/types';
 import { Article } from 'entities/Article/model/types/article';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 
 export const fetchRecommendations = createAsyncThunk<Article[], void, ThunkConfig<string>>(
     'ArticleDetailsPage/fetchRecommendations',

@@ -3,9 +3,11 @@ import { articlesMockData } from 'entities/Article/config/mock/articlesMockData'
 import {
     articlesPageActions,
     articlesPageReducer,
+} from '../../slice/articlesPageSlice/articlesPageSlice';
+import {
+    getArticlesPageIsInit,
     getArticlesSelector,
-} from '../../slice/articlesPageSlice';
-import { getArticlesPageIsInit } from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
+} from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { initArticlesPage } from './initArticlesPage';
 
 describe('initArticlesPage.test', () => {

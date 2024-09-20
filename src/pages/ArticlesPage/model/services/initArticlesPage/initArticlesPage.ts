@@ -5,7 +5,7 @@ import {
     getArticlesPageSortData,
 } from '../../selectors/getArticlesPageSelectors/getArticlesPageSelectors';
 import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticlesList';
-import { articlesPageActions } from '../../slice/articlesPageSlice';
+import { articlesPageActions } from '../../slice/articlesPageSlice/articlesPageSlice';
 
 export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
     'ArticlePage/initArticlesPage',

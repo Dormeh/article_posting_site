@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User, userActions } from 'entities/User';
-import { LOCAL_STORAGE_USER_KEY } from 'shared/config/const/localstorage';
+import { LOCAL_STORAGE_USER_KEY } from 'shared/model/consts/localstorage';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { apiErrorIdentify } from 'shared/api/apiErrorIdentify';
-import { ApiErrorType, ApiErrorTypes } from 'shared/api/types';
+import { ApiErrorType } from 'shared/model/types/api';
+import { ApiErrorTypes } from 'shared/model/consts/api';
 import { LoginAuthData } from '../../types/loginSchema';
 
 export const loginByUsername = createAsyncThunk<User, LoginAuthData, ThunkConfig<ApiErrorType>>(

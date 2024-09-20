@@ -1,20 +1,10 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Article } from 'entities/Article/model/types/article';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY } from 'shared/config/const/localstorage';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LOCAL_STORAGE_ARTICLES_PAGE_VIEW_KEY } from 'shared/model/consts/localstorage';
 import { ContentView, SortOrder } from 'shared/model/consts/common';
 import { ArticleSortField, ArticleType } from 'entities/Article/model/consts/consts';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-import { ArticlesPageSchema, ArticlesPageSortData } from '../types/ArticlesPageSchema';
-
-export const articlesAdapter = createEntityAdapter<Article>({
-    selectId: (article: Article) => article.id,
-    // sortComparer: (a, b) => a.id.localeCompare(b.id),
-});
-
-export const getArticlesSelector = articlesAdapter.getSelectors<StateSchema>(
-    (state) => state.articlesPage || articlesAdapter.getInitialState(),
-);
+import { articlesAdapter } from './articlesAdapter';
+import { fetchArticlesList } from '../../services/fetchArticlesList/fetchArticlesList';
+import { ArticlesPageSchema, ArticlesPageSortData } from '../../types/ArticlesPageSchema';
 
 export const articlesPageSlice = createSlice({
     name: 'ArticlePage',
