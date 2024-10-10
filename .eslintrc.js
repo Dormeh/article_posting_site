@@ -58,6 +58,8 @@ module.exports = {
                     'tagName',
                     'as',
                     'testId',
+                    'rel',
+                    'borderRadius',
                 ],
             },
         ],
