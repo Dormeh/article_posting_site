@@ -10,7 +10,7 @@ import { Loader } from 'shared/ui/Loader/ui/Loader/Loader';
 import CreateArticleIcon from 'shared/assets/icons/add_new_item_icon.svg';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { HStack } from 'shared/ui/Stack';
-import { Dropdown, DropdownItem } from 'shared/ui/Dropdown/Dropdown';
+import { Dropdown, DropdownItem } from 'shared/ui/Popups/ui/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/ui/Avatar';
 import { RouterPath } from 'shared/model/consts/router';
 import cls from './Navbar.module.scss';

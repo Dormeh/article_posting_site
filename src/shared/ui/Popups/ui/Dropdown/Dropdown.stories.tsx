@@ -1,11 +1,11 @@
 import { ComponentMeta, ComponentStory, Story } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { HStack } from '../../ui/Stack';
+import { HStack } from '../../../Stack';
 import { Dropdown } from './Dropdown';
 
 export default {
-    title: 'shared/Dropdown',
+    title: 'shared/Popups/Dropdown',
     component: Dropdown,
     args: {
         dropdownItems: [
@@ -18,8 +18,9 @@ export default {
                 onClick: () => console.log('Another action'),
             },
             {
-                content: 'Something else here',
+                content: 'Disabled item',
                 onClick: () => console.log('Something else here'),
+                disabled: true,
             },
             {
                 content: 'Separated link',

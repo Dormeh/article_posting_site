@@ -2,10 +2,11 @@ import { memo, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Menu } from '@headlessui/react';
-import { AppLink } from '../AppLink/AppLink';
+import { AppLink } from '../../../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
-import { Button } from '../Button/Button';
-import { Direction } from '../../model/types/common';
+import { Button } from '../../../Button/Button';
+import { Direction } from '../../../../model/types/common';
+import commonCls from '../../styles/PopupCommon.module.scss';
 
 export interface DropdownItem {
     content: string;
@@ -31,30 +32,14 @@ export const Dropdown = memo((props: DropdownProps) => {
     } = props;
     return (
         <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button className={cls.btn}>{dropdownTrigger}</Menu.Button>
-            <Menu.Items className={classNames(cls.menu, {}, [cls[direction]])} as="nav">
+            <Menu.Button className={commonCls.btn}>{dropdownTrigger}</Menu.Button>
+            <Menu.Items className={classNames(commonCls.menu, {}, [commonCls[direction]])} as="nav">
                 {dropdownItems.map(({ content, onClick, href, disabled }) => {
-                    if (href) {
-                        return (
-                            <Menu.Item
-                                key={content}
-                                as={AppLink}
-                                to={href}
-                                disabled={disabled}
-                                className={({ active }) =>
-                                    classNames(cls.dropdownItem, {
-                                        [cls.active]: active,
-                                    })
-                                }
-                            >
-                                {content}
-                            </Menu.Item>
-                        );
-                    }
                     return (
                         <Menu.Item
                             key={content}
-                            as={Button}
+                            as={href ? AppLink : Button}
+                            {...(href && { to: href })}
                             onClick={onClick}
                             disabled={disabled}
                             className={({ active }) =>

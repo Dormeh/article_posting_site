@@ -1,0 +1,15 @@
+.Dropdown {
+  position: relative;
+}
+
+.active {
+  background: rgba(var(--secondary-color-rgb), 0.4);
+}
+
+.dropdownItem {
+  white-space: nowrap;
+  padding: 6px 12px;
+  color: var(--inverted-primary-color);
+  justify-content: flex-start;
+  width: 100%;
+}

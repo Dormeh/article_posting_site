@@ -14,10 +14,6 @@ $shadow-map: (
   top-right: -2px -2px 3px 1px $shadow-color
 );
 
-.Dropdown {
-  position: relative;
-}
-
 .btn {
   padding: 4px 0;
   display: flex;
@@ -44,16 +40,4 @@ $shadow-map: (
       box-shadow: map-get($shadow-map, $position);
     }
   }
-}
-
-.active {
-  background: rgba(var(--secondary-color-rgb), 0.4);
-}
-
-.dropdownItem {
-  white-space: nowrap;
-  padding: 6px 12px;
-  color: var(--inverted-primary-color);
-  justify-content: flex-start;
-  width: 100%;
 }
