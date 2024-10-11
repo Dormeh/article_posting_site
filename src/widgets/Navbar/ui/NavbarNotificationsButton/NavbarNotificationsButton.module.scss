@@ -1,0 +1,14 @@
+@import "shared/styles/tamplates";
+
+.notifications {
+  min-width: 310px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 6px;
+
+  @extend %custom-scroll-bar;
+}
+
+.icon {
+  color: var(--inverted-primary-color);
+}

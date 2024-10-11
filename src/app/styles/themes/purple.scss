@@ -4,6 +4,7 @@
 
 .app_purple_theme {
   --bg-color: #5b00c4;
+  --bg-color-rgb: #{hex-to-rgb(#5b00c4)};
   --inverted-bg-color: #ddd0fb;
   --inverted-bg-color-rgb: #{hex-to-rgb(#ddd0fb)};
   --primary-color: #e2b5ff;

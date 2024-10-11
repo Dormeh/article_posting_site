@@ -32,8 +32,16 @@ export const Dropdown = memo((props: DropdownProps) => {
     } = props;
     return (
         <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button className={commonCls.btn}>{dropdownTrigger}</Menu.Button>
-            <Menu.Items className={classNames(commonCls.menu, {}, [commonCls[direction]])} as="nav">
+            <Menu.Button as={Button} className={commonCls.btn}>
+                {dropdownTrigger}
+            </Menu.Button>
+            <Menu.Items
+                className={classNames(commonCls.menu, {}, [
+                    commonCls[direction],
+                    commonCls.dropdown,
+                ])}
+                as="nav"
+            >
                 {dropdownItems.map(({ content, onClick, href, disabled }) => {
                     return (
                         <Menu.Item

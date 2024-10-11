@@ -19,4 +19,10 @@ export const notificationList = [
         userId: '1',
         href: '/',
     },
+    {
+        id: '4',
+        title: 'Уведомление 4',
+        description: 'Произошло какое-то событие',
+        userId: '1',
+    },
 ];

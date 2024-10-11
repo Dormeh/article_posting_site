@@ -9,7 +9,7 @@ import { Text } from '../../../Text/Text';
 // import AvatarImg from '../../../assets/images/storybook.jpg';
 
 const Content = () => (
-    <VStack gap={4} style={{ padding: '4px' }}>
+    <VStack gap={4}>
         <Card>
             <p>Very loooooooooooooooooooooong content</p>
         </Card>
@@ -40,7 +40,7 @@ export default {
     },
     decorators: [
         (Story) => (
-            <HStack style={{ padding: '350px 160px' }} max={false}>
+            <HStack style={{ padding: '350px 280px' }} max={false}>
                 <Story />
             </HStack>
         ),

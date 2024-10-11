@@ -1,10 +1,16 @@
 @import "shared/styles/tamplates";
 
-$border-radius: (
+$border-radius-dropdown: (
   bottom-left: 0 5px 5px,
   bottom-right: 5px 0 5px 5px,
   top-left: 5px 5px 5px 0,
   top-right: 5px 5px 0
+);
+$border-radius-popover: (
+  bottom-left: 0 12px 12px,
+  bottom-right: 12px 0 12px 12px,
+  top-left: 12px 12px 12px 0,
+  top-right: 12px 12px 0
 );
 $shadow-color: rgba(var(--shadow-rgb), 0.5);
 $shadow-map: (
@@ -28,7 +34,7 @@ $shadow-map: (
   position: absolute;
   z-index: var(--dropdown-z-index);
   background: rgba(var(--inverted-bg-color-rgb), 1);
-  border: 1.5px solid rgba(var(--primary-color-rgb), 0.6);
+  border: 1.5px solid rgba(var(--bg-color-rgb), 0.4);
 
   @each $position, $pos in $positions {
     &.#{$position} {
@@ -36,8 +42,15 @@ $shadow-map: (
         #{$prop}: $val;
       }
 
-      border-radius: map-get($border-radius, $position);
       box-shadow: map-get($shadow-map, $position);
+
+      &.dropdown {
+        border-radius: map-get($border-radius-dropdown, $position);
+      }
+
+      &.popover {
+        border-radius: map-get($border-radius-popover, $position);
+      }
     }
   }
 }

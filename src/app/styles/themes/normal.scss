@@ -4,6 +4,7 @@
 
 .app_light_theme {
   --bg-color: #f0f0f0;
+  --bg-color-rgb: #{hex-to-rgb(#f0f0f0)};
   --inverted-bg-color: #090949;
   --inverted-bg-color-rgb: #{hex-to-rgb(#090949)};
   --primary-color: #0f59ff;
