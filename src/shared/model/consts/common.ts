@@ -13,3 +13,6 @@ export enum UserRole {
     MANAGER = 'MANAGER',
     USER = 'USER',
 }
+
+export const MIN_DESKTOP_WIDTH = 769;
+export const MAX_MOBILE_WIDTH = 768;
