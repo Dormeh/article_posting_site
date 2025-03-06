@@ -10,7 +10,6 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: var(--overlay-color);
   opacity: 0;
   pointer-events: none;
   overflow: initial;
@@ -28,12 +27,13 @@
 }
 
 .opened {
+  transition: opacity 0.2s;
   opacity: 1;
   z-index: var(--modal-z-index);
 
   .content {
     transform: scale(1);
-    transition: 0.3s transform;
+    transition: transform 0.25s;
   }
 
   pointer-events: auto;
@@ -41,6 +41,6 @@
 
 .isClosing {
   .content {
-    transform: scale(0.1);
+    transform: scale(0);
   }
 }

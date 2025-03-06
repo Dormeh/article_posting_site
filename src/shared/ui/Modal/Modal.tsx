@@ -1,5 +1,6 @@
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import React, { ReactNode } from 'react';
+import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 import { useModalOpeningHandler } from './lib/hooks/useModalOpeningHandler';
@@ -13,7 +14,7 @@ interface ModalProps {
     lazy?: boolean;
 }
 
-const ANIMATION_CLOSE_DELAY = 200;
+const ANIMATION_CLOSE_DELAY = 250;
 const ANIMATION_OPEN_DELAY = 100;
 
 export const Modal = (props: ModalProps) => {
@@ -26,10 +27,6 @@ export const Modal = (props: ModalProps) => {
     );
     const { isMounted, isOpening } = useModalOpeningHandler(isOpen, ANIMATION_OPEN_DELAY);
 
-    const contentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
     const mods: Mods = {
         [cls.opened]: isOpening && isOpen,
         [cls.isClosing]: isClosing,
@@ -41,10 +38,9 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div onClick={closeHandler} className={classNames(cls.Modal, mods, [className])}>
-                <div onClick={contentClick} className={cls.content}>
-                    {children}
-                </div>
+            <div className={classNames(cls.Modal, mods, [className])}>
+                <Overlay onClick={closeHandler} />
+                <div className={cls.content}>{children}</div>
             </div>
         </Portal>
     );
