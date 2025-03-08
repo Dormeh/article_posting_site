@@ -12,3 +12,11 @@
 .icon {
   color: var(--inverted-primary-color);
 }
+
+.btn {
+  padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: var(--primary-color);
+}

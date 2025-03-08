@@ -45,7 +45,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     type="button"
                     onClick={onToggle}
                     className={cls.collapseBtn}
-                    theme={ButtonTheme.BACKGROUND_INVERTED}
+                    theme={ButtonTheme.CLEAR}
                     size={ButtonSize.L}
                 >
                     <Arrow className={cls.arrow} />

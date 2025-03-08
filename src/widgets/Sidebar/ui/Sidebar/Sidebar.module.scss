@@ -36,6 +36,8 @@
 }
 
 .collapseBtn:not(:disabled) {
+  color: var(--inverted-primary-color);
+
   &:hover {
     filter: initial;
   }
